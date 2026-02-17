@@ -45,8 +45,8 @@ const BaseplateDiagram: React.FC = () => {
   const getNodeColor = (type: string) => {
     switch (type) {
       case 'power': return '#ef4444'; // Red
-      case 'network': return '#22c55e'; // Green
-      default: return '#3b82f6'; // Blue for sensors/actuators
+      case 'network': return '#10b981'; // Emerald
+      default: return '#14b8a6'; // Teal for sensors/actuators
     }
   };
 

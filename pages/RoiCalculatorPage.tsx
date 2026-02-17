@@ -327,7 +327,7 @@ const AdvancedCalculator = () => {
                 </div>
 
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-green-400"><DollarSign size={18}/> Financial & OpEx</h3>
+                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-emerald-400"><DollarSign size={18}/> Financial & OpEx</h3>
                     <SliderInput label="Fuel Price" value={price} min={0.2} max={1.5} step={0.01} unit="/L" prefix="$" onChange={setPrice} format={(v: number) => v.toFixed(2)} infoAction={() => setIsPriceModalOpen(true)} />
                     <SliderInput label="CapEx" value={capex} min={0} max={2000000} step={50000} unit="" prefix="$" onChange={setCapex} format={formatNumber} />
                     <SliderInput label="Monthly Energy" value={energyCosts} min={100} max={5000} step={50} unit="" prefix="$" onChange={setEnergyCosts} format={formatNumber} />
@@ -347,7 +347,7 @@ const AdvancedCalculator = () => {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <StatCard icon={PieChart} label="Total Annual Value" value={formatCurrency(Math.round(totalAnnualValue))} colorClass="text-emerald-400" />
                     <StatCard icon={GanttChartSquare} label="Payback Period" value={paybackPeriod > 0 ? `${paybackPeriod.toFixed(1)} Mo` : 'Immediate'} colorClass="text-emerald-400" />
-                    <StatCard icon={TrendingUp} label="5-Year IRR" value={`${irr.toFixed(1)}%`} colorClass="text-green-400" />
+                    <StatCard icon={TrendingUp} label="5-Year IRR" value={`${irr.toFixed(1)}%`} colorClass="text-emerald-400" />
                     <StatCard icon={Leaf} label="Carbon Removed" value={formatNumber(Math.round(co2Reduction))} subtext="Tons per Year" colorClass="text-emerald-400" />
                 </div>
 

@@ -267,7 +267,7 @@ const GlobalPage: React.FC = () => {
            </div>
            <div className="text-center border-l border-white/10">
                 <p className="text-[9px] text-gray-400 uppercase font-bold">Rev.</p>
-                <p className="font-bold text-green-400 text-lg">${totalRevenue.toFixed(1)}M</p>
+                <p className="font-bold text-emerald-400 text-lg">${totalRevenue.toFixed(1)}M</p>
            </div>
       </div>
       

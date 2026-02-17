@@ -7,7 +7,7 @@ export const stages = [
     { name: 'Proposal', color: '#a78bfa' },
     { name: PipelineStage.OnHold, color: '#f59e0b' },
     { name: PipelineStage.AwaitingFunding, color: '#f59e0b' },
-    { name: PipelineStage.ClosedWon, color: '#22c55e' },
+    { name: PipelineStage.ClosedWon, color: '#10b981' },
     { name: PipelineStage.ClosedLost, color: '#ef4444' },
 ];
 

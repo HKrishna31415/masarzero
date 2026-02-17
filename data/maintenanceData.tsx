@@ -108,7 +108,7 @@ const RelayResetAnimation = () => {
                         animate={resetState === 'resetting' ? { scale: 0.9 } : { scale: 1 }}
                         style={{ originX: "65px", originY: "90px" }}
                     >
-                        <rect x="60" y="85" width="12" height="12" rx="2" fill={resetState === 'normal' ? "#2563eb" : "#3b82f6"} stroke="#1e3a8a" />
+                        <rect x="60" y="85" width="12" height="12" rx="2" fill={resetState === 'normal' ? "#059669" : "#10b981"} stroke="#064e3b" />
                         <text x="66" y="83" textAnchor="middle" fontSize="4" fill="#94a3b8" fontWeight="bold">RST</text>
                     </motion.g>
 
@@ -318,9 +318,9 @@ const MotorWiringDiagram = () => (
         <text x="120" y="115" textAnchor="middle" fill="#64748b" fontSize="10">W1</text>
 
         {/* Shorting Links (Vertical for Delta) */}
-        <rect x="36" y="34" width="8" height="62" rx="2" fill="#facc15" opacity="0.8" />
-        <rect x="76" y="34" width="8" height="62" rx="2" fill="#facc15" opacity="0.8" />
-        <rect x="116" y="34" width="8" height="62" rx="2" fill="#facc15" opacity="0.8" />
+        <rect x="36" y="34" width="8" height="62" rx="2" fill="#eab308" opacity="0.8" />
+        <rect x="76" y="34" width="8" height="62" rx="2" fill="#eab308" opacity="0.8" />
+        <rect x="116" y="34" width="8" height="62" rx="2" fill="#eab308" opacity="0.8" />
 
         {/* Line Inputs */}
         <path d="M 40 145 L 40 96" stroke="#ef4444" strokeWidth="3" />
@@ -351,7 +351,7 @@ const PlcWiringDiagram = () => {
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-700 pb-1">External Wiring</h4>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-emerald-500/50 transition-colors">
                     <span className="text-sm text-white">Main Power (380V)</span>
-                    <Zap size={14} className="text-yellow-400" />
+                    <Zap size={14} className="text-emerald-400" />
                 </div>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-emerald-500/50 transition-colors">
                     <span className="text-sm text-white">Internet (V-BOX)</span>

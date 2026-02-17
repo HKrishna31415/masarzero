@@ -144,7 +144,7 @@ const HmiDisplay: React.FC = () => {
                             <text x="60" y="35" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="bold">BUFFER TANK</text>
                             <g transform="translate(80, -20)">
                                 <rect width="70" height="24" rx="4" fill="#0f172a" stroke="#334155" />
-                                <text x="35" y="16" textAnchor="middle" fill="#f59e0b" fontSize="12" fontWeight="bold">{isOn && !isFault ? pressure : 0}</text>
+                                <text x="35" y="16" textAnchor="middle" fill="#34d399" fontSize="12" fontWeight="bold">{isOn && !isFault ? pressure : 0}</text>
                                 <text x="60" y="16" fill="#64748b" fontSize="8">Pa</text>
                             </g>
                         </g>

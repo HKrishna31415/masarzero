@@ -11,7 +11,7 @@ const ElectricalWiringDiagram: React.FC = () => {
             <div className="flex justify-between items-start mb-8 border-b border-white/10 pb-4">
                 <div>
                     <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                        <Zap className="text-yellow-400" size={20} />
+                        <Zap className="text-emerald-400" size={20} />
                         Main Power Termination
                     </h3>
                     <p className="text-sm text-gray-400 mt-1">380V 3-Phase + N + PE</p>

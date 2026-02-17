@@ -267,12 +267,12 @@ const LegalPage: React.FC = () => {
                                     >
                                         {isActive && (
                                             <div className="absolute top-3 right-3">
-                                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></div>
+                                                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
                                             </div>
                                         )}
                                         <Icon className={`w-10 h-10 mb-4 transition-colors ${isActive ? 'text-emerald-400 group-hover:text-white' : 'text-gray-500'}`} />
                                         <h4 className="font-bold text-sm text-white mb-1">{cert.name}</h4>
-                                        <span className={`text-[10px] font-mono uppercase tracking-wider ${isActive ? 'text-green-400' : 'text-yellow-500'}`}>
+                                        <span className={`text-[10px] font-mono uppercase tracking-wider ${isActive ? 'text-emerald-400' : 'text-yellow-500'}`}>
                                             {cert.status}
                                         </span>
                                         {isActive && (

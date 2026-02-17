@@ -119,7 +119,7 @@ const ImprovesSafetyIcon = () => (
         <motion.path
             d="M50 15 L85 30 L85 60 C85 80 50 95 50 95 C50 95 15 80 15 60 L15 30 Z"
             fill="none"
-            stroke="#16a34a"
+            stroke="#059669"
             strokeWidth="3"
             variants={{ 
                 initial: { pathLength: 0, opacity: 0 }, 
@@ -144,7 +144,7 @@ const ImprovesSafetyIcon = () => (
         {/* Shield Glow/Block effect */}
          <motion.path
             d="M50 15 L85 30 L85 60 C85 80 50 95 50 95 C50 95 15 80 15 60 L15 30 Z"
-            fill="#16a34a"
+            fill="#059669"
             variants={{
                 initial: { opacity: 0 },
                 animate: {

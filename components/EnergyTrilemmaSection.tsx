@@ -29,8 +29,8 @@ const pillars: Record<Pillar, PillarData> = {
     id: 'sustainability',
     icon: Leaf,
     title: 'Environmental Sustainability',
-    color: 'text-green-400',
-    iconColor: '#22c55e',
+    color: 'text-teal-400',
+    iconColor: '#14b8a6',
     pluses: '+',
     description: 'Capturing potent greenhouse gases and volatile organic compounds (VOCs) directly combats climate change, prevents ground-level ozone formation (smog), and significantly improves local air quality for healthier communities.'
   },

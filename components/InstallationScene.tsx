@@ -43,7 +43,7 @@ const InstallationScene = ({ step }: { step: number }) => {
 
   return (
     <group position={[0, -1, 0]}>
-      <Grid infiniteGrid sectionColor="#0ea5e9" cellColor="#1e293b" sectionThickness={1} cellThickness={0.5} fadeDistance={30} />
+      <Grid infiniteGrid sectionColor="#14b8a6" cellColor="#1e293b" sectionThickness={1} cellThickness={0.5} fadeDistance={30} />
       
       {/* Concrete Pad */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow>
@@ -61,7 +61,7 @@ const InstallationScene = ({ step }: { step: number }) => {
         {/* Status Light on Unit */}
         <mesh ref={statusLightRef} position={[0, 1.8, 0.61]}>
             <boxGeometry args={[1.0, 0.05, 0.05]} />
-            <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={0} toneMapped={false} />
+            <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={0} toneMapped={false} />
         </mesh>
       </group>
 
@@ -94,13 +94,13 @@ const InstallationScene = ({ step }: { step: number }) => {
       <group ref={wireGroupRef} scale={[0,0,0]}>
           <mesh position={[0, 0.1, -2]} rotation={[Math.PI/2, 0, 0]}>
               <cylinderGeometry args={[0.05, 0.05, 2]} />
-              <meshStandardMaterial color="#f59e0b" />
+              <meshStandardMaterial color="#ef4444" />
           </mesh>
           <mesh position={[0, 1, -1]} rotation={[Math.PI/4, 0, 0]}>
               <cylinderGeometry args={[0.05, 0.05, 1.5]} />
-              <meshStandardMaterial color="#f59e0b" />
+              <meshStandardMaterial color="#ef4444" />
           </mesh>
-          <Text position={[0, 0.5, -2.2]} fontSize={0.2} color="#f59e0b">380V Power</Text>
+          <Text position={[0, 0.5, -2.2]} fontSize={0.2} color="#ef4444">380V Power</Text>
       </group>
       
       {/* Labels based on step */}
@@ -108,7 +108,7 @@ const InstallationScene = ({ step }: { step: number }) => {
         {step === 1 && <Text position={[0, 3.5, 0]} fontSize={0.4} color="white" outlineWidth={0.02} outlineColor="#000">Unit Placed</Text>}
         {step === 2 && <Text position={[0, 3.5, 0]} fontSize={0.4} color="white" outlineWidth={0.02} outlineColor="#000">Piping Connected</Text>}
         {step === 3 && <Text position={[0, 3.5, 0]} fontSize={0.4} color="white" outlineWidth={0.02} outlineColor="#000">Electrical Wired</Text>}
-        {step === 4 && <Text position={[0, 3.5, 0]} fontSize={0.6} color="#22c55e" outlineWidth={0.02} outlineColor="#000">SYSTEM ONLINE</Text>}
+        {step === 4 && <Text position={[0, 3.5, 0]} fontSize={0.6} color="#10b981" outlineWidth={0.02} outlineColor="#000">SYSTEM ONLINE</Text>}
 
     </group>
   );

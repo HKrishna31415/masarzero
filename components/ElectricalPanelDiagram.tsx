@@ -107,8 +107,8 @@ const ElectricalPanelDiagram: React.FC = () => {
                         <rect x="10" y="35" width="330" height="20" fill="#94a3b8" />
 
                         {/* Wires Top (Busbar) */}
-                        <Wire d="M 35 0 L 35 10" color="#facc15" />
-                        <Wire d="M 55 0 L 55 10" color="#10b981" />
+                        <Wire d="M 35 0 L 35 10" color="#eab308" />
+                        <Wire d="M 55 0 L 55 10" color="#3b82f6" />
                         <Wire d="M 75 0 L 75 10" color="#ef4444" />
                         
                         {/* Bridge Wires (Simulated loops) */}

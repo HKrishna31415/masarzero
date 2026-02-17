@@ -117,7 +117,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                     label="Annual Revenue" 
                     value={project.annual_revenue} 
                     icon={TrendingUp} 
-                    accentColor="border-green-500/50 text-green-400" 
+                    accentColor="border-emerald-500/50 text-emerald-400" 
                 />
                 <ReadoutBox 
                     label="CO₂ Reduction" 

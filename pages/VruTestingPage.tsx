@@ -12,7 +12,7 @@ const GoldAnimation = () => (
         <svg viewBox="0 0 400 160" className="w-full h-full">
             <defs>
                 <marker id="arrowhead-gold" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                    <polygon points="0 0, 10 3.5, 0 7" fill="#facc15" />
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
                 </marker>
                 <linearGradient id="screenGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#0f172a" />
@@ -27,8 +27,8 @@ const GoldAnimation = () => (
             </g>
 
             <g transform="translate(140, 50)">
-                <rect width="80" height="30" fill="none" stroke="#facc15" strokeWidth="1" rx="4" />
-                <text x="40" y="20" textAnchor="middle" fill="#facc15" fontSize="12" fontWeight="bold">TVA2020</text>
+                <rect width="80" height="30" fill="none" stroke="#10b981" strokeWidth="1" rx="4" />
+                <text x="40" y="20" textAnchor="middle" fill="#10b981" fontSize="12" fontWeight="bold">TVA2020</text>
             </g>
 
             <g transform="translate(280, 30)">
@@ -56,14 +56,14 @@ const GoldAnimation = () => (
             </g>
 
             {/* Flow Lines */}
-            <line x1="60" y1="80" x2="130" y2="65" stroke="#facc15" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrowhead-gold)" />
-            <line x1="220" y1="65" x2="270" y2="65" stroke="#facc15" strokeWidth="2" markerEnd="url(#arrowhead-gold)" />
+            <line x1="60" y1="80" x2="130" y2="65" stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" markerEnd="url(#arrowhead-gold)" />
+            <line x1="220" y1="65" x2="270" y2="65" stroke="#10b981" strokeWidth="2" markerEnd="url(#arrowhead-gold)" />
 
             {/* Particles */}
-            <motion.circle r="3" fill="#facc15">
+            <motion.circle r="3" fill="#10b981">
                 <animateMotion path="M 60 80 L 130 65" dur="1.5s" repeatCount="indefinite" />
             </motion.circle>
-             <motion.circle r="3" fill="#facc15">
+             <motion.circle r="3" fill="#10b981">
                 <animateMotion path="M 220 65 L 270 65" dur="1s" repeatCount="indefinite" />
             </motion.circle>
         </svg>
@@ -487,7 +487,7 @@ const SHEDAnalysis = () => {
                                 <YAxis domain={[20, 70]} hide />
                                 <Tooltip contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #334155', fontSize: '10px' }} />
                                 <Area type="monotone" dataKey="Exposed" stroke="#ef4444" strokeWidth={2} fill="url(#gradExposed)" isAnimationActive={false} />
-                                <Area type="monotone" dataKey="Shaded" stroke="#22c55e" strokeWidth={2} fill="url(#gradShaded)" isAnimationActive={false} />
+                                <Area type="monotone" dataKey="Shaded" stroke="#10b981" strokeWidth={2} fill="url(#gradShaded)" isAnimationActive={false} />
                                 <ReferenceLine x={time} stroke="white" strokeDasharray="2 2" ifOverflow="extendDomain" />
                             </AreaChart>
                         </ResponsiveContainer>
