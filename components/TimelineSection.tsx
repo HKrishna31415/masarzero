@@ -56,7 +56,7 @@ const TimelineSection: React.FC = () => {
                 <div className="relative max-w-3xl mx-auto">
                     {/* The vertical line */}
                     <motion.div 
-                        className="absolute left-4 md:left-1/2 w-1 bg-gradient-to-b from-transparent via-cyan-500 to-transparent -translate-x-1/2 origin-top"
+                        className="absolute left-4 md:left-1/2 w-1 bg-gradient-to-b from-transparent via-emerald-500 to-transparent -translate-x-1/2 origin-top"
                         style={{ height: 'calc(100% - 4rem)' }}
                         variants={lineVariants}
                         initial="initial"
@@ -86,13 +86,13 @@ const TimelineSection: React.FC = () => {
                                 <div className="hidden md:flex w-1/2"></div>
                                 <div className={`w-full md:w-1/2 ${isOdd ? 'md:text-left' : 'md:text-right'}`}>
                                     <div className="absolute left-4 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
-                                        <div className="w-8 h-8 rounded-full bg-[#000212] flex items-center justify-center border-2 border-cyan-400">
-                                            <Icon className="w-4 h-4 text-cyan-300" />
+                                        <div className="w-8 h-8 rounded-full bg-[#000212] flex items-center justify-center border-2 border-emerald-400">
+                                            <Icon className="w-4 h-4 text-emerald-300" />
                                         </div>
                                     </div>
                                     <div className={`ml-12 md:ml-0 ${isOdd ? 'md:ml-12' : 'md:mr-12'}`}>
                                       <div className="glass-card p-6 rounded-xl">
-                                          <p className="font-bold text-lg text-cyan-300">{event.date}</p>
+                                          <p className="font-bold text-lg text-emerald-300">{event.date}</p>
                                           <h3 className="text-xl font-bold mt-1 mb-2">{event.title}</h3>
                                           <p className="text-gray-400 text-sm">{event.description}</p>
                                       </div>

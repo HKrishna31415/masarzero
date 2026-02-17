@@ -32,9 +32,9 @@ const goals = [
         number: 7,
         title: 'Affordable & Clean Energy',
         description: 'Recovered hydrocarbons are a ready-to-use energy source, reducing the need for new extraction.',
-        borderColor: 'border-cyan-500',
-        textColor: 'text-cyan-400',
-        glowColor: 'shadow-cyan-500/20',
+        borderColor: 'border-teal-500',
+        textColor: 'text-teal-400',
+        glowColor: 'shadow-teal-500/20',
     }
 ];
 

@@ -39,16 +39,16 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                     
                     {/* Fuel Level */}
                     <path d="M 2 80 L 398 80 L 398 120 C 398 130 390 138 380 138 L 20 138 C 10 138 2 130 2 120 Z" 
-                          fill="#0e7490" opacity="0.5" />
+                          fill="#10b981" opacity="0.5" />
                     
                     <text x="200" y="70" textAnchor="middle" fill="#64748b" fontSize="12" fontWeight="bold" letterSpacing="1">UST VAPOR SPACE</text>
-                    <text x="200" y="110" textAnchor="middle" fill="#06b6d4" fontSize="12" fontWeight="bold" letterSpacing="1">LIQUID FUEL</text>
+                    <text x="200" y="110" textAnchor="middle" fill="#10b981" fontSize="12" fontWeight="bold" letterSpacing="1">LIQUID FUEL</text>
                 </g>
 
                 {/* VRU Unit */}
                 <g transform="translate(550, 50)">
-                    <rect x="0" y="0" width="140" height="100" rx="4" fill="#0f172a" stroke="#3b82f6" strokeWidth="2" />
-                    <text x="70" y="55" textAnchor="middle" fill="#3b82f6" fontSize="14" fontWeight="bold">MZ-9000</text>
+                    <rect x="0" y="0" width="140" height="100" rx="4" fill="#0f172a" stroke="#10b981" strokeWidth="2" />
+                    <text x="70" y="55" textAnchor="middle" fill="#10b981" fontSize="14" fontWeight="bold">MZ-9000</text>
                     <rect x="-10" y="20" width="10" height="20" fill="#334155" /> {/* Inlet */}
                     <rect x="140" y="20" width="10" height="20" fill="#334155" /> {/* Vent */}
                     <rect x="60" y="100" width="20" height="10" fill="#334155" /> {/* Liquid Out */}
@@ -62,7 +62,7 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                 <motion.path 
                     d="M 150 250 L 150 60 L 540 60" 
                     fill="none" 
-                    stroke={isSurge ? "#f59e0b" : "#cbd5e1"} 
+                    stroke={isSurge ? "#14b8a6" : "#cbd5e1"} 
                     strokeWidth="2" 
                     strokeDasharray="8 8"
                     animate={{ strokeDashoffset: -100 }}
@@ -75,7 +75,7 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                 <motion.path 
                     d="M 620 110 L 620 300 L 450 300 L 450 250" 
                     fill="none" 
-                    stroke="#06b6d4" 
+                    stroke="#10b981" 
                     strokeWidth="2" 
                     strokeDasharray="20 5"
                     strokeLinecap="round"
@@ -89,7 +89,7 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                 
                 {/* Cycle Valve Graphic */}
                 <g transform="translate(730, 20)">
-                    <circle cx="20" cy="10" r="8" fill={isSurge ? "#22c55e" : "#ef4444"} stroke="white" strokeWidth="1" />
+                    <circle cx="20" cy="10" r="8" fill={isSurge ? "#10b981" : "#ef4444"} stroke="white" strokeWidth="1" />
                 </g>
 
                 {/* Cycle Flow Animation (Only active in Surge Mode) */}
@@ -97,7 +97,7 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                     <motion.path 
                         d="M 690 30 L 750 30 L 750 200 L 350 200 L 350 250" 
                         fill="none" 
-                        stroke="#a855f7" 
+                        stroke="#14b8a6" 
                         strokeWidth="3" 
                         strokeDasharray="6 4"
                         animate={{ strokeDashoffset: -100 }}
@@ -113,22 +113,22 @@ const CycleSchematic: React.FC<{ mode: 'standard' | 'surge' }> = ({ mode }) => {
                 </g>
 
                 <g transform="translate(500, 320)">
-                    <rect width="120" height="20" rx="4" fill="#0f172a" stroke="#06b6d4" />
-                    <text x="60" y="14" textAnchor="middle" fill="#22d3ee" fontSize="10" fontFamily="monospace">LIQUID RETURN</text>
+                    <rect width="120" height="20" rx="4" fill="#0f172a" stroke="#10b981" />
+                    <text x="60" y="14" textAnchor="middle" fill="#10b981" fontSize="10" fontFamily="monospace">LIQUID RETURN</text>
                 </g>
 
                 <g transform="translate(580, 180)">
-                    <rect width="120" height="20" rx="4" fill="#0f172a" stroke="#a855f7" opacity={isSurge ? 1 : 0.3} />
-                    <text x="60" y="14" textAnchor="middle" fill="#a855f7" fontSize="10" fontFamily="monospace" opacity={isSurge ? 1 : 0.3}>CYCLE BUFFER</text>
+                    <rect width="120" height="20" rx="4" fill="#0f172a" stroke="#14b8a6" opacity={isSurge ? 1 : 0.3} />
+                    <text x="60" y="14" textAnchor="middle" fill="#14b8a6" fontSize="10" fontFamily="monospace" opacity={isSurge ? 1 : 0.3}>CYCLE BUFFER</text>
                 </g>
 
             </svg>
 
             {/* Status Overlay */}
             <div className="absolute top-6 right-6 flex flex-col gap-2">
-                <div className={`px-3 py-1.5 rounded border flex items-center gap-2 ${isSurge ? 'bg-purple-900/30 border-purple-500/50' : 'bg-slate-800/50 border-slate-600'}`}>
-                    <div className={`w-2 h-2 rounded-full ${isSurge ? 'bg-purple-400 animate-pulse' : 'bg-slate-500'}`} />
-                    <span className={`text-xs font-bold uppercase ${isSurge ? 'text-purple-300' : 'text-slate-400'}`}>
+                <div className={`px-3 py-1.5 rounded border flex items-center gap-2 ${isSurge ? 'bg-emerald-900/30 border-emerald-500/50' : 'bg-slate-800/50 border-slate-600'}`}>
+                    <div className={`w-2 h-2 rounded-full ${isSurge ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`} />
+                    <span className={`text-xs font-bold uppercase ${isSurge ? 'text-emerald-300' : 'text-slate-400'}`}>
                         Surge Valve: {isSurge ? 'OPEN' : 'CLOSED'}
                     </span>
                 </div>

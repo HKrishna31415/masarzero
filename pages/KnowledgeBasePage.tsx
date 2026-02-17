@@ -10,8 +10,8 @@ const categories = [
     id: 'Overview',
     icon: BookOpen, 
     title: 'System Overview', 
-    color: 'text-cyan-400',
-    borderColor: 'group-hover:border-cyan-500/50'
+    color: 'text-emerald-400',
+    borderColor: 'group-hover:border-emerald-500/50'
   },
   { 
     id: 'Safety',
@@ -24,15 +24,15 @@ const categories = [
     id: 'Installation',
     icon: Truck, 
     title: 'Installation & Logistics', 
-    color: 'text-purple-400',
-    borderColor: 'group-hover:border-purple-500/50'
+    color: 'text-teal-400',
+    borderColor: 'group-hover:border-teal-500/50'
   },
   { 
     id: 'Maintenance',
     icon: Wrench, 
     title: 'Maintenance', 
-    color: 'text-blue-400',
-    borderColor: 'group-hover:border-blue-500/50'
+    color: 'text-emerald-400',
+    borderColor: 'group-hover:border-emerald-500/50'
   },
   { 
     id: 'Troubleshooting',
@@ -204,11 +204,11 @@ const knowledgeData: Record<string, { id: string; title: string; content: React.
         title: 'General Maintenance Schedule', 
         content: (
             <div className="grid grid-cols-1 gap-2 text-sm">
-                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Visual Inspection (Leaks/Vibration)</span> <span className="text-cyan-400 font-bold">Daily</span></div>
-                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Wipe down housing & check vents</span> <span className="text-cyan-400 font-bold">Weekly</span></div>
-                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Inspect fan blades & motor</span> <span className="text-cyan-400 font-bold">Monthly</span></div>
-                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Clean condenser/evaporator coils</span> <span className="text-cyan-400 font-bold">Quarterly</span></div>
-                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Full System Leak Test & Oil Change</span> <span className="text-cyan-400 font-bold">Annually</span></div>
+                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Visual Inspection (Leaks/Vibration)</span> <span className="text-emerald-400 font-bold">Daily</span></div>
+                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Wipe down housing & check vents</span> <span className="text-emerald-400 font-bold">Weekly</span></div>
+                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Inspect fan blades & motor</span> <span className="text-emerald-400 font-bold">Monthly</span></div>
+                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Clean condenser/evaporator coils</span> <span className="text-emerald-400 font-bold">Quarterly</span></div>
+                <div className="p-2 bg-white/5 rounded flex justify-between"><span>Full System Leak Test & Oil Change</span> <span className="text-emerald-400 font-bold">Annually</span></div>
             </div>
         ),
         tags: ['Schedule', 'Routine']
@@ -361,7 +361,7 @@ const KnowledgeBasePage: React.FC = () => {
             <ParticleBackground />
             
             {/* Background Elements */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
             
             <div className="container mx-auto px-4 relative z-10 max-w-5xl">
                 
@@ -372,12 +372,12 @@ const KnowledgeBasePage: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan-400 mb-6 uppercase tracking-widest">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-emerald-400 mb-6 uppercase tracking-widest">
                         <Terminal size={12} />
                         <span>Integrated Technical Manual v2.4</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
-                        Knowledge <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Nexus</span>
+                        Knowledge <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Nexus</span>
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
                         Official technical documentation, operational procedures, and maintenance protocols for MasarZero systems.
@@ -389,7 +389,7 @@ const KnowledgeBasePage: React.FC = () => {
                     
                     {/* Search Bar */}
                     <div className="relative group max-w-2xl mx-auto w-full">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl opacity-30 group-hover:opacity-50 blur transition duration-500"></div>
+                        <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl opacity-30 group-hover:opacity-50 blur transition duration-500"></div>
                         <div className="relative flex items-center bg-[#0a0f1e] rounded-xl border border-white/10 shadow-2xl">
                             <Search size={20} className="ml-4 text-gray-500" />
                             <input 
@@ -399,7 +399,7 @@ const KnowledgeBasePage: React.FC = () => {
                                 placeholder="Search manual (e.g., 'Compressor', 'Safety')..."
                                 className="w-full bg-transparent border-none py-4 px-4 text-lg text-white focus:ring-0 placeholder-gray-600 font-mono"
                             />
-                            <div className="pr-4 hidden md:block text-[10px] font-mono text-cyan-500 uppercase">
+                            <div className="pr-4 hidden md:block text-[10px] font-mono text-emerald-500 uppercase">
                                 {filteredItems.length} Topics Found
                             </div>
                         </div>
@@ -414,7 +414,7 @@ const KnowledgeBasePage: React.FC = () => {
                                 <button
                                     key={category.id}
                                     onClick={() => { setActiveCategory(category.id); setSearchQuery(''); }}
-                                    className={`flex items-center gap-2 px-6 py-3 rounded-lg border transition-all duration-300 ${isActive ? `bg-white/10 border-cyan-500/50 text-white shadow-[0_0_15px_rgba(6,182,212,0.2)]` : 'bg-transparent border-white/10 text-gray-400 hover:bg-white/5 hover:text-white'}`}
+                                    className={`flex items-center gap-2 px-6 py-3 rounded-lg border transition-all duration-300 ${isActive ? `bg-white/10 border-emerald-500/50 text-white shadow-[0_0_15px_rgba(16,185,129,0.2)]` : 'bg-transparent border-white/10 text-gray-400 hover:bg-white/5 hover:text-white'}`}
                                 >
                                     <Icon size={16} className={isActive ? category.color : ''} />
                                     <span className="font-bold text-sm uppercase tracking-wider">{category.title}</span>
@@ -427,7 +427,7 @@ const KnowledgeBasePage: React.FC = () => {
                     <div className="space-y-4 mt-4">
                         
                         {searchQuery && (
-                            <div className="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-4">
+                            <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-4">
                                 Search Results across all categories:
                             </div>
                         )}
@@ -449,7 +449,7 @@ const KnowledgeBasePage: React.FC = () => {
                                             <div onClick={() => toggleExpand(item.id)}>
                                                 <div className="flex items-start justify-between gap-4">
                                                     <div className="flex items-start gap-4">
-                                                        <div className={`mt-1 p-2 rounded bg-white/5 border border-white/10 ${isExpanded ? 'text-cyan-400 border-cyan-500/30' : 'text-gray-500'}`}>
+                                                        <div className={`mt-1 p-2 rounded bg-white/5 border border-white/10 ${isExpanded ? 'text-emerald-400 border-emerald-500/30' : 'text-gray-500'}`}>
                                                             {isExpanded ? <Activity size={20} /> : <Database size={20} />}
                                                         </div>
                                                         <div>
@@ -460,7 +460,7 @@ const KnowledgeBasePage: React.FC = () => {
                                                             {/* Category indicator only visible during search */}
                                                             {searchQuery && (
                                                                 <div className="flex items-center gap-2 mt-1">
-                                                                    <span className="text-[9px] font-bold uppercase bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/20">
+                                                                    <span className="text-[9px] font-bold uppercase bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/20">
                                                                         {item.categoryName}
                                                                     </span>
                                                                 </div>
@@ -475,7 +475,7 @@ const KnowledgeBasePage: React.FC = () => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180 text-cyan-400' : 'text-gray-600'}`}>
+                                                    <div className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180 text-emerald-400' : 'text-gray-600'}`}>
                                                         <ChevronDown size={20} />
                                                     </div>
                                                 </div>
@@ -490,14 +490,14 @@ const KnowledgeBasePage: React.FC = () => {
                                                             className="overflow-hidden"
                                                         >
                                                             <div className="pt-6 mt-6 border-t border-white/10 text-gray-300 leading-relaxed text-sm md:text-base">
-                                                                <div className="flex gap-2 mb-4 text-cyan-500 font-mono text-xs uppercase tracking-widest items-center">
+                                                                <div className="flex gap-2 mb-4 text-emerald-500 font-mono text-xs uppercase tracking-widest items-center">
                                                                     <Zap size={14} />
                                                                     <span>Reference ID: {item.id}</span>
                                                                     {searchQuery && (
                                                                         <>
                                                                             <span className="mx-2 text-slate-600">|</span>
-                                                                            <Layers size={14} className="text-purple-400" />
-                                                                            <span className="text-purple-400">{item.categoryName}</span>
+                                                                            <Layers size={14} className="text-teal-400" />
+                                                                            <span className="text-teal-400">{item.categoryName}</span>
                                                                         </>
                                                                     )}
                                                                 </div>

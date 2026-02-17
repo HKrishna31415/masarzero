@@ -123,7 +123,7 @@ const QualityAnalysis: React.FC = () => {
                     <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">Input Sample</span>
                     <Globe className="text-slate-400 w-5 h-5 mx-auto mt-4"/>
                     <span className="text-xs text-slate-500">{currentSample.country}</span>
-                    <Droplet className="text-cyan-400 w-16 h-16 mx-auto my-4"/>
+                    <Droplet className="text-emerald-400 w-16 h-16 mx-auto my-4"/>
                     <h3 className="text-2xl font-bold">{currentSample.fuel}</h3>
                     <p className="text-slate-400">{currentSample.octane} Octane</p>
                 </div>
@@ -148,15 +148,15 @@ const QualityAnalysis: React.FC = () => {
                                             {status !== 'idle' ? metric.value : '...'}
                                         </motion.span>
                                     </AnimatePresence>
-                                    <div className={`w-3 h-3 rounded-full border-2 ${status === 'idle' ? 'border-slate-600' : status === 'analyzing' ? 'border-cyan-400' : 'border-green-400'} relative overflow-hidden`}>
+                                    <div className={`w-3 h-3 rounded-full border-2 ${status === 'idle' ? 'border-slate-600' : status === 'analyzing' ? 'border-emerald-400' : 'border-emerald-400'} relative overflow-hidden`}>
                                         {status === 'analyzing' && <motion.div 
-                                            className="absolute top-0 left-0 bottom-0 bg-cyan-400"
+                                            className="absolute top-0 left-0 bottom-0 bg-emerald-400"
                                             custom={index}
                                             variants={fillVariants}
                                             initial="initial"
                                             animate="animate"
                                         />}
-                                         {status === 'complete' && <div className="w-full h-full bg-green-400"/>}
+                                         {status === 'complete' && <div className="w-full h-full bg-emerald-400"/>}
                                     </div>
                                 </div>
                             </div>
@@ -168,17 +168,17 @@ const QualityAnalysis: React.FC = () => {
                  <AnimatePresence>
                 {status === 'complete' && (
                     <motion.div 
-                        className="bg-green-900/30 border border-green-500 p-6 rounded-xl text-center h-full flex flex-col justify-center"
+                        className="bg-emerald-900/30 border border-emerald-500 p-6 rounded-xl text-center h-full flex flex-col justify-center"
                         variants={outputVariants}
                         initial="initial"
                         animate="animate"
                         exit="exit"
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-xs font-bold text-green-400 tracking-widest uppercase">Verified Output</span>
-                        <ShieldCheck className="text-green-400 w-20 h-20 mx-auto my-6"/>
+                        <span className="text-xs font-bold text-emerald-400 tracking-widest uppercase">Verified Output</span>
+                        <ShieldCheck className="text-emerald-400 w-20 h-20 mx-auto my-6"/>
                         <h3 className="text-2xl font-bold text-white">Quality Certified</h3>
-                        <p className="text-green-300">{currentSample.octane} Octane</p>
+                        <p className="text-emerald-300">{currentSample.octane} Octane</p>
                     </motion.div>
                 )}
                  </AnimatePresence>
@@ -188,7 +188,7 @@ const QualityAnalysis: React.FC = () => {
                 <button 
                     onClick={handleAnalyze}
                     disabled={status === 'analyzing'}
-                    className="bg-slate-800 border border-cyan-500/50 text-cyan-400 font-bold py-3 px-8 rounded-lg hover:bg-slate-700 disabled:opacity-50 disabled:cursor-wait transition-colors flex items-center mx-auto gap-2"
+                    className="bg-slate-800 border border-emerald-500/50 text-emerald-400 font-bold py-3 px-8 rounded-lg hover:bg-slate-700 disabled:opacity-50 disabled:cursor-wait transition-colors flex items-center mx-auto gap-2"
                 >
                     <RefreshCw className={`w-5 h-5 ${status === 'analyzing' ? 'animate-spin' : ''}`} />
                     Analyze New Sample

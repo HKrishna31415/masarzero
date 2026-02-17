@@ -59,8 +59,8 @@ export const partData: PartData[] = [
     description: 'A high-capacity heat exchanger that uses a refrigerant loop to condense recovered vapors back into liquid form.',
     viewType: 'live-trends',
     liveDataConfig: {
-      key1: 'flow', label1: 'Vapor Flow', unit1: 'SCFM', color1: '#22d3ee', domain1: [200, 400],
-      key2: 'temp', label2: 'Vapor Temp', unit2: '°C', color2: '#f87171', domain2: [40, 80],
+      key1: 'flow', label1: 'Vapor Flow', unit1: 'SCFM', color1: '#14b8a6', domain1: [200, 400],
+      key2: 'temp', label2: 'Vapor Temp', unit2: '°C', color2: '#f43f5e', domain2: [40, 80],
     },
     status: [
       { metric: 'Refrigerant', value: 'Circulating', state: 'ok' },
@@ -133,8 +133,8 @@ export const partData: PartData[] = [
     description: 'A Programmable Logic Controller (PLC) based control system for fully automated and optimized operation.',
     viewType: 'live-trends',
     liveDataConfig: {
-      key1: 'cpu', label1: 'CPU', unit1: '%', color1: '#22d3ee', domain1: [0, 100],
-      key2: 'mem', label2: 'Memory', unit2: '%', color2: '#818cf8', domain2: [0, 100],
+      key1: 'cpu', label1: 'CPU', unit1: '%', color1: '#10b981', domain1: [0, 100],
+      key2: 'mem', label2: 'Memory', unit2: '%', color2: '#14b8a6', domain2: [0, 100],
     },
     status: [
       { metric: 'Controller', value: 'Online', state: 'ok' },

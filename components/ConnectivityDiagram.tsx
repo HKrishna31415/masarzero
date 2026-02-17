@@ -11,7 +11,7 @@ const ConnectivityDiagram: React.FC = () => {
             <div className="flex justify-between items-start mb-8 border-b border-white/10 pb-4">
                 <div>
                     <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                        <Wifi className="text-blue-400" size={20} />
+                        <Wifi className="text-emerald-400" size={20} />
                         Telemetry Uplink
                     </h3>
                     <p className="text-sm text-gray-400 mt-1">V-BOX IoT Gateway Configuration</p>
@@ -28,7 +28,7 @@ const ConnectivityDiagram: React.FC = () => {
                     />
                     <motion.path 
                         d="M 150 150 L 300 150" 
-                        stroke="#0ea5e9" strokeWidth="4" strokeDasharray="8 8" 
+                        stroke="#10b981" strokeWidth="4" strokeDasharray="8 8" 
                         initial={{ strokeDashoffset: 20 }}
                         animate={{ strokeDashoffset: 0 }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -38,7 +38,7 @@ const ConnectivityDiagram: React.FC = () => {
                         d="M 420 150 L 550 150" 
                         stroke="#334155" strokeWidth="4" 
                     />
-                    <motion.circle cx="485" cy="150" r="4" fill="#22c55e">
+                    <motion.circle cx="485" cy="150" r="4" fill="#10b981">
                         <animate 
                             attributeName="cx" 
                             from="420" to="550" 
@@ -63,20 +63,20 @@ const ConnectivityDiagram: React.FC = () => {
 
                     {/* Node 2: V-BOX */}
                     <div className="flex flex-col items-center gap-4">
-                        <div className="w-28 h-28 bg-[#0f172a] rounded-xl border-2 border-cyan-500 shadow-[0_0_30px_rgba(6,182,212,0.2)] flex items-center justify-center relative">
-                            <Activity size={48} className="text-cyan-400" />
-                            <div className="absolute top-2 right-2 w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <div className="w-28 h-28 bg-[#0f172a] rounded-xl border-2 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.2)] flex items-center justify-center relative">
+                            <Activity size={48} className="text-emerald-400" />
+                            <div className="absolute top-2 right-2 w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
                         </div>
                         <div className="text-center">
                             <span className="text-sm font-bold text-white block">V-BOX Gateway</span>
-                            <span className="text-xs text-cyan-400 font-mono">Gateway Online</span>
+                            <span className="text-xs text-emerald-400 font-mono">Gateway Online</span>
                         </div>
                     </div>
 
                     {/* Node 3: Cloud */}
                     <div className="flex flex-col items-center gap-4">
-                        <div className="w-24 h-24 bg-blue-900/20 rounded-full border-2 border-blue-500/50 flex items-center justify-center shadow-lg">
-                            <Cloud size={40} className="text-blue-400" />
+                        <div className="w-24 h-24 bg-emerald-900/20 rounded-full border-2 border-emerald-500/50 flex items-center justify-center shadow-lg">
+                            <Cloud size={40} className="text-emerald-400" />
                         </div>
                         <div className="text-center">
                             <span className="text-sm font-bold text-white block">MasarZero Cloud</span>

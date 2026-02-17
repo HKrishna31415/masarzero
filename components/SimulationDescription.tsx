@@ -17,7 +17,7 @@ const SimulationDescription: React.FC<SimulationDescriptionProps> = ({ onClose }
             transition={{ duration: 0.3 }}
         >
              <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-3">
-                <div className="flex items-center gap-2 text-cyan-400">
+                <div className="flex items-center gap-2 text-emerald-400">
                     <Info size={18} />
                     <h3 className="text-sm font-bold uppercase tracking-wider">Process Logic</h3>
                 </div>
@@ -38,7 +38,7 @@ const SimulationDescription: React.FC<SimulationDescriptionProps> = ({ onClose }
                 </div>
                 
                 <div className="flex gap-3">
-                    <div className="mt-0.5 text-purple-400"><Truck size={16} /></div>
+                    <div className="mt-0.5 text-emerald-400"><Truck size={16} /></div>
                     <div>
                         <h4 className="text-xs font-bold text-white mb-1">2. Displacement Surge</h4>
                         <p className="text-xs text-gray-400 leading-relaxed">
@@ -48,7 +48,7 @@ const SimulationDescription: React.FC<SimulationDescriptionProps> = ({ onClose }
                 </div>
 
                 <div className="flex gap-3">
-                    <div className="mt-0.5 text-blue-400"><Database size={16} /></div>
+                    <div className="mt-0.5 text-emerald-400"><Database size={16} /></div>
                     <div>
                         <h4 className="text-xs font-bold text-white mb-1">3. Liquid Return</h4>
                         <p className="text-xs text-gray-400 leading-relaxed">

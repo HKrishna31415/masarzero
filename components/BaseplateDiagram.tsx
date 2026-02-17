@@ -82,7 +82,7 @@ const BaseplateDiagram: React.FC = () => {
 
                         {/* Description Label (Desktop) */}
                         <div className="mt-2 text-center hidden md:block opacity-60 group-hover:opacity-100 transition-opacity">
-                            <p className="text-[9px] text-cyan-100 font-bold leading-tight max-w-[80px]">{node.desc}</p>
+                            <p className="text-[9px] text-emerald-100 font-bold leading-tight max-w-[80px]">{node.desc}</p>
                         </div>
                     </div>
                 ))}
@@ -97,11 +97,11 @@ const BaseplateDiagram: React.FC = () => {
                     <span className="text-gray-400">Main Power (380V AC)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full border-2 border-blue-500 bg-blue-500/20"></div>
+                    <div className="w-3 h-3 rounded-full border-2 border-teal-500 bg-teal-500/20"></div>
                     <span className="text-gray-400">Sensors & Actuators (24V DC)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full border-2 border-green-500 bg-green-500/20"></div>
+                    <div className="w-3 h-3 rounded-full border-2 border-emerald-500 bg-emerald-500/20"></div>
                     <span className="text-gray-400">Network Connection</span>
                 </div>
                 <div className="flex items-center gap-2">

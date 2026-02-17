@@ -24,7 +24,7 @@ const StorageFacilityScene: React.FC<{ isRunning: boolean; litersRecovered?: num
     return (
         <>
             {/* Ground */}
-            <Grid infiniteGrid sectionColor={'#0ea5e9'} cellColor={'#1e293b'} sectionThickness={1} cellThickness={0.5} fadeDistance={50} position={[0,-2,0]} />
+            <Grid infiniteGrid sectionColor={'#10b981'} cellColor={'#1e293b'} sectionThickness={1} cellThickness={0.5} fadeDistance={50} position={[0,-2,0]} />
 
             {/* VRU */}
             <SimplifiedVRU position={[0, -1.5, 0]} scale={[2, 2, 3]} />
@@ -51,9 +51,9 @@ const StorageFacilityScene: React.FC<{ isRunning: boolean; litersRecovered?: num
             <Text position={[5, 0.5, 0]} fontSize={0.4}>Recovery Tank</Text>
 
             {/* Particle Flows */}
-            <FlowingParticles points={vaporPath} count={100} color="#f59e0b" size={0.08} isRunning={isRunning} />
-            <FlowingParticles points={vaporPath2} count={100} color="#f59e0b" size={0.08} isRunning={isRunning} />
-            <FlowingParticles points={liquidPath} count={80} color="#06b6d4" size={0.1} isRunning={isRunning} />
+            <FlowingParticles points={vaporPath} count={100} color="#14b8a6" size={0.08} isRunning={isRunning} />
+            <FlowingParticles points={vaporPath2} count={100} color="#14b8a6" size={0.08} isRunning={isRunning} />
+            <FlowingParticles points={liquidPath} count={80} color="#10b981" size={0.1} isRunning={isRunning} />
         </>
     );
 };

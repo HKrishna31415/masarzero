@@ -22,8 +22,8 @@ const GradientDroplet = ({ size = 24, className = "" }: { size?: number, classNa
     >
         <defs>
             <linearGradient id="dropletGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#d946ef" /> {/* Fuchsia/Purple */}
-                <stop offset="100%" stopColor="#4f46e5" /> {/* Indigo */}
+                <stop offset="0%" stopColor="#34d399" />
+                <stop offset="100%" stopColor="#14b8a6" />
             </linearGradient>
         </defs>
         <path 
@@ -208,7 +208,7 @@ const LiveLog = () => {
                     key={i} 
                     initial={{ opacity: 0, x: -10 }} 
                     animate={{ opacity: 1 - (i * 0.15), x: 0 }} 
-                    className="text-cyan-500/90 mb-1 truncate"
+                    className="text-emerald-500/90 mb-1 truncate"
                 >
                     <span className="text-slate-500 mr-2">{line.split(' ')[0]}</span>
                     {line.split(' ').slice(1).join(' ')}
@@ -227,7 +227,7 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
         onClick={onClose}
     >
         <motion.div 
-            className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 max-w-md w-full relative shadow-2xl shadow-cyan-500/10"
+            className="bg-[#0f172a] border border-white/10 rounded-2xl p-8 max-w-md w-full relative shadow-2xl shadow-emerald-500/10"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
@@ -235,12 +235,12 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
         >
             <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white"><X size={20}/></button>
             <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-cyan-500/10 rounded-xl border border-cyan-500/20 text-cyan-400">
-                    <RefreshCw size={24} className="animate-pulse" />
+                <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-emerald-400">
+                    <Activity size={24} className="animate-pulse" />
                 </div>
                 <div>
                     <h3 className="text-xl font-bold text-white">{metric.name} Analysis</h3>
-                    <p className="text-xs text-cyan-400 font-mono uppercase tracking-wider">Chemical Verification</p>
+                    <p className="text-xs text-emerald-400 font-mono uppercase tracking-wider">Chemical Verification</p>
                 </div>
             </div>
             
@@ -249,9 +249,9 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
                     <span className="text-gray-400 text-sm">Industry Standard</span>
                     <span className="text-white font-bold font-mono">{metric.standard}</span>
                 </div>
-                <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-500/30 p-4 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-                    <span className="text-cyan-200 text-sm">MasarZero Output</span>
-                    <span className="text-cyan-400 font-bold font-mono flex items-center gap-2">
+                <div className="bg-gradient-to-r from-emerald-900/20 to-teal-900/20 border border-emerald-500/30 p-4 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                    <span className="text-emerald-200 text-sm">MasarZero Output</span>
+                    <span className="text-emerald-400 font-bold font-mono flex items-center gap-2">
                         {metric.ourResult} <CheckCircle2 size={14} />
                     </span>
                 </div>
@@ -268,7 +268,7 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
                             <PolarGrid stroke="#334155" />
                             <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 10 }} />
                             <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
-                            <Radar name="MasarZero" dataKey="A" stroke="#22d3ee" strokeWidth={2} fill="#22d3ee" fillOpacity={0.3} />
+                            <Radar name="MasarZero" dataKey="A" stroke="#34d399" strokeWidth={2} fill="#34d399" fillOpacity={0.3} />
                             <Radar name="Standard" dataKey="B" stroke="#64748b" strokeWidth={2} fill="#64748b" fillOpacity={0.1} />
                             <Tooltip contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', fontSize: '12px' }} />
                         </RadarChart>
@@ -285,8 +285,8 @@ const ComparisonSection = () => (
         <VectorBorderCard glowing className="h-full">
             <div className="flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
-                    <div className="h-px w-8 bg-cyan-500" />
-                    <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">MasarZero VRU</span>
+                    <div className="h-px w-8 bg-emerald-500" />
+                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">MasarZero VRU</span>
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-2">Advanced System</h2>
                 <p className="text-gray-400 mb-8 text-sm">The pinnacle of vapor recovery technology.</p>
@@ -297,11 +297,11 @@ const ComparisonSection = () => (
                         { title: '99.9% Recovery Rate', desc: 'Capture virtually all valuable vapor, ensuring minimal waste.' }
                     ].map(feat => (
                         <div key={feat.title} className="flex items-start gap-4 group">
-                            <div className="mt-1 p-1 bg-cyan-500/10 rounded-full border border-cyan-500/20 group-hover:border-cyan-400/50 transition-colors">
-                                <CheckCircle2 className="text-cyan-400 w-4 h-4" />
+                            <div className="mt-1 p-1 bg-emerald-500/10 rounded-full border border-emerald-500/20 group-hover:border-emerald-400/50 transition-colors">
+                                <CheckCircle2 className="text-emerald-400 w-4 h-4" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">{feat.title}</h3>
+                                <h3 className="font-bold text-white text-sm group-hover:text-emerald-300 transition-colors">{feat.title}</h3>
                                 <p className="text-xs text-gray-400 mt-1">{feat.desc}</p>
                             </div>
                         </div>
@@ -383,7 +383,7 @@ const AnalysisLab = () => {
                             <Globe size={12} /> INPUT SAMPLE ({currentSample.code})
                         </div>
                         <div className="relative mb-6">
-                            <div className="absolute inset-0 bg-purple-500/20 blur-2xl rounded-full" />
+                            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full" />
                             <GradientDroplet size={80} className="relative z-10 drop-shadow-lg" />
                         </div>
                         <motion.div
@@ -402,11 +402,11 @@ const AnalysisLab = () => {
                 </div>
 
                 {/* Process Arrow / Animation */}
-                <div className="hidden lg:flex flex-col items-center justify-center text-cyan-500 px-4 relative">
+                <div className="hidden lg:flex flex-col items-center justify-center text-emerald-500 px-4 relative">
                     {/* Connecting Line */}
-                    <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-slate-700 via-cyan-500/50 to-slate-700 -z-10" />
+                    <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-slate-700 via-emerald-500/50 to-slate-700 -z-10" />
                     
-                    <div className="w-16 h-16 rounded-full bg-[#000212] border border-cyan-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
+                    <div className="w-16 h-16 rounded-full bg-[#000212] border border-emerald-500/30 flex items-center justify-center z-10 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
                         <AnimatePresence mode="wait">
                             {status === 'analyzing' ? (
                                 <motion.div
@@ -438,12 +438,12 @@ const AnalysisLab = () => {
                         {status === 'complete' ? (
                             <motion.div 
                                 key="result"
-                                className="bg-slate-900/40 border border-green-500/30 p-6 rounded-2xl relative z-10 shadow-[0_0_30px_rgba(34,197,94,0.05)] flex flex-col h-full backdrop-blur-sm"
+                                className="bg-slate-900/40 border border-emerald-500/30 p-6 rounded-2xl relative z-10 shadow-[0_0_30px_rgba(16,185,129,0.05)] flex flex-col h-full backdrop-blur-sm"
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                             >
-                                <div className="text-xs font-bold text-green-400 uppercase tracking-widest mb-6 flex items-center gap-2 justify-center">
+                                <div className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-6 flex items-center gap-2 justify-center">
                                     <ShieldCheck size={14} /> VERIFIED OUTPUT
                                 </div>
                                 
@@ -455,21 +455,21 @@ const AnalysisLab = () => {
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: i * 0.1 }}
                                             onClick={() => setSelectedMetric(m)}
-                                            className="w-full flex items-center justify-between p-3 rounded-lg bg-green-500/5 border border-green-500/10 hover:bg-green-500/10 hover:border-green-500/30 transition-all group text-left"
+                                            className="w-full flex items-center justify-between p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all group text-left"
                                         >
                                             <div>
-                                                <span className="text-[10px] text-green-200/70 font-bold uppercase block mb-0.5">{m.name}</span>
+                                                <span className="text-[10px] text-emerald-200/70 font-bold uppercase block mb-0.5">{m.name}</span>
                                                 <span className="text-sm font-bold text-white font-mono">{m.value}</span>
                                             </div>
-                                            <div className="p-1.5 rounded-full bg-green-500/10 text-green-400 opacity-50 group-hover:opacity-100 transition-opacity">
+                                            <div className="p-1.5 rounded-full bg-emerald-500/10 text-emerald-400 opacity-50 group-hover:opacity-100 transition-opacity">
                                                 <Info size={14} />
                                             </div>
                                         </motion.button>
                                     ))}
                                 </div>
 
-                                <div className="mt-6 text-center border-t border-green-500/20 pt-4">
-                                    <div className="inline-flex items-center gap-2 text-green-400 font-bold text-sm bg-green-500/10 px-4 py-2 rounded-full border border-green-500/20">
+                                <div className="mt-6 text-center border-t border-emerald-500/20 pt-4">
+                                    <div className="inline-flex items-center gap-2 text-emerald-400 font-bold text-sm bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-500/20">
                                         <CheckCircle2 size={16} /> Quality Certified
                                     </div>
                                 </div>
@@ -493,7 +493,7 @@ const AnalysisLab = () => {
                 <button 
                     onClick={handleAnalyze}
                     disabled={status === 'analyzing'}
-                    className="relative aurora-border font-bold py-4 px-10 rounded-full text-white hover:bg-white/5 disabled:opacity-50 transition-all flex items-center gap-3 mx-auto text-lg shadow-lg shadow-cyan-500/10 group"
+                    className="relative aurora-border font-bold py-4 px-10 rounded-full text-white hover:bg-white/5 disabled:opacity-50 transition-all flex items-center gap-3 mx-auto text-lg shadow-lg shadow-emerald-500/10 group"
                 >
                     <RefreshCw className={`w-5 h-5 ${status === 'analyzing' ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
                     {status === 'analyzing' ? 'Processing...' : 'Analyze New Sample'}
@@ -518,7 +518,7 @@ const DataPage: React.FC = () => {
             
             {/* Background FX */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-cyan-500/5 blur-[120px] rounded-full" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
@@ -530,11 +530,11 @@ const DataPage: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
+                    <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                         Quality Assurance
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Chemistry</span>
+                        Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Chemistry</span>
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
                         Our cryogenic condensation process yields fuel that is chemically purer than the source.
@@ -551,10 +551,10 @@ const DataPage: React.FC = () => {
                 <div className="flex justify-center">
                     <div className="w-full max-w-4xl">
                         <div className="flex items-center gap-2 mb-4 px-2 justify-center">
-                            <Terminal size={16} className="text-cyan-400" />
+                            <Terminal size={16} className="text-emerald-400" />
                             <h3 className="font-mono font-bold text-white text-sm">Live Telemetry</h3>
                             <div className="ml-auto flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_5px_#22c55e]" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_5px_#10b981]" />
                                 <span className="text-[10px] font-mono text-gray-500">ONLINE</span>
                             </div>
                         </div>
@@ -567,7 +567,7 @@ const DataPage: React.FC = () => {
                             </div>
                             <div className="bg-slate-900/40 border border-white/10 p-4 rounded-xl flex justify-between items-center">
                                 <span className="text-sm text-gray-400">Flow Rate</span>
-                                <span className="text-cyan-400 font-mono font-bold">340 L/min</span>
+                                <span className="text-emerald-400 font-mono font-bold">340 L/min</span>
                             </div>
                         </div>
                     </div>

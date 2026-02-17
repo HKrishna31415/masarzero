@@ -52,13 +52,13 @@ const InteractivePart: React.FC<InteractivePartProps> = ({
       {(isSelected || isHovered) && (
         <mesh position={[0, 0, 0]}>
             <boxGeometry args={[1.2, 1.2, 1.2]} /> 
-            <meshBasicMaterial color={isSelected ? "#22d3ee" : "#ffffff"} wireframe transparent opacity={0.3} />
+            <meshBasicMaterial color={isSelected ? "#10b981" : "#ffffff"} wireframe transparent opacity={0.3} />
         </mesh>
       )}
 
       {/* Floating Label */}
       <Html position={labelOffset} center distanceFactor={10} style={{ pointerEvents: 'none' }}>
-         <div className={`px-2 py-1 rounded text-xs font-bold whitespace-nowrap transition-all duration-300 ${isSelected ? 'bg-cyan-500 text-black' : isHovered ? 'bg-white/20 text-white backdrop-blur-sm' : 'opacity-0 translate-y-2'}`}>
+         <div className={`px-2 py-1 rounded text-xs font-bold whitespace-nowrap transition-all duration-300 ${isSelected ? 'bg-emerald-500 text-black' : isHovered ? 'bg-white/20 text-white backdrop-blur-sm' : 'opacity-0 translate-y-2'}`}>
             {name}
          </div>
       </Html>
@@ -66,20 +66,28 @@ const InteractivePart: React.FC<InteractivePartProps> = ({
   );
 };
 
-const FlowLine: React.FC<{ points: THREE.Vector3[], color?: string, speed?: number }> = ({ points, color = '#06b6d4', speed = 1 }) => {
-    const [dashOffset, setDashOffset] = useState(0);
+const FlowLine: React.FC<{ points: THREE.Vector3[], color?: string, speed?: number }> = ({ points, color = '#10b981', speed = 1 }) => {
+    const lineRef = useRef<any>(null);
     
-    useFrame((_, delta) => {
-        setDashOffset((prev) => prev - delta * speed);
+    useFrame((state) => {
+        if (lineRef.current) {
+            lineRef.current.dashOffset -= state.clock.getDelta() * speed;
+        }
     });
 
-    const curve = useMemo(() => new THREE.CatmullRomCurve3(points), [points]);
-
     return (
-        <mesh>
-            <tubeGeometry args={[curve, 64, 0.03, 8, false]} />
-            <meshStandardMaterial color={color} transparent opacity={0.6} />
-        </mesh>
+        <Line 
+            points={points} 
+            color={color} 
+            lineWidth={3} 
+            dashed 
+            dashScale={10} 
+            dashSize={0.5} 
+            gapSize={0.2}
+            ref={lineRef}
+            transparent
+            opacity={0.8}
+        />
     );
 };
 
@@ -126,10 +134,10 @@ const Compressor = () => (
     // Cylinder + Sphere cap
     <group>
         <Cylinder args={[0.45, 0.45, 1.4, 32]} position={[0, 0.7, 0]}>
-             <meshStandardMaterial color="#15803d" roughness={0.3} metalness={0.5} />
+             <meshStandardMaterial color="#065f46" roughness={0.3} metalness={0.5} />
         </Cylinder>
         <Sphere args={[0.45, 32, 16, 0, Math.PI*2, 0, Math.PI/2]} position={[0, 1.4, 0]}>
-             <meshStandardMaterial color="#15803d" roughness={0.3} metalness={0.5} />
+             <meshStandardMaterial color="#065f46" roughness={0.3} metalness={0.5} />
         </Sphere>
         <Box args={[1.1, 0.1, 1.1]} position={[0, 0.05, 0]}><meshStandardMaterial color="#111827" /></Box>
     </group>
@@ -232,17 +240,17 @@ const PLCControl = () => (
         </Box>
         {/* Screen */}
         <Box args={[0.6, 0.4, 0.02]} position={[0, 0.65, 0.11]}>
-            <meshBasicMaterial color="#0ea5e9" />
+            <meshBasicMaterial color="#14b8a6" />
         </Box>
         {/* Buttons */}
         <Cylinder args={[0.05, 0.05, 0.05]} rotation={[Math.PI/2, 0, 0]} position={[-0.2, 0.3, 0.1]}>
-            <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={0.5} />
+            <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={0.5} />
         </Cylinder>
         <Cylinder args={[0.05, 0.05, 0.05]} rotation={[Math.PI/2, 0, 0]} position={[0, 0.3, 0.1]}>
             <meshStandardMaterial color="#ef4444" />
         </Cylinder>
         <Cylinder args={[0.05, 0.05, 0.05]} rotation={[Math.PI/2, 0, 0]} position={[0.2, 0.3, 0.1]}>
-            <meshStandardMaterial color="#eab308" />
+            <meshStandardMaterial color="#f59e0b" />
         </Cylinder>
     </group>
 );
@@ -420,9 +428,9 @@ const VRUModel: React.FC<VRUModelProps> = ({ onPartClick, selectedPartName }) =>
             </InteractivePart>
 
             {/* --- Pipes & Flow --- */}
-            <FlowLine points={vaporFlow} color="#22d3ee" speed={2} />
-            <FlowLine points={liquidFlow} color="#ec4899" speed={1.5} />
-            <FlowLine points={refrigerantLoop} color="#10b981" speed={3} />
+            <FlowLine points={vaporFlow} color="#14b8a6" speed={2} />
+            <FlowLine points={liquidFlow} color="#10b981" speed={1.5} />
+            <FlowLine points={refrigerantLoop} color="#059669" speed={3} />
 
             {/* Inlet/Outlet Labels */}
             <Text position={[-2.8, 0.8, 0.5]} fontSize={0.2} color="#9ca3af">Vapor Inlet</Text>

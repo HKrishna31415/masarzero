@@ -130,8 +130,8 @@ const LegalPage: React.FC = () => {
         <section className="py-32 min-h-screen bg-[#000212]">
             {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px]" />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-600/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px]" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
@@ -145,11 +145,11 @@ const LegalPage: React.FC = () => {
                     transition={{ duration: 0.7 }}
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
-                        <ShieldCheck size={24} className="text-cyan-400" />
-                        <span className="text-sm font-mono font-bold text-cyan-500 uppercase tracking-widest">Compliance Mainframe</span>
+                        <ShieldCheck size={24} className="text-emerald-400" />
+                        <span className="text-sm font-mono font-bold text-emerald-500 uppercase tracking-widest">Compliance Mainframe</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        Legal <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Center</span>
+                        Legal <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Center</span>
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
                         Transparency and security are the bedrock of our operations. Access our regulatory frameworks, terms of use, and certification portfolio.
@@ -172,7 +172,7 @@ const LegalPage: React.FC = () => {
                                     viewport={{ once: true }}
                                 >
                                     <div className="flex items-start justify-between mb-6">
-                                        <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-cyan-400">
+                                        <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-emerald-400">
                                             <Icon size={28} />
                                         </div>
                                         {isExpanded ? (
@@ -220,7 +220,7 @@ const LegalPage: React.FC = () => {
                                     <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
                                         <button 
                                             onClick={() => setExpandedSection(isExpanded ? null : section.id)}
-                                            className="text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-2 group"
+                                            className="text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 group"
                                         >
                                             {isExpanded ? 'Collapse Details' : section.buttonText}
                                             <ChevronDown size={14} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-y-1'}`} />
@@ -263,20 +263,20 @@ const LegalPage: React.FC = () => {
                                         whileInView="inView"
                                         transition={{ delay: index * 0.05 }}
                                         viewport={{ once: true }}
-                                        className={`relative group p-4 rounded-xl border transition-all duration-300 flex flex-col items-center justify-center text-center aspect-square ${isActive ? 'bg-white/5 border-white/10 hover:border-cyan-500/50 hover:bg-white/10' : 'bg-white/0 border-transparent opacity-50 grayscale hover:grayscale-0 hover:opacity-80'}`}
+                                        className={`relative group p-4 rounded-xl border transition-all duration-300 flex flex-col items-center justify-center text-center aspect-square ${isActive ? 'bg-white/5 border-white/10 hover:border-emerald-500/50 hover:bg-white/10' : 'bg-white/0 border-transparent opacity-50 grayscale hover:grayscale-0 hover:opacity-80'}`}
                                     >
                                         {isActive && (
                                             <div className="absolute top-3 right-3">
                                                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_#22c55e]"></div>
                                             </div>
                                         )}
-                                        <Icon className={`w-10 h-10 mb-4 transition-colors ${isActive ? 'text-cyan-400 group-hover:text-white' : 'text-gray-500'}`} />
+                                        <Icon className={`w-10 h-10 mb-4 transition-colors ${isActive ? 'text-emerald-400 group-hover:text-white' : 'text-gray-500'}`} />
                                         <h4 className="font-bold text-sm text-white mb-1">{cert.name}</h4>
                                         <span className={`text-[10px] font-mono uppercase tracking-wider ${isActive ? 'text-green-400' : 'text-yellow-500'}`}>
                                             {cert.status}
                                         </span>
                                         {isActive && (
-                                            <div className="absolute inset-0 border border-cyan-400/0 group-hover:border-cyan-400/30 rounded-xl transition-colors duration-500 pointer-events-none" />
+                                            <div className="absolute inset-0 border border-emerald-400/0 group-hover:border-emerald-400/30 rounded-xl transition-colors duration-500 pointer-events-none" />
                                         )}
                                     </motion.div>
                                 );

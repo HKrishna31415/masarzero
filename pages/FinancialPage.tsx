@@ -16,12 +16,12 @@ const FinancialHero = () => (
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-6 block">
+                <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-6 block">
                     The Vapor Economy
                 </span>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.9]">
                     Turn <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">Emissions</span> <br />
-                    Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Equity</span>.
+                    Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Equity</span>.
                 </h1>
                 <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-400 leading-relaxed">
                     Stop burning capital. MasarZero transforms an environmental liability into a liquid asset class through our proprietary Zero-CapEx recovery infrastructure.
@@ -30,7 +30,7 @@ const FinancialHero = () => (
         </div>
         
         {/* Background Elements */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
     </div>
 );
 
@@ -78,39 +78,39 @@ const ComparisonModule = () => {
             <VectorBorderCard className="bg-[#0B1021]" glowing>
                 <div className="p-4 md:p-8 relative h-full flex flex-col justify-center">
                      <div className="absolute top-0 right-0 p-4 opacity-20">
-                        <Zap size={120} className="text-cyan-500" />
+                        <Zap size={120} className="text-emerald-500" />
                     </div>
                     <div className="flex items-center gap-3 mb-8">
-                        <div className="h-px w-8 bg-cyan-500"></div>
+                        <div className="h-px w-8 bg-emerald-500"></div>
                         <h3 className="text-2xl font-bold text-white">The MasarZero Model</h3>
                     </div>
                     
                     <ul className="space-y-6 relative z-10">
                         <li className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center flex-shrink-0 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-                                <Wallet className="text-cyan-400" size={20} />
+                            <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                                <Wallet className="text-emerald-400" size={20} />
                             </div>
                             <div>
                                 <h4 className="text-lg font-bold text-white">Zero CapEx</h4>
-                                <p className="text-sm text-cyan-100/60 mt-1">We install, operate, and maintain the unit at no cost. You preserve capital for core business growth.</p>
+                                <p className="text-sm text-emerald-100/60 mt-1">We install, operate, and maintain the unit at no cost. You preserve capital for core business growth.</p>
                             </div>
                         </li>
                         <li className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0 border border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.2)]">
-                                <BarChart3 className="text-green-400" size={20} />
+                            <div className="w-12 h-12 rounded-full bg-teal-500/10 flex items-center justify-center flex-shrink-0 border border-teal-500/20 shadow-[0_0_15px_rgba(20,184,166,0.2)]">
+                                <BarChart3 className="text-teal-400" size={20} />
                             </div>
                             <div>
                                 <h4 className="text-lg font-bold text-white">Immediate Cash Flow</h4>
-                                <p className="text-sm text-cyan-100/60 mt-1">Profitable from Day 1. We share the revenue generated from recovered fuel.</p>
+                                <p className="text-sm text-emerald-100/60 mt-1">Profitable from Day 1. We share the revenue generated from recovered fuel.</p>
                             </div>
                         </li>
                          <li className="flex items-start gap-4">
-                            <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0 border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                                <ShieldCheck className="text-blue-400" size={20} />
+                            <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0 border border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                                <ShieldCheck className="text-emerald-400" size={20} />
                             </div>
                             <div>
                                 <h4 className="text-lg font-bold text-white">Risk-Free Performance</h4>
-                                <p className="text-sm text-cyan-100/60 mt-1">Our revenue is tied to system uptime. If we don't recover fuel, we don't get paid.</p>
+                                <p className="text-sm text-emerald-100/60 mt-1">Our revenue is tied to system uptime. If we don't recover fuel, we don't get paid.</p>
                             </div>
                         </li>
                     </ul>
@@ -155,12 +155,12 @@ const RevenueProjector = () => {
                         <div>
                             <div className="flex justify-between mb-2">
                                 <label className="text-sm font-bold text-gray-300">Daily Vapor Volume (L)</label>
-                                <span className="text-cyan-400 font-mono">{volume.toLocaleString()}</span>
+                                <span className="text-emerald-400 font-mono">{volume.toLocaleString()}</span>
                             </div>
                             <input 
                                 type="range" min="5000" max="100000" step="1000" 
                                 value={volume} onChange={(e) => setVolume(Number(e.target.value))}
-                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                             />
                              <p className="text-xs text-gray-500 mt-2">Average throughput per station</p>
                         </div>
@@ -168,24 +168,24 @@ const RevenueProjector = () => {
                         <div>
                             <div className="flex justify-between mb-2">
                                 <label className="text-sm font-bold text-gray-300">Station Count</label>
-                                <span className="text-cyan-400 font-mono">{stations}</span>
+                                <span className="text-emerald-400 font-mono">{stations}</span>
                             </div>
                             <input 
                                 type="range" min="1" max="50" step="1" 
                                 value={stations} onChange={(e) => setStations(Number(e.target.value))}
-                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                             />
                         </div>
 
                         <div>
                             <div className="flex justify-between mb-2">
                                 <label className="text-sm font-bold text-gray-300">Fuel Price ($/L)</label>
-                                <span className="text-cyan-400 font-mono">${price.toFixed(2)}</span>
+                                <span className="text-emerald-400 font-mono">${price.toFixed(2)}</span>
                             </div>
                             <input 
                                 type="range" min="0.5" max="2.0" step="0.01" 
                                 value={price} onChange={(e) => setPrice(Number(e.target.value))}
-                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                             />
                         </div>
 
@@ -196,7 +196,7 @@ const RevenueProjector = () => {
                              </div>
                              <div className="flex justify-between items-end">
                                 <span className="text-sm text-gray-400">5-Year Cumulative</span>
-                                <span className="text-2xl font-bold text-cyan-400">${Math.round(clientAnnualProfit * 5).toLocaleString()}</span>
+                                <span className="text-2xl font-bold text-emerald-400">${Math.round(clientAnnualProfit * 5).toLocaleString()}</span>
                              </div>
                              <p className="text-[10px] text-gray-500 mt-4 italic">*Estimates based on 0.15% recovery rate and 20% revenue share. Actual results may vary.</p>
                         </div>
@@ -210,8 +210,8 @@ const RevenueProjector = () => {
                                 <AreaChart data={data}>
                                     <defs>
                                         <linearGradient id="colorProfit" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3}/>
-                                            <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                                            <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                                         </linearGradient>
                                     </defs>
                                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -221,7 +221,7 @@ const RevenueProjector = () => {
                                         contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
                                         formatter={(value: number) => [`$${value.toLocaleString()}`, 'Cumulative Profit']}
                                     />
-                                    <Area type="monotone" dataKey="cumulative" stroke="#06b6d4" strokeWidth={3} fillOpacity={1} fill="url(#colorProfit)" />
+                                    <Area type="monotone" dataKey="cumulative" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorProfit)" />
                                 </AreaChart>
                             </ResponsiveContainer>
                          </div>
@@ -244,7 +244,7 @@ const FinancialPage: React.FC = () => {
                     <VectorBorderCard delay={0.1}>
                         <div className="h-full flex flex-col">
                             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4">
-                                <ShieldCheck className="text-cyan-400" />
+                                <ShieldCheck className="text-emerald-400" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-2">Hedge Against Volatility</h3>
                             <p className="text-sm text-gray-400">
@@ -255,7 +255,7 @@ const FinancialPage: React.FC = () => {
                     <VectorBorderCard delay={0.2}>
                          <div className="h-full flex flex-col">
                             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4">
-                                <PieChart className="text-purple-400" />
+                                <PieChart className="text-teal-400" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-2">Asset Appreciation</h3>
                             <p className="text-sm text-gray-400">
@@ -266,7 +266,7 @@ const FinancialPage: React.FC = () => {
                     <VectorBorderCard delay={0.3}>
                          <div className="h-full flex flex-col">
                             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4">
-                                <ArrowUpRight className="text-green-400" />
+                                <ArrowUpRight className="text-emerald-500" />
                             </div>
                             <h3 className="text-lg font-bold text-white mb-2">Carbon Credits</h3>
                             <p className="text-sm text-gray-400">

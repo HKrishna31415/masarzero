@@ -37,8 +37,8 @@ const TickerTape = () => {
         "MSZ: $24.50 ▲ 1.2%", "REVENUE: +320% YOY", "ACTIVE UNITS: 500+", "CARBON CREDITS: $125/TON", "NEW PARTNERSHIP: ARAMCO", "EXPANSION: BRAZIL ONLINE"
     ];
     return (
-        <div className="w-full bg-cyan-950/30 border-y border-cyan-900/50 overflow-hidden py-2 flex items-center fixed top-20 left-0 right-0 z-30 backdrop-blur-md">
-            <div className="whitespace-nowrap animate-marquee flex gap-12 text-xs font-mono text-cyan-400">
+        <div className="w-full bg-emerald-950/30 border-y border-emerald-900/50 overflow-hidden py-2 flex items-center fixed top-20 left-0 right-0 z-30 backdrop-blur-md">
+            <div className="whitespace-nowrap animate-marquee flex gap-12 text-xs font-mono text-emerald-400">
                 {[...items, ...items, ...items].map((item, i) => (
                     <span key={i} className="flex items-center gap-2">
                         <Activity size={10} /> {item}
@@ -108,7 +108,7 @@ const PasswordScreen = ({ onLogin, error }: { onLogin: (password: string) => voi
                 transition={{ duration: 0.5 }}
                 className="glass-card p-10 rounded-2xl text-center max-w-sm w-full"
             >
-                <Lock className="mx-auto text-cyan-300 mb-4" size={32} />
+                <Lock className="mx-auto text-emerald-300 mb-4" size={32} />
                 <h2 className="text-2xl font-bold mb-2">Investor Access</h2>
                 <p className="text-gray-400 mb-6">Please enter your secure credentials to view financial data.</p>
                 <form onSubmit={handleSubmit}>
@@ -117,10 +117,10 @@ const PasswordScreen = ({ onLogin, error }: { onLogin: (password: string) => voi
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
-                        className="w-full bg-transparent border border-white/20 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none text-center text-white"
+                        className="w-full bg-transparent border border-white/20 rounded-lg px-4 py-2 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-center text-white"
                     />
                     {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
-                    <button type="submit" className="w-full mt-6 relative aurora-border font-semibold px-6 py-3 rounded-full hover:bg-cyan-400/20 transition-all duration-300 text-white">
+                    <button type="submit" className="w-full mt-6 relative aurora-border font-semibold px-6 py-3 rounded-full hover:bg-emerald-400/20 transition-all duration-300 text-white">
                         Authenticate
                     </button>
                 </form>
@@ -133,7 +133,7 @@ const InvestorView = () => {
     const [activeChart, setActiveChart] = useState<'revenue' | 'margin'>('revenue');
 
     return (
-        <section className="min-h-screen bg-[#000212] pt-40 pb-20 text-gray-200 font-sans selection:bg-cyan-500/30">
+        <section className="min-h-screen bg-[#000212] pt-40 pb-20 text-gray-200 font-sans selection:bg-emerald-500/30">
             
             <TickerTape />
 
@@ -143,13 +143,13 @@ const InvestorView = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/10 pb-8">
                     <div>
                         <div className="flex items-center gap-2 mb-3">
-                            <div className="px-2 py-0.5 rounded bg-cyan-950/30 border border-cyan-500/30 text-[10px] font-mono text-cyan-400 uppercase">
+                            <div className="px-2 py-0.5 rounded bg-emerald-950/30 border border-emerald-500/30 text-[10px] font-mono text-emerald-400 uppercase">
                                 Investor Relations
                             </div>
                             <span className="text-xs text-gray-500 font-mono">Last Updated: 14:02 GMT</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
-                            Investor <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Terminal</span>
+                            Investor <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Terminal</span>
                         </h1>
                     </div>
                     <div className="mt-6 md:mt-0 flex gap-4">
@@ -181,18 +181,18 @@ const InvestorView = () => {
                             <div className="p-6 h-full flex flex-col">
                                 <div className="flex justify-between items-center mb-6">
                                     <h3 className="font-bold text-white flex items-center gap-2 text-lg">
-                                        <TrendingUp size={20} className="text-cyan-400" /> Financial Performance
+                                        <TrendingUp size={20} className="text-emerald-400" /> Financial Performance
                                     </h3>
                                     <div className="flex bg-slate-900 rounded-lg p-1 border border-white/10">
                                         <button 
                                             onClick={() => setActiveChart('revenue')}
-                                            className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeChart === 'revenue' ? 'bg-cyan-500 text-black' : 'text-gray-400 hover:text-white'}`}
+                                            className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeChart === 'revenue' ? 'bg-emerald-500 text-black' : 'text-gray-400 hover:text-white'}`}
                                         >
                                             Revenue
                                         </button>
                                         <button 
                                             onClick={() => setActiveChart('margin')}
-                                            className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeChart === 'margin' ? 'bg-cyan-500 text-black' : 'text-gray-400 hover:text-white'}`}
+                                            className={`px-4 py-1.5 text-xs font-bold rounded-md transition-all ${activeChart === 'margin' ? 'bg-emerald-500 text-black' : 'text-gray-400 hover:text-white'}`}
                                         >
                                             Margin
                                         </button>
@@ -200,9 +200,9 @@ const InvestorView = () => {
                                 </div>
                                 <div className="flex-grow min-h-[300px]">
                                     {activeChart === 'revenue' ? (
-                                        <ChartTab data={revenueData} color="#22d3ee" />
+                                        <ChartTab data={revenueData} color="#10b981" />
                                     ) : (
-                                        <ChartTab data={marginData} color="#a855f7" />
+                                        <ChartTab data={marginData} color="#14b8a6" />
                                     )}
                                 </div>
                             </div>
@@ -215,27 +215,27 @@ const InvestorView = () => {
                         <VectorBorderCard className="h-full bg-[#0c1222]">
                             <div className="flex flex-col h-full p-8">
                                 <h3 className="font-bold text-white mb-8 flex items-center gap-3 text-lg">
-                                    <PieChart size={20} className="text-purple-400" /> Investment Thesis
+                                    <PieChart size={20} className="text-teal-400" /> Investment Thesis
                                 </h3>
                                 <div className="space-y-8 flex-grow">
                                     <div className="flex gap-4 group hover:translate-x-1 transition-transform">
-                                        <div className="w-1 bg-gradient-to-b from-cyan-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
+                                        <div className="w-1 bg-gradient-to-b from-emerald-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
                                         <div>
-                                            <h4 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">Zero-CapEx Moat</h4>
+                                            <h4 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors mb-1">Zero-CapEx Moat</h4>
                                             <p className="text-sm text-gray-400 leading-relaxed">Our business model removes friction, leading to rapid adoption cycles unattainable by hardware-sales competitors.</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-4 group hover:translate-x-1 transition-transform">
-                                        <div className="w-1 bg-gradient-to-b from-blue-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
+                                        <div className="w-1 bg-gradient-to-b from-teal-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
                                         <div>
-                                            <h4 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors mb-1">Recurring Revenue</h4>
+                                            <h4 className="text-base font-bold text-white group-hover:text-teal-300 transition-colors mb-1">Recurring Revenue</h4>
                                             <p className="text-sm text-gray-400 leading-relaxed">Long-term contracts (10yr+) with high-volume terminals ensure predictable, compounding cash flow.</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-4 group hover:translate-x-1 transition-transform">
-                                        <div className="w-1 bg-gradient-to-b from-purple-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
+                                        <div className="w-1 bg-gradient-to-b from-emerald-500 to-transparent rounded-full shrink-0 h-full min-h-[60px]"></div>
                                         <div>
-                                            <h4 className="text-base font-bold text-white group-hover:text-purple-300 transition-colors mb-1">Regulatory Tailwinds</h4>
+                                            <h4 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors mb-1">Regulatory Tailwinds</h4>
                                             <p className="text-sm text-gray-400 leading-relaxed">Global tightening of VOC emission standards (EPA, EU Green Deal) mandates our technology.</p>
                                         </div>
                                     </div>
@@ -246,7 +246,7 @@ const InvestorView = () => {
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between text-sm group cursor-pointer hover:bg-white/5 p-3 rounded-lg transition-colors border border-transparent hover:border-white/5">
                                             <div className="flex items-center gap-3">
-                                                <Calendar size={16} className="text-cyan-400" />
+                                                <Calendar size={16} className="text-emerald-400" />
                                                 <span className="text-gray-300 font-medium group-hover:text-white transition-colors">Q3 Earnings Call</span>
                                             </div>
                                             <span className="text-xs text-gray-500 font-mono bg-white/5 px-2 py-1 rounded">Nov 15</span>
@@ -268,7 +268,7 @@ const InvestorView = () => {
                 {/* Data Room Section */}
                 <div className="mb-12">
                     <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <Briefcase size={24} className="text-cyan-400" /> Data Room
+                        <Briefcase size={24} className="text-emerald-400" /> Data Room
                     </h3>
                     <div className="bg-[#0c1222] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
                         <div className="grid grid-cols-12 gap-4 p-5 border-b border-white/10 bg-white/5 text-xs font-bold text-gray-400 uppercase tracking-wider">
@@ -280,7 +280,7 @@ const InvestorView = () => {
                         {documents.map((doc, i) => (
                             <div key={doc.id} className="grid grid-cols-12 gap-4 p-5 border-b border-white/5 items-center hover:bg-white/5 transition-colors group">
                                 <div className="col-span-6 flex items-center gap-4 pl-2">
-                                    <div className="p-2 rounded-lg bg-slate-800 text-cyan-500 group-hover:text-white group-hover:bg-cyan-500 transition-colors">
+                                    <div className="p-2 rounded-lg bg-slate-800 text-emerald-500 group-hover:text-white group-hover:bg-emerald-500 transition-colors">
                                         <FileText size={18} />
                                     </div>
                                     <div>
@@ -295,7 +295,7 @@ const InvestorView = () => {
                                     {doc.date}
                                 </div>
                                 <div className="col-span-6 md:col-span-2 text-right pr-2">
-                                    <button className="text-cyan-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
+                                    <button className="text-emerald-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full">
                                         <Download size={20} />
                                     </button>
                                 </div>

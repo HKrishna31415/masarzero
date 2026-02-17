@@ -38,8 +38,8 @@ const pillars: Record<Pillar, PillarData> = {
     id: 'equity',
     icon: Zap,
     title: 'Energy Equity',
-    color: 'text-blue-400',
-    iconColor: '#3b82f6',
+    color: 'text-emerald-400',
+    iconColor: '#10b981',
     pluses: '+++',
     description: 'The recovered hydrocarbons provide a ready-to-use, more affordable energy source. This helps to lower operational costs, which can translate to reduced energy prices and increased accessibility for communities.'
   }
@@ -85,8 +85,8 @@ const EnergyTrilemmaSection: React.FC = () => {
                     <svg viewBox="0 0 400 350" className="w-full h-full">
                         <defs>
                              <linearGradient id="trilemmaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#3b82f6" /> 
-                                <stop offset="50%" stopColor="#22c55e" />
+                                <stop offset="0%" stopColor="#14b8a6" /> 
+                                <stop offset="50%" stopColor="#10b981" />
                                 <stop offset="100%" stopColor="#f97316" />
                             </linearGradient>
                         </defs>
@@ -95,8 +95,8 @@ const EnergyTrilemmaSection: React.FC = () => {
 
                         {/* Dashed lines to center */}
                         <line x1="200" y1="10" x2="200" y2="216" stroke="rgba(249, 115, 22, 0.5)" strokeWidth="1" strokeDasharray="4" />
-                        <line x1="20" y1="320" x2="200" y2="216" stroke="rgba(34, 197, 94, 0.5)" strokeWidth="1" strokeDasharray="4" />
-                        <line x1="380" y1="320" x2="200" y2="216" stroke="rgba(59, 130, 246, 0.5)" strokeWidth="1" strokeDasharray="4" />
+                        <line x1="20" y1="320" x2="200" y2="216" stroke="rgba(16, 185, 129, 0.5)" strokeWidth="1" strokeDasharray="4" />
+                        <line x1="380" y1="320" x2="200" y2="216" stroke="rgba(20, 184, 166, 0.5)" strokeWidth="1" strokeDasharray="4" />
 
                         {/* Inner solution shape */}
                         <polygon points="200,120 100,290 320,290" fill="url(#trilemmaGradient)" opacity="0.6" />

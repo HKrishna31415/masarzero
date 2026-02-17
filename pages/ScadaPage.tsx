@@ -41,7 +41,7 @@ const healthData = [
 const DashboardSidebar = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (t: string) => void }) => (
     <div className="w-16 md:w-64 border-r border-white/10 flex flex-col bg-slate-900/50 backdrop-blur-md">
         <div className="p-6 flex items-center gap-3 border-b border-white/10">
-            <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center font-bold text-black">P</div>
+            <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center font-bold text-black">P</div>
             <span className="font-bold text-white hidden md:block tracking-wide">PinnacleOS</span>
         </div>
         <nav className="flex-1 p-4 space-y-2">
@@ -54,7 +54,7 @@ const DashboardSidebar = ({ activeTab, setActiveTab }: { activeTab: string, setA
                 <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 ${activeTab === item.id ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
+                    className={`w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 ${activeTab === item.id ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}
                 >
                     <item.icon size={20} />
                     <span className="hidden md:block text-sm font-medium">{item.label}</span>
@@ -98,7 +98,7 @@ const OverviewTab = () => {
                     <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Current Flow Rate</p>
                     <div className="flex items-end gap-2 mt-1">
                         <h3 className="text-2xl font-bold text-white">{Math.round(data[data.length-1].flow)} <span className="text-sm text-gray-500 font-normal">SCFM</span></h3>
-                        <span className="text-green-400 text-xs mb-1">↑ 2.4%</span>
+                        <span className="text-emerald-400 text-xs mb-1">↑ 2.4%</span>
                     </div>
                 </div>
                 <div className="bg-slate-800/50 rounded-xl p-4 border border-white/5">
@@ -111,7 +111,7 @@ const OverviewTab = () => {
                 <div className="bg-slate-800/50 rounded-xl p-4 border border-white/5">
                      <p className="text-xs text-gray-400 font-medium uppercase tracking-wider">Daily Recovery</p>
                     <div className="flex items-end gap-2 mt-1">
-                        <h3 className="text-2xl font-bold text-cyan-400">$2,450 <span className="text-sm text-gray-500 font-normal">EST</span></h3>
+                        <h3 className="text-2xl font-bold text-emerald-400">$2,450 <span className="text-sm text-gray-500 font-normal">EST</span></h3>
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@ const OverviewTab = () => {
                     <AreaChart data={data} margin={{top: 5, right: 0, left: -20, bottom: 0}}>
                         <defs>
                             <linearGradient id="colorFlow" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3}/>
-                                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                                <stop offset="5%" stopColor="#14b8a6" stopOpacity={0.3}/>
+                                <stop offset="95%" stopColor="#14b8a6" stopOpacity={0}/>
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -134,7 +134,7 @@ const OverviewTab = () => {
                             contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px' }}
                             itemStyle={{ color: '#e2e8f0' }}
                         />
-                        <Area type="monotone" dataKey="flow" stroke="#06b6d4" strokeWidth={2} fillOpacity={1} fill="url(#colorFlow)" />
+                        <Area type="monotone" dataKey="flow" stroke="#14b8a6" strokeWidth={2} fillOpacity={1} fill="url(#colorFlow)" />
                     </AreaChart>
                 </ResponsiveContainer>
             </div>
@@ -154,7 +154,7 @@ const HealthTab = () => (
             {healthData.map((item, i) => (
                 <div key={i} className="flex items-center justify-between bg-slate-800/30 p-4 rounded-lg border border-white/5 hover:bg-slate-800/50 transition-colors">
                     <div className="flex items-center gap-4">
-                        <div className={`w-2 h-2 rounded-full ${item.status === 'Optimal' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : item.status === 'Warning' ? 'bg-yellow-500 animate-pulse' : 'bg-gray-500'}`} />
+                        <div className={`w-2 h-2 rounded-full ${item.status === 'Optimal' ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]' : item.status === 'Warning' ? 'bg-yellow-500 animate-pulse' : 'bg-gray-500'}`} />
                         <div>
                             <p className="font-medium text-sm">{item.component}</p>
                             <p className="text-xs text-gray-500">{item.status}</p>
@@ -164,7 +164,7 @@ const HealthTab = () => (
                         <p className="text-xs text-gray-400 mb-1">Load</p>
                         <div className="w-24 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                             <div 
-                                className={`h-full rounded-full ${item.load > 90 ? 'bg-red-500' : 'bg-cyan-500'}`} 
+                                className={`h-full rounded-full ${item.load > 90 ? 'bg-red-500' : 'bg-teal-500'}`} 
                                 style={{ width: `${item.load}%` }} 
                             />
                         </div>
@@ -181,7 +181,7 @@ const PlatformPreview = () => {
     return (
         <div className="w-full max-w-6xl mx-auto h-[600px] glass-card rounded-2xl border border-white/10 shadow-2xl flex overflow-hidden my-24 relative group">
              {/* Glow Effect behind dashboard */}
-             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl opacity-10 blur-xl group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none"></div>
+             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl opacity-10 blur-xl group-hover:opacity-20 transition-opacity duration-1000 pointer-events-none"></div>
              
             <DashboardSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
             
@@ -189,12 +189,12 @@ const PlatformPreview = () => {
                 {/* Top Header */}
                 <header className="h-16 border-b border-white/10 flex items-center justify-between px-6 bg-slate-900/30">
                     <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
                         <span className="text-sm font-mono text-gray-300">STATION: HT-05 <span className="text-gray-600">|</span> HOUSTON, TX</span>
                     </div>
                     <div className="flex items-center gap-4">
                         <span className="text-xs text-gray-500 font-mono hidden sm:block">v2.4.1-stable</span>
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center text-xs font-bold text-white">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-xs font-bold text-white">
                             JD
                         </div>
                     </div>
@@ -236,9 +236,9 @@ const PlatformPreview = () => {
 // --- Bento Grid Features ---
 
 const FeatureCard = ({ icon: Icon, title, description, className }: any) => (
-    <div className={`glass-card p-6 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all duration-300 group ${className}`}>
-        <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4 group-hover:bg-cyan-500/10 transition-colors">
-            <Icon className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+    <div className={`glass-card p-6 rounded-2xl border border-white/5 hover:border-emerald-500/30 transition-all duration-300 group ${className}`}>
+        <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-500/10 transition-colors">
+            <Icon className="w-6 h-6 text-gray-400 group-hover:text-emerald-400 transition-colors" />
         </div>
         <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
         <p className="text-sm text-gray-400 leading-relaxed">{description}</p>
@@ -294,7 +294,7 @@ const ScadaPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase mb-4 block">Introducing PinnacleOS</span>
+            <span className="text-emerald-400 font-mono text-sm tracking-[0.2em] uppercase mb-4 block">Introducing PinnacleOS</span>
             <h2 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
                 The Operating System for <br/> Industrial Sustainability.
             </h2>

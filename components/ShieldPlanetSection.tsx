@@ -10,13 +10,13 @@ const AirPollutionIcon = () => (
         initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.5 }}
     >
         {/* Membrane */}
-        <motion.line x1="50" y1="20" x2="50" y2="80" stroke="#06b6d4" strokeWidth="2"
+        <motion.line x1="50" y1="20" x2="50" y2="80" stroke="#10b981" strokeWidth="2"
             variants={{ initial: { pathLength: 0 }, animate: { pathLength: 1, transition: { duration: 1 } } }}
         />
         
-        {/* Polluted Dots (darker blue/purple) */}
+        {/* Polluted Dots (Emerald 400) */}
         {[...Array(5)].map((_, i) => (
-            <motion.circle key={`unfiltered-${i}`} cx="30" r="3" fill="#818cf8"
+            <motion.circle key={`unfiltered-${i}`} cx="30" r="3" fill="#34d399"
                 variants={{
                     initial: { y: 25 + i * 10 },
                     animate: { 
@@ -28,9 +28,9 @@ const AirPollutionIcon = () => (
             />
         ))}
 
-        {/* Clean Dots (lighter blue) */}
+        {/* Clean Dots (Emerald 300) */}
         {[...Array(3)].map((_, i) => (
-            <motion.circle key={`filtered-${i}`} cx="52" r="3" fill="#7dd3fc"
+            <motion.circle key={`filtered-${i}`} cx="52" r="3" fill="#6ee7b7"
                 variants={{
                     initial: { x: 52, opacity: 0 },
                     animate: { 
@@ -60,12 +60,12 @@ const ConservesResourcesIcon = () => (
             }}
         />
         {/* Animated atoms appearing at corners */}
-        <motion.circle cx="50" cy="25" r="4" fill="#60a5fa" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1 } } }} />
-        <motion.circle cx="71.65" cy="37.5" r="4" fill="#60a5fa" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.1 } } }} />
-        <motion.circle cx="71.65" cy="62.5" r="4" fill="#60a5fa" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.2 } } }} />
-        <motion.circle cx="50" cy="75" r="4" fill="#60a5fa" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.3 } } }} />
-        <motion.circle cx="28.35" cy="62.5" r="4" fill="#60a5fa" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.4 } } }} />
-        <motion.circle cx="28.35" cy="37.5" r="4" fill="#60a5fa" variants={{ initial: { scale:0 }, animate: { scale: 1, transition: { delay: 1.5 } } }} />
+        <motion.circle cx="50" cy="25" r="4" fill="#10b981" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1 } } }} />
+        <motion.circle cx="71.65" cy="37.5" r="4" fill="#10b981" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.1 } } }} />
+        <motion.circle cx="71.65" cy="62.5" r="4" fill="#10b981" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.2 } } }} />
+        <motion.circle cx="50" cy="75" r="4" fill="#10b981" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.3 } } }} />
+        <motion.circle cx="28.35" cy="62.5" r="4" fill="#10b981" variants={{ initial: { scale: 0 }, animate: { scale: 1, transition: { delay: 1.4 } } }} />
+        <motion.circle cx="28.35" cy="37.5" r="4" fill="#10b981" variants={{ initial: { scale:0 }, animate: { scale: 1, transition: { delay: 1.5 } } }} />
     </motion.svg>
 );
 
@@ -77,7 +77,7 @@ const PreventsOzoneFormationIcon = () => (
         viewport={{ once: true, amount: 0.5 }}
     >
         {/* Center Circle */}
-        <motion.circle cx="50" cy="50" r="20" stroke="#06b6d4" strokeWidth="3" fill="none"
+        <motion.circle cx="50" cy="50" r="20" stroke="#10b981" strokeWidth="3" fill="none"
             variants={{ initial: { pathLength: 0, opacity: 0 }, animate: { pathLength: 1, opacity: 1, transition: { duration: 1.5 } } }}
         />
         
@@ -87,13 +87,13 @@ const PreventsOzoneFormationIcon = () => (
             animate={{ rotate: 360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         >
-            <circle cx="50" cy="15" r="4" fill="#38bdf8" />
-            <circle cx="50" cy="85" r="4" fill="#38bdf8" />
-            <circle cx="15" cy="50" r="4" fill="#38bdf8" />
-            <circle cx="85" cy="50" r="4" fill="#38bdf8" />
+            <circle cx="50" cy="15" r="4" fill="#34d399" />
+            <circle cx="50" cy="85" r="4" fill="#34d399" />
+            <circle cx="15" cy="50" r="4" fill="#34d399" />
+            <circle cx="85" cy="50" r="4" fill="#34d399" />
             
             {/* Connecting lines for orbit visual */}
-            <circle cx="50" cy="50" r="35" stroke="#1e3a8a" strokeWidth="1" strokeDasharray="4 4" fill="none" />
+            <circle cx="50" cy="50" r="35" stroke="#064e3b" strokeWidth="1" strokeDasharray="4 4" fill="none" />
         </motion.g>
 
          <motion.g
@@ -101,8 +101,8 @@ const PreventsOzoneFormationIcon = () => (
             animate={{ rotate: -360 }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
         >
-            <circle cx="75" cy="25" r="3" fill="#818cf8" />
-            <circle cx="25" cy="75" r="3" fill="#818cf8" />
+            <circle cx="75" cy="25" r="3" fill="#6ee7b7" />
+            <circle cx="25" cy="75" r="3" fill="#6ee7b7" />
         </motion.g>
 
     </motion.svg>

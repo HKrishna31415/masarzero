@@ -55,15 +55,15 @@ const WarningBox: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 const InfoBox: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="my-6 p-4 border-l-4 border-cyan-500 bg-cyan-900/10 rounded-r-lg text-cyan-200">
+  <div className="my-6 p-4 border-l-4 border-emerald-500 bg-emerald-900/10 rounded-r-lg text-emerald-200">
     <div className="flex items-start">
       <div className="mr-3 mt-1">
-        <div className="bg-cyan-500/20 p-1 rounded">
-            <Activity className="h-4 w-4 text-cyan-400" />
+        <div className="bg-emerald-500/20 p-1 rounded">
+            <Activity className="h-4 w-4 text-emerald-400" />
         </div>
       </div>
       <div>
-        <h4 className="font-bold text-cyan-400 mb-1">Technical Note</h4>
+        <h4 className="font-bold text-emerald-400 mb-1">Technical Note</h4>
         <div className="text-sm leading-relaxed opacity-90">{children}</div>
       </div>
     </div>
@@ -117,12 +117,12 @@ const RelayResetAnimation = () => {
                     <text x="66" y="125" textAnchor="middle" fontSize="4" fill="#94a3b8" fontWeight="bold">STOP</text>
 
                     {/* Status Indicator */}
-                    <circle cx="85" cy="80" r="3" fill={resetState === 'tripped' ? '#ef4444' : '#22c55e'} />
+                    <circle cx="85" cy="80" r="3" fill={resetState === 'tripped' ? '#ef4444' : '#10b981'} />
                 </svg>
 
                 {/* Animated Hand Cursor - Adjusted target position to new reset button location */}
                 <motion.div
-                    className="absolute top-0 left-0 pointer-events-none text-cyan-400 drop-shadow-lg"
+                    className="absolute top-0 left-0 pointer-events-none text-emerald-400 drop-shadow-lg"
                     initial={{ x: 180, y: 200, opacity: 0 }}
                     animate={resetState === 'resetting' ? { x: 118, y: 150, scale: 0.9, opacity: 1 } : { x: 140, y: 180, scale: 1, opacity: [0, 1, 1, 0] }}
                     transition={{ duration: 0.5 }}
@@ -133,13 +133,13 @@ const RelayResetAnimation = () => {
             </div>
             
             <div className="text-center">
-                <p className="text-sm font-bold text-white mb-2">Status: {resetState === 'tripped' ? 'Tripped (Indicator Red)' : resetState === 'resetting' ? 'Resetting...' : 'Ready (Indicator Green)'}</p>
+                <p className="text-sm font-bold text-white mb-2">Status: {resetState === 'tripped' ? 'Tripped (Indicator Red)' : resetState === 'resetting' ? 'Resetting...' : 'Ready (Indicator Emerald)'}</p>
                 <button 
                     onClick={handleSimulate}
                     disabled={resetState !== 'tripped'}
-                    className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold rounded transition-colors"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-bold rounded transition-colors"
                 >
-                    PRESS BLUE BUTTON
+                    PRESS EMERALD BUTTON
                 </button>
             </div>
         </div>
@@ -258,7 +258,7 @@ const MotorWiringDiagram = () => (
   <div className="w-full bg-[#0f1629] border border-slate-700 rounded-xl p-6 my-6 flex flex-col md:flex-row gap-8 items-center justify-center overflow-hidden">
     {/* Star (Wye) Connection */}
     <div className="flex flex-col items-center">
-      <h5 className="text-cyan-400 font-bold text-sm mb-4 uppercase tracking-wider">Star (Wye) Connection - High Voltage</h5>
+      <h5 className="text-emerald-400 font-bold text-sm mb-4 uppercase tracking-wider">Star (Wye) Connection - High Voltage</h5>
       <svg width="160" height="160" viewBox="0 0 160 160">
         {/* Terminal Board Background */}
         <rect x="10" y="10" width="140" height="140" rx="4" fill="none" stroke="#475569" />
@@ -297,7 +297,7 @@ const MotorWiringDiagram = () => (
 
     {/* Delta Connection */}
     <div className="flex flex-col items-center">
-      <h5 className="text-purple-400 font-bold text-sm mb-4 uppercase tracking-wider">Delta Connection - Low Voltage</h5>
+      <h5 className="text-emerald-400 font-bold text-sm mb-4 uppercase tracking-wider">Delta Connection - Low Voltage</h5>
       <svg width="160" height="160" viewBox="0 0 160 160">
         <rect x="10" y="10" width="140" height="140" rx="4" fill="none" stroke="#475569" />
         
@@ -349,13 +349,13 @@ const PlcWiringDiagram = () => {
             {/* Group 1 */}
             <div className="space-y-2">
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-700 pb-1">External Wiring</h4>
-                <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-cyan-500/50 transition-colors">
+                <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-emerald-500/50 transition-colors">
                     <span className="text-sm text-white">Main Power (380V)</span>
                     <Zap size={14} className="text-yellow-400" />
                 </div>
-                <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-cyan-500/50 transition-colors">
+                <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between group hover:border-emerald-500/50 transition-colors">
                     <span className="text-sm text-white">Internet (V-BOX)</span>
-                    <Wifi size={14} className="text-blue-400" />
+                    <Wifi size={14} className="text-emerald-400" />
                 </div>
             </div>
 
@@ -364,19 +364,19 @@ const PlcWiringDiagram = () => {
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-700 pb-1">Motors & Pumps (KM)</h4>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Compressor</span>
-                    <span className="text-xs text-cyan-500 font-mono">KM1</span>
+                    <span className="text-xs text-emerald-500 font-mono">KM1</span>
                 </div>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Fans (1 & 2)</span>
-                    <span className="text-xs text-cyan-500 font-mono">KM2</span>
+                    <span className="text-xs text-emerald-500 font-mono">KM2</span>
                 </div>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Oil Pump</span>
-                    <span className="text-xs text-cyan-500 font-mono">KM3</span>
+                    <span className="text-xs text-emerald-500 font-mono">KM3</span>
                 </div>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Air Pump</span>
-                    <span className="text-xs text-cyan-500 font-mono">KM4</span>
+                    <span className="text-xs text-emerald-500 font-mono">KM4</span>
                 </div>
             </div>
 
@@ -385,7 +385,7 @@ const PlcWiringDiagram = () => {
                 <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-700 pb-1">Sensors & Actuators (KA)</h4>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Pressure Sensors (x4)</span>
-                    <Gauge size={14} className="text-purple-400" />
+                    <Gauge size={14} className="text-emerald-400" />
                 </div>
                 <div className="bg-slate-800/50 border border-slate-600 p-3 rounded flex items-center justify-between">
                     <span className="text-sm text-white">Temperature Sensors (x3)</span>
@@ -410,15 +410,15 @@ const PlcWiringDiagram = () => {
         <div className="hidden md:flex flex-col justify-around items-center w-16 relative">
             <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-slate-700"></div>
             {/* Connection Lines */}
-            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div></div>
-            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-75"></div></div>
-            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-150"></div></div>
+            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div></div>
+            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-teal-500 rounded-full animate-pulse delay-75"></div></div>
+            <div className="w-full h-px bg-slate-700 relative"><div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-emerald-500 rounded-full animate-pulse delay-150"></div></div>
         </div>
 
         {/* Right Side: PLC Box */}
         <div className="w-full md:w-1/2 flex flex-col">
-            <div className="flex-grow border-2 border-cyan-500/30 bg-[#0f1623] rounded-lg p-6 relative shadow-[0_0_30px_rgba(6,182,212,0.1)]">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#080b14] px-4 -mt-3 text-cyan-400 font-bold text-sm tracking-widest">
+            <div className="flex-grow border-2 border-emerald-500/30 bg-[#0f1623] rounded-lg p-6 relative shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#080b14] px-4 -mt-3 text-emerald-400 font-bold text-sm tracking-widest">
                     Explosion-Proof Control Box (PLC)
                 </div>
                 
@@ -437,7 +437,7 @@ const PlcWiringDiagram = () => {
                         </div>
                         <div className="bg-black/40 p-3 rounded border border-white/5">
                             <div className="text-[10px] text-slate-500 uppercase font-bold">Comms</div>
-                            <div className="text-blue-400 font-mono text-sm">RS-485 OK</div>
+                            <div className="text-emerald-400 font-mono text-sm">RS-485 OK</div>
                         </div>
                     </div>
                 </div>
@@ -486,12 +486,12 @@ const IntroductionContent = () => (
             </div>
         </div>
         <div className="bg-slate-800/50 p-6 rounded-xl border border-white/5 text-sm space-y-3">
-            <h4 className="font-mono text-cyan-400 font-bold text-lg mb-2 flex items-center gap-2">
+        <h4 className="font-mono text-emerald-400 font-bold text-lg mb-2 flex items-center gap-2">
                 <Box size={20} /> Construction Specs
             </h4>
             <ul className="space-y-3">
                 <li className="flex gap-3 items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span>
                     <span><strong>Surfaces:</strong> Flameproof joints with 20 reserved holes. Coated with anti-rust oil. Exterior: RAL 7035 Polyurethane 1321 Anti-corrosion Paint.</span>
                 </li>
                 <li className="flex gap-3 items-start">
@@ -527,7 +527,7 @@ const PlcContent = () => (
 
         <h3 className="text-xl font-bold text-white mt-8 mb-4">Responding to Alarms</h3>
         <div className="bg-slate-800/50 p-4 rounded-lg border border-white/5">
-            <ol className="list-decimal list-inside space-y-3 pl-2 marker:text-cyan-500 text-sm">
+            <ol className="list-decimal list-inside space-y-3 pl-2 marker:text-emerald-500 text-sm">
                 <li><strong>Identify the Alarm:</strong> Read the alarm message carefully on the HMI screen. It will typically identify the component and the nature of the fault (e.g., "Compressor Low Pressure", "Oil Pump Overload").</li>
                 <li><strong>Consult this Guide:</strong> Locate the corresponding section in this guide to find troubleshooting steps for that specific component and alarm.</li>
                 <li><strong>Acknowledge/Reset:</strong> After resolving the physical issue, the alarm may need to be acknowledged or reset via the HMI touchscreen interface. Follow on-screen prompts.</li>
@@ -547,27 +547,27 @@ const PlcContent = () => (
                 </thead>
                 <tbody className="divide-y divide-white/5">
                     <tr className="bg-slate-900/30">
-                        <td className="px-4 py-3 font-mono text-cyan-400">X0</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">X0</td>
                         <td className="px-4 py-3">Emergency Stop</td>
-                        <td className="px-4 py-3 font-mono text-purple-400">Y0</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">Y0</td>
                         <td className="px-4 py-3">Compressor Contactor</td>
                     </tr>
                     <tr className="bg-slate-900/30">
-                        <td className="px-4 py-3 font-mono text-cyan-400">X1</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">X1</td>
                         <td className="px-4 py-3">Start Button</td>
-                        <td className="px-4 py-3 font-mono text-purple-400">Y1</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">Y1</td>
                         <td className="px-4 py-3">Fan Contactor</td>
                     </tr>
                     <tr className="bg-slate-900/30">
-                        <td className="px-4 py-3 font-mono text-cyan-400">X2</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">X2</td>
                         <td className="px-4 py-3">Stop Button</td>
-                        <td className="px-4 py-3 font-mono text-purple-400">Y2</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">Y2</td>
                         <td className="px-4 py-3">Oil Pump Contactor</td>
                     </tr>
                     <tr className="bg-slate-900/30">
-                        <td className="px-4 py-3 font-mono text-cyan-400">X3</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">X3</td>
                         <td className="px-4 py-3">High Pressure Switch</td>
-                        <td className="px-4 py-3 font-mono text-purple-400">Y3</td>
+                        <td className="px-4 py-3 font-mono text-emerald-400">Y3</td>
                         <td className="px-4 py-3">Solenoid Valve 1</td>
                     </tr>
                 </tbody>
@@ -589,7 +589,7 @@ const HmiContent = () => (
         </div>
 
         <h3 className="text-xl font-bold text-white mt-8">Troubleshooting: Blank Screen</h3>
-        <ol className="list-decimal list-inside space-y-2 pl-2 marker:text-cyan-500">
+        <ol className="list-decimal list-inside space-y-2 pl-2 marker:text-emerald-500">
             <li><strong>Check Power:</strong> Verify main power is on.</li>
             <li><strong>Inspect Connections:</strong> Check 24V DC power connector on back of HMI.</li>
             <li><strong>Power Cycle:</strong> Turn off main breaker for 60 seconds.</li>
@@ -610,12 +610,12 @@ const HvacContent = () => (
             <div className="bg-slate-800/50 p-4 rounded-lg border border-white/10">
                 <span className="text-xs text-gray-500 uppercase block mb-1">Compressor</span>
                 <span className="text-white font-bold">Panasonic C4-SB453L8A</span>
-                <span className="text-xs text-cyan-400 block mt-1">Scroll Type, 380V</span>
+                <span className="text-xs text-emerald-400 block mt-1">Scroll Type, 380V</span>
             </div>
             <div className="bg-slate-800/50 p-4 rounded-lg border border-white/10">
                 <span className="text-xs text-gray-500 uppercase block mb-1">Refrigerant</span>
                 <span className="text-white font-bold">R-404a</span>
-                <span className="text-xs text-cyan-400 block mt-1">4.5kg - 5.0kg Charge</span>
+                <span className="text-xs text-emerald-400 block mt-1">4.5kg - 5.0kg Charge</span>
             </div>
         </div>
 
@@ -625,7 +625,7 @@ const HvacContent = () => (
         </p>
         
         <h4 className="font-bold text-white mt-4">Solution: Leak Detection and Repair</h4>
-        <ol className="list-decimal list-inside space-y-3 pl-2 mt-2 marker:text-cyan-500 text-sm">
+        <ol className="list-decimal list-inside space-y-3 pl-2 mt-2 marker:text-emerald-500 text-sm">
             <li><strong>Safety Shutdown:</strong> Disconnect all electrical power to the unit at the main breaker. Lock out and tag out the breaker.</li>
             <li><strong>Visual Inspection:</strong> Inspect all tubing and connections for oily residue, a clear sign of a leak.</li>
             <li><strong>Leak Detection:</strong> Use an electronic leak detector or soap bubbles with dry nitrogen to pinpoint the leak.</li>
@@ -667,8 +667,8 @@ const ElectricalContent = () => (
                 <h4 className="text-yellow-400 font-bold text-lg mb-1">220V (1-Phase)</h4>
                 <p className="text-xs text-gray-400">Control Power Supply, V-BOX telemetry.</p>
             </div>
-            <div className="p-4 bg-blue-900/20 border border-blue-500/30 rounded-lg">
-                <h4 className="text-blue-400 font-bold text-lg mb-1">24V DC</h4>
+            <div className="p-4 bg-teal-900/20 border border-teal-500/30 rounded-lg">
+                <h4 className="text-teal-400 font-bold text-lg mb-1">24V DC</h4>
                 <p className="text-xs text-gray-400">Safe Control Voltage: PLC, HMI, Sensors, Solenoids.</p>
             </div>
         </div>
@@ -679,15 +679,15 @@ const ElectricalContent = () => (
         <h3 className="text-xl font-bold text-white mt-6">Panel Components</h3>
         <ul className="space-y-3">
             <li className="bg-white/5 p-3 rounded flex justify-between items-center border border-white/5">
-                <span className="font-mono text-cyan-300">KM1-KM4</span>
+                <span className="font-mono text-emerald-300">KM1-KM4</span>
                 <span className="text-sm text-gray-400">Schneider Contactors (LC1D09M7C)</span>
             </li>
             <li className="bg-white/5 p-3 rounded flex justify-between items-center border border-white/5">
-                <span className="font-mono text-cyan-300">KA1-KA4</span>
+                <span className="font-mono text-emerald-300">KA1-KA4</span>
                 <span className="text-sm text-gray-400">Thermal Overload Relays (LRN Series)</span>
             </li>
             <li className="bg-white/5 p-3 rounded flex justify-between items-center border border-white/5">
-                <span className="font-mono text-cyan-300">QF1-QF3</span>
+                <span className="font-mono text-emerald-300">QF1-QF3</span>
                 <span className="text-sm text-gray-400">Air Circuit Breakers (Schneider IC65N)</span>
             </li>
         </ul>
@@ -697,7 +697,7 @@ const ElectricalContent = () => (
             <div className="flex flex-col md:flex-row gap-6 items-center">
                 <div className="flex-1 text-sm">
                     <p className="mb-3">If a motor overloads, the KA relay will trip to protect it.</p>
-                    <ol className="list-decimal list-inside space-y-1 pl-2 marker:text-cyan-500">
+                    <ol className="list-decimal list-inside space-y-1 pl-2 marker:text-emerald-500">
                         <li>Power down main breaker.</li>
                         <li>Open the explosion-proof panel using correct tools.</li>
                         <li>Locate the specific KA relay (e.g., KA-Comp for Compressor).</li>
@@ -717,16 +717,16 @@ const MembranesContent = () => (
     <div className="space-y-6 text-gray-300">
         <p>The membrane unit is the core of the vapor separation process. It allows hydrocarbon molecules to pass while blocking air.</p>
         
-        <div className="flex gap-4 bg-blue-900/20 p-4 rounded-lg border border-blue-500/30 mb-6">
-            <Filter className="text-blue-400 shrink-0" size={24} />
+        <div className="flex gap-4 bg-teal-900/20 p-4 rounded-lg border border-teal-500/30 mb-6">
+            <Filter className="text-teal-400 shrink-0" size={24} />
             <div>
-                <h4 className="font-bold text-blue-300 mb-1">Consumable Item</h4>
+                <h4 className="font-bold text-teal-300 mb-1">Consumable Item</h4>
                 <p className="text-sm">Typical lifespan: <strong>8,000 - 12,000 running hours</strong>. Replacement is required if recovery efficiency drops below 95%.</p>
             </div>
         </div>
 
         <h4 className="font-bold text-white text-lg border-b border-white/10 pb-2 mb-4">Replacement Procedure</h4>
-        <ol className="list-decimal list-inside space-y-4 marker:text-cyan-500 text-sm">
+        <ol className="list-decimal list-inside space-y-4 marker:text-emerald-500 text-sm">
             <li className="pl-2">
                 <strong>Isolation:</strong> Isolate the system and ensure all pressure is vented.
             </li>
@@ -750,8 +750,8 @@ const MembranesContent = () => (
 const OilPumpContent = () => (
     <div className="space-y-6 text-gray-300">
         <div className="flex items-center gap-4 mb-6">
-            <div className="bg-purple-500/10 p-3 rounded-xl border border-purple-500/20">
-                <Droplets className="text-purple-400" size={32} />
+            <div className="bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
+                <Droplets className="text-emerald-400" size={32} />
             </div>
             <div>
                 <h4 className="text-white font-bold text-xl">Oil Pump Repair</h4>
@@ -775,11 +775,11 @@ const OilPumpContent = () => (
             {/* Solution 1 */}
             <div className="bg-slate-800/30 rounded-xl border border-white/5 p-5">
                 <div className="flex items-center gap-2 mb-3">
-                    <div className="bg-cyan-500/20 p-1.5 rounded text-cyan-400 font-bold text-xs">01</div>
+                    <div className="bg-emerald-500/20 p-1.5 rounded text-emerald-400 font-bold text-xs">01</div>
                     <h5 className="text-white font-bold">Electrical Reset</h5>
                 </div>
                 <p className="text-sm mb-3 text-gray-400">First, attempt to clear the fault by resetting the thermal protection.</p>
-                <ol className="list-decimal list-inside space-y-2 text-sm pl-2 marker:text-cyan-500">
+                <ol className="list-decimal list-inside space-y-2 text-sm pl-2 marker:text-emerald-500">
                     <li><strong className="text-white">Power Down:</strong> Disconnect all electrical power at the main breaker.</li>
                     <li><strong className="text-white">Access Panel:</strong> Open the explosion-proof control box.</li>
                     <li><strong className="text-white">Reset Relay:</strong> Locate the thermal overload relay (KA-Oil) and press the physical <strong>RESET</strong> button.</li>
@@ -790,11 +790,11 @@ const OilPumpContent = () => (
             {/* Solution 2 */}
             <div className="bg-slate-800/30 rounded-xl border border-white/5 p-5">
                 <div className="flex items-center gap-2 mb-3">
-                    <div className="bg-purple-500/20 p-1.5 rounded text-purple-400 font-bold text-xs">02</div>
+                    <div className="bg-emerald-500/20 p-1.5 rounded text-emerald-400 font-bold text-xs">02</div>
                     <h5 className="text-white font-bold">Mechanical Seizure Fix</h5>
                 </div>
                 <p className="text-sm mb-3 text-gray-400">Common after long-term shutdowns. Internal vanes can rust and seize.</p>
-                <ol className="list-decimal list-inside space-y-2 text-sm pl-2 marker:text-purple-500">
+                <ol className="list-decimal list-inside space-y-2 text-sm pl-2 marker:text-emerald-500">
                     <li><strong className="text-white">Power Down:</strong> Ensure unit is fully de-energized (LOTO).</li>
                     <li><strong className="text-white">Access Pump:</strong> Remove the side cover/inspection plate of the pump housing.</li>
                     <li><strong className="text-white">Clean Vanes:</strong> Inspect vanes for rust. Use a tool to gently free them.</li>
@@ -820,8 +820,8 @@ const OilPumpContent = () => (
 const AirPumpContent = () => (
     <div className="space-y-6 text-gray-300">
         <div className="flex items-center gap-4 mb-6">
-            <div className="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20">
-                <Wind className="text-cyan-400" size={32} />
+            <div className="bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20">
+                <Wind className="text-emerald-400" size={32} />
             </div>
             <div>
                 <h4 className="text-white font-bold text-xl">Air Pump Repair</h4>
@@ -844,7 +844,7 @@ const AirPumpContent = () => (
         <h4 className="font-bold text-white text-lg border-b border-white/10 pb-2 mb-4">Solution Procedure</h4>
         
         <div className="bg-slate-800/30 rounded-xl border border-white/5 p-5">
-            <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-cyan-500">
+            <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-emerald-500">
                 <li><strong className="text-white">Power Down & Check for Blockages:</strong> First, follow the Pipeline Maintenance procedure to check for and clear any pipeline blockages.</li>
                 <li><strong className="text-white">Access Panel:</strong> Open the explosion-proof control box after ensuring power is off.</li>
                 <li><strong className="text-white">Reset Relay:</strong> Locate the thermal overload relay for the air pump and press the reset button.</li>
@@ -1018,7 +1018,7 @@ const ValveContent = () => (
 const BaseplateContent = () => (
     <div className="space-y-6 text-gray-300">
         <div className="flex items-center gap-3 mb-4">
-            <Layers className="text-blue-300" size={28} />
+            <Layers className="text-teal-300" size={28} />
             <div>
                 <h4 className="text-white font-bold text-lg">Baseplate Wiring</h4>
                 <p className="text-xs text-gray-500">Field Connection Terminals</p>
@@ -1038,8 +1038,8 @@ const CloudContent = () => (
     <div className="space-y-6 text-gray-300">
         <p>The V-BOX gateway connects the PLC to the MasarZero cloud for remote monitoring. Reliable internet connectivity is critical for continuous data logging.</p>
         
-        <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
-            <h4 className="text-blue-400 font-bold mb-2 flex items-center gap-2"><Wifi size={18} /> Connectivity Requirements</h4>
+        <div className="bg-teal-900/20 border border-teal-500/30 p-4 rounded-lg">
+            <h4 className="text-teal-400 font-bold mb-2 flex items-center gap-2"><Wifi size={18} /> Connectivity Requirements</h4>
             <p className="text-sm mb-2">For cloud telemetry, the V-BOX requires a stable internet connection. Our recommended hierarchy for connection stability is:</p>
             <ol className="list-decimal list-inside text-sm space-y-1 pl-2 text-gray-300">
                 <li><strong>Fiber Optic (Ideal):</strong> Provides the lowest latency and highest reliability.</li>
@@ -1056,7 +1056,7 @@ const CloudContent = () => (
             </div>
             <div className="bg-black/40 p-3 rounded text-center border border-white/10">
                 <div className="text-[10px] font-bold text-gray-500 uppercase">NET LED</div>
-                <div className="text-blue-400 font-bold text-sm mt-1">Blinking</div>
+                <div className="text-teal-400 font-bold text-sm mt-1">Blinking</div>
                 <div className="text-[10px] text-gray-600">Data Transfer</div>
             </div>
             <div className="bg-black/40 p-3 rounded text-center border border-white/10">
@@ -1099,7 +1099,7 @@ const PipelineContent = () => (
         {/* Blockages */}
         <div className="mt-6 border-t border-white/10 pt-6">
             <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <div className="bg-blue-500/20 p-1 rounded text-blue-400"><Filter size={18} /></div>
+                <div className="bg-teal-500/20 p-1 rounded text-teal-400"><Filter size={18} /></div>
                 Troubleshooting Blockages
             </h4>
             
@@ -1119,8 +1119,8 @@ const PipelineContent = () => (
             </WarningBox>
 
             <div className="bg-slate-900/50 border border-white/10 rounded-lg p-5">
-                <h5 className="text-cyan-400 font-bold mb-3 text-sm uppercase tracking-wider">Nitrogen Purge Procedure</h5>
-                <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-cyan-500 text-gray-300">
+                <h5 className="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Nitrogen Purge Procedure</h5>
+                <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-emerald-500 text-gray-300">
                     <li><strong>Disconnect Inlet:</strong> Disconnect the main vapor inlet pipe from the machine.</li>
                     <li><strong>Connect Nitrogen:</strong> Connect a regulated dry nitrogen source to the machine's inlet port.</li>
                     <li><strong>Purge System:</strong> Open the solenoid valves manually or via the HMI (if safe and possible). Pressure: 0.3 to 0.5 MPa (approx. 45-75 PSI).</li>
@@ -1157,8 +1157,8 @@ const PipelineContent = () => (
             </div>
 
             <div className="bg-slate-900/50 border border-white/10 rounded-lg p-5">
-                <h5 className="text-purple-400 font-bold mb-3 text-sm uppercase tracking-wider">Leak Detection & Repair Protocol</h5>
-                <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-purple-500 text-gray-300">
+                <h5 className="text-emerald-400 font-bold mb-3 text-sm uppercase tracking-wider">Leak Detection & Repair Protocol</h5>
+                <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-emerald-500 text-gray-300">
                     <li><strong>Immediate Shutdown:</strong> Stop the machine and disconnect all power at the main breaker.</li>
                     <li><strong>Ventilate Area:</strong> Ensure the area is well-ventilated to disperse flammable vapors. Eliminate ignition sources.</li>
                     <li><strong>Pressurize with Inert Gas:</strong> Safely purge hydrocarbon vapors. Pressurize pipeline with low pressure dry nitrogen.</li>
@@ -1232,7 +1232,7 @@ const CabinetContent = () => (
         </div>
 
         <h4 className="font-bold text-white mt-6 mb-3">Inspection Checklist</h4>
-        <ul className="list-disc list-inside space-y-2 text-sm pl-2 marker:text-cyan-500">
+        <ul className="list-disc list-inside space-y-2 text-sm pl-2 marker:text-emerald-500">
             <li><strong>Paint & Coating:</strong> Check "camel grey" paint for chipping or scratches exposing metal.</li>
             <li><strong>Corrosion:</strong> Inspect for rust, especially around the base where moisture collects.</li>
             <li><strong>Seals & Gaskets:</strong> Gaskets must be pliable, crack-free, and create a tight seal.</li>
@@ -1290,7 +1290,7 @@ const PressureValveContent = () => (
         </InfoBox>
 
         <h4 className="font-bold text-white mt-6 mb-3">Valve Replacement Procedure</h4>
-        <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-cyan-500">
+        <ol className="list-decimal list-inside space-y-3 text-sm pl-2 marker:text-emerald-500">
             <li><strong>Immediate Shutdown:</strong> If over-pressurized, perform emergency shutdown. Disconnect main power.</li>
             <li><strong>Depressurize:</strong> Safely vent all pressure. Verify zero pressure with a gauge.</li>
             <li><strong>Remove Old Valve:</strong> Unscrew the old valve from the vent stack. Note orientation and sealing.</li>
@@ -1304,11 +1304,11 @@ const SOPContent = () => (
     <div className="space-y-6 text-gray-300">
         <h4 className="font-bold text-white text-lg">Standard Operating Procedure</h4>
         
-        <div className="relative border-l-2 border-cyan-800 pl-6 ml-2 space-y-8">
+        <div className="relative border-l-2 border-emerald-800 pl-6 ml-2 space-y-8">
             {/* Step 1 */}
             <div className="relative">
-                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-cyan-900 rounded-full border-2 border-cyan-500 text-[10px] flex items-center justify-center text-white font-bold">1</span>
-                <h5 className="text-cyan-400 font-bold mb-1">Pre-Start Checks</h5>
+                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-emerald-900 rounded-full border-2 border-emerald-500 text-[10px] flex items-center justify-center text-white font-bold">1</span>
+                <h5 className="text-emerald-400 font-bold mb-1">Pre-Start Checks</h5>
                 <ul className="text-sm list-disc list-inside text-gray-400">
                     <li>Verify Grounding cable is secure.</li>
                     <li>Check Oil level in sight glass.</li>
@@ -1318,8 +1318,8 @@ const SOPContent = () => (
 
             {/* Step 2 */}
             <div className="relative">
-                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-cyan-900 rounded-full border-2 border-cyan-500 text-[10px] flex items-center justify-center text-white font-bold">2</span>
-                <h5 className="text-cyan-400 font-bold mb-1">Start Up</h5>
+                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-emerald-900 rounded-full border-2 border-emerald-500 text-[10px] flex items-center justify-center text-white font-bold">2</span>
+                <h5 className="text-emerald-400 font-bold mb-1">Start Up</h5>
                 <ul className="text-sm list-disc list-inside text-gray-400">
                     <li>Turn Main Isolator to ON.</li>
                     <li>Wait for HMI to boot (approx 30s).</li>
@@ -1330,8 +1330,8 @@ const SOPContent = () => (
 
             {/* Step 3 */}
             <div className="relative">
-                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-cyan-900 rounded-full border-2 border-cyan-500 text-[10px] flex items-center justify-center text-white font-bold">3</span>
-                <h5 className="text-cyan-400 font-bold mb-1">Operation Monitoring</h5>
+                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-emerald-900 rounded-full border-2 border-emerald-500 text-[10px] flex items-center justify-center text-white font-bold">3</span>
+                <h5 className="text-emerald-400 font-bold mb-1">Operation Monitoring</h5>
                 <p className="text-sm text-gray-400 mb-2">Monitor HMI Main Screen for nominal values:</p>
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono bg-black/30 p-2 rounded">
                     <div>Pressure: -20 to -5 kPa</div>
@@ -1341,8 +1341,8 @@ const SOPContent = () => (
 
             {/* Step 4 */}
             <div className="relative">
-                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-cyan-900 rounded-full border-2 border-cyan-500 text-[10px] flex items-center justify-center text-white font-bold">4</span>
-                <h5 className="text-cyan-400 font-bold mb-1">Shut Down</h5>
+                <span className="absolute -left-[31px] top-0 w-6 h-6 bg-emerald-900 rounded-full border-2 border-emerald-500 text-[10px] flex items-center justify-center text-white font-bold">4</span>
+                <h5 className="text-emerald-400 font-bold mb-1">Shut Down</h5>
                 <ul className="text-sm list-disc list-inside text-gray-400">
                     <li>Press <span className="text-red-400 font-bold">RED</span> Stop button.</li>
                     <li>System enters "Purge Mode" (Fan runs for 60s).</li>

@@ -26,14 +26,14 @@ const SocialProofSection: React.FC = () => {
                 <div className="relative flex overflow-x-hidden mask-linear-gradient">
                     <div className="animate-marquee whitespace-nowrap flex items-center gap-16">
                         {marqueeClients.map((client, i) => (
-                            <span key={i} className="text-2xl md:text-3xl font-black text-white/20 hover:text-cyan-500/50 transition-colors cursor-default">
+                            <span key={i} className="text-2xl md:text-3xl font-black text-white/20 hover:text-emerald-500/50 transition-colors cursor-default">
                                 {client}
                             </span>
                         ))}
                     </div>
                     <div className="absolute top-0 animate-marquee2 whitespace-nowrap flex items-center gap-16">
                         {marqueeClients.map((client, i) => (
-                            <span key={i} className="text-2xl md:text-3xl font-black text-white/20 hover:text-cyan-500/50 transition-colors cursor-default">
+                            <span key={i} className="text-2xl md:text-3xl font-black text-white/20 hover:text-emerald-500/50 transition-colors cursor-default">
                                 {client}
                             </span>
                         ))}
@@ -56,7 +56,7 @@ const SocialProofSection: React.FC = () => {
                                 className="flex items-center justify-center gap-4"
                             >
                                 <div className="p-3 rounded-full bg-white/5">
-                                    <Icon className="w-6 h-6 text-cyan-400" />
+                                    <Icon className="w-6 h-6 text-emerald-400" />
                                 </div>
                                 <div>
                                     <h4 className="text-3xl font-bold text-white">{stat.value}</h4>

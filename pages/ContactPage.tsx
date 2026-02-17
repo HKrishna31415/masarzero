@@ -43,7 +43,7 @@ const ParticleSphere = (props: any) => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
         <PointMaterial
           transparent
-          color="#22d3ee"
+          color="#10b981"
           size={0.012}
           sizeAttenuation={true}
           depthWrite={false}
@@ -117,11 +117,11 @@ const ContactPage: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
+                        <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                             Get In Touch
                         </span>
                         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
-                            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Information</span>
+                            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Information</span>
                         </h1>
                         <p className="text-gray-400 max-w-xl mx-auto">
                             Connect with our global team. Whether you're ready to deploy or just have a question, we're here to help.
@@ -134,7 +134,7 @@ const ContactPage: React.FC = () => {
                         <VectorBorderCard className="bg-slate-900/70 backdrop-blur-md h-full">
                             <div className="p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
-                                    <Globe className="text-cyan-400" size={24} />
+                                    <Globe className="text-emerald-400" size={24} />
                                     <h3 className="text-xl font-bold text-white uppercase tracking-widest">Global Nexus</h3>
                                 </div>
 
@@ -145,11 +145,11 @@ const ContactPage: React.FC = () => {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ delay: i * 0.1 }}
-                                            className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-white/10 transition-all"
+                                            className="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-white/10 transition-all"
                                         >
                                             <div className="flex justify-between items-start mb-2">
                                                 <h4 className="font-bold text-white text-lg">{office.city}</h4>
-                                                <span className="text-[9px] font-mono font-bold text-cyan-500 bg-cyan-950/30 px-2 py-1 rounded uppercase border border-cyan-500/20">
+                                                <span className="text-[9px] font-mono font-bold text-emerald-500 bg-emerald-950/30 px-2 py-1 rounded uppercase border border-emerald-500/20">
                                                     {office.country}
                                                 </span>
                                             </div>
@@ -170,7 +170,7 @@ const ContactPage: React.FC = () => {
                         <VectorBorderCard className="bg-slate-900/70 backdrop-blur-md h-full">
                             <div className="p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
-                                    <Phone className="text-cyan-400" size={24} />
+                                    <Phone className="text-emerald-400" size={24} />
                                     <h3 className="text-xl font-bold text-white uppercase tracking-widest">Direct Channels</h3>
                                 </div>
 
@@ -184,17 +184,17 @@ const ContactPage: React.FC = () => {
                                                 initial={{ opacity: 0, x: 10 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.1 }}
-                                                className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-white/10 transition-all cursor-pointer"
+                                                className="group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-white/10 transition-all cursor-pointer"
                                             >
-                                                <div className="p-3 bg-cyan-500/10 rounded-lg text-cyan-400 group-hover:bg-cyan-500/20 transition-colors">
+                                                <div className="p-3 bg-emerald-500/10 rounded-lg text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
                                                     <Icon size={20} />
                                                 </div>
                                                 <div className="flex-grow">
-                                                    <h4 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">{dept.name}</h4>
+                                                    <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">{dept.name}</h4>
                                                     <p className="text-xs text-gray-400 mt-0.5">{dept.desc}</p>
                                                 </div>
                                                 <div className="text-right hidden sm:block">
-                                                    <p className="text-xs font-mono text-cyan-500/80 group-hover:text-cyan-400">{dept.email}</p>
+                                                    <p className="text-xs font-mono text-emerald-500/80 group-hover:text-emerald-400">{dept.email}</p>
                                                 </div>
                                             </motion.a>
                                         );
@@ -202,7 +202,7 @@ const ContactPage: React.FC = () => {
                                 </div>
 
                                 <div className="mt-8 pt-6 border-t border-white/10">
-                                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl border border-white/10">
+                                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-600/20 to-teal-600/20 rounded-xl border border-white/10">
                                         <div className="flex items-center gap-3">
                                             <Phone size={20} className="text-white" />
                                             <div>
@@ -211,8 +211,8 @@ const ContactPage: React.FC = () => {
                                             </div>
                                         </div>
                                         <span className="flex h-3 w-3 relative">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                                         </span>
                                     </div>
                                 </div>

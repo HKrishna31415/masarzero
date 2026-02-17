@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = () => {
             {/* Counter Section */}
             <div className="bg-[#0d1117] py-20 text-center">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-2xl md:text-3xl font-medium text-cyan-400 mb-4">Total liters of fuel recovered for clients</h2>
+                    <h2 className="text-2xl md:text-3xl font-medium text-emerald-400 mb-4">Total liters of fuel recovered for clients</h2>
                     <Counter />
                 </div>
             </div>
@@ -63,7 +63,7 @@ const Footer: React.FC<FooterProps> = () => {
                         {/* MasarZero Info */}
                         <div className="col-span-2 md:col-span-1">
                             <h3 
-                                className="text-xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 uppercase cursor-pointer mb-2"
+                                className="text-xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-500 uppercase cursor-pointer mb-2"
                                 onClick={() => navigate('/')}
                             >
                                 MasarZero
@@ -80,7 +80,7 @@ const Footer: React.FC<FooterProps> = () => {
                                         <li key={link.path}>
                                             <Link 
                                                 to={link.path}
-                                                className="text-gray-400 hover:text-cyan-300 transition-colors cursor-pointer text-sm flex items-center gap-1.5"
+                                                className="text-gray-400 hover:text-emerald-300 transition-colors cursor-pointer text-sm flex items-center gap-1.5"
                                             >
                                                 {link.title}
                                                 {link.locked && <Lock size={12} className="text-gray-500" />}

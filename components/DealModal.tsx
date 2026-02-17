@@ -6,8 +6,8 @@ import { EnrichedClient } from '../types/pipeline';
 
 const typeColors: { [key: string]: string } = {
     GOVERNMENT: 'bg-green-500/20 text-green-300 border-green-500/30',
-    PUBLIC: 'bg-blue-500/20 text-blue-300 border-blue-500/30',
-    PRIVATE: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+    PUBLIC: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
+    PRIVATE: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
 };
 
 const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ deal, onClose }) => {
@@ -78,7 +78,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                 {activeTab === tab && (
                                     <motion.div 
                                         layoutId="activeTabModal"
-                                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-500" 
+                                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-500" 
                                     />
                                 )}
                             </button>
@@ -111,7 +111,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                 <div>
                                     <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Next Action</h4>
                                     <div className="bg-[#1a2030] border border-[#2a324a] rounded-xl p-5 flex items-start gap-4">
-                                        <div className="mt-1 p-2 bg-cyan-500/10 rounded-lg text-cyan-400">
+                                        <div className="mt-1 p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
                                             <ArrowRight size={18} />
                                         </div>
                                         <p className="text-gray-200 font-medium leading-relaxed text-sm pt-1">
@@ -142,7 +142,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                         <div className="h-px bg-white/5" />
                                         <div className="flex justify-between items-center">
                                             <span className="text-sm text-gray-500">Corporate Domain</span>
-                                            <a href={`https://${deal.domain}`} target="_blank" rel="noreferrer" className="text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                                            <a href={`https://${deal.domain}`} target="_blank" rel="noreferrer" className="text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
                                                 {deal.domain}
                                             </a>
                                         </div>
@@ -158,7 +158,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                             <div className="lg:col-span-2 space-y-8">
                                 <div className="bg-[#131929] border border-white/10 rounded-xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <DollarSign size={20} className="text-cyan-400" />
+                                        <DollarSign size={20} className="text-emerald-400" />
                                         <h3 className="text-lg font-bold text-white">Direct Sales Financials</h3>
                                     </div>
                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -181,14 +181,14 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                     <div className="mt-6 p-4 bg-[#0f162a] rounded-lg border border-white/5">
                                         <div className="flex justify-between items-center">
                                             <span className="text-sm text-gray-400">Total Direct Sales Profit</span>
-                                            <span className="text-sm font-bold text-cyan-400">{formatCurrency(deal.calculated.directSalesProfit)}</span>
+                                            <span className="text-sm font-bold text-emerald-400">{formatCurrency(deal.calculated.directSalesProfit)}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="bg-[#131929] border border-white/10 rounded-xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <DollarSign size={20} className="text-cyan-400" />
+                                        <DollarSign size={20} className="text-emerald-400" />
                                         <h3 className="text-lg font-bold text-white">Lease Model</h3>
                                     </div>
                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -199,21 +199,21 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                     <div className="mt-6 p-4 bg-[#0f162a] rounded-lg border border-white/5">
                                         <div className="flex justify-between items-center">
                                             <span className="text-sm text-gray-400">Total Lease Value</span>
-                                            <span className="text-sm font-bold text-cyan-400">{formatCurrency(deal.calculated.totalLeaseValue)}</span>
+                                            <span className="text-sm font-bold text-emerald-400">{formatCurrency(deal.calculated.totalLeaseValue)}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="bg-[#131929] border border-white/10 rounded-xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <User size={20} className="text-cyan-400" />
+                                        <User size={20} className="text-emerald-400" />
                                         <h3 className="text-lg font-bold text-white">Payouts</h3>
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                         {deal.payouts.map((p) => (
                                             <div key={p.name} className="flex justify-between items-center bg-[#0f162a] border border-white/5 rounded-lg px-3 py-2">
                                                 <span className="text-sm text-gray-300">{p.name}</span>
-                                                <span className="text-sm font-bold text-cyan-400">{p.percentage}%</span>
+                                                <span className="text-sm font-bold text-emerald-400">{p.percentage}%</span>
                                             </div>
                                         ))}
                                     </div>
@@ -249,13 +249,13 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                             <div className="lg:col-span-2 space-y-8">
                                 <div className="bg-[#131929] border border-white/10 rounded-xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <FileText size={20} className="text-cyan-400" />
+                                        <FileText size={20} className="text-emerald-400" />
                                         <h3 className="text-lg font-bold text-white">Attachments</h3>
                                     </div>
                                     {deal.attachments && deal.attachments.length > 0 ? (
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {deal.attachments.map((a) => (
-                                                <a key={a.name} href={a.url} target="_blank" rel="noreferrer" className="flex items-center justify-between bg-[#0f162a] border border-white/5 rounded-lg px-3 py-2 hover:border-cyan-500/40 transition-colors">
+                                                <a key={a.name} href={a.url} target="_blank" rel="noreferrer" className="flex items-center justify-between bg-[#0f162a] border border-white/5 rounded-lg px-3 py-2 hover:border-emerald-500/40 transition-colors">
                                                     <div>
                                                         <p className="text-sm text-white font-semibold">{a.name}</p>
                                                         <p className="text-[10px] text-gray-400 uppercase tracking-wider">{a.type} • {a.uploadedAt}</p>
@@ -271,7 +271,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
 
                                 <div className="bg-[#131929] border border-white/10 rounded-xl p-6">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <User size={20} className="text-cyan-400" />
+                                        <User size={20} className="text-emerald-400" />
                                         <h3 className="text-lg font-bold text-white">Deal Origin & Team</h3>
                                     </div>
                                     <div className="flex items-center gap-4">
@@ -297,7 +297,7 @@ const DealModal: React.FC<{ deal: EnrichedClient; onClose: () => void }> = ({ de
                                             </div>
                                             <div>
                                                 <p className="text-sm text-white font-bold">{deal.company}</p>
-                                                <a href={`https://${deal.domain}`} target="_blank" rel="noreferrer" className="text-xs text-blue-400 hover:text-blue-300">{deal.domain}</a>
+                                                <a href={`https://${deal.domain}`} target="_blank" rel="noreferrer" className="text-xs text-emerald-400 hover:text-emerald-300">{deal.domain}</a>
                                             </div>
                                         </div>
                                         <div className="flex justify-between text-sm">

@@ -31,7 +31,7 @@ const Contactor = ({ x, label, subLabel, active, onClick }: any) => (
             {/* Status Bar */}
             <motion.rect
                 x="12" y="12" width="16" height="6" rx="1"
-                fill={active ? "#22c55e" : "#94a3b8"}
+                fill={active ? "#10b981" : "#94a3b8"}
                 animate={{ opacity: active ? 1 : 0.5 }}
             />
         </g>
@@ -45,7 +45,7 @@ const Contactor = ({ x, label, subLabel, active, onClick }: any) => (
         <circle cx="55" cy="85" r="4" fill="#94a3b8" stroke="#0f172a" strokeWidth="2" />
 
         {/* Highlight Overlay */}
-        <rect x="-2" y="-2" width="74" height="90" fill="none" stroke="#22d3ee" strokeWidth="2" opacity="0" className="group-hover:opacity-100 transition-opacity" rx="4" />
+        <rect x="-2" y="-2" width="74" height="90" fill="none" stroke="#10b981" strokeWidth="2" opacity="0" className="group-hover:opacity-100 transition-opacity" rx="4" />
     </g>
 );
 
@@ -63,8 +63,8 @@ const OverloadRelay = ({ x, label, setPoint }: any) => (
         <text x="35" y="10" textAnchor="middle" fontSize="7" fill="#94a3b8">AMPS</text>
 
         {/* Buttons - Side by Side */}
-        {/* Reset - Blue/White - Left */}
-        <rect x="15" y="45" width="12" height="12" rx="2" fill="#3b82f6" stroke="#1e3a8a" /> 
+        {/* Reset - Emerald/White - Left */}
+        <rect x="15" y="45" width="12" height="12" rx="2" fill="#10b981" stroke="#065f46" /> 
         <text x="21" y="42" textAnchor="middle" fontSize="5" fill="#94a3b8">RST</text>
         
         {/* Stop - Red - Right */}
@@ -108,13 +108,13 @@ const ElectricalPanelDiagram: React.FC = () => {
 
                         {/* Wires Top (Busbar) */}
                         <Wire d="M 35 0 L 35 10" color="#facc15" />
-                        <Wire d="M 55 0 L 55 10" color="#22c55e" />
+                        <Wire d="M 55 0 L 55 10" color="#10b981" />
                         <Wire d="M 75 0 L 75 10" color="#ef4444" />
                         
                         {/* Bridge Wires (Simulated loops) */}
-                        <path d="M 55 10 Q 95 -10 135 10" stroke="#22c55e" strokeWidth="3" fill="none" />
-                        <path d="M 135 10 Q 175 -10 215 10" stroke="#22c55e" strokeWidth="3" fill="none" />
-                        <path d="M 215 10 Q 255 -10 295 10" stroke="#22c55e" strokeWidth="3" fill="none" />
+                        <path d="M 55 10 Q 95 -10 135 10" stroke="#10b981" strokeWidth="3" fill="none" />
+                        <path d="M 135 10 Q 175 -10 215 10" stroke="#10b981" strokeWidth="3" fill="none" />
+                        <path d="M 215 10 Q 255 -10 295 10" stroke="#10b981" strokeWidth="3" fill="none" />
 
                         {contactors.map((c) => (
                             <React.Fragment key={c.id}>
@@ -134,7 +134,7 @@ const ElectricalPanelDiagram: React.FC = () => {
                 {/* Info Panel */}
                 <div className="w-full md:w-64 bg-slate-800/50 border border-white/10 rounded-lg p-4">
                     <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                         Diagnostics
                     </h4>
                     
@@ -147,7 +147,7 @@ const ElectricalPanelDiagram: React.FC = () => {
                                 exit={{ opacity: 0, y: -10 }}
                             >
                                 <div className="text-xs text-gray-400 uppercase font-bold mb-1">Selected Unit</div>
-                                <div className="text-xl text-cyan-300 font-mono font-bold mb-2">{activeContactor}</div>
+                                <div className="text-xl text-emerald-300 font-mono font-bold mb-2">{activeContactor}</div>
                                 
                                 <div className="space-y-3 text-sm text-gray-300">
                                     <div className="flex justify-between border-b border-white/5 pb-1">
@@ -156,16 +156,16 @@ const ElectricalPanelDiagram: React.FC = () => {
                                     </div>
                                     <div className="flex justify-between border-b border-white/5 pb-1">
                                         <span>State:</span>
-                                        <span className="text-green-400 font-mono">ENERGIZED</span>
+                                        <span className="text-emerald-400 font-mono">ENERGIZED</span>
                                     </div>
                                     <div className="flex justify-between border-b border-white/5 pb-1">
                                         <span>Coil Voltage:</span>
                                         <span>220V AC</span>
                                     </div>
                                     
-                                    <div className="bg-blue-500/10 p-2 rounded border border-blue-500/30 mt-2">
-                                        <p className="text-xs text-blue-300">
-                                            <strong>Tip:</strong> If tripped, press the Blue reset button on the left side of the relay face.
+                                    <div className="bg-emerald-500/10 p-2 rounded border border-emerald-500/30 mt-2">
+                                        <p className="text-xs text-emerald-300">
+                                            <strong>Tip:</strong> If tripped, press the Emerald reset button on the left side of the relay face.
                                         </p>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ const documents = [
     size: '2.5 MB',
     date: 'Oct 15, 2024',
     icon: FileCode,
-    color: 'text-cyan-400',
+    color: 'text-emerald-400',
     desc: 'Detailed hardware breakdown, electrical requirements, and performance curves for the 9000 series.'
   },
   { 
@@ -22,7 +22,7 @@ const documents = [
     size: '4.1 MB',
     date: 'Sep 02, 2024',
     icon: BookOpen,
-    color: 'text-purple-400',
+    color: 'text-teal-400',
     desc: 'Comprehensive analysis of ROI methodologies and global market trends in fuel recovery.'
   },
   { 
@@ -42,7 +42,7 @@ const documents = [
     size: '1.5 MB',
     date: 'Jul 10, 2024',
     icon: FileCode,
-    color: 'text-cyan-400',
+    color: 'text-emerald-400',
     desc: 'Technical data for our add-on carbon capture module, including compatibility matrices.'
   },
   { 
@@ -52,7 +52,7 @@ const documents = [
     size: '3.2 MB',
     date: 'Jun 05, 2024',
     icon: BookOpen,
-    color: 'text-purple-400',
+    color: 'text-teal-400',
     desc: 'How machine learning models reduce downtime by predicting component failures before they occur.'
   },
   { 
@@ -62,7 +62,7 @@ const documents = [
     size: '5.6 MB',
     date: 'May 12, 2024',
     icon: FileText,
-    color: 'text-blue-400',
+    color: 'text-emerald-400',
     desc: 'Step-by-step manual for site preparation, concrete pad requirements, and electrical hookups.'
   },
 ];
@@ -107,11 +107,11 @@ const LibraryPage: React.FC = () => {
           animate="animate"
           transition={{ duration: 0.6 }}
         >
-          <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
+          <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
               Digital Archive
           </span>
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Library</span>
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Library</span>
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
             Access our collection of in-depth technical documents, whitepapers, and case studies. Securely encrypted and always up-to-date.
@@ -129,7 +129,7 @@ const LibraryPage: React.FC = () => {
                         onClick={() => setActiveFilter(cat)}
                         className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all border ${
                             activeFilter === cat 
-                            ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)]' 
+                            ? 'bg-emerald-500/20 border-emerald-500/50 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.2)]' 
                             : 'bg-transparent border-transparent text-gray-400 hover:bg-white/5 hover:text-white'
                         }`}
                     >
@@ -145,7 +145,7 @@ const LibraryPage: React.FC = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search archives..." 
-                    className="w-full bg-black/30 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-colors placeholder-gray-600 font-mono"
+                    className="w-full bg-black/30 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-colors placeholder-gray-600 font-mono"
                 />
                 <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             </div>
@@ -176,7 +176,7 @@ const LibraryPage: React.FC = () => {
 
                                 {/* Card Content */}
                                 <div className="flex-grow">
-                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors leading-snug">
+                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors leading-snug">
                                         {doc.title}
                                     </h3>
                                     <p className="text-xs text-gray-400 leading-relaxed mb-6">
@@ -189,7 +189,7 @@ const LibraryPage: React.FC = () => {
                                     <span className="text-[10px] font-mono text-gray-600">
                                         UPDATED: {doc.date}
                                     </span>
-                                    <button className="flex items-center gap-2 text-xs font-bold text-cyan-500 uppercase tracking-wider hover:text-white transition-colors group/btn">
+                                    <button className="flex items-center gap-2 text-xs font-bold text-emerald-500 uppercase tracking-wider hover:text-white transition-colors group/btn">
                                         Download
                                         <Download size={14} className="group-hover/btn:translate-y-0.5 transition-transform" />
                                     </button>

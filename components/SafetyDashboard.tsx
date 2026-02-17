@@ -43,7 +43,7 @@ const SafetyDashboard: React.FC = () => {
                             className="relative p-8 rounded-2xl glass-card text-center flex flex-col items-center justify-center"
                             variants={cardVariants}
                         >
-                            <Icon className="w-12 h-12 text-cyan-300 mb-4" />
+                            <Icon className="w-12 h-12 text-emerald-300 mb-4" />
                             <AnimatedCounter 
                                 to={stat.to} 
                                 fractionDigits={stat.fractionDigits}

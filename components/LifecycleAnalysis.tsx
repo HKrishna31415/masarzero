@@ -43,7 +43,7 @@ const LifecycleAnalysis: React.FC = () => {
 
             <div className="relative max-w-4xl mx-auto">
                 {/* Connecting Line (Desktop) */}
-                <div className="absolute left-[2.25rem] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-cyan-500/50 to-transparent md:-translate-x-1/2"></div>
+                <div className="absolute left-[2.25rem] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-emerald-500/50 to-transparent md:-translate-x-1/2"></div>
 
                 <div className="space-y-12 md:space-y-24">
                     {stages.map((stage, i) => {
@@ -68,8 +68,8 @@ const LifecycleAnalysis: React.FC = () => {
                                 {/* Center Icon */}
                                 <div className="absolute left-0 md:left-1/2 top-0 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-[4.5rem] h-[4.5rem] flex-shrink-0 z-10">
                                     <div className="w-full h-full rounded-full bg-[#000212] border border-white/10 flex items-center justify-center relative group">
-                                        <div className="absolute inset-0 bg-cyan-500/10 rounded-full animate-pulse"></div>
-                                        <div className="relative z-10 w-12 h-12 rounded-full bg-slate-900 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:text-white group-hover:border-cyan-400 transition-all shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                                        <div className="absolute inset-0 bg-emerald-500/10 rounded-full animate-pulse"></div>
+                                        <div className="relative z-10 w-12 h-12 rounded-full bg-slate-900 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:text-white group-hover:border-emerald-400 transition-all shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                                             <Icon size={24} />
                                         </div>
                                     </div>

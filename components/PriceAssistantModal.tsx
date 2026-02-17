@@ -73,7 +73,7 @@ const PriceAssistantModal: React.FC<PriceAssistantModalProps> = ({ isOpen, onClo
                     >
                         <div className="p-6 border-b border-white/10 flex justify-between items-center">
                             <h2 className="text-xl font-bold flex items-center gap-2">
-                                <Wand2 className="text-cyan-300" />
+                                <Wand2 className="text-emerald-300" />
                                 Price Assistant
                             </h2>
                             <button onClick={onClose} className="p-1 rounded-full hover:bg-white/10 transition-colors">
@@ -88,7 +88,7 @@ const PriceAssistantModal: React.FC<PriceAssistantModalProps> = ({ isOpen, onClo
                                     id="country-select"
                                     value={selectedCountry}
                                     onChange={(e) => setSelectedCountry(e.target.value)}
-                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-2 px-4 text-sm focus:ring-1 focus:ring-cyan-400 focus:outline-none"
+                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-2 px-4 text-sm focus:ring-1 focus:ring-emerald-400 focus:outline-none"
                                 >
                                     {countries.map(c => <option key={c} value={c}>{c}</option>)}
                                 </select>
@@ -100,7 +100,7 @@ const PriceAssistantModal: React.FC<PriceAssistantModalProps> = ({ isOpen, onClo
                                         <div className="flex justify-between items-center"><span className="text-gray-400">Avg. Fuel Price:</span> <span className="font-mono">{priceData.gasolinePrice.toFixed(2)} USD/L</span></div>
                                         <div className="flex justify-between items-center"><span className="text-gray-400">Avg. Fuel Tax:</span> <span className="font-mono text-red-400">- {priceData.fuelTax.toFixed(2)} USD/L</span></div>
                                         <hr className="border-white/10 my-2" />
-                                        <div className="flex justify-between items-center text-base"><span className="font-bold text-cyan-300">Net Price (Tax-Exclusive):</span> <span className="font-mono font-bold text-cyan-300">{netPrice.toFixed(2)} USD/L</span></div>
+                                        <div className="flex justify-between items-center text-base"><span className="font-bold text-emerald-300">Net Price (Tax-Exclusive):</span> <span className="font-mono font-bold text-emerald-300">{netPrice.toFixed(2)} USD/L</span></div>
                                     </div>
                                 ) : (
                                     <p className="m-auto text-sm text-gray-500 text-center">No data available for the selected country.</p>
@@ -113,7 +113,7 @@ const PriceAssistantModal: React.FC<PriceAssistantModalProps> = ({ isOpen, onClo
                             <button
                                 onClick={handleApply}
                                 disabled={!priceData}
-                                className="font-semibold bg-cyan-500 text-white px-6 py-2 rounded-full hover:bg-cyan-600 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
+                                className="font-semibold bg-emerald-500 text-white px-6 py-2 rounded-full hover:bg-emerald-600 transition-colors disabled:bg-gray-500 disabled:cursor-not-allowed"
                             >
                                 Apply Price
                             </button>

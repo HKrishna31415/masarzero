@@ -29,7 +29,7 @@ const AboutPage: React.FC = () => {
   };
 
   const buttonVariants = {
-    hover: { scale: 1.05, boxShadow: "0 0 20px rgba(0, 255, 255, 0.4)" },
+    hover: { scale: 1.05, boxShadow: "0 0 20px rgba(16, 185, 129, 0.4)" },
     tap: { scale: 0.95 },
   };
 
@@ -71,10 +71,10 @@ const AboutPage: React.FC = () => {
                   <VectorBorderCard key={member.name} delay={i * 0.1} className="bg-[#0A0D22]">
                       <div className="p-6 flex flex-col items-center text-center">
                           <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 border border-white/10">
-                              <member.icon className="text-cyan-400 w-8 h-8" />
+                              <member.icon className="text-emerald-400 w-8 h-8" />
                           </div>
                           <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                          <p className="text-sm text-cyan-500 font-mono uppercase tracking-wider mb-3">{member.role}</p>
+                          <p className="text-sm text-emerald-500 font-mono uppercase tracking-wider mb-3">{member.role}</p>
                           <p className="text-sm text-gray-400">{member.bio}</p>
                       </div>
                   </VectorBorderCard>
@@ -84,7 +84,7 @@ const AboutPage: React.FC = () => {
 
       {/* New Corporate DNA Section */}
       <div className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-cyan-900/5 skew-y-3 transform origin-bottom-left" />
+          <div className="absolute inset-0 bg-emerald-900/5 skew-y-3 transform origin-bottom-left" />
           <div className="container mx-auto px-4 relative z-10">
                <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-5xl font-bold mb-4">Corporate DNA</h2>
@@ -98,9 +98,9 @@ const AboutPage: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.2 }}
-                        className="glass-card p-8 rounded-3xl border border-white/10 text-center hover:border-cyan-500/50 transition-colors group"
+                        className="glass-card p-8 rounded-3xl border border-white/10 text-center hover:border-emerald-500/50 transition-colors group"
                       >
-                          <value.icon className="w-12 h-12 mx-auto mb-6 text-gray-500 group-hover:text-cyan-400 transition-colors" />
+                          <value.icon className="w-12 h-12 mx-auto mb-6 text-gray-500 group-hover:text-emerald-400 transition-colors" />
                           <h3 className="text-2xl font-bold mb-2">{value.title}</h3>
                           <p className="text-gray-400">{value.text}</p>
                       </motion.div>
@@ -121,10 +121,10 @@ const AboutPage: React.FC = () => {
       >
          <div className="relative p-12 rounded-3xl bg-slate-900/30 border border-white/5 backdrop-blur-sm flex flex-col items-center">
              {/* Glow behind logo */}
-             <div className="absolute inset-0 bg-cyan-500/5 blur-[80px] rounded-full"></div>
+             <div className="absolute inset-0 bg-emerald-500/5 blur-[80px] rounded-full"></div>
              
              <div className="text-center">
-                 <h2 className="text-4xl font-bold tracking-widest text-white uppercase">Masar<span className="text-cyan-400">Zero</span></h2>
+                 <h2 className="text-4xl font-bold tracking-widest text-white uppercase">Masar<span className="text-emerald-400">Zero</span></h2>
                  <p className="text-sm text-gray-500 tracking-[0.5em] mt-2 uppercase">Intelligent Recovery</p>
              </div>
          </div>

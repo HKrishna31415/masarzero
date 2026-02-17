@@ -16,7 +16,7 @@ const CustomTooltip = ({ active, payload, label, prefix = '', suffix = '' }: any
         const value = data.value;
         
         return (
-            <div className="bg-[#0f172a]/95 border border-cyan-500/30 p-3 rounded-xl shadow-2xl backdrop-blur-md">
+            <div className="bg-[#0f172a]/95 border border-emerald-500/30 p-3 rounded-xl shadow-2xl backdrop-blur-md">
                 <p className="text-xs font-mono text-gray-400 mb-1 uppercase tracking-wider">{data.name}</p>
                 <p className="font-bold text-sm" style={{ color: data.fill }}>
                     {prefix}{Math.abs(value).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}{suffix}
@@ -36,7 +36,7 @@ const SliderInput = ({ label, value, min, max, step, unit, prefix = '', onChange
         <div className="mb-6 group">
             <div className="flex justify-between items-end mb-3">
                  <div className="flex items-center gap-2">
-                    <label className="text-sm font-medium text-gray-300 group-hover:text-cyan-300 transition-colors">{label}</label>
+                    <label className="text-sm font-medium text-gray-300 group-hover:text-emerald-300 transition-colors">{label}</label>
                     {infoAction && (
                         <button onClick={infoAction} className="text-gray-500 hover:text-white transition-colors">
                             <Info size={14} />
@@ -49,7 +49,7 @@ const SliderInput = ({ label, value, min, max, step, unit, prefix = '', onChange
             </div>
             <div className="relative h-2 bg-slate-800 rounded-full cursor-pointer">
                 <div 
-                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" 
+                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" 
                     style={{ width: `${percentage}%` }}
                 />
                 <input 
@@ -70,7 +70,7 @@ const SliderInput = ({ label, value, min, max, step, unit, prefix = '', onChange
     );
 };
 
-const StatCard = ({ icon: Icon, label, value, subtext, colorClass = "text-cyan-400" }: any) => (
+const StatCard = ({ icon: Icon, label, value, subtext, colorClass = "text-emerald-400" }: any) => (
     <VectorBorderCard className="h-full">
         <div className="flex flex-col h-full justify-between">
             <div>
@@ -116,7 +116,7 @@ const SimplifiedCalculator = () => {
             <div className="lg:col-span-4 space-y-8">
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
                     <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-cyan-500/10 rounded-lg text-cyan-400">
+                        <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
                             <Sliders size={20} />
                         </div>
                         <h3 className="font-bold text-lg">Quick Inputs</h3>
@@ -154,17 +154,17 @@ const SimplifiedCalculator = () => {
                     />
                 </div>
 
-                <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 border border-cyan-500/20 p-6 rounded-2xl">
-                    <h4 className="text-sm font-bold text-cyan-300 uppercase tracking-wider mb-4">Estimated Impact</h4>
+                <div className="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 border border-emerald-500/20 p-6 rounded-2xl">
+                    <h4 className="text-sm font-bold text-emerald-300 uppercase tracking-wider mb-4">Estimated Impact</h4>
                      <div className="space-y-4">
                         <div className="flex justify-between items-center">
                             <span className="text-gray-300">Annual Revenue</span>
                             <span className="text-xl font-bold text-white">{formatCurrency(annualRevenue)}</span>
                         </div>
-                        <div className="h-px bg-cyan-500/20" />
+                        <div className="h-px bg-emerald-500/20" />
                         <div className="flex justify-between items-center">
                             <span className="text-gray-300">CO₂ Saved</span>
-                            <span className="text-xl font-bold text-green-400">{formatNumber(Math.round(co2Reduction))} tons</span>
+                            <span className="text-xl font-bold text-emerald-400">{formatNumber(Math.round(co2Reduction))} tons</span>
                         </div>
                     </div>
                 </div>
@@ -178,36 +178,36 @@ const SimplifiedCalculator = () => {
                         label="Annual Revenue" 
                         value={formatCurrency(annualRevenue)} 
                         subtext="Gross revenue generated from recovered fuel"
-                        colorClass="text-green-400"
+                        colorClass="text-emerald-400"
                     />
                     <StatCard 
                         icon={GanttChartSquare} 
                         label="Payback Period" 
                         value={roiPeriod > 0 ? `${roiPeriod.toFixed(1)} Months` : 'Immediate'} 
                         subtext="Time to recover estimated hardware investment"
-                        colorClass="text-blue-400"
+                        colorClass="text-teal-400"
                     />
                 </div>
 
                 <div className="bg-[#0f172a]/50 border border-white/10 rounded-2xl p-6 h-[400px] relative overflow-hidden">
                      <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-                        <TrendingUp size={18} className="text-cyan-400" />
+                        <TrendingUp size={18} className="text-emerald-400" />
                         Cumulative Revenue Projection (Year 1)
                     </h3>
                     <ResponsiveContainer width="100%" height="85%">
                         <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3}/>
-                                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                                 </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.05)" vertical={false} />
                             <XAxis dataKey="month" stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => val.replace('Month ', 'M')} />
                             <YAxis stroke="#64748b" fontSize={12} tickFormatter={(value) => `$${value / 1000}k`} tickLine={false} axisLine={false} />
-                            <Tooltip content={<CustomTooltip prefix="$" />} cursor={{ stroke: '#22d3ee', strokeWidth: 1, strokeDasharray: '4 4' }} />
+                            <Tooltip content={<CustomTooltip prefix="$" />} cursor={{ stroke: '#10b981', strokeWidth: 1, strokeDasharray: '4 4' }} />
                             <ReferenceLine y={750000} label="Breakeven (Est. CapEx)" stroke="#ef4444" strokeDasharray="3 3" />
-                            <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#06b6d4" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
+                            <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorRevenue)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -256,11 +256,11 @@ const AdvancedCalculator = () => {
         // Waterfall Data
         let cumulative = 0;
         const waterfallRaw = [
-            { name: 'Revenue', value: grossRevenue, fill: '#22c55e' }, // Green
+            { name: 'Revenue', value: grossRevenue, fill: '#10b981' }, // Emerald
             { name: 'OpEx', value: -annualOpexTotal, fill: '#ef4444' }, // Red
             { name: 'Depreciation', value: -annualDepreciation, fill: '#f59e0b' }, // Orange
-            { name: 'Credits', value: carbonCreditValue + complianceValue, fill: '#3b82f6' }, // Blue
-            { name: 'Net Value', value: 0, isTotal: true, fill: '#06b6d4' }, // Cyan
+            { name: 'Credits', value: carbonCreditValue + complianceValue, fill: '#0d9488' }, // Teal
+            { name: 'Net Value', value: 0, isTotal: true, fill: '#14b8a6' }, // Teal
         ];
         
         const waterfallData = waterfallRaw.map(item => {
@@ -320,7 +320,7 @@ const AdvancedCalculator = () => {
              {/* Inputs Column */}
              <div className="lg:col-span-4 space-y-6 h-fit lg:sticky lg:top-24 overflow-y-auto max-h-[85vh] pr-2 custom-scrollbar">
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-cyan-300"><Activity size={18}/> Operational</h3>
+                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-emerald-300"><Activity size={18}/> Operational</h3>
                     <SliderInput label="Vapor Volume" value={volume} min={5000} max={200000} step={1000} unit="L/day" onChange={setVolume} format={formatNumber} />
                     <SliderInput label="Efficiency" value={efficiency} min={95} max={99.9} step={0.1} unit="%" onChange={setEfficiency} format={(v: number) => v.toFixed(1)} />
                     <SliderInput label="Uptime" value={uptime} min={80} max={100} step={1} unit="%" onChange={setUptime} />
@@ -335,7 +335,7 @@ const AdvancedCalculator = () => {
                 </div>
 
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl">
-                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-blue-400"><Leaf size={18}/> ESG & Regulatory</h3>
+                    <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-teal-400"><Leaf size={18}/> ESG & Regulatory</h3>
                     <SliderInput label="Carbon Price" value={carbonPrice} min={10} max={200} step={5} unit="/ton" prefix="$" onChange={setCarbonPrice} format={formatNumber} />
                     <SliderInput label="Fines Avoided" value={finesAvoided} min={0} max={250000} step={10000} unit="" prefix="$" onChange={setFinesAvoided} format={formatNumber} />
                 </div>
@@ -345,8 +345,8 @@ const AdvancedCalculator = () => {
             <div className="lg:col-span-8 space-y-8">
                 {/* KPI Banner */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <StatCard icon={PieChart} label="Total Annual Value" value={formatCurrency(Math.round(totalAnnualValue))} colorClass="text-cyan-400" />
-                    <StatCard icon={GanttChartSquare} label="Payback Period" value={paybackPeriod > 0 ? `${paybackPeriod.toFixed(1)} Mo` : 'Immediate'} colorClass="text-purple-400" />
+                    <StatCard icon={PieChart} label="Total Annual Value" value={formatCurrency(Math.round(totalAnnualValue))} colorClass="text-emerald-400" />
+                    <StatCard icon={GanttChartSquare} label="Payback Period" value={paybackPeriod > 0 ? `${paybackPeriod.toFixed(1)} Mo` : 'Immediate'} colorClass="text-emerald-400" />
                     <StatCard icon={TrendingUp} label="5-Year IRR" value={`${irr.toFixed(1)}%`} colorClass="text-green-400" />
                     <StatCard icon={Leaf} label="Carbon Removed" value={formatNumber(Math.round(co2Reduction))} subtext="Tons per Year" colorClass="text-emerald-400" />
                 </div>
@@ -382,7 +382,7 @@ const AdvancedCalculator = () => {
                                 <YAxis stroke="#9ca3af" fontSize={12} tickFormatter={(value) => `$${value / 1000}k`} axisLine={false} tickLine={false} />
                                 <Tooltip content={<CustomTooltip prefix="$" />} />
                                 <ReferenceLine y={0} stroke="#ef4444" strokeDasharray="4 4" label={{ value: "Breakeven", fill: "#ef4444", fontSize: 10 }} />
-                                <Line type="monotone" dataKey="profit" stroke="#06b6d4" strokeWidth={3} dot={{r: 4, fill: '#06b6d4', strokeWidth: 0}} activeDot={{r: 6, strokeWidth: 0}} />
+                                <Line type="monotone" dataKey="profit" stroke="#10b981" strokeWidth={3} dot={{r: 4, fill: '#10b981', strokeWidth: 0}} activeDot={{r: 6, strokeWidth: 0}} />
                             </LineChart>
                         </ResponsiveContainer>
                     </div>
@@ -419,9 +419,9 @@ const RoiCalculatorPage: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Precision Modeling</span>
+                        <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Precision Modeling</span>
                         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6">
-                            ROI <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Engine</span>
+                            ROI <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Engine</span>
                         </h1>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
                             Configure operational parameters to model exact financial outcomes. Switch between a quick estimate and a comprehensive financial analysis.
@@ -434,7 +434,7 @@ const RoiCalculatorPage: React.FC = () => {
                     <div className="bg-white/5 p-1.5 rounded-full border border-white/10 relative flex">
                          {/* Sliding Background */}
                         <motion.div 
-                            className="absolute top-1.5 bottom-1.5 bg-cyan-600 rounded-full shadow-[0_0_15px_rgba(8,145,178,0.5)]"
+                            className="absolute top-1.5 bottom-1.5 bg-emerald-600 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]"
                             initial={false}
                             animate={{ 
                                 left: mode === 'simplified' ? '6px' : '50%', 

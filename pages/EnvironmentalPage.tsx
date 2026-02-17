@@ -25,8 +25,8 @@ const impactMetrics = [
     suffix: ' tons',
     icon: Leaf,
     description: 'Preventing greenhouse gases from entering the atmosphere annually.',
-    colorClass: 'text-cyan-400',
-    hexColor: '#22d3ee'
+    colorClass: 'text-emerald-400',
+    hexColor: '#34d399'
   },
   {
     id: 'fuel',
@@ -35,8 +35,8 @@ const impactMetrics = [
     suffix: ' L',
     icon: Droplets,
     description: 'Turning waste vapor back into valuable, sellable liquid fuel.',
-    colorClass: 'text-purple-400',
-    hexColor: '#a855f7'
+    colorClass: 'text-teal-400',
+    hexColor: '#14b8a6'
   },
   {
     id: 'trees',
@@ -45,8 +45,8 @@ const impactMetrics = [
     suffix: '',
     icon: Sprout,
     description: 'Carbon sequestration equivalent to planting millions of trees.',
-    colorClass: 'text-cyan-400',
-    hexColor: '#22d3ee'
+    colorClass: 'text-emerald-400',
+    hexColor: '#34d399'
   },
   {
     id: 'water',
@@ -56,8 +56,8 @@ const impactMetrics = [
     suffix: 'B L',
     icon: Recycle,
     description: 'Conserving water resources through efficient closed-loop cooling.',
-    colorClass: 'text-blue-400',
-    hexColor: '#60a5fa'
+    colorClass: 'text-teal-400',
+    hexColor: '#14b8a6'
   },
   {
     id: 'air',
@@ -67,8 +67,8 @@ const impactMetrics = [
     suffix: '%',
     icon: Wind,
     description: 'Reduction in Volatile Organic Compounds (VOCs) and pollutants.',
-    colorClass: 'text-cyan-400',
-    hexColor: '#22d3ee'
+    colorClass: 'text-emerald-400',
+    hexColor: '#34d399'
   },
   {
     id: 'compliance',
@@ -77,8 +77,8 @@ const impactMetrics = [
     suffix: '%',
     icon: ShieldCheck,
     description: 'Surpassing strict global environmental regulations consistently.',
-    colorClass: 'text-purple-400',
-    hexColor: '#a855f7'
+    colorClass: 'text-teal-400',
+    hexColor: '#14b8a6'
   }
 ];
 
@@ -179,15 +179,15 @@ const MetricGraphic = ({ id, color }: { id: string, color: string }) => {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-[#000212]/90 border border-cyan-500/30 p-3 rounded-md shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-md">
+      <div className="bg-[#000212]/90 border border-emerald-500/30 p-3 rounded-md shadow-[0_0_15px_rgba(16,185,129,0.3)] backdrop-blur-md">
         <p className="text-xs font-mono text-gray-400 mb-2 uppercase tracking-widest">Timeframe: {label}</p>
         <div className="space-y-1">
              <div className="flex items-center justify-between gap-4">
-                <span className="text-cyan-400 text-xs font-bold flex items-center gap-1"><DollarSign size={10}/> Net Profit:</span>
+                <span className="text-emerald-400 text-xs font-bold flex items-center gap-1"><DollarSign size={10}/> Net Profit:</span>
                 <span className="text-white text-sm font-mono font-bold">+${payload[0].value}k</span>
             </div>
              <div className="flex items-center justify-between gap-4">
-                <span className="text-purple-400 text-xs font-bold flex items-center gap-1"><Wind size={10}/> Emissions:</span>
+                <span className="text-teal-400 text-xs font-bold flex items-center gap-1"><Wind size={10}/> Emissions:</span>
                 <span className="text-white text-sm font-mono font-bold">{payload[1].value}%</span>
             </div>
         </div>
@@ -202,15 +202,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 const TechFrame = ({ children, className }: { children: React.ReactNode, className?: string }) => (
     <div className={`relative ${className}`}>
         {/* Corner Brackets */}
-        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-500/50 rounded-tl-sm pointer-events-none" />
-        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-500/50 rounded-tr-sm pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-500/50 rounded-bl-sm pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500/50 rounded-br-sm pointer-events-none" />
+        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-500/50 rounded-tl-sm pointer-events-none" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-emerald-500/50 rounded-tr-sm pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-emerald-500/50 rounded-bl-sm pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-emerald-500/50 rounded-br-sm pointer-events-none" />
         
         {/* Content */}
         <div className="bg-slate-900/40 backdrop-blur-md border border-white/5 p-6 rounded-sm h-full w-full overflow-hidden relative z-10">
              {/* Scanline Effect */}
-             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent opacity-20 animate-scan pointer-events-none" />
+             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent opacity-20 animate-scan pointer-events-none" />
             {children}
         </div>
     </div>
@@ -269,8 +269,8 @@ const SustainabilityChart = () => {
             </ResponsiveContainer>
             
             {/* Axis Labels */}
-            <div className="absolute top-0 left-2 text-[10px] text-cyan-500 font-bold tracking-wider">REVENUE GROWTH</div>
-            <div className="absolute bottom-8 right-2 text-[10px] text-purple-500 font-bold tracking-wider">EMISSION DROP</div>
+            <div className="absolute top-0 left-2 text-[10px] text-emerald-500 font-bold tracking-wider">REVENUE GROWTH</div>
+            <div className="absolute bottom-8 right-2 text-[10px] text-teal-500 font-bold tracking-wider">EMISSION DROP</div>
         </div>
     )
 }
@@ -295,12 +295,12 @@ const EnvironmentalHero = () => {
 
       {/* --- Animated Gradients --- */}
       <motion.div 
-        className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
+        className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
         animate={{ x: [0, 20, 0], opacity: [0.1, 0.2, 0.1] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
        <motion.div 
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-[100px] mix-blend-screen pointer-events-none"
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 10, repeat: Infinity }}
       />
@@ -315,14 +315,14 @@ const EnvironmentalHero = () => {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <div className="flex items-center gap-3 mb-6">
-                    <div className="h-px w-12 bg-cyan-500/50"></div>
-                    <span className="text-cyan-400 text-xs font-mono font-bold tracking-[0.2em] uppercase">
+                    <div className="h-px w-12 bg-emerald-500/50"></div>
+                    <span className="text-emerald-400 text-xs font-mono font-bold tracking-[0.2em] uppercase">
                         Eco-Efficiency Engine
                     </span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
-                    A <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Greener</span><br />
+                    A <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600">Greener</span><br />
                     Bottom Line.
                 </h1>
                 
@@ -331,12 +331,12 @@ const EnvironmentalHero = () => {
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
-                    <button className="relative group overflow-hidden bg-white text-black font-bold py-4 px-8 rounded-none skew-x-[-10deg] transition-all hover:bg-cyan-400">
+                    <button className="relative group overflow-hidden bg-white text-black font-bold py-4 px-8 rounded-none skew-x-[-10deg] transition-all hover:bg-emerald-400">
                         <div className="skew-x-[10deg] flex items-center gap-2">
                              Start Calculation <TrendingUp size={18} />
                         </div>
                     </button>
-                     <button className="relative group overflow-hidden border border-white/20 text-white font-bold py-4 px-8 rounded-none skew-x-[-10deg] hover:border-cyan-400 transition-all">
+                     <button className="relative group overflow-hidden border border-white/20 text-white font-bold py-4 px-8 rounded-none skew-x-[-10deg] hover:border-emerald-400 transition-all">
                         <div className="skew-x-[10deg] flex items-center gap-2">
                              View Case Studies <Activity size={18} />
                         </div>
@@ -358,14 +358,14 @@ const EnvironmentalHero = () => {
                         <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                             <div>
                                 <h3 className="text-white font-bold flex items-center gap-2 text-lg">
-                                    <Activity size={18} className="text-cyan-400" />
+                                    <Activity size={18} className="text-emerald-400" />
                                     Performance Correlation
                                 </h3>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-wider mt-1">Real-time Analysis // Node: MZ-Alpha</p>
                             </div>
                             <div className="flex gap-2">
-                                <span className="flex h-2 w-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_8px_#06b6d4]"></span>
-                                <span className="text-[10px] font-mono text-cyan-400">LIVE FEED</span>
+                                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
+                                <span className="text-[10px] font-mono text-emerald-400">LIVE FEED</span>
                             </div>
                         </div>
                         <SustainabilityChart />
@@ -378,8 +378,8 @@ const EnvironmentalHero = () => {
                 <div className="absolute -top-8 -right-4 md:-right-12 z-20 w-48">
                     <VectorBorderCard delay={0.6} glowing>
                         <div className="flex items-center justify-between mb-2">
-                            <Leaf size={16} className="text-purple-400" />
-                            <span className="text-[9px] text-purple-400 font-bold uppercase flex items-center gap-1">
+                            <Leaf size={16} className="text-teal-400" />
+                            <span className="text-[9px] text-teal-400 font-bold uppercase flex items-center gap-1">
                                 <CheckCircle2 size={10} /> Verified
                             </span>
                         </div>
@@ -399,8 +399,8 @@ const EnvironmentalHero = () => {
                 <div className="absolute -bottom-8 -left-4 md:-left-12 z-20 w-52">
                     <VectorBorderCard delay={0.8}>
                         <div className="flex items-center justify-between mb-2">
-                            <ShieldCheck size={16} className="text-cyan-400" />
-                            <Zap size={12} className="text-blue-400 animate-pulse" />
+                            <ShieldCheck size={16} className="text-emerald-400" />
+                            <Zap size={12} className="text-teal-400 animate-pulse" />
                         </div>
                         <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-1">Efficiency Rating</p>
                          <div className="text-2xl font-bold text-white font-mono flex items-baseline gap-1">
@@ -408,7 +408,7 @@ const EnvironmentalHero = () => {
                         </div>
                          <div className="w-full bg-gray-800 h-1 mt-2 rounded-full overflow-hidden">
                             <motion.div 
-                                className="h-full bg-cyan-400" 
+                                className="h-full bg-emerald-400"
                                 initial={{ width: 0 }}
                                 animate={{ width: '99.9%' }}
                                 transition={{ duration: 1.5, delay: 1 }}
@@ -437,8 +437,8 @@ const EnvironmentalHero = () => {
         animate={{ opacity: 0.8, y: [0, 10, 0] }}
         transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
       >
-        <span className="text-[10px] uppercase tracking-widest font-mono text-cyan-500">Scroll to Analyze</span>
-        <ArrowDown size={16} className="text-cyan-400" />
+        <span className="text-[10px] uppercase tracking-widest font-mono text-emerald-500">Scroll to Analyze</span>
+        <ArrowDown size={16} className="text-emerald-400" />
       </motion.div>
 
       <style>{`

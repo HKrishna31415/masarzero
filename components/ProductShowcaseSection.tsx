@@ -29,7 +29,7 @@ const ProductShowcaseSection: React.FC = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-6 md:p-8">
-                            <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold uppercase tracking-wider border border-cyan-500/30 mb-3 inline-block">
+                            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 mb-3 inline-block">
                                 On-Site Deployment
                             </span>
                             <h3 className="text-xl md:text-2xl font-bold text-white">MZ-9000 Pro Series</h3>

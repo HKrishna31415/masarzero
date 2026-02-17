@@ -22,7 +22,7 @@ const stats = [
         suffix: ' L', 
         label: 'Fuel Recovered', 
         sub: 'Cumulative Global',
-        color: 'text-blue-400' 
+        color: 'text-teal-400' 
     },
     { 
         id: 'trees',
@@ -31,7 +31,7 @@ const stats = [
         suffix: '', 
         label: 'Tree Equivalent', 
         sub: 'Sequestration Match',
-        color: 'text-green-400' 
+        color: 'text-emerald-400' 
     },
     { 
         id: 'water',
@@ -41,7 +41,7 @@ const stats = [
         suffix: 'B L', 
         label: 'Water Conserved', 
         sub: 'Cooling Efficiency',
-        color: 'text-cyan-400' 
+        color: 'text-emerald-400' 
     },
 ];
 
@@ -50,7 +50,7 @@ const ImpactDashboard: React.FC = () => {
         <div className="w-full">
             <div className="flex items-center justify-between mb-8 px-2">
                 <h3 className="text-xl font-bold text-white flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]"></span>
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
                     Live Impact Telemetry
                 </h3>
                 <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Global Aggregation</span>

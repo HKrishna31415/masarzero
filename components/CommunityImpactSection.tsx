@@ -59,8 +59,8 @@ const CommunityImpactSection: React.FC = () => {
                             className="glass-card p-8 rounded-2xl text-center"
                             variants={cardVariants}
                         >
-                            <div className="w-16 h-16 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-cyan-500/20">
-                                <Icon className="w-8 h-8 text-cyan-300" />
+                            <div className="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-emerald-500/20">
+                                <Icon className="w-8 h-8 text-emerald-400" />
                             </div>
                             <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                             <p className="text-gray-400 text-sm">{item.description}</p>

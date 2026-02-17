@@ -38,7 +38,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
         initial="initial"
         animate="animate"
         exit="exit"
-        className="relative w-full max-w-5xl h-auto max-h-[90vh] flex flex-col md:flex-row overflow-hidden rounded-xl shadow-2xl shadow-cyan-500/10 border border-white/10 bg-[#050714]"
+        className="relative w-full max-w-5xl h-auto max-h-[90vh] flex flex-col md:flex-row overflow-hidden rounded-xl shadow-2xl shadow-emerald-500/10 border border-white/10 bg-[#050714]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* --- Left Panel: Visuals & Status --- */}
@@ -58,16 +58,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
             {/* Status Indicator Top Left */}
             <div className="absolute top-6 left-6 z-20">
-                 <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-black/60 border border-cyan-500/30 backdrop-blur-md">
+                 <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-black/60 border border-emerald-500/30 backdrop-blur-md">
                      <div className={`w-2 h-2 rounded-full ${project.status === 'Online' ? 'bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]' : 'bg-yellow-500'}`} />
                      <span className="text-[10px] font-bold text-white uppercase tracking-wider font-mono">{project.status}</span>
                  </div>
             </div>
 
             {/* Tech Overlay Bottom Left */}
-             <div className="absolute bottom-6 left-6 z-20 font-mono text-[10px] text-cyan-400/80 space-y-1">
+             <div className="absolute bottom-6 left-6 z-20 font-mono text-[10px] text-emerald-400/80 space-y-1">
                 <div className="flex items-center gap-2 text-white mb-2">
-                    <ScanLine size={14} className="animate-pulse text-cyan-400" />
+                    <ScanLine size={14} className="animate-pulse text-emerald-400" />
                     <span className="tracking-widest uppercase font-bold">Site Located</span>
                 </div>
                 <div className="flex gap-4">
@@ -100,7 +100,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
             {/* Header */}
             <div className="mb-8 border-b border-white/5 pb-6">
-                <div className="flex items-center gap-2 text-cyan-500 mb-2">
+                <div className="flex items-center gap-2 text-emerald-500 mb-2">
                      <MapPin size={14} />
                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] font-mono">{project.countryCode} // {project.location}</span>
                 </div>
@@ -123,19 +123,19 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                     label="CO₂ Reduction" 
                     value={project.co2_reduction} 
                     icon={Leaf} 
-                    accentColor="border-cyan-500/50 text-cyan-400" 
+                    accentColor="border-emerald-500/50 text-emerald-400" 
                 />
                 <ReadoutBox 
                     label="Hardware Model" 
                     value={project.vru_model} 
                     icon={Settings} 
-                    accentColor="border-blue-500/50 text-blue-400" 
+                    accentColor="border-teal-500/50 text-teal-400" 
                 />
                 <ReadoutBox 
                     label="Operator" 
                     value={project.operator} 
                     icon={Building} 
-                    accentColor="border-purple-500/50 text-purple-400" 
+                    accentColor="border-teal-500/50 text-teal-400" 
                 />
             </div>
             
@@ -148,7 +148,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                      </div>
                      <div>
                         <span className="block text-gray-500 mb-0.5">EFFICIENCY</span>
-                        <span className="text-cyan-400 font-bold">OPTIMAL</span>
+                        <span className="text-emerald-400 font-bold">OPTIMAL</span>
                      </div>
                      <div>
                         <span className="block text-gray-500 mb-0.5">PRESSURE</span>
@@ -156,7 +156,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                      </div>
                  </div>
                  
-                 <button className="w-full sm:w-auto group flex items-center justify-center gap-2 text-xs font-bold text-black bg-cyan-500 hover:bg-cyan-400 uppercase tracking-wider transition-all px-5 py-2.5 rounded shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                 <button className="w-full sm:w-auto group flex items-center justify-center gap-2 text-xs font-bold text-black bg-emerald-500 hover:bg-emerald-400 uppercase tracking-wider transition-all px-5 py-2.5 rounded shadow-[0_0_15px_rgba(16,185,129,0.3)]">
                     Access Telemetry
                     <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                  </button>

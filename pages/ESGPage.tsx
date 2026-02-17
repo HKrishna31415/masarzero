@@ -13,8 +13,8 @@ import ThreeJSBackground from '../components/ThreeJSBackground';
 
 const tabs = [
     { id: 'env', label: 'Environmental', icon: Leaf, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
-    { id: 'soc', label: 'Social', icon: Users, color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/50' },
-    { id: 'gov', label: 'Governance', icon: Scale, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/50' },
+    { id: 'soc', label: 'Social', icon: Users, color: 'text-teal-400', bg: 'bg-teal-500/10', border: 'border-teal-500/50' },
+    { id: 'gov', label: 'Governance', icon: Scale, color: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
 ];
 
 const TransparencyVisual = () => {
@@ -42,7 +42,7 @@ const TransparencyVisual = () => {
             <div 
                 className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                    background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(14, 165, 233, 0.1), transparent 40%)',
+                    background: 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.1), transparent 40%)',
                 }}
             >
                 {/* Grid Pattern masked by spotlight */}
@@ -59,22 +59,22 @@ const TransparencyVisual = () => {
 
             {/* Crosshair Follower */}
             <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                <div className="absolute top-0 bottom-0 w-px bg-cyan-500/40" style={{ left: 'var(--mouse-x, 50%)' }} />
-                <div className="absolute left-0 right-0 h-px bg-cyan-500/40" style={{ top: 'var(--mouse-y, 50%)' }} />
-                <div className="absolute text-[10px] font-mono text-cyan-400 bg-black/60 px-1.5 py-0.5 rounded ml-2 mt-2 border border-cyan-500/30 backdrop-blur-sm" style={{ left: 'var(--mouse-x, 50%)', top: 'var(--mouse-y, 50%)' }}>
+                <div className="absolute top-0 bottom-0 w-px bg-emerald-500/40" style={{ left: 'var(--mouse-x, 50%)' }} />
+                <div className="absolute left-0 right-0 h-px bg-emerald-500/40" style={{ top: 'var(--mouse-y, 50%)' }} />
+                <div className="absolute text-[10px] font-mono text-emerald-400 bg-black/60 px-1.5 py-0.5 rounded ml-2 mt-2 border border-emerald-500/30 backdrop-blur-sm" style={{ left: 'var(--mouse-x, 50%)', top: 'var(--mouse-y, 50%)' }}>
                     AUDIT: VERIFIED
                 </div>
             </div>
 
             {/* Centered Rings - Fixed Positioning */}
             <motion.div 
-                className="absolute top-1/2 left-1/2 w-[70%] h-[70%] rounded-full border border-blue-500/20 border-dashed"
+                className="absolute top-1/2 left-1/2 w-[70%] h-[70%] rounded-full border border-emerald-500/20 border-dashed"
                 style={{ x: '-50%', y: '-50%' }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             />
             <motion.div 
-                className="absolute top-1/2 left-1/2 w-[50%] h-[50%] rounded-full border border-cyan-500/20 border-dotted"
+                className="absolute top-1/2 left-1/2 w-[50%] h-[50%] rounded-full border border-teal-500/20 border-dotted"
                 style={{ x: '-50%', y: '-50%' }}
                 animate={{ rotate: -360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
@@ -82,14 +82,14 @@ const TransparencyVisual = () => {
 
             {/* Centered Icon */}
             <motion.div 
-                className="absolute top-1/2 left-1/2 text-blue-400 z-20"
+                className="absolute top-1/2 left-1/2 text-emerald-400 z-20"
                 style={{ x: '-50%', y: '-50%' }}
                 animate={{ 
                     scale: [1, 1.05, 1],
-                    filter: ["drop-shadow(0 0 0px rgba(59, 130, 246, 0))", "drop-shadow(0 0 15px rgba(59, 130, 246, 0.3))", "drop-shadow(0 0 0px rgba(59, 130, 246, 0))"]
+                    filter: ["drop-shadow(0 0 0px rgba(16, 185, 129, 0))", "drop-shadow(0 0 15px rgba(16, 185, 129, 0.3))", "drop-shadow(0 0 0px rgba(16, 185, 129, 0))"]
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.2, color: '#22d3ee' }}
+                whileHover={{ scale: 1.2, color: '#34d399' }}
             >
                 <Scale size={64} strokeWidth={1.5} />
             </motion.div>
@@ -120,7 +120,7 @@ const ESGPage: React.FC = () => {
             <ThreeJSBackground />
             
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-cyan-900/20 via-transparent to-transparent blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-gradient-to-b from-emerald-900/20 via-transparent to-transparent blur-3xl pointer-events-none" />
             <motion.div 
                 className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none"
                 animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -139,17 +139,17 @@ const ESGPage: React.FC = () => {
                     <div className="flex items-center justify-center gap-3 mb-6">
                         <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-2 backdrop-blur-md">
                             <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
-                            <span className="text-[10px] font-mono font-bold text-green-400 uppercase tracking-widest">
+                            <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest">
                                 Live Impact Telemetry
                             </span>
                         </div>
                     </div>
 
                     <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 leading-[0.9]">
-                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">Sustainability</span> <br />
+                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-600">Sustainability</span> <br />
                         <span className="text-gray-500">Engine.</span>
                     </h1>
                     
@@ -221,7 +221,7 @@ const ESGPage: React.FC = () => {
 
                             {/* Global Goals */}
                             <div className="relative">
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-3xl -z-10 blur-xl" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-3xl -z-10 blur-xl" />
                                 <GlobalGoalsSection />
                             </div>
 
@@ -232,7 +232,7 @@ const ESGPage: React.FC = () => {
                             <div className="flex justify-center pt-8 border-t border-white/10">
                                 <button 
                                     onClick={() => { setActiveTab('soc'); scrollToTop(); }}
-                                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 hover:bg-purple-500/20 transition-all group"
+                                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 hover:bg-teal-500/20 transition-all group"
                                 >
                                     <Users size={20} />
                                     <span>Next: Explore Social Responsibility</span>
@@ -253,8 +253,8 @@ const ESGPage: React.FC = () => {
                         >
                             {/* Safety Header */}
                             <div className="text-center max-w-3xl mx-auto">
-                                <div className="inline-flex items-center justify-center p-3 bg-purple-500/10 rounded-full mb-6">
-                                    <ShieldCheck size={32} className="text-purple-400" />
+                                <div className="inline-flex items-center justify-center p-3 bg-teal-500/10 rounded-full mb-6">
+                                    <ShieldCheck size={32} className="text-teal-400" />
                                 </div>
                                 <h2 className="text-4xl font-bold text-white mb-4">Zero Harm Culture</h2>
                                 <p className="text-gray-400 text-lg">
@@ -272,7 +272,7 @@ const ESGPage: React.FC = () => {
                             <div className="flex justify-center pt-8 border-t border-white/10">
                                 <button 
                                     onClick={() => { setActiveTab('gov'); scrollToTop(); }}
-                                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 hover:bg-blue-500/20 transition-all group"
+                                    className="flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all group"
                                 >
                                     <Scale size={20} />
                                     <span>Next: View Governance Framework</span>
@@ -300,13 +300,13 @@ const ESGPage: React.FC = () => {
                                     </p>
                                     <div className="flex flex-wrap gap-4">
                                         <div className="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm text-gray-300 flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full" /> SOC 2 Type II
+                                            <div className="w-2 h-2 bg-emerald-400 rounded-full" /> SOC 2 Type II
                                         </div>
                                         <div className="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm text-gray-300 flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full" /> ISO 27001
+                                            <div className="w-2 h-2 bg-emerald-400 rounded-full" /> ISO 27001
                                         </div>
                                         <div className="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm text-gray-300 flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-blue-400 rounded-full" /> GDPR Compliant
+                                            <div className="w-2 h-2 bg-emerald-400 rounded-full" /> GDPR Compliant
                                         </div>
                                     </div>
                                 </div>
@@ -328,7 +328,7 @@ const ESGPage: React.FC = () => {
                                             Download our comprehensive annual report detailing our methodology, full audit trails, and future sustainability targets.
                                         </p>
                                     </div>
-                                    <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-cyan-50 transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105 transform">
+                                    <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-emerald-50 transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105 transform">
                                         <Download size={20} />
                                         Download PDF
                                     </button>

@@ -95,7 +95,7 @@ const AiConcierge: React.FC = () => {
                         {/* Header */}
                         <div className="flex items-center justify-between p-4 border-b border-white/10 flex-shrink-0">
                             <div className="flex items-center gap-2">
-                                <Bot className="text-cyan-300" />
+                                <Bot className="text-emerald-300" />
                                 <h3 className="font-bold">AI Concierge</h3>
                             </div>
                             <button onClick={() => setIsOpen(false)} className="p-1 rounded-full hover:bg-white/10">
@@ -106,7 +106,7 @@ const AiConcierge: React.FC = () => {
                         <div className="flex-grow p-4 overflow-y-auto space-y-4">
                             {messages.map(msg => (
                                 <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                    <div className={`max-w-[80%] p-3 rounded-xl ${msg.sender === 'user' ? 'bg-cyan-500/30 text-white' : 'bg-slate-700/50 text-gray-300'}`}>
+                                    <div className={`max-w-[80%] p-3 rounded-xl ${msg.sender === 'user' ? 'bg-emerald-500/30 text-white' : 'bg-slate-700/50 text-gray-300'}`}>
                                         <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@ const AiConcierge: React.FC = () => {
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                     placeholder="Ask anything..."
-                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-2 pl-4 pr-10 text-sm focus:ring-1 focus:ring-cyan-400 focus:outline-none"
+                                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-2 pl-4 pr-10 text-sm focus:ring-1 focus:ring-emerald-400 focus:outline-none"
                                 />
                                 <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
                                   <CornerDownLeft size={16} />
@@ -145,7 +145,7 @@ const AiConcierge: React.FC = () => {
             </AnimatePresence>
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg"
+                className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-full flex items-center justify-center shadow-lg"
                 variants={fabVariants}
                 initial="initial"
                 animate="animate"

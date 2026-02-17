@@ -69,7 +69,7 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
                 {/* Back Button */}
                 <button 
                     onClick={onBack}
-                    className="pointer-events-auto bg-slate-900/50 backdrop-blur-md border border-white/10 text-white p-3 rounded-full hover:bg-white/10 hover:border-cyan-500/50 transition-all group"
+                    className="pointer-events-auto bg-slate-900/50 backdrop-blur-md border border-white/10 text-white p-3 rounded-full hover:bg-white/10 hover:border-emerald-500/50 transition-all group"
                     aria-label="Back"
                 >
                     <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -80,7 +80,7 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
                     {facilityType === 'gas' && (
                          <button 
                             onClick={() => setShowLegend(!showLegend)}
-                            className={`p-3 rounded-full transition-all border ${showLegend ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-slate-900/50 backdrop-blur-md border-white/10 text-gray-400 hover:text-white hover:bg-white/10'}`}
+                            className={`p-3 rounded-full transition-all border ${showLegend ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'bg-slate-900/50 backdrop-blur-md border-white/10 text-gray-400 hover:text-white hover:bg-white/10'}`}
                             title="Toggle Legend"
                         >
                             <List className="w-5 h-5" />
@@ -89,7 +89,7 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
                     
                     <button 
                         onClick={() => setShowInfo(!showInfo)}
-                        className={`p-3 rounded-full transition-all border ${showInfo ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-slate-900/50 backdrop-blur-md border-white/10 text-gray-400 hover:text-white hover:bg-white/10'}`}
+                        className={`p-3 rounded-full transition-all border ${showInfo ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300' : 'bg-slate-900/50 backdrop-blur-md border-white/10 text-gray-400 hover:text-white hover:bg-white/10'}`}
                         title="Simulation Info"
                     >
                         <Info className="w-5 h-5" />

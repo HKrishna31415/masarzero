@@ -154,8 +154,8 @@ const technicians = [
 ];
 
 const frequencyStyles: { [key: string]: string } = {
-  Daily: 'bg-blue-500/20 text-blue-300 ring-blue-500/30',
-  Weekly: 'bg-cyan-500/20 text-cyan-300 ring-cyan-500/30',
+  Daily: 'bg-emerald-500/20 text-emerald-300 ring-emerald-500/30',
+  Weekly: 'bg-teal-500/20 text-teal-300 ring-teal-500/30',
   Monthly: 'bg-emerald-500/20 text-emerald-300 ring-emerald-500/30',
   Quarterly: 'bg-amber-500/20 text-amber-300 ring-amber-500/30',
   Annually: 'bg-red-500/20 text-red-300 ring-red-500/30',
@@ -184,7 +184,7 @@ const SystemSchematic = ({ onSelect, selectedId }: { onSelect: (id: string) => v
             {/* Schematic Background */}
             <div className="absolute inset-0 opacity-20 pointer-events-none"
                 style={{
-                    backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)',
+                    backgroundImage: 'radial-gradient(circle, #10b981 1px, transparent 1px)',
                     backgroundSize: '20px 20px'
                 }}
             />
@@ -200,8 +200,8 @@ const SystemSchematic = ({ onSelect, selectedId }: { onSelect: (id: string) => v
                             onClick={() => onSelect(part.id)}
                             className={`absolute flex flex-col items-center justify-center rounded-xl backdrop-blur-md transition-colors duration-300 z-10 group cursor-pointer
                                 ${isSelected 
-                                    ? 'bg-cyan-500/20 border-2 border-cyan-400 shadow-[0_0_30px_rgba(6,182,212,0.4)]' 
-                                    : 'bg-slate-800/80 border-2 border-white/10 hover:border-cyan-500/50 hover:bg-slate-800'
+                                    ? 'bg-emerald-500/20 border-2 border-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.4)]' 
+                                    : 'bg-slate-800/80 border-2 border-white/10 hover:border-emerald-500/50 hover:bg-slate-800'
                                 }`}
                             style={{
                                 left: `${part.x}%`,
@@ -213,7 +213,7 @@ const SystemSchematic = ({ onSelect, selectedId }: { onSelect: (id: string) => v
                         >
                             <Icon 
                                 size={20} 
-                                className={`mb-1 md:mb-2 transition-colors ${isSelected ? 'text-cyan-300' : 'text-gray-400 group-hover:text-cyan-400'}`} 
+                                className={`mb-1 md:mb-2 transition-colors ${isSelected ? 'text-emerald-300' : 'text-gray-400 group-hover:text-emerald-400'}`} 
                             />
                             <span className={`text-[8px] md:text-[10px] font-bold uppercase tracking-wider text-center leading-tight px-1 ${isSelected ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
                                 {part.label}
@@ -222,10 +222,10 @@ const SystemSchematic = ({ onSelect, selectedId }: { onSelect: (id: string) => v
                             {/* Selection Brackets */}
                             {isSelected && (
                                 <>
-                                    <div className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t-2 border-l-2 border-cyan-400" />
-                                    <div className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t-2 border-r-2 border-cyan-400" />
-                                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b-2 border-l-2 border-cyan-400" />
-                                    <div className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b-2 border-r-2 border-cyan-400" />
+                                    <div className="absolute -top-1 -left-1 w-1.5 h-1.5 border-t-2 border-l-2 border-emerald-400" />
+                                    <div className="absolute -top-1 -right-1 w-1.5 h-1.5 border-t-2 border-r-2 border-emerald-400" />
+                                    <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 border-b-2 border-l-2 border-emerald-400" />
+                                    <div className="absolute -bottom-1 -right-1 w-1.5 h-1.5 border-b-2 border-r-2 border-emerald-400" />
                                 </>
                             )}
                         </button>
@@ -265,11 +265,11 @@ const SupportPage: React.FC = () => {
                     initial="initial"
                     animate="animate"
                 >
-                    <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
+                    <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                         Operational Support
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        System <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Diagnostics</span>
+                        System <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Diagnostics</span>
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
                         Interact with the schematic below to identify components and access specific maintenance protocols.
@@ -292,7 +292,7 @@ const SupportPage: React.FC = () => {
                                 {/* Header */}
                                 <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
                                     <div className="flex items-center gap-4">
-                                        <div className="p-3 bg-cyan-500/20 rounded-xl border border-cyan-500/30 text-cyan-400">
+                                        <div className="p-3 bg-emerald-500/20 rounded-xl border border-emerald-500/30 text-emerald-400">
                                             {React.createElement(selectedComponent.icon, { size: 32 })}
                                         </div>
                                         <div>
@@ -312,7 +312,7 @@ const SupportPage: React.FC = () => {
                                     </button>
                                     <button 
                                         onClick={() => setActiveTab('maintenance')}
-                                        className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${activeTab === 'maintenance' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' : 'text-gray-400 hover:text-white'}`}
+                                        className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${activeTab === 'maintenance' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'text-gray-400 hover:text-white'}`}
                                     >
                                         <span className="flex items-center justify-center gap-2"><Calendar size={16} /> Maintenance</span>
                                     </button>
@@ -377,7 +377,7 @@ const SupportPage: React.FC = () => {
                 >
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
-                            <MapPin className="text-cyan-400" /> Expert Network
+                            <MapPin className="text-emerald-400" /> Expert Network
                         </h2>
                         <p className="text-gray-400">
                             Certified professionals ready for on-site deployment.
@@ -385,13 +385,13 @@ const SupportPage: React.FC = () => {
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
                         {technicians.map((tech) => (
-                            <motion.div key={tech.name} className="glass-card p-6 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all group">
+                            <motion.div key={tech.name} className="glass-card p-6 rounded-2xl border border-white/10 hover:border-emerald-500/30 transition-all group">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
                                         <h3 className="text-lg font-bold text-white">{tech.name}</h3>
-                                        <p className="text-xs text-cyan-400 font-mono uppercase">{tech.location}</p>
+                                        <p className="text-xs text-emerald-400 font-mono uppercase">{tech.location}</p>
                                     </div>
-                                    <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-all">
+                                    <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-all">
                                         <Wrench size={18} />
                                     </div>
                                 </div>

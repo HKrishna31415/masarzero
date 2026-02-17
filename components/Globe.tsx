@@ -227,7 +227,7 @@ const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) 
                         exit="exit"
                     >
                         <div className="flex items-center gap-3">
-                            <GlobeIcon className="w-6 h-6 text-cyan-400" />
+                            <GlobeIcon className="w-6 h-6 text-emerald-400" />
                             <div>
                                 <h3 className="font-bold text-lg">{zoomedCountry.name}</h3>
                                 <p className="text-sm text-gray-300 flex items-center gap-2">

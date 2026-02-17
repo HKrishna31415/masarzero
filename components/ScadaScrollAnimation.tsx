@@ -19,13 +19,13 @@ const DashboardUI = ({ step }: { step: number }) => {
     return (
         <div className="w-[350px] md:w-[600px] aspect-[3/4] md:aspect-video bg-[#0f172a] rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col relative select-none">
             {/* Glow Effect Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-600/5 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-600/5 pointer-events-none" />
             
             {/* Header */}
             <div className="h-12 border-b border-slate-700 flex items-center justify-between px-4 bg-slate-800/50 shrink-0">
                 <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs font-mono text-cyan-300 tracking-wider">VRU-01 // ONLINE</span>
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-mono text-emerald-300 tracking-wider">VRU-01 // ONLINE</span>
                 </div>
                 <div className="flex gap-3 text-slate-400">
                     <Database size={14} />
@@ -37,15 +37,15 @@ const DashboardUI = ({ step }: { step: number }) => {
             <div className="p-4 grid grid-cols-2 gap-4 flex-1 content-start overflow-hidden">
                 
                 {/* Metric Cards */}
-                <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
+                <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
                     <div className="flex items-center gap-2 mb-2">
-                        <Activity size={14} className="text-cyan-400" />
+                        <Activity size={14} className="text-emerald-400" />
                         <span className="text-[10px] uppercase text-slate-400 font-bold">Flow Rate</span>
                     </div>
                     <div className="text-2xl font-bold text-white">1,240 <span className="text-xs font-normal text-slate-500">L/min</span></div>
                 </div>
 
-                <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
+                <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
                      <div className="flex items-center gap-2 mb-2">
                         <Zap size={14} className="text-yellow-400" />
                         <span className="text-[10px] uppercase text-slate-400 font-bold">Pressure</span>
@@ -54,17 +54,17 @@ const DashboardUI = ({ step }: { step: number }) => {
                 </div>
 
                 {/* Main Chart */}
-                <div className={`col-span-2 bg-slate-800/30 rounded-xl border border-slate-700 p-4 h-32 relative overflow-hidden transition-all duration-500 ${step === 2 ? 'ring-1 ring-cyan-500/50 shadow-lg z-10 relative' : 'opacity-60 grayscale'}`}>
+                <div className={`col-span-2 bg-slate-800/30 rounded-xl border border-slate-700 p-4 h-32 relative overflow-hidden transition-all duration-500 ${step === 2 ? 'ring-1 ring-emerald-500/50 shadow-lg z-10 relative' : 'opacity-60 grayscale'}`}>
                     <p className="text-[10px] text-slate-400 mb-2 absolute top-3 left-4">Recovery Efficiency Trend</p>
                     <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={performanceData}>
                             <defs>
                                 <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3}/>
-                                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                                 </linearGradient>
                             </defs>
-                            <Area type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={2} fill="url(#chartGradient)" />
+                            <Area type="monotone" dataKey="value" stroke="#10b981" strokeWidth={2} fill="url(#chartGradient)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
@@ -85,14 +85,14 @@ const DashboardUI = ({ step }: { step: number }) => {
                 </div>
 
                 {/* Controls Section */}
-                <div className={`col-span-2 md:col-span-1 bg-slate-800/50 rounded-xl border border-slate-700 p-3 flex flex-col justify-between transition-all duration-500 ${step === 4 ? 'ring-2 ring-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.4)] bg-slate-800 scale-105 z-10' : 'opacity-60 grayscale'}`}>
+                <div className={`col-span-2 md:col-span-1 bg-slate-800/50 rounded-xl border border-slate-700 p-3 flex flex-col justify-between transition-all duration-500 ${step === 4 ? 'ring-2 ring-teal-500 shadow-[0_0_20px_rgba(20,184,166,0.4)] bg-slate-800 scale-105 z-10' : 'opacity-60 grayscale'}`}>
                     <div className="flex items-center justify-between mb-2">
                          <span className="text-[10px] font-bold text-slate-400 uppercase">Remote Ops</span>
                          <Lock size={12} className="text-slate-500" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-blue-600/20 border border-blue-600/50 rounded text-center py-1.5">
-                            <span className="text-[10px] font-bold text-blue-300">START</span>
+                        <div className="bg-teal-600/20 border border-teal-600/50 rounded text-center py-1.5">
+                            <span className="text-[10px] font-bold text-teal-300">START</span>
                         </div>
                         <div className="bg-slate-700 border border-slate-600 rounded text-center py-1.5">
                             <span className="text-[10px] font-bold text-slate-400">STOP</span>
@@ -111,7 +111,7 @@ const DataRain = ({ opacity }: { opacity: any }) => (
          {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="w-8 md:w-12 mx-1 md:mx-8 relative h-full opacity-20">
                 <motion.div 
-                    className="absolute bottom-0 left-0 w-full text-cyan-400 font-mono text-[10px] md:text-xs leading-none text-center break-all"
+                    className="absolute bottom-0 left-0 w-full text-emerald-400 font-mono text-[10px] md:text-xs leading-none text-center break-all"
                     initial={{ y: '100%' }}
                     animate={{ y: '-100%' }}
                     transition={{ 
@@ -134,9 +134,9 @@ const CloudNode = ({ opacity, scale }: { opacity: any, scale: any }) => (
         style={{ opacity, scale }}
     >
         <div className="relative">
-            <div className="absolute inset-0 bg-cyan-500 blur-[80px] opacity-20 animate-pulse" />
-            <Cloud size={100} className="text-cyan-300 relative z-10 drop-shadow-[0_0_30px_rgba(34,211,238,0.6)]" />
-            <Server size={32} className="text-blue-900 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" />
+            <div className="absolute inset-0 bg-emerald-500 blur-[80px] opacity-20 animate-pulse" />
+            <Cloud size={100} className="text-emerald-300 relative z-10 drop-shadow-[0_0_30px_rgba(16,185,129,0.6)]" />
+            <Server size={32} className="text-emerald-900 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20" />
         </div>
         <h3 className="text-xl md:text-2xl font-bold mt-8 text-white tracking-widest uppercase">Processing</h3>
     </motion.div>
@@ -149,13 +149,13 @@ const HeroTitle = ({ opacity, scale }: { opacity: any, scale: any }) => (
     >
         <div className="absolute inset-0 bg-[#000212]/60" />
         <div className="relative z-10">
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter mb-6 drop-shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-                PINNACLE <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">OS</span>
+            <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white tracking-tighter mb-6 drop-shadow-[0_0_30px_rgba(16,185,129,0.5)]">
+                PINNACLE <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">OS</span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-light tracking-wide">
                 The Operating System for Industrial Sustainability.
             </p>
-            <div className="mt-16 animate-bounce text-cyan-500 flex justify-center">
+            <div className="mt-16 animate-bounce text-emerald-500 flex justify-center">
                 <ChevronDown size={48} />
             </div>
         </div>
@@ -244,8 +244,8 @@ const ScadaScrollAnimation: React.FC = () => {
                 <div className="absolute bottom-12 md:bottom-24 left-0 right-0 z-30 px-6 flex justify-center pointer-events-none">
                     <AnimatePresence mode="wait">
                         {step === 2 && (
-                            <motion.div key="text2" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-cyan-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
-                                <h3 className="text-cyan-400 font-bold text-lg md:text-xl mb-1">Real-Time Telemetry</h3>
+                            <motion.div key="text2" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-emerald-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
+                                <h3 className="text-emerald-400 font-bold text-lg md:text-xl mb-1">Real-Time Telemetry</h3>
                                 <p className="text-xs md:text-sm text-gray-300">Instant visibility into flow rates and pressures.</p>
                             </motion.div>
                         )}
@@ -256,8 +256,8 @@ const ScadaScrollAnimation: React.FC = () => {
                             </motion.div>
                         )}
                         {step === 4 && (
-                            <motion.div key="text4" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-blue-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
-                                <h3 className="text-blue-400 font-bold text-lg md:text-xl mb-1">Remote Command</h3>
+                            <motion.div key="text4" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-teal-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
+                                <h3 className="text-teal-400 font-bold text-lg md:text-xl mb-1">Remote Command</h3>
                                 <p className="text-xs md:text-sm text-gray-300">Secure, encrypted control from anywhere in the world.</p>
                             </motion.div>
                         )}

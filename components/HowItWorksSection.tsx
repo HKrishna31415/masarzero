@@ -4,11 +4,11 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Truck, Wind, Droplets, ArrowDown, DollarSign } from 'lucide-react';
 
 const stepText = [
-  { title: "Truck Dispenses", description: "A tanker truck arrives and connects to the primary underground storage tank (UST) to begin refueling.", icon: Truck, color: "bg-blue-500" },
-  { title: "Vapor Displacement", description: "As liquid fuel fills the tank, it displaces gasoline vapor, which is fed into the MasarZero VRU.", icon: Wind, color: "bg-purple-500" },
-  { title: "Condensation", description: "The VRU's patented system compresses and condenses the vapor, converting it back into pure, liquid gasoline.", icon: Droplets, color: "bg-cyan-500" },
-  { title: "Efficient Recovery", description: "Our technology achieves a 99% recovery efficiency rate, minimizing waste and maximizing value.", icon: ArrowDown, color: "bg-green-500" },
-  { title: "Value Returned", description: "The recovered, sellable fuel is returned to a separate tank, creating a new, immediate revenue stream.", icon: DollarSign, color: "bg-yellow-500" },
+  { title: "Truck Dispenses", description: "A tanker truck arrives and connects to the primary underground storage tank (UST) to begin refueling.", icon: Truck, color: "bg-emerald-500" },
+  { title: "Vapor Displacement", description: "As liquid fuel fills the tank, it displaces gasoline vapor, which is fed into the MasarZero VRU.", icon: Wind, color: "bg-teal-500" },
+  { title: "Condensation", description: "The VRU's patented system compresses and condenses the vapor, converting it back into pure, liquid gasoline.", icon: Droplets, color: "bg-emerald-400" },
+  { title: "Efficient Recovery", description: "Our technology achieves a 99% recovery efficiency rate, minimizing waste and maximizing value.", icon: ArrowDown, color: "bg-teal-400" },
+  { title: "Value Returned", description: "The recovered, sellable fuel is returned to a separate tank, creating a new, immediate revenue stream.", icon: DollarSign, color: "bg-emerald-600" },
 ];
 
 const AnimatedText: React.FC<{ scrollYProgress: any, start: number, end: number, index: number }> = ({ scrollYProgress, start, end, index }) => {
@@ -21,7 +21,7 @@ const AnimatedText: React.FC<{ scrollYProgress: any, start: number, end: number,
             className="absolute top-1/2 left-[35%] -translate-x-1/2 -translate-y-1/2 w-full max-w-lg text-center p-6 glass-card rounded-2xl border border-white/10 backdrop-blur-md z-10"
         >
             <div className="flex items-center justify-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 text-white flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg">
                     {index + 1}
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">{stepText[index].title}</h3>
@@ -72,7 +72,7 @@ const MobileHowItWorks = () => {
                     <div className="absolute top-0 bottom-0 w-1 bg-white/10 rounded-full overflow-hidden">
                          {/* Moving Gradient Fill - Simulating Flow */}
                          <motion.div 
-                            className="w-full h-[40%] bg-gradient-to-b from-transparent via-cyan-400 to-transparent absolute top-0"
+                            className="w-full h-[40%] bg-gradient-to-b from-transparent via-emerald-400 to-transparent absolute top-0"
                             animate={{ top: ["-40%", "140%"] }}
                             transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
                          />
@@ -95,12 +95,12 @@ const MobileHowItWorks = () => {
                                 className="relative pl-12"
                             >
                                 {/* Node on Track */}
-                                <div className="absolute left-2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-[#000212] border-2 border-cyan-500 z-20 flex items-center justify-center shadow-[0_0_10px_rgba(6,182,212,0.5)]">
-                                    <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
+                                <div className="absolute left-2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-[#000212] border-2 border-emerald-500 z-20 flex items-center justify-center shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+                                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
                                 </div>
                                 
                                 {/* Horizontal Connector */}
-                                <div className="absolute left-2 top-8 w-10 h-[1px] bg-gradient-to-r from-cyan-500 to-transparent" />
+                                <div className="absolute left-2 top-8 w-10 h-[1px] bg-gradient-to-r from-emerald-500 to-transparent" />
 
                                 {/* Card */}
                                 <div className="glass-card p-5 rounded-xl border border-white/10 relative overflow-hidden group">
@@ -163,8 +163,8 @@ const DesktopHowItWorks = () => {
                         
                         <defs>
                             <linearGradient id="fuelGradient" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#67e8f9" />
-                                <stop offset="100%" stopColor="#3b82f6" />
+                                <stop offset="0%" stopColor="#6ee7b7" />
+                                <stop offset="100%" stopColor="#0d9488" />
                             </linearGradient>
                             <clipPath id="ust1Clip">
                                 <ellipse cx="250" cy="410" rx="100" ry="60" />
@@ -176,7 +176,7 @@ const DesktopHowItWorks = () => {
 
                         {/* UST 1 (Truck Fill) */}
                         <g id="ust1">
-                            <ellipse cx="250" cy="410" rx="100" ry="60" fill="#1e1b4b" stroke="#4f46e5" strokeWidth="3" />
+                            <ellipse cx="250" cy="410" rx="100" ry="60" fill="#022c22" stroke="#10b981" strokeWidth="3" />
                             <g clipPath="url(#ust1Clip)">
                                 <motion.rect 
                                     x="150" 
@@ -192,13 +192,13 @@ const DesktopHowItWorks = () => {
                         
                         {/* UST 2 (VRU Fill) */}
                         <g id="ust2">
-                            <ellipse cx="500" cy="410" rx="100" ry="60" fill="#1e1b4b" stroke="#4f46e5" strokeWidth="3" />
+                            <ellipse cx="500" cy="410" rx="100" ry="60" fill="#022c22" stroke="#10b981" strokeWidth="3" />
                              <g clipPath="url(#ust2Clip)">
-                                <rect x="400" y="440" width="200" height="30" fill="#be185d" opacity="0.6" />
+                                <rect x="400" y="440" width="200" height="30" fill="#10b981" opacity="0.35" />
                                 <motion.rect 
                                     x="400" 
                                     width="200" 
-                                    fill="#be185d"
+                                    fill="#10b981"
                                     y={useTransform(fillLevel2, h => 440 - h)}
                                     height={fillLevel2}
                                 />
@@ -221,7 +221,7 @@ const DesktopHowItWorks = () => {
                         {/* Animated Pipes and Paths */}
                         <motion.path
                             d={vaporPath}
-                            stroke="#a855f7"
+                            stroke="#14b8a6"
                             strokeWidth="2"
                             strokeDasharray="5 5"
                             fill="none"
@@ -235,7 +235,7 @@ const DesktopHowItWorks = () => {
                         />
                         <motion.path
                             d={liquidPath}
-                            stroke="#ec4899"
+                            stroke="#10b981"
                             strokeWidth="2"
                             strokeDasharray="5 5"
                             fill="none"
@@ -262,13 +262,13 @@ const DesktopHowItWorks = () => {
 
                         {/* Animated Particles */}
                         <motion.g style={{ opacity: fuelFlowOpacity }}>
-                            {Array.from({ length: 8 }).map((_, i) => ( <AnimatedParticle key={`hose-${i}`} path={hosePath} duration={2} delay={i * 0.25} color="#3b82f6" /> ))}
+                            {Array.from({ length: 8 }).map((_, i) => ( <AnimatedParticle key={`hose-${i}`} path={hosePath} duration={2} delay={i * 0.25} color="#10b981" /> ))}
                         </motion.g>
                         <g>
-                            {Array.from({ length: 10 }).map((_, i) => ( <AnimatedParticle key={`vapor-${i}`} path={vaporPath} duration={5} delay={i * 0.5} color="#a855f7" /> ))}
+                            {Array.from({ length: 10 }).map((_, i) => ( <AnimatedParticle key={`vapor-${i}`} path={vaporPath} duration={5} delay={i * 0.5} color="#14b8a6" /> ))}
                         </g>
                         <motion.g style={{ opacity: liquidOpacity }}>
-                            {Array.from({ length: 10 }).map((_, i) => ( <AnimatedParticle key={`liquid-${i}`} path={liquidPath} duration={4} delay={i * 0.4} color="#ec4899" /> ))}
+                            {Array.from({ length: 10 }).map((_, i) => ( <AnimatedParticle key={`liquid-${i}`} path={liquidPath} duration={4} delay={i * 0.4} color="#10b981" /> ))}
                         </motion.g>
                     </svg>
                 </div>
@@ -294,9 +294,9 @@ const DesktopHowItWorks = () => {
                 >
                     <h4 className="font-bold text-sm mb-3 text-gray-300">System Key</h4>
                     <div className="space-y-3">
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#a855f7] shadow-[0_0_10px_#a855f7]"></div><span className="text-xs text-gray-300">Vapor Flow</span></div>
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#ec4899] shadow-[0_0_10px_#ec4899]"></div><span className="text-xs text-gray-300">Recovered Fuel</span></div>
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#3b82f6] shadow-[0_0_10px_#3b82f6]"></div><span className="text-xs text-gray-300">Incoming Fuel</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#14b8a6] shadow-[0_0_10px_#14b8a6]"></div><span className="text-xs text-gray-300">Vapor Flow</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#10b981] shadow-[0_0_10px_#10b981]"></div><span className="text-xs text-gray-300">Recovered Fuel</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#34d399] shadow-[0_0_10px_#34d399]"></div><span className="text-xs text-gray-300">Incoming Fuel</span></div>
                     </div>
                 </motion.div>
             </div>

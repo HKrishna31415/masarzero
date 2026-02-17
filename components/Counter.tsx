@@ -30,7 +30,7 @@ const Counter: React.FC = () => {
     return (
         <div className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter break-all sm:break-normal leading-none text-center px-2" aria-live="polite" aria-atomic="true">
             <span className="text-white">{display.integerPart}</span>
-            <span className="text-cyan-400">.{display.decimalPart}</span>
+            <span className="text-emerald-400">.{display.decimalPart}</span>
         </div>
     );
 };

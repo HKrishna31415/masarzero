@@ -36,7 +36,7 @@ const BenefitsSection: React.FC = () => {
                     <div className="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center flex-shrink-0">
                         {/* Outer Animated Ring */}
                          <motion.div 
-                            className="absolute inset-0 border-2 border-blue-500/20 rounded-full"
+                            className="absolute inset-0 border-2 border-emerald-500/20 rounded-full"
                             animate={{ rotate: 360 }}
                             transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
                         />
@@ -53,7 +53,7 @@ const BenefitsSection: React.FC = () => {
                                 animate="animate"
                                 exit="exit"
                             >
-                                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-500">{hoveredBenefit.title}</h3>
+                                <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-teal-500">{hoveredBenefit.title}</h3>
                             </motion.div>
                         </AnimatePresence>
 
@@ -75,12 +75,12 @@ const BenefitsSection: React.FC = () => {
                                         className="w-16 h-16 glass-card rounded-full flex items-center justify-center cursor-pointer border border-transparent"
                                         animate={{ 
                                             scale: isHovered ? 1.2 : 1,
-                                            borderColor: isHovered ? 'rgba(59, 130, 246, 0.7)' : 'rgba(255, 255, 255, 0.1)',
-                                            boxShadow: isHovered ? '0 0 20px rgba(59, 130, 246, 0.4)' : 'none',
+                                            borderColor: isHovered ? 'rgba(16, 185, 129, 0.7)' : 'rgba(255, 255, 255, 0.1)',
+                                            boxShadow: isHovered ? '0 0 20px rgba(16, 185, 129, 0.4)' : 'none',
                                         }}
                                         transition={{ type: 'spring', stiffness: 300 }}
                                     >
-                                        <benefit.icon className={`transition-colors ${isHovered ? 'text-blue-400' : 'text-gray-400'}`} size={32} />
+                                        <benefit.icon className={`transition-colors ${isHovered ? 'text-emerald-400' : 'text-gray-400'}`} size={32} />
                                     </motion.div>
                                 </motion.div>
                             );

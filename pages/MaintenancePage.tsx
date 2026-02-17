@@ -30,8 +30,8 @@ const scheduleTasks = [
 ];
 
 const frequencyStyles: { [key: string]: string } = {
-  Daily: 'bg-blue-500/20 text-blue-300 ring-blue-500/30',
-  Weekly: 'bg-cyan-500/20 text-cyan-300 ring-cyan-500/30',
+  Daily: 'bg-emerald-500/20 text-emerald-300 ring-emerald-500/30',
+  Weekly: 'bg-teal-500/20 text-teal-300 ring-teal-500/30',
   Monthly: 'bg-emerald-500/20 text-emerald-300 ring-emerald-500/30',
   Quarterly: 'bg-amber-500/20 text-amber-300 ring-amber-500/30',
   Annually: 'bg-red-500/20 text-red-300 ring-red-500/30',
@@ -91,7 +91,7 @@ const MaintenancePage: React.FC = () => {
                                         <div
                                             key={comp.id}
                                             onClick={() => setSelectedComponent(comp)}
-                                            className={`flex items-center justify-center p-4 text-center rounded-lg cursor-pointer border-2 transition-all duration-300 ${selectedComponent.id === comp.id ? 'bg-cyan-500/20 border-cyan-400' : 'bg-slate-900/50 border-slate-700 hover:border-cyan-600'}`}
+                                            className={`flex items-center justify-center p-4 text-center rounded-lg cursor-pointer border-2 transition-all duration-300 ${selectedComponent.id === comp.id ? 'bg-emerald-500/20 border-emerald-400' : 'bg-slate-900/50 border-slate-700 hover:border-emerald-600'}`}
                                             data-cursor-hover
                                         >
                                             <span className="font-semibold text-sm">{comp.name}</span>
@@ -110,7 +110,7 @@ const MaintenancePage: React.FC = () => {
                                         exit="exit"
                                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     >
-                                        <h3 className="text-xl font-bold text-cyan-300 mb-2">{selectedComponent.title}</h3>
+                                        <h3 className="text-xl font-bold text-emerald-300 mb-2">{selectedComponent.title}</h3>
                                         <p className="text-sm text-gray-400 mb-4">{selectedComponent.description}</p>
                                         <ul className="space-y-2">
                                             {selectedComponent.tasks.map((task, i) => (
@@ -150,7 +150,7 @@ const MaintenancePage: React.FC = () => {
 
                 <div className="grid md:grid-cols-2 gap-12 items-start mb-24">
                      <div>
-                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2"><LifeBuoy className="text-cyan-400" /> Troubleshooting</h2>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2"><LifeBuoy className="text-emerald-400" /> Troubleshooting</h2>
                         <p className="text-gray-400 mb-6">Common questions and solutions. Our support team is available 24/7 for more complex queries.</p>
                          <div className="space-y-2">
                            <AccordionItem title="What if system pressure is lower than normal?">
@@ -165,7 +165,7 @@ const MaintenancePage: React.FC = () => {
                         </div>
                     </div>
                      <div>
-                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2"><Wrench className="text-cyan-400" /> Our Commitment</h2>
+                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2"><Wrench className="text-emerald-400" /> Our Commitment</h2>
                          <p className="text-gray-400 mb-6">We provide unparalleled service to ensure your investment is protected and your operations run smoothly, safely, and profitably.</p>
                         <div className="space-y-4">
                             <div className="glass-card p-4 rounded-lg"><strong>24/7 Monitoring:</strong> Our network operations center (NOC) monitors your system's health in real-time, identifying potential issues before they become problems.</div>
@@ -187,7 +187,7 @@ const MaintenancePage: React.FC = () => {
                                 transition={{delay: i * 0.1}}
                                 viewport={{once: true}}
                             >
-                                <h3 className="text-2xl font-bold text-cyan-400">{tier.name}</h3>
+                                <h3 className="text-2xl font-bold text-emerald-400">{tier.name}</h3>
                                 <p className="text-4xl font-extrabold my-4">{tier.price}</p>
                                 <ul className="space-y-3 text-left text-gray-300 flex-grow">
                                     {tier.features.map(feat => (
@@ -197,7 +197,7 @@ const MaintenancePage: React.FC = () => {
                                         </li>
                                     ))}
                                 </ul>
-                                <button className={`w-full mt-8 font-semibold py-3 rounded-lg transition-colors duration-300 ${i === 1 ? 'bg-cyan-500 hover:bg-cyan-600 text-white' : 'bg-white/10 hover:bg-white/20'}`}>
+                                <button className={`w-full mt-8 font-semibold py-3 rounded-lg transition-colors duration-300 ${i === 1 ? 'bg-emerald-500 hover:bg-emerald-600 text-white' : 'bg-white/10 hover:bg-white/20'}`}>
                                     {i === 2 ? 'Contact Sales' : 'Select Plan'}
                                 </button>
                             </motion.div>

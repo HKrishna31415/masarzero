@@ -45,13 +45,13 @@ const TechCore = () => {
             {/* Central Energy Sphere */}
             <Sphere args={[1, 64, 64]} ref={sphereRef}>
                 <MeshDistortMaterial
-                    color="#06b6d4"
+                    color="#10b981"
                     attach="material"
                     distort={0.6}
                     speed={3}
                     roughness={0.2}
                     metalness={0.8}
-                    emissive="#0891b2"
+                    emissive="#059669"
                     emissiveIntensity={0.8}
                 />
             </Sphere>
@@ -59,15 +59,15 @@ const TechCore = () => {
             {/* Outer Rings representing containment/field */}
             <mesh ref={ringRef1} rotation={[Math.PI / 2, 0, 0]}>
                 <torusGeometry args={[2.8, 0.02, 16, 100]} />
-                <meshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={2} transparent opacity={0.3} />
+                <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={2} transparent opacity={0.3} />
             </mesh>
             
             <mesh ref={ringRef2}>
                 <torusGeometry args={[3.5, 0.03, 16, 100]} />
-                <meshStandardMaterial color="#22d3ee" emissive="#22d3ee" emissiveIntensity={2} transparent opacity={0.2} />
+                <meshStandardMaterial color="#14b8a6" emissive="#14b8a6" emissiveIntensity={2} transparent opacity={0.2} />
             </mesh>
 
-            <Sparkles count={80} scale={6} size={4} speed={0.4} opacity={0.6} color="#a5f3fc" />
+            <Sparkles count={80} scale={6} size={4} speed={0.4} opacity={0.6} color="#34d399" />
         </Float>
     );
 };
@@ -91,7 +91,7 @@ const FeaturesSection: React.FC = () => {
             {/* Background Tech Grid */}
             <div className="absolute inset-0 z-0 opacity-10" 
                 style={{ 
-                    backgroundImage: 'linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)',
+                    backgroundImage: 'linear-gradient(rgba(16, 185, 129, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.3) 1px, transparent 1px)',
                     backgroundSize: '50px 50px',
                     maskImage: 'radial-gradient(circle at center, black, transparent 80%)'
                 }} 
@@ -106,7 +106,7 @@ const FeaturesSection: React.FC = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-4">
-                            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Dominance</span>
+                            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Dominance</span>
                         </h2>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
                             Our proprietary architecture combines cryogenic physics with neural network logic.
@@ -121,8 +121,8 @@ const FeaturesSection: React.FC = () => {
                     <div className="absolute inset-0 z-0 pointer-events-none">
                         <Canvas camera={{ position: [0, 0, 12], fov: 45 }} gl={{ antialias: true }}>
                              <ambientLight intensity={0.5} />
-                             <pointLight position={[10, 10, 10]} intensity={1.5} color="#22d3ee" />
-                             <pointLight position={[-10, -10, -10]} intensity={0.5} color="#3b82f6" />
+                             <pointLight position={[10, 10, 10]} intensity={1.5} color="#34d399" />
+                             <pointLight position={[-10, -10, -10]} intensity={0.5} color="#14b8a6" />
                              <TechCore />
                         </Canvas>
                     </div>
@@ -157,7 +157,7 @@ const FeaturesSection: React.FC = () => {
                                     >
                                         {/* Connector Line to Center (Visual only when active) */}
                                         <motion.div 
-                                            className="absolute top-1/2 left-1/2 h-[2px] bg-gradient-to-r from-cyan-500 to-transparent origin-left -z-10"
+                                            className="absolute top-1/2 left-1/2 h-[2px] bg-gradient-to-r from-emerald-500 to-transparent origin-left -z-10"
                                             style={{ 
                                                 width: radius, 
                                                 transform: `rotate(${angleDeg + 180}deg)`,
@@ -169,8 +169,8 @@ const FeaturesSection: React.FC = () => {
                                         <motion.div 
                                             className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center border backdrop-blur-xl transition-all duration-300 relative overflow-hidden -ml-6 -mt-6 md:-ml-8 md:-mt-8
                                                 ${isActive 
-                                                    ? 'bg-cyan-500 text-black border-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.6)]' 
-                                                    : 'bg-slate-900/80 border-white/10 text-gray-400 hover:border-cyan-500/50 hover:text-white'
+                                                    ? 'bg-emerald-500 text-black border-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.6)]' 
+                                                    : 'bg-slate-900/80 border-white/10 text-gray-400 hover:border-emerald-500/50 hover:text-white'
                                                 }`}
                                             whileHover={{ scale: 1.1 }}
                                         >
@@ -186,7 +186,7 @@ const FeaturesSection: React.FC = () => {
                                         <motion.div 
                                             className={`absolute left-1/2 -translate-x-1/2 mt-3 whitespace-nowrap text-center transition-all duration-300 hidden md:block ${isActive ? 'opacity-100 translate-y-0' : 'opacity-60 translate-y-2'}`}
                                         >
-                                            <p className={`text-sm font-bold uppercase tracking-wider ${isActive ? 'text-cyan-400' : 'text-gray-500'}`}>
+                                            <p className={`text-sm font-bold uppercase tracking-wider ${isActive ? 'text-emerald-400' : 'text-gray-500'}`}>
                                                 {feature.title}
                                             </p>
                                         </motion.div>
@@ -206,13 +206,13 @@ const FeaturesSection: React.FC = () => {
                                     transition={{ duration: 0.3 }}
                                     className="absolute z-30 pointer-events-none text-center max-w-[280px] md:max-w-xs"
                                 >
-                                    <div className="glass-card p-6 rounded-2xl border border-cyan-500/30 bg-[#000212]/80 backdrop-blur-xl shadow-2xl relative">
+                                    <div className="glass-card p-6 rounded-2xl border border-emerald-500/30 bg-[#000212]/80 backdrop-blur-xl shadow-2xl relative">
                                         {/* Corner accents */}
-                                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-500 rounded-tl-lg" />
-                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500 rounded-br-lg" />
+                                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-emerald-500 rounded-tl-lg" />
+                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-emerald-500 rounded-br-lg" />
                                         
                                         <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{activeFeature.title}</h3>
-                                        <div className="h-1 w-12 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mb-4 rounded-full" />
+                                        <div className="h-1 w-12 bg-gradient-to-r from-emerald-500 to-teal-600 mx-auto mb-4 rounded-full" />
                                         <p className="text-sm text-gray-300 leading-relaxed">
                                             {activeFeature.description}
                                         </p>
@@ -229,7 +229,7 @@ const FeaturesSection: React.FC = () => {
                                 exit={{ opacity: 0 }}
                                 className="absolute z-30 pointer-events-none text-center"
                             >
-                                <p className="text-xs font-mono text-cyan-500/50 uppercase tracking-[0.2em] animate-pulse">
+                                <p className="text-xs font-mono text-emerald-500/50 uppercase tracking-[0.2em] animate-pulse">
                                     System Idle // Hover Nodes
                                 </p>
                             </motion.div>

@@ -28,7 +28,7 @@ const PillarsSection: React.FC = () => {
                     transition={{ duration: 0.7 }}
                 >
                     <div className="flex items-center gap-4 mb-6">
-                        <Users className="w-10 h-10 text-cyan-300" />
+                        <Users className="w-10 h-10 text-emerald-400" />
                         <h2 className="text-3xl font-bold">Social Responsibility</h2>
                     </div>
                     <p className="text-gray-400 mb-6">
@@ -37,7 +37,7 @@ const PillarsSection: React.FC = () => {
                     <ul className="space-y-3">
                         {socialPillars.map((item, i) => (
                             <li key={i} className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                                <CheckCircle className="w-5 h-5 text-emerald-400 mr-3 mt-1 flex-shrink-0" />
                                 <span>{item}</span>
                             </li>
                         ))}
@@ -52,7 +52,7 @@ const PillarsSection: React.FC = () => {
                     transition={{ duration: 0.7 }}
                 >
                     <div className="flex items-center gap-4 mb-6">
-                        <Scale className="w-10 h-10 text-cyan-300" />
+                        <Scale className="w-10 h-10 text-emerald-400" />
                         <h2 className="text-3xl font-bold">Ethical Governance</h2>
                     </div>
                     <p className="text-gray-400 mb-6">
@@ -61,7 +61,7 @@ const PillarsSection: React.FC = () => {
                      <ul className="space-y-3">
                         {governancePillars.map((item, i) => (
                             <li key={i} className="flex items-start">
-                                <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                                <CheckCircle className="w-5 h-5 text-emerald-400 mr-3 mt-1 flex-shrink-0" />
                                 <span>{item}</span>
                             </li>
                         ))}

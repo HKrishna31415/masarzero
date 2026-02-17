@@ -92,11 +92,11 @@ const InstallationGuidePage: React.FC = () => {
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
                     <div>
-                        <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">
+                        <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">
                             Field Deployment
                         </span>
                         <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-                            Installation <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Guide</span>
+                            Installation <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Guide</span>
                         </h1>
                     </div>
                     
@@ -105,7 +105,7 @@ const InstallationGuidePage: React.FC = () => {
                         {installSteps.map((step, i) => (
                             <div 
                                 key={i} 
-                                className={`h-1.5 w-8 md:w-12 rounded-full transition-all duration-300 ${i === currentStep ? 'bg-cyan-400 scale-110' : i < currentStep ? 'bg-blue-600' : 'bg-white/10'}`}
+                                className={`h-1.5 w-8 md:w-12 rounded-full transition-all duration-300 ${i === currentStep ? 'bg-emerald-400 scale-110' : i < currentStep ? 'bg-teal-600' : 'bg-white/10'}`}
                             />
                         ))}
                     </div>
@@ -117,7 +117,7 @@ const InstallationGuidePage: React.FC = () => {
                     {/* Left Panel: The Visualizer (Swaps based on Step Type) */}
                     <div className="lg:col-span-8 bg-[#050714] rounded-3xl border border-white/10 overflow-hidden relative shadow-2xl min-h-[500px]">
                         <div className="absolute top-6 left-6 z-20 pointer-events-none">
-                            <div className="bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-cyan-400 flex items-center gap-2">
+                            <div className="bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-emerald-400 flex items-center gap-2">
                                 {activeStepData.type === 'physical' ? <Box size={14} /> : <Server size={14} />}
                                 {activeStepData.type === 'physical' ? 'SPATIAL VIEW' : 'SCHEMATIC VIEW'}
                             </div>
@@ -149,7 +149,7 @@ const InstallationGuidePage: React.FC = () => {
                                     <Canvas camera={{ position: [6, 5, 6], fov: 45 }} shadows>
                                         <ambientLight intensity={0.5} />
                                         <directionalLight position={[10, 10, 5]} intensity={1.5} castShadow />
-                                        <pointLight position={[-5, 5, -5]} color="#0ea5e9" intensity={1} />
+                                        <pointLight position={[-5, 5, -5]} color="#10b981" intensity={1} />
                                         
                                         <InstallationScene step={currentStep} />
                                         
@@ -185,8 +185,8 @@ const InstallationGuidePage: React.FC = () => {
                                                 transition={{ delay: i * 0.1 }}
                                                 className="flex items-start gap-3 group cursor-pointer"
                                             >
-                                                <div className="mt-0.5 w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-cyan-500 transition-colors flex items-center justify-center">
-                                                    <div className="w-2.5 h-2.5 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <div className="mt-0.5 w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-emerald-500 transition-colors flex items-center justify-center">
+                                                    <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 </div>
                                                 <span className="text-gray-300 text-sm group-hover:text-white transition-colors">{item}</span>
                                             </motion.div>
@@ -206,7 +206,7 @@ const InstallationGuidePage: React.FC = () => {
                                     <button 
                                         onClick={nextStep}
                                         disabled={currentStep === installSteps.length - 1}
-                                        className="flex items-center gap-2 px-6 py-3 bg-cyan-600 text-white font-bold rounded-lg hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-cyan-900/20"
+                                        className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-emerald-900/20"
                                     >
                                         {currentStep === installSteps.length - 1 ? 'Finish' : 'Next Step'}
                                         <ChevronRight size={16} />

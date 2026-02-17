@@ -133,9 +133,9 @@ const PumpStatusView: React.FC<{ part: PartData }> = ({ part }) => {
         <div className="glass-card p-4 rounded-lg">
             <h3 className="font-semibold mb-4 text-center">Live Pump Status</h3>
             <div className="flex justify-around items-center">
-                <RadialProgress value={data.rpm.value} max={data.rpm.max} unit="RPM" label="Speed" color="#22d3ee" />
+                <RadialProgress value={data.rpm.value} max={data.rpm.max} unit="RPM" label="Speed" color="#10b981" />
                 <div className="text-center">
-                    <div className="text-3xl font-bold text-indigo-400">{data.pressure.value}</div>
+                    <div className="text-3xl font-bold text-teal-400">{data.pressure.value}</div>
                     <div className="text-sm text-gray-400">{data.pressure.unit}</div>
                     <div className="mt-2 text-sm font-semibold">Pressure</div>
                 </div>
@@ -147,7 +147,7 @@ const PumpStatusView: React.FC<{ part: PartData }> = ({ part }) => {
 const SystemStatusView: React.FC<{ part: PartData }> = ({ part }) => {
     const getStatusColor = (state: 'ok' | 'warn' | 'idle') => {
         switch (state) {
-            case 'ok': return 'bg-green-400';
+            case 'ok': return 'bg-emerald-400';
             case 'warn': return 'bg-yellow-400';
             case 'idle': return 'bg-gray-400';
         }
@@ -161,10 +161,10 @@ const SystemStatusView: React.FC<{ part: PartData }> = ({ part }) => {
                         <div key={item.metric}>
                             <div className="flex justify-between items-center mb-1">
                                 <span className="text-gray-300">{item.metric}</span>
-                                <span className="font-semibold text-green-400">{item.value}</span>
+                                <span className="font-semibold text-emerald-400">{item.value}</span>
                             </div>
                             <div className="w-full bg-gray-700/50 rounded-full h-1.5">
-                                <div className="bg-green-400 h-1.5 rounded-full" style={{width: item.value}}></div>
+                                <div className="bg-emerald-400 h-1.5 rounded-full" style={{width: item.value}}></div>
                             </div>
                         </div>
                     ) : (
@@ -210,11 +210,11 @@ const Sidebar: React.FC<{ part: PartData | null, onClose: () => void, onSelectNe
           animate="animate"
           exit="exit"
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed top-24 right-4 bottom-4 w-full max-w-sm z-40 sidebar-glass flex flex-col rounded-2xl shadow-2xl shadow-cyan-500/10"
+          className="fixed top-24 right-4 bottom-4 w-full max-w-sm z-40 sidebar-glass flex flex-col rounded-2xl shadow-2xl shadow-emerald-500/10"
         >
           <div className="p-6 border-b border-white/10">
             <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-cyan-300">{part.name}</h2>
+              <h2 className="text-2xl font-bold text-emerald-300">{part.name}</h2>
               <button onClick={onClose} className="p-1 rounded-full hover:bg-white/10 transition-colors">
                 <X size={24} />
               </button>
@@ -234,7 +234,7 @@ const Sidebar: React.FC<{ part: PartData | null, onClose: () => void, onSelectNe
             </button>
             <button 
                 onClick={onSelectNext}
-                className="flex-shrink-0 flex items-center justify-center gap-2 relative aurora-border font-semibold text-sm pl-6 pr-4 py-3 rounded-full hover:bg-cyan-400/20 transition-all duration-300"
+                className="flex-shrink-0 flex items-center justify-center gap-2 relative aurora-border font-semibold text-sm pl-6 pr-4 py-3 rounded-full hover:bg-emerald-400/20 transition-all duration-300"
             >
               Next Part
               <ChevronRight size={18} />

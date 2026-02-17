@@ -37,36 +37,36 @@ const AnalysisGraphic = () => (
     <div className="relative w-full max-w-[320px] aspect-square flex items-center justify-center">
         {/* Rotating Scan Ring */}
         <motion.div 
-            className="absolute inset-0 rounded-full border-2 border-cyan-500/30 border-t-cyan-400"
+            className="absolute inset-0 rounded-full border-2 border-emerald-500/30 border-t-emerald-400"
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
         />
         {/* Inner Grid */}
-        <div className="absolute inset-4 border border-cyan-900/50 rounded-full bg-cyan-950/20 backdrop-blur-sm flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full opacity-30" style={{ backgroundImage: 'radial-gradient(#22d3ee 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+        <div className="absolute inset-4 border border-emerald-900/50 rounded-full bg-emerald-950/20 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+            <div className="w-full h-full opacity-30" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
         </div>
         {/* Scanning Beam */}
         <motion.div 
-            className="absolute w-full h-1 bg-cyan-400/50 shadow-[0_0_15px_#22d3ee]"
+            className="absolute w-full h-1 bg-emerald-400/50 shadow-[0_0_15px_#10b981]"
             animate={{ top: ['10%', '90%', '10%'] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
-        <ScanLine size={48} className="text-cyan-300 relative z-10" />
-        <div className="absolute -bottom-12 text-cyan-400 font-mono text-xs tracking-widest">SCANNING PARAMETERS...</div>
+        <ScanLine size={48} className="text-emerald-300 relative z-10" />
+        <div className="absolute -bottom-12 text-emerald-400 font-mono text-xs tracking-widest">SCANNING PARAMETERS...</div>
     </div>
 );
 
 const InstallationGraphic = () => (
     <div className="relative w-full max-w-[320px] aspect-square flex items-center justify-center">
         {/* Platform */}
-        <div className="absolute bottom-10 w-32 h-2 bg-blue-500/20 rounded-full" />
+        <div className="absolute bottom-10 w-32 h-2 bg-emerald-500/20 rounded-full" />
         
         {/* Falling Blocks Animation */}
         <div className="relative w-32 h-40 flex flex-col-reverse items-center justify-start">
             {[0, 1, 2].map((i) => (
                 <motion.div
                     key={i}
-                    className="w-16 h-8 bg-blue-600/80 border border-blue-400 rounded-sm mb-1 shadow-[0_0_15px_rgba(59,130,246,0.4)] backdrop-blur-sm"
+                    className="w-16 h-8 bg-emerald-600/80 border border-emerald-400 rounded-sm mb-1 shadow-[0_0_15px_rgba(16,185,129,0.4)] backdrop-blur-sm"
                     initial={{ y: -200, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ 
@@ -80,7 +80,7 @@ const InstallationGraphic = () => (
             ))}
         </div>
         
-        <div className="absolute -bottom-12 text-blue-400 font-mono text-xs tracking-widest">SYSTEM ASSEMBLY</div>
+        <div className="absolute -bottom-12 text-emerald-400 font-mono text-xs tracking-widest">SYSTEM ASSEMBLY</div>
     </div>
 );
 
@@ -105,24 +105,24 @@ const RecoveryGraphic = () => (
         </div>
 
         {/* Condenser Coil Graphic */}
-        <svg className="absolute top-24 w-24 h-12 text-indigo-500/50" viewBox="0 0 100 50">
+        <svg className="absolute top-24 w-24 h-12 text-teal-500/50" viewBox="0 0 100 50">
             <path d="M0 10 Q 25 40 50 10 T 100 10" fill="none" stroke="currentColor" strokeWidth="2" />
             <path d="M0 25 Q 25 55 50 25 T 100 25" fill="none" stroke="currentColor" strokeWidth="2" />
         </svg>
 
         {/* Liquid Collection Tank (Bottom) */}
-        <div className="absolute bottom-20 w-24 h-24 border-2 border-indigo-500/50 rounded-b-xl bg-indigo-950/20 overflow-hidden backdrop-blur-sm">
+        <div className="absolute bottom-20 w-24 h-24 border-2 border-teal-500/50 rounded-b-xl bg-teal-950/20 overflow-hidden backdrop-blur-sm">
             <motion.div 
-                className="absolute bottom-0 left-0 right-0 bg-indigo-500/60"
+                className="absolute bottom-0 left-0 right-0 bg-teal-500/60"
                 animate={{ height: ['0%', '90%'] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 0.5, ease: "linear" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-                <Droplets size={20} className="text-indigo-300 drop-shadow-lg" />
+                <Droplets size={20} className="text-teal-300 drop-shadow-lg" />
             </div>
         </div>
 
-        <div className="absolute -bottom-12 text-indigo-400 font-mono text-xs tracking-widest">PHASE CONVERSION</div>
+        <div className="absolute -bottom-12 text-teal-400 font-mono text-xs tracking-widest">PHASE CONVERSION</div>
     </div>
 );
 
@@ -233,7 +233,7 @@ const RevenueGraphic = () => (
             </g>
         </svg>
         
-        <div className="absolute -bottom-12 text-sky-400 font-mono text-xs tracking-widest">SHARED PROFIT</div>
+        <div className="absolute -bottom-12 text-emerald-400 font-mono text-xs tracking-widest">SHARED PROFIT</div>
     </div>
 );
 
@@ -249,10 +249,10 @@ const PartnershipPipeline = () => {
     }, []);
 
     const pipelineSteps = [
-        { id: 0, title: 'Analysis', subtitle: 'Site Evaluation', color: 'text-cyan-400', borderColor: 'border-cyan-500', Graphic: AnalysisGraphic },
-        { id: 1, title: 'Installation', subtitle: 'Zero-Cost Setup', color: 'text-blue-400', borderColor: 'border-blue-500', Graphic: InstallationGraphic },
-        { id: 2, title: 'Recovery', subtitle: 'Automated Process', color: 'text-indigo-400', borderColor: 'border-indigo-500', Graphic: RecoveryGraphic },
-        { id: 3, title: 'Revenue', subtitle: 'Shared Profit', color: 'text-sky-400', borderColor: 'border-sky-500', Graphic: RevenueGraphic },
+        { id: 0, title: 'Analysis', subtitle: 'Site Evaluation', color: 'text-emerald-400', borderColor: 'border-emerald-500', Graphic: AnalysisGraphic },
+        { id: 1, title: 'Installation', subtitle: 'Zero-Cost Setup', color: 'text-teal-400', borderColor: 'border-teal-500', Graphic: InstallationGraphic },
+        { id: 2, title: 'Recovery', subtitle: 'Automated Process', color: 'text-emerald-400', borderColor: 'border-emerald-500', Graphic: RecoveryGraphic },
+        { id: 3, title: 'Revenue', subtitle: 'Shared Profit', color: 'text-teal-400', borderColor: 'border-teal-500', Graphic: RevenueGraphic },
     ];
 
     return (
@@ -270,7 +270,7 @@ const PartnershipPipeline = () => {
                             {isActive && (
                                 <motion.div 
                                     layoutId="active-pill"
-                                    className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent ${step.title === 'Analysis' ? 'via-cyan-500' : step.title === 'Installation' ? 'via-blue-500' : step.title === 'Recovery' ? 'via-indigo-500' : 'via-sky-500'} to-transparent`}
+                                    className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent ${step.title === 'Analysis' ? 'via-emerald-500' : step.title === 'Installation' ? 'via-teal-500' : step.title === 'Recovery' ? 'via-emerald-500' : 'via-teal-500'} to-transparent`}
                                 />
                             )}
                             <div className="flex items-center justify-between">
@@ -291,7 +291,7 @@ const PartnershipPipeline = () => {
             {/* Right Side: Visualization Stage */}
             <div className="w-full lg:w-2/3 relative flex items-center justify-center p-8 lg:p-12 overflow-hidden min-h-[350px] lg:min-h-[500px] bg-gradient-to-br from-[#080b1a] to-[#0f1226]">
                 {/* Background Grid */}
-                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #3b82f6 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #10b981 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
                 
                 {/* Animated Center Content */}
                 <AnimatePresence mode="wait">
@@ -323,7 +323,7 @@ const PledgeSection: React.FC = () => {
         {/* Pledge Header */}
         <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold">
-                The <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">MasarZero</span> Pledge
+                The <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">MasarZero</span> Pledge
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-gray-400">
                 We're revolutionizing the energy industry by removing financial barriers and demonstrating ultimate confidence in our technology. Our performance is our promise, and our partnership is your profit.
@@ -337,7 +337,7 @@ const PledgeSection: React.FC = () => {
             return (
               <motion.div
                 key={item.title}
-                className="bg-slate-900/50 border border-slate-700 p-8 rounded-xl text-center flex flex-col items-center hover:border-cyan-500/30 transition-colors"
+                className="bg-slate-900/50 border border-slate-700 p-8 rounded-xl text-center flex flex-col items-center hover:border-emerald-500/30 transition-colors"
                 variants={pledgeCardVariants}
                 initial="initial"
                 whileInView="inView"
@@ -345,7 +345,7 @@ const PledgeSection: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-6 border border-slate-600 shadow-[0_0_20px_rgba(0,0,0,0.3)]">
-                    <Icon className="w-8 h-8 text-blue-400" />
+                    <Icon className="w-8 h-8 text-emerald-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
                 <p className="text-gray-400 text-sm flex-grow leading-relaxed">{item.description}</p>

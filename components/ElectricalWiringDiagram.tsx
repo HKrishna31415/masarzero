@@ -39,7 +39,7 @@ const ElectricalWiringDiagram: React.FC = () => {
                             label === 'L2' ? '#eab308' : // Yellow (Black equiv)
                             label === 'L3' ? '#3b82f6' : // Blue (Grey equiv)
                             label === 'N' ? '#0ea5e9' :  // Light Blue
-                            '#22c55e';                   // Green/Yellow
+                            '#10b981';                   // Emerald (Green/Yellow equiv)
 
                         return (
                             <g key={label}>
@@ -72,15 +72,15 @@ const ElectricalWiringDiagram: React.FC = () => {
             <div className="mt-8 grid grid-cols-3 gap-4 text-xs">
                 <div className="bg-white/5 p-3 rounded border border-white/5">
                     <strong className="text-gray-300 block mb-1">Cable Spec</strong>
-                    <span className="text-cyan-400 font-mono">5 x 6mm² Cu Armored</span>
+                    <span className="text-emerald-400 font-mono">5 x 6mm² Cu Armored</span>
                 </div>
                 <div className="bg-white/5 p-3 rounded border border-white/5">
                     <strong className="text-gray-300 block mb-1">Torque</strong>
-                    <span className="text-cyan-400 font-mono">2.5 Nm (Terminal)</span>
+                    <span className="text-emerald-400 font-mono">2.5 Nm (Terminal)</span>
                 </div>
                 <div className="bg-white/5 p-3 rounded border border-white/5">
                     <strong className="text-gray-300 block mb-1">Phase Seq.</strong>
-                    <span className="text-cyan-400 font-mono">CW Rotation Check</span>
+                    <span className="text-emerald-400 font-mono">CW Rotation Check</span>
                 </div>
             </div>
 

@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const keyItems = [
-    { color: '#f59e0b', label: 'Vapor In', desc: 'Raw emissions' },
-    { color: '#06b6d4', label: 'Product A', desc: 'Clean fuel return' },
-    { color: '#10b981', label: 'Product B', desc: 'Secondary recovery' },
+    { color: '#14b8a6', label: 'Vapor In', desc: 'Raw emissions' },
+    { color: '#10b981', label: 'Product A', desc: 'Clean fuel return' },
+    { color: '#34d399', label: 'Product B', desc: 'Secondary recovery' },
 ];
 
 interface SimulationKeyProps {

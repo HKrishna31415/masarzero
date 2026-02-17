@@ -34,7 +34,7 @@ const LiveDashboard: React.FC<LiveDashboardProps> = ({ liters, revenue, emission
                 <div className="flex items-center gap-3">
                     <button 
                         onClick={onToggle}
-                        className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${isRunning ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/50' : 'bg-cyan-500 text-black hover:bg-cyan-400 border border-cyan-400'}`}
+                        className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${isRunning ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/50' : 'bg-emerald-500 text-black hover:bg-emerald-400 border border-emerald-400'}`}
                     >
                         {isRunning ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" className="ml-1" />}
                     </button>
@@ -55,14 +55,14 @@ const LiveDashboard: React.FC<LiveDashboardProps> = ({ liters, revenue, emission
                     label="Recovered" 
                     value={formatNumber(liters, 1)} 
                     unit="L" 
-                    color="text-blue-400" 
+                    color="text-emerald-400" 
                 />
                 <StatItem 
                     icon={DollarSign} 
                     label="Revenue" 
                     value={formatNumber(revenue, 2)} 
                     unit="$" 
-                    color="text-green-400" 
+                    color="text-emerald-400" 
                 />
                 <StatItem 
                     icon={Leaf} 

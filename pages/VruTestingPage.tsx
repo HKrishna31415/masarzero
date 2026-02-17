@@ -42,7 +42,7 @@ const GoldAnimation = () => (
                     <motion.path 
                         d="M 0 25 L 10 20 L 20 30 L 30 15 L 40 35 L 50 25 L 60 20 L 70 30 L 80 10 L 90 25   M 90 25 L 100 20 L 110 30 L 120 15 L 130 35 L 140 25 L 150 20 L 160 30 L 170 10 L 180 25"
                         fill="none" 
-                        stroke="#22c55e" 
+                        stroke="#10b981" 
                         strokeWidth="2"
                         vectorEffect="non-scaling-stroke"
                         initial={{ x: 0 }}
@@ -52,7 +52,7 @@ const GoldAnimation = () => (
                 </svg>
                 
                 {/* Data Text */}
-                <text x="50" y="60" textAnchor="middle" fill="#22c55e" fontSize="10" fontFamily="monospace">0.045 ppm</text>
+                <text x="50" y="60" textAnchor="middle" fill="#10b981" fontSize="10" fontFamily="monospace">0.045 ppm</text>
             </g>
 
             {/* Flow Lines */}
@@ -99,8 +99,8 @@ const SilverAnimation = () => (
 
             {/* Proxy Model */}
             <g transform="translate(230, 50)">
-                <rect width="90" height="30" fill="#1e293b" stroke="#3b82f6" strokeWidth="2" rx="4" />
-                <rect x="0" y="-5" width="90" height="5" fill="#3b82f6" rx="2" /> 
+                <rect width="90" height="30" fill="#1e293b" stroke="#10b981" strokeWidth="2" rx="4" />
+                <rect x="0" y="-5" width="90" height="5" fill="#10b981" rx="2" /> 
                 <text x="45" y="20" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">Proxy Model</text>
             </g>
 
@@ -114,14 +114,14 @@ const SilverAnimation = () => (
                  <motion.path 
                     d="M 5 45 L 15 45 L 15 35 L 25 35 L 25 40 L 35 40 L 35 25 L 45 25 L 45 30 L 55 30" 
                     fill="none" 
-                    stroke="#22d3ee" 
+                    stroke="#10b981" 
                     strokeWidth="1.5" 
                     strokeDasharray="2 2"
                     initial={{ strokeDashoffset: 10 }}
                     animate={{ strokeDashoffset: 0 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 />
-                <text x="30" y="55" textAnchor="middle" fill="#22d3ee" fontSize="8" fontFamily="monospace">~98.2%</text>
+                <text x="30" y="55" textAnchor="middle" fill="#10b981" fontSize="8" fontFamily="monospace">~98.2%</text>
             </g>
 
             {/* Connections */}
@@ -129,7 +129,7 @@ const SilverAnimation = () => (
             <path d="M 190 32 Q 210 32 230 55" fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="4 4" />
             <path d="M 60 80 Q 90 80 120 102" fill="none" stroke="#94a3b8" strokeWidth="1" markerEnd="url(#arrowhead-silver)" />
             <path d="M 180 102 Q 205 102 230 75" fill="none" stroke="#94a3b8" strokeWidth="1" markerEnd="url(#arrowhead-silver)" />
-            <line x1="320" y1="65" x2="340" y2="60" stroke="#3b82f6" strokeWidth="2" strokeDasharray="2 2" />
+            <line x1="320" y1="65" x2="340" y2="60" stroke="#10b981" strokeWidth="2" strokeDasharray="2 2" />
 
             {/* Particles */}
             <motion.circle r="2" fill="#94a3b8">
@@ -148,7 +148,7 @@ const Oscilloscope = () => {
     const [mode, setMode] = useState<'idle' | 'base' | 'peak'>('base');
     const modeData = {
         idle: { kw: 2.1, amp: 10, color: '#94a3b8' },
-        base: { kw: 14.5, amp: 30, color: '#22d3ee' },
+        base: { kw: 14.5, amp: 30, color: '#10b981' },
         peak: { kw: 22.8, amp: 55, color: '#facc15' }
     };
 
@@ -181,7 +181,7 @@ const Oscilloscope = () => {
                 <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
                     <SineWave phase={0} color="#ef4444" speed={2} />
                     <SineWave phase={2 * Math.PI / 3} color="#eab308" speed={2} />
-                    <SineWave phase={4 * Math.PI / 3} color="#3b82f6" speed={2} />
+                    <SineWave phase={4 * Math.PI / 3} color="#10b981" speed={2} />
                 </svg>
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4 text-center">
@@ -195,7 +195,7 @@ const Oscilloscope = () => {
                 </div>
                 <div className="bg-white/5 p-2 rounded">
                     <p className="text-[10px] text-gray-500">THD</p>
-                    <p className="text-lg font-mono font-bold text-green-400">&lt; 3%</p>
+                    <p className="text-lg font-mono font-bold text-emerald-400">&lt; 3%</p>
                 </div>
             </div>
         </div>
@@ -259,16 +259,16 @@ const RadarAnalysis = ({ title }: { title: string }) => {
                         <PolarGrid stroke="#334155" />
                         <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 10 }} />
                         <PolarRadiusAxis angle={30} domain={[0, 40]} tick={false} axisLine={false} />
-                        <Radar name="Composition" dataKey="A" stroke="#22d3ee" strokeWidth={2} fill="#22d3ee" fillOpacity={0.3} />
+                        <Radar name="Composition" dataKey="A" stroke="#10b981" strokeWidth={2} fill="#10b981" fillOpacity={0.3} />
                         <Tooltip 
                             contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', fontSize: '12px', color: '#fff' }}
-                            itemStyle={{ color: '#22d3ee' }}
+                            itemStyle={{ color: '#10b981' }}
                         />
                     </RadarChart>
                 </ResponsiveContainer>
                 <div className="absolute bottom-2 right-2 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                    <span className="text-[10px] text-cyan-400 font-mono uppercase">Analysis Active</span>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                    <span className="text-[10px] text-emerald-400 font-mono uppercase">Analysis Active</span>
                 </div>
             </div>
         </div>
@@ -291,13 +291,13 @@ const LogicGrid = () => {
             <h3 className="text-white font-bold mb-4">PLC I/O State</h3>
             <div className="flex-grow grid grid-cols-4 gap-2 bg-black/40 rounded-xl border border-white/10 p-4">
                 {Array.from({ length: 16 }).map((_, i) => (
-                    <div key={i} className={`rounded border transition-all duration-300 flex items-center justify-center ${active.includes(i) ? 'bg-green-500/20 border-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]' : 'bg-white/5 border-white/10'}`}>
-                        <div className={`w-2 h-2 rounded-full ${active.includes(i) ? 'bg-green-400' : 'bg-gray-700'}`} />
+                    <div key={i} className={`rounded border transition-all duration-300 flex items-center justify-center ${active.includes(i) ? 'bg-emerald-500/20 border-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]' : 'bg-white/5 border-white/10'}`}>
+                        <div className={`w-2 h-2 rounded-full ${active.includes(i) ? 'bg-emerald-400' : 'bg-gray-700'}`} />
                     </div>
                 ))}
             </div>
             <div className="mt-2 flex gap-4 text-[10px] font-mono text-gray-500">
-                <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-400" /> HIGH</span>
+                <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-emerald-400" /> HIGH</span>
                 <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-gray-700" /> LOW</span>
             </div>
         </div>
@@ -336,8 +336,8 @@ const ThermalView = () => {
             >
                 {/* Heat Map Gradient Background */}
                 <div className="absolute inset-0 blur-3xl opacity-80 mix-blend-screen">
-                    <motion.div className="absolute top-10 left-10 w-32 h-32 bg-blue-600 rounded-full" animate={{ x: [0, 50, 0], y: [0, 20, 0] }} transition={{ duration: 5, repeat: Infinity }} />
-                    <motion.div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-600 rounded-full" animate={{ x: [0, -30, 0], y: [0, -40, 0] }} transition={{ duration: 7, repeat: Infinity }} />
+                    <motion.div className="absolute top-10 left-10 w-32 h-32 bg-teal-600 rounded-full" animate={{ x: [0, 50, 0], y: [0, 20, 0] }} transition={{ duration: 5, repeat: Infinity }} />
+                    <motion.div className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-600 rounded-full" animate={{ x: [0, -30, 0], y: [0, -40, 0] }} transition={{ duration: 7, repeat: Infinity }} />
                     <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-red-500 rounded-full" animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 3, repeat: Infinity }} />
                 </div>
                 
@@ -420,21 +420,21 @@ const SHEDAnalysis = () => {
             <div className="p-4 border-b border-white/10 flex justify-between items-center bg-[#0f172a]">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <Umbrella className={hasShade ? "text-green-400" : "text-gray-500"} size={18} />
+                        <Umbrella className={hasShade ? "text-emerald-400" : "text-gray-500"} size={18} />
                         SHED Thermal Analysis
                     </h3>
                     <p className="text-xs text-gray-400">Machine Temp vs Solar Load</p>
                 </div>
                 <button 
                     onClick={() => setHasShade(!hasShade)}
-                    className={`px-6 py-2 rounded-lg text-xs font-bold uppercase transition-all border ${hasShade ? 'bg-green-500/20 border-green-500 text-green-400' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}
+                    className={`px-6 py-2 rounded-lg text-xs font-bold uppercase transition-all border ${hasShade ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'}`}
                 >
                     {hasShade ? 'CANOPY ACTIVE' : 'NO SHADE'}
                 </button>
             </div>
 
             <div className="flex-grow flex flex-col md:flex-row overflow-hidden">
-                <div className="md:w-1/2 relative bg-gradient-to-b from-sky-900/20 to-[#0B1021] border-r border-white/10 overflow-hidden h-64 md:h-auto">
+                <div className="md:w-1/2 relative bg-gradient-to-b from-emerald-900/20 to-[#0B1021] border-r border-white/10 overflow-hidden h-64 md:h-auto">
                     <motion.div 
                         className="absolute w-12 h-12 rounded-full bg-yellow-400 blur-md shadow-[0_0_40px_rgba(250,204,21,0.6)]"
                         style={{ left: `${sunX}%`, top: `${sunY}%` }}
@@ -457,7 +457,7 @@ const SHEDAnalysis = () => {
                                 exit={{ y: -50, opacity: 0 }}
                                 className="absolute bottom-52 left-1/2 -translate-x-1/2 w-48"
                             >
-                                <div className="h-4 w-full bg-green-600 rounded-t-lg shadow-xl border-b-4 border-green-800"></div>
+                                <div className="h-4 w-full bg-emerald-600 rounded-t-lg shadow-xl border-b-4 border-emerald-800"></div>
                                 <div className="flex justify-between px-2">
                                     <div className="w-2 h-40 bg-gray-600"></div>
                                     <div className="w-2 h-40 bg-gray-600"></div>
@@ -496,11 +496,11 @@ const SHEDAnalysis = () => {
                     <div className="grid grid-cols-2 gap-3 shrink-0">
                         <div className="bg-white/5 p-3 rounded border border-white/5">
                             <p className="text-[10px] text-gray-400 mb-1">Peak Temp Delta</p>
-                            <p className="text-xl font-bold text-cyan-400">-20°C</p>
+                            <p className="text-xl font-bold text-emerald-400">-20°C</p>
                         </div>
                         <div className="bg-white/5 p-3 rounded border border-white/5">
                             <p className="text-[10px] text-gray-400 mb-1">Cooling Load</p>
-                            <p className="text-xl font-bold text-green-400">{hasShade ? '-18%' : '100%'}</p>
+                            <p className="text-xl font-bold text-emerald-400">{hasShade ? '-18%' : '100%'}</p>
                         </div>
                     </div>
 
@@ -508,14 +508,14 @@ const SHEDAnalysis = () => {
                     <div className="bg-[#0f172a] p-3 rounded-lg border border-white/10 flex items-center justify-between shrink-0">
                         <div>
                             <div className="flex items-center gap-2 mb-1">
-                                <Cable size={14} className="text-purple-400" />
+                                <Cable size={14} className="text-emerald-400" />
                                 <span className="text-[10px] font-bold text-gray-400 uppercase">Sensor Harness Integrity</span>
                             </div>
                             <div className="flex gap-1">
-                                <span className="text-[9px] bg-green-500/20 text-green-400 px-1.5 rounded border border-green-500/30">T1</span>
-                                <span className="text-[9px] bg-green-500/20 text-green-400 px-1.5 rounded border border-green-500/30">T2</span>
-                                <span className="text-[9px] bg-green-500/20 text-green-400 px-1.5 rounded border border-green-500/30">H1</span>
-                                <span className="text-[9px] bg-green-500/20 text-green-400 px-1.5 rounded border border-green-500/30">DATA</span>
+                                <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 rounded border border-emerald-500/30">T1</span>
+                                <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 rounded border border-emerald-500/30">T2</span>
+                                <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 rounded border border-emerald-500/30">H1</span>
+                                <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 rounded border border-emerald-500/30">DATA</span>
                             </div>
                         </div>
                         <div className="text-right">
@@ -572,16 +572,16 @@ const WiredConnectionTest = () => {
                         className="absolute inset-0 z-50 bg-black/90 p-6 flex flex-col font-mono text-sm"
                     >
                         <div className="flex justify-between items-center mb-4 border-b border-white/20 pb-2">
-                            <span className="text-green-400 font-bold flex items-center gap-2"><Terminal size={14} /> ROOT@VRU-CONTROLLER:~#</span>
+                            <span className="text-emerald-400 font-bold flex items-center gap-2"><Terminal size={14} /> ROOT@VRU-CONTROLLER:~#</span>
                             <button onClick={() => setShowTerminal(false)}><X size={20} className="text-white/50 hover:text-white" /></button>
                         </div>
-                        <div className="flex-grow overflow-y-auto space-y-1 text-green-300/80">
+                        <div className="flex-grow overflow-y-auto space-y-1 text-emerald-300/80">
                             <div>$ ping 8.8.8.8 -c 20</div>
                             <div className="mb-2">PING 8.8.8.8 (8.8.8.8): 56 data bytes</div>
                             {terminalLogs.map((log, i) => (
                                 <div key={i}>{log}</div>
                             ))}
-                            <div className="w-2 h-4 bg-green-400 animate-pulse inline-block ml-1"></div>
+                            <div className="w-2 h-4 bg-emerald-400 animate-pulse inline-block ml-1"></div>
                         </div>
                     </motion.div>
                 )}
@@ -590,14 +590,14 @@ const WiredConnectionTest = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <Cable size={18} className="text-cyan-400" />
+                        <Cable size={18} className="text-emerald-400" />
                         Wired Connection Diagnostic
                     </h3>
                     <p className="text-xs text-gray-400">Ethernet Link & Latency Test</p>
                 </div>
                 <button 
                     onClick={() => setShowTerminal(true)}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 border border-white/10 rounded text-xs font-mono text-cyan-300 hover:bg-slate-700 transition-colors"
+                    className="flex items-center gap-2 px-3 py-1.5 bg-slate-800 border border-white/10 rounded text-xs font-mono text-emerald-300 hover:bg-slate-700 transition-colors"
                 >
                     <Terminal size={12} /> PING TEST
                 </button>
@@ -610,8 +610,8 @@ const WiredConnectionTest = () => {
                     <div className="flex justify-between items-center mb-4">
                         <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Network Throughput (Mbps)</span>
                         <div className="flex items-center gap-1.5">
-                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                            <span className="text-[9px] font-mono text-green-400">CONNECTED</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                            <span className="text-[9px] font-mono text-emerald-400">CONNECTED</span>
                         </div>
                     </div>
                     
@@ -620,13 +620,13 @@ const WiredConnectionTest = () => {
                             <AreaChart data={throughputData}>
                                 <defs>
                                     <linearGradient id="throughputGradient" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3}/>
-                                        <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                                        <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                                        <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                                     </linearGradient>
                                 </defs>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} />
                                 <YAxis hide domain={[0, 1000]} />
-                                <Area type="monotone" dataKey="value" stroke="#06b6d4" strokeWidth={2} fill="url(#throughputGradient)" isAnimationActive={false} />
+                                <Area type="monotone" dataKey="value" stroke="#10b981" strokeWidth={2} fill="url(#throughputGradient)" isAnimationActive={false} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
@@ -636,7 +636,7 @@ const WiredConnectionTest = () => {
                 <div className="w-full md:w-64 flex flex-col gap-3">
                     <div className="bg-white/5 p-4 rounded-xl border border-white/5 flex flex-col items-center text-center">
                         <p className="text-xs text-gray-400 mb-1 font-bold">Link Speed</p>
-                        <div className="text-3xl font-mono font-bold text-green-400 mb-2">1.0 <span className="text-sm text-gray-500">Gbps</span></div>
+                        <div className="text-3xl font-mono font-bold text-emerald-400 mb-2">1.0 <span className="text-sm text-gray-500">Gbps</span></div>
                         <div className="flex gap-1">
                             <span className="px-2 py-0.5 bg-slate-700 rounded text-[9px] font-mono text-white">FULL DUPLEX</span>
                         </div>
@@ -662,7 +662,7 @@ const WiredConnectionTest = () => {
                         </div>
                         <div className="flex items-center justify-between text-xs text-gray-300">
                             <span>Packets Dropped</span>
-                            <span className="font-mono text-green-400">0 (0%)</span>
+                            <span className="font-mono text-emerald-400">0 (0%)</span>
                         </div>
                     </div>
 
@@ -671,7 +671,7 @@ const WiredConnectionTest = () => {
                         <div className="flex items-center justify-center h-12 gap-4">
                              {/* RJ45 Port Visual */}
                              <div className="w-12 h-10 bg-slate-700 rounded border-2 border-slate-600 flex justify-between px-2 pt-1">
-                                 <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+                                 <div className="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"></div>
                                  <div className="w-1 h-1 bg-yellow-400 rounded-full animate-pulse delay-75"></div>
                              </div>
                         </div>
@@ -716,12 +716,12 @@ const AcousticAnalysis = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <AudioWaveform size={18} className="text-purple-400" />
+                        <AudioWaveform size={18} className="text-emerald-400" />
                         Acoustic Monitoring
                     </h3>
                     <p className="text-xs text-gray-400">ISO 1996-2 Compliance Check</p>
                 </div>
-                <div className={`px-3 py-1 rounded border text-[10px] font-bold uppercase ${isCompliantAtDistance ? 'bg-green-500/20 border-green-500 text-green-400' : distance >= 10 ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-gray-700/30 border-gray-600 text-gray-400'}`}>
+                <div className={`px-3 py-1 rounded border text-[10px] font-bold uppercase ${isCompliantAtDistance ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : distance >= 10 ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-gray-700/30 border-gray-600 text-gray-400'}`}>
                     {distance >= 10 ? (isPassing ? 'PASS' : 'FAIL') : 'MEASURING...'}
                 </div>
             </div>
@@ -737,13 +737,13 @@ const AcousticAnalysis = () => {
 
                 {/* Source (VRU) */}
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                    <div className={`w-16 h-20 rounded-lg border flex items-center justify-center shadow-xl relative transition-colors duration-500 ${dampening ? 'bg-purple-900/50 border-purple-500' : 'bg-slate-700 border-slate-500'}`}>
+                    <div className={`w-16 h-20 rounded-lg border flex items-center justify-center shadow-xl relative transition-colors duration-500 ${dampening ? 'bg-emerald-900/50 border-emerald-500' : 'bg-slate-700 border-slate-500'}`}>
                         <Volume2 className="text-white animate-pulse" size={24} />
                         {/* Sound Waves */}
                         {waves.map((_, i) => (
                             <motion.div
                                 key={i}
-                                className={`absolute rounded-full border ${dampening ? 'border-purple-300/30' : 'border-red-500/50'}`}
+                                className={`absolute rounded-full border ${dampening ? 'border-emerald-300/30' : 'border-red-500/50'}`}
                                 style={{ width: '100%', height: '100%' }}
                                 animate={{ 
                                     scale: dampening ? [1, 2] : [1, 4], 
@@ -766,10 +766,10 @@ const AcousticAnalysis = () => {
                     className="absolute top-1/2 -translate-y-1/2 z-20 flex flex-col items-center transition-all duration-100 ease-out"
                     style={{ left: `${(distance / 20) * 80 + 5}%` }}
                 >
-                    <div className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.6)] border-2 border-white">
+                    <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.6)] border-2 border-white">
                         <Mic size={18} className="text-black" />
                     </div>
-                    <div className="bg-black/80 px-2 py-1 rounded text-[10px] font-mono text-cyan-400 border border-cyan-500/30 mt-3 backdrop-blur-sm">
+                    <div className="bg-black/80 px-2 py-1 rounded text-[10px] font-mono text-emerald-400 border border-emerald-500/30 mt-3 backdrop-blur-sm">
                         {distance}m
                     </div>
                 </div>
@@ -783,7 +783,7 @@ const AcousticAnalysis = () => {
                     <div>
                         <div className="flex justify-between mb-2">
                             <label className="text-xs font-bold text-gray-300 uppercase">Measurement Distance</label>
-                            <span className="text-xs font-mono text-cyan-400">{distance} m</span>
+                            <span className="text-xs font-mono text-emerald-400">{distance} m</span>
                         </div>
                         <input 
                             type="range" 
@@ -792,7 +792,7 @@ const AcousticAnalysis = () => {
                             step="1"
                             value={distance}
                             onChange={(e) => setDistance(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                         />
                         <div className="flex justify-between text-[9px] text-gray-500 mt-1 font-mono">
                             <span>1m (Source)</span>
@@ -805,7 +805,7 @@ const AcousticAnalysis = () => {
                     <div className="flex items-center gap-3">
                         <button 
                             onClick={() => setDampening(!dampening)}
-                            className={`px-3 py-1.5 rounded border text-xs font-bold uppercase transition-colors ${dampening ? 'bg-purple-500/20 border-purple-500 text-purple-400' : 'bg-white/5 border-white/10 text-gray-400'}`}
+                            className={`px-3 py-1.5 rounded border text-xs font-bold uppercase transition-colors ${dampening ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-white/5 border-white/10 text-gray-400'}`}
                         >
                             {dampening ? 'Dampening ON' : 'Dampening OFF'}
                         </button>
@@ -817,7 +817,7 @@ const AcousticAnalysis = () => {
                 <div className="flex items-center gap-6 justify-end">
                     <div className="text-right">
                         <p className="text-[10px] text-gray-500 uppercase font-bold">Measured Level</p>
-                        <p className={`text-3xl font-mono font-bold ${currentDb > limitDb ? 'text-red-400' : 'text-green-400'}`}>
+                        <p className={`text-3xl font-mono font-bold ${currentDb > limitDb ? 'text-red-400' : 'text-emerald-400'}`}>
                             {currentDb.toFixed(1)} <span className="text-sm text-gray-500 font-normal">dB</span>
                         </p>
                     </div>
@@ -842,7 +842,7 @@ const IntegrityScan = () => (
             <div className="relative">
                 <ShieldAlert size={80} className="text-gray-700" />
                 <motion.div 
-                    className="absolute inset-0 text-green-500"
+                    className="absolute inset-0 text-emerald-500"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: [0, 1, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -852,15 +852,15 @@ const IntegrityScan = () => (
             </div>
             <div className="ml-8 space-y-2">
                 <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full" />
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                     <span className="text-sm text-gray-300">Pressure: OK</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full" />
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                     <span className="text-sm text-gray-300">Vacuum: OK</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full" />
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                     <span className="text-sm text-gray-300">Seal: PASS</span>
                 </div>
             </div>
@@ -926,7 +926,7 @@ const GoldSilverModule = () => {
                     <h5 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Accuracy</h5>
                     <div className="flex items-center gap-2">
                         <div className={`w-full h-1.5 rounded-full bg-gray-700 overflow-hidden`}>
-                            <div className={`h-full rounded-full ${standard === 'gold' ? 'bg-green-400 w-[99%]' : 'bg-blue-400 w-[85%]'}`} />
+                            <div className={`h-full rounded-full ${standard === 'gold' ? 'bg-emerald-400 w-[99%]' : 'bg-teal-400 w-[85%]'}`} />
                         </div>
                         <span className="text-xs font-bold text-white">{standard === 'gold' ? '99.9%' : '~85%'}</span>
                     </div>
@@ -960,13 +960,13 @@ const SpectrumAnalyzer = ({ type }: { type: string }) => {
                         />
                         <Bar dataKey="value" barSize={15} radius={[0, 4, 4, 0]}>
                              {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.value <= entry.target ? '#22c55e' : '#ef4444'} />
+                                <Cell key={`cell-${index}`} fill={entry.value <= entry.target ? '#10b981' : '#ef4444'} />
                             ))}
                         </Bar>
                     </BarChart>
                 </ResponsiveContainer>
                 <div className="flex justify-center gap-6 mt-2 text-[10px] uppercase font-bold text-gray-500">
-                    <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-500"></div> Compliant</span>
+                    <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-emerald-500"></div> Compliant</span>
                     <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-red-500"></div> Exceeds Limit</span>
                 </div>
             </div>
@@ -987,9 +987,9 @@ const ReformateEvaporationSim = () => {
     const particles = useMemo(() => {
         const items = [];
         // C4/C5 (Blue - Fast)
-        for(let i=0; i<15; i++) items.push({ type: 'c4', speed: 2, color: '#3b82f6', startY: Math.random() * 20 });
+        for(let i=0; i<15; i++) items.push({ type: 'c4', speed: 2, color: '#10b981', startY: Math.random() * 20 });
         // C6-C9 (Green - Medium)
-        for(let i=0; i<15; i++) items.push({ type: 'c6', speed: 1, color: '#22c55e', startY: Math.random() * 40 + 20 });
+        for(let i=0; i<15; i++) items.push({ type: 'c6', speed: 1, color: '#0d9488', startY: Math.random() * 40 + 20 });
         // Reformates (Red - Slow/Heavy)
         for(let i=0; i<10; i++) items.push({ type: 'ref', speed: 0.2, color: '#ef4444', startY: Math.random() * 30 + 60 });
         return items;
@@ -1045,8 +1045,8 @@ const ReformateEvaporationSim = () => {
             </div>
 
             <div className="mt-4 flex justify-center gap-4 text-[10px] font-bold uppercase">
-                <span className="text-blue-400 flex items-center gap-1"><div className="w-2 h-2 bg-blue-400 rounded-full"/> C4-C5 (Light)</span>
-                <span className="text-green-400 flex items-center gap-1"><div className="w-2 h-2 bg-green-400 rounded-full"/> C6-C9 (Med)</span>
+                <span className="text-emerald-400 flex items-center gap-1"><div className="w-2 h-2 bg-emerald-400 rounded-full"/> C4-C5 (Light)</span>
+                <span className="text-teal-400 flex items-center gap-1"><div className="w-2 h-2 bg-teal-400 rounded-full"/> C6-C9 (Med)</span>
                 <span className="text-red-400 flex items-center gap-1"><div className="w-2 h-2 bg-red-400 rounded-full"/> Reformates (Heavy)</span>
             </div>
         </div>
@@ -1079,15 +1079,15 @@ const OlfactoryTest = () => {
     const getIntensityColor = (intensity: number) => {
         if (intensity > 3.5) return 'rgba(239, 68, 68, 0.9)'; // Red
         if (intensity > 2.0) return 'rgba(234, 179, 8, 0.9)'; // Yellow
-        if (intensity > 0.5) return 'rgba(59, 130, 246, 0.9)'; // Blue
-        return 'rgba(34, 197, 94, 0.9)'; // Green
+        if (intensity > 0.5) return 'rgba(16, 185, 129, 0.9)'; // Emerald
+        return 'rgba(20, 184, 166, 0.9)'; // Teal
     };
 
     return (
         <div className="h-full flex flex-col">
             <div className="flex justify-between items-center mb-3">
                 <div>
-                    <h3 className="text-white font-bold flex items-center gap-2"><MapIcon size={18} className="text-cyan-400" /> Olfactory Map</h3>
+                    <h3 className="text-white font-bold flex items-center gap-2"><MapIcon size={18} className="text-emerald-400" /> Olfactory Map</h3>
                     <p className="text-xs text-gray-400">Field Odor Intensity Verification</p>
                 </div>
                 <div className="flex bg-black/40 rounded-lg p-1 border border-white/10">
@@ -1099,7 +1099,7 @@ const OlfactoryTest = () => {
                     </button>
                     <button 
                         onClick={() => setMode('after')}
-                        className={`px-4 py-2 text-xs font-bold rounded-md uppercase transition-all ${mode === 'after' ? 'bg-green-500 text-white shadow-lg shadow-green-900/20' : 'text-gray-500 hover:text-gray-300'}`}
+                        className={`px-4 py-2 text-xs font-bold rounded-md uppercase transition-all ${mode === 'after' ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-900/20' : 'text-gray-500 hover:text-gray-300'}`}
                     >
                         After VRU
                     </button>
@@ -1113,7 +1113,7 @@ const OlfactoryTest = () => {
                     <div className="absolute top-3 left-3 text-[10px] font-bold text-gray-500 z-10 bg-black/50 px-2 py-1 rounded backdrop-blur-sm">SITE ODOR FOOTPRINT</div>
                     
                     {/* Heatmap Overlay based on mode */}
-                    <div className={`absolute inset-0 transition-opacity duration-1000 pointer-events-none opacity-30 ${mode === 'before' ? 'bg-red-500/20 mix-blend-overlay' : 'bg-green-500/10 mix-blend-overlay'}`} />
+                    <div className={`absolute inset-0 transition-opacity duration-1000 pointer-events-none opacity-30 ${mode === 'before' ? 'bg-red-500/20 mix-blend-overlay' : 'bg-emerald-500/10 mix-blend-overlay'}`} />
 
                     {/* Map Container */}
                     <div className="relative w-full max-w-sm aspect-square bg-[#1e293b] rounded-xl border border-slate-700 shadow-2xl overflow-hidden">
@@ -1168,7 +1168,7 @@ const OlfactoryTest = () => {
                     <div className="bg-black/20 rounded-xl border border-white/10 p-4 flex-grow flex flex-col justify-center">
                         <div className="flex justify-between items-start mb-4">
                             <h4 className="text-xs font-bold text-gray-300 uppercase flex items-center gap-2"><Crosshair size={14}/> Point Analysis</h4>
-                            {activePoint && <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-cyan-900/30 text-cyan-400 border border-cyan-500/20">{activeLabel}</span>}
+                            {activePoint && <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-900/30 text-emerald-400 border border-emerald-500/20">{activeLabel}</span>}
                         </div>
                         
                         {activePoint && activeData ? (
@@ -1182,7 +1182,7 @@ const OlfactoryTest = () => {
                                     <span className="text-xs text-gray-400">Intensity (0-5 scale)</span>
                                     <div className="flex items-center gap-2">
                                         <div className={`h-2 w-16 rounded-full bg-slate-700 overflow-hidden`}>
-                                            <div className={`h-full ${mode === 'before' ? 'bg-red-500' : 'bg-green-500'}`} style={{ width: `${(activeData.intensity / 5) * 100}%` }} />
+                                            <div className={`h-full ${mode === 'before' ? 'bg-red-500' : 'bg-emerald-500'}`} style={{ width: `${(activeData.intensity / 5) * 100}%` }} />
                                         </div>
                                         <span className="text-sm font-bold text-white">{activeData.intensity}</span>
                                     </div>
@@ -1215,7 +1215,7 @@ const OlfactoryTest = () => {
                                 <XAxis dataKey="name" stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} />
                                 <YAxis stroke="#64748b" fontSize={10} tickLine={false} axisLine={false} domain={[0, 5]} />
                                 <Tooltip cursor={{fill: 'rgba(255,255,255,0.05)'}} contentStyle={{ backgroundColor: '#0f172a', border: '1px solid rgba(255,255,255,0.1)', fontSize: '10px', color: '#fff' }} />
-                                <Bar dataKey="Intensity" name={mode === 'before' ? "Baseline" : "Post-Treatment"} fill={mode === 'before' ? "#ef4444" : "#22c55e"} radius={[4,4,0,0]} animationDuration={800} />
+                                <Bar dataKey="Intensity" name={mode === 'before' ? "Baseline" : "Post-Treatment"} fill={mode === 'before' ? "#ef4444" : "#10b981"} radius={[4,4,0,0]} animationDuration={800} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -1236,7 +1236,7 @@ const VectorVRUDiagram = () => {
             <svg viewBox="0 0 800 300" className="w-full h-full max-w-4xl drop-shadow-2xl">
                 <defs>
                     <marker id="arrow-flow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6" />
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#10b981" />
                     </marker>
                     <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
@@ -1258,31 +1258,31 @@ const VectorVRUDiagram = () => {
 
                 {/* --- 2. Vacuum Pump --- */}
                 <g transform="translate(200, 150)">
-                    <circle r="30" fill="#0f172a" stroke="#3b82f6" strokeWidth="2" filter="url(#neon-glow)" />
+                    <circle r="30" fill="#0f172a" stroke="#10b981" strokeWidth="2" filter="url(#neon-glow)" />
                     {/* Fan blades */}
                     <g opacity="0.8">
-                        <path d="M -15 0 L 15 0 M 0 -15 L 0 15" stroke="#3b82f6" strokeWidth="2" />
-                        <circle r="10" fill="#3b82f6" opacity="0.3" />
+                        <path d="M -15 0 L 15 0 M 0 -15 L 0 15" stroke="#10b981" strokeWidth="2" />
+                        <circle r="10" fill="#10b981" opacity="0.3" />
                     </g>
-                    <text x="0" y="55" textAnchor="middle" fill="#3b82f6" fontSize="12" fontWeight="bold">VACUUM PUMP</text>
+                    <text x="0" y="55" textAnchor="middle" fill="#10b981" fontSize="12" fontWeight="bold">VACUUM PUMP</text>
                 </g>
 
                 {/* --- 3. Mystery Box (Core Unit) --- */}
                 <g transform="translate(400, 150)">
                     {/* Outer Glow */}
-                    <rect x="-70" y="-45" width="140" height="90" rx="12" fill="none" stroke="#8b5cf6" strokeWidth="1" opacity="0.5" filter="url(#neon-glow)" />
+                    <rect x="-70" y="-45" width="140" height="90" rx="12" fill="none" stroke="#10b981" strokeWidth="1" opacity="0.5" filter="url(#neon-glow)" />
                     {/* Main Box */}
-                    <rect x="-60" y="-35" width="120" height="70" rx="8" fill="#0f172a" stroke="#a78bfa" strokeWidth="2" />
+                    <rect x="-60" y="-35" width="120" height="70" rx="8" fill="#0f172a" stroke="#34d399" strokeWidth="2" />
                     
                     {/* Internal Tech Pattern */}
-                    <path d="M -40 0 L -20 -15 L 20 15 L 40 0" fill="none" stroke="#a78bfa" strokeWidth="2" opacity="0.8" />
-                    <circle cx="0" cy="0" r="8" fill="#8b5cf6" />
-                    <motion.circle cx="0" cy="0" r="12" fill="none" stroke="#a78bfa" strokeWidth="1" 
+                    <path d="M -40 0 L -20 -15 L 20 15 L 40 0" fill="none" stroke="#34d399" strokeWidth="2" opacity="0.8" />
+                    <circle cx="0" cy="0" r="8" fill="#059669" />
+                    <motion.circle cx="0" cy="0" r="12" fill="none" stroke="#34d399" strokeWidth="1" 
                         animate={{ scale: [1, 1.5], opacity: [1, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                     />
                     
-                    <text x="0" y="65" textAnchor="middle" fill="#a78bfa" fontSize="12" fontWeight="bold">CORE UNIT</text>
+                    <text x="0" y="65" textAnchor="middle" fill="#34d399" fontSize="12" fontWeight="bold">CORE UNIT</text>
                     <text x="0" y="-55" textAnchor="middle" fill="#64748b" fontSize="9" fontStyle="italic" letterSpacing="1">PATENTED TECH</text>
                 </g>
 
@@ -1300,34 +1300,33 @@ const VectorVRUDiagram = () => {
                 {/* --- 5. Outlet --- */}
                 <g transform="translate(750, 150)">
                     <circle r="8" fill="#64748b" />
-                    <text x="0" y="-25" textAnchor="middle" fill="#22c55e" fontSize="10" fontWeight="bold">GASOLINE OUT</text>
+                    <text x="0" y="-25" textAnchor="middle" fill="#10b981" fontSize="10" fontWeight="bold">GASOLINE OUT</text>
                 </g>
 
                 {/* --- Particle Animations --- */}
                 
-                {/* Stage 1: Vapor (Blue/White) moving to Vacuum */}
-                <motion.circle r="3" fill="#bae6fd">
+                {/* Stage 1: Vapor (Emerald/White) moving to Vacuum */}
+                <motion.circle r="3" fill="#d1fae5">
                     <animateMotion path="M 50 150 L 200 150" dur="1.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" />
                 </motion.circle>
 
                 {/* Stage 2: Compressed Vapor to Core */}
-                <motion.circle r="3" fill="#60a5fa">
+                <motion.circle r="3" fill="#6ee7b7">
                     <animateMotion path="M 200 150 L 340 150" dur="1s" repeatCount="indefinite" />
                 </motion.circle>
 
                 {/* Stage 3: Liquid (Green) from Core to Oil Pump */}
-                <motion.circle r="4" fill="#4ade80">
+                <motion.circle r="4" fill="#10b981">
                     <animateMotion path="M 460 150 L 600 150" dur="1s" repeatCount="indefinite" />
                 </motion.circle>
 
                 {/* Stage 4: Final Output */}
-                <motion.circle r="4" fill="#22c55e">
-                    <animateMotion path="M 600 150 L 750 150" dur="1s" repeatCount="indefinite" />
+                <motion.circle r="4" fill="#10b981">
+                    <animateMotion path="M 600 150 L 750 150" dur="1.5s" repeatCount="indefinite" />
                 </motion.circle>
-
             </svg>
         </div>
-    )
+    );
 }
 
 const FlowSimulation = () => {
@@ -1354,7 +1353,7 @@ const FlowSimulation = () => {
                 <div className="relative w-full h-24 bg-slate-800 rounded-lg overflow-hidden flex items-center border border-slate-700">
                     {/* Moving Liquid */}
                     <motion.div 
-                        className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(6,182,212,0.2)_50%,transparent_100%)]"
+                        className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(16,185,129,0.2)_50%,transparent_100%)]"
                         animate={{ x: ['-100%', '100%'] }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     />
@@ -1363,7 +1362,7 @@ const FlowSimulation = () => {
                     {Array.from({ length: 5 }).map((_, i) => (
                         <motion.div
                             key={i}
-                            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                            className="absolute w-1 h-1 bg-emerald-400 rounded-full"
                             initial={{ x: -10, y: Math.random() * 80 + 10 }}
                             animate={{ x: 600 }}
                             transition={{ 
@@ -1382,7 +1381,7 @@ const FlowSimulation = () => {
                 <div className="grid grid-cols-2 gap-8 w-full max-w-md">
                     <div className="bg-white/5 p-4 rounded-lg border border-white/5 text-center">
                         <p className="text-xs text-gray-400 mb-1">Instantaneous Flow</p>
-                        <p className="text-2xl font-mono font-bold text-cyan-400">
+                        <p className="text-2xl font-mono font-bold text-emerald-400">
                             {flowRate.toFixed(1)} <span className="text-sm text-gray-500">L/min</span>
                         </p>
                     </div>
@@ -1408,7 +1407,7 @@ const BubbleLeakTest = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <Droplets size={18} className="text-blue-400" />
+                        <Droplets size={18} className="text-emerald-400" />
                         Soap Solution Test
                     </h3>
                     <p className="text-xs text-gray-400">ASTM E515 Compliance Check</p>
@@ -1416,7 +1415,7 @@ const BubbleLeakTest = () => {
                 <button
                     onClick={() => { setApplied(true); setTimeout(() => setApplied(false), 4000); }}
                     disabled={applied}
-                    className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded transition-all disabled:opacity-50"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded transition-all disabled:opacity-50"
                 >
                     {applied ? 'OBSERVING...' : 'APPLY SOLUTION'}
                 </button>
@@ -1458,7 +1457,7 @@ const BubbleLeakTest = () => {
                 </div>
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
                     {applied && (
-                        <span className={`px-3 py-1 rounded text-xs font-bold ${leaking ? 'bg-red-500/20 text-red-400' : 'bg-green-500/20 text-green-400'}`}>
+                        <span className={`px-3 py-1 rounded text-xs font-bold ${leaking ? 'bg-red-500/20 text-red-400' : 'bg-emerald-500/20 text-emerald-400'}`}>
                             {leaking ? 'BUBBLE FORMATION DETECTED' : 'NO LEAKS'}
                         </span>
                     )}
@@ -1477,7 +1476,7 @@ const OpticalGasImaging = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <ScanLine size={18} className="text-purple-400" />
+                        <ScanLine size={18} className="text-emerald-400" />
                         Optical Gas Imaging
                     </h3>
                     <p className="text-xs text-gray-400">MWIR Fugitive Emission Scan</p>
@@ -1491,7 +1490,7 @@ const OpticalGasImaging = () => {
                     </button>
                     <button 
                         onClick={() => setMode('ogi')}
-                        className={`px-3 py-1.5 text-xs font-bold rounded transition-all ${mode === 'ogi' ? 'bg-purple-600 text-white' : 'text-gray-500'}`}
+                        className={`px-3 py-1.5 text-xs font-bold rounded transition-all ${mode === 'ogi' ? 'bg-emerald-600 text-white' : 'text-gray-500'}`}
                     >
                         OGI MODE
                     </button>
@@ -1559,7 +1558,7 @@ const WaterCutProbe = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <Waves size={18} className="text-cyan-400" />
+                        <Waves size={18} className="text-emerald-400" />
                         Electronic Water Cut
                     </h3>
                     <p className="text-xs text-gray-400">Capacitance Probe Interface Detection</p>
@@ -1567,7 +1566,7 @@ const WaterCutProbe = () => {
                 <div className="flex gap-4 text-xs font-mono bg-black/30 px-3 py-1 rounded border border-white/5">
                     <div className="flex items-center gap-2">
                         <span className="text-gray-500">SIGNAL:</span>
-                        <span className="text-green-400 font-bold">4-20mA</span>
+                        <span className="text-emerald-400 font-bold">4-20mA</span>
                     </div>
                 </div>
             </div>
@@ -1581,8 +1580,8 @@ const WaterCutProbe = () => {
                         <div className="h-[80%] bg-amber-500/20 flex items-center justify-center relative border-b border-dashed border-white/20">
                             <span className="text-[10px] text-amber-500 font-bold absolute top-2 right-2">OIL PHASE</span>
                         </div>
-                        <div className="h-[20%] bg-blue-600/30 flex items-center justify-center relative">
-                            <span className="text-[10px] text-blue-400 font-bold absolute bottom-2 right-2">WATER PHASE</span>
+                        <div className="h-[20%] bg-emerald-600/30 flex items-center justify-center relative">
+                            <span className="text-[10px] text-emerald-400 font-bold absolute bottom-2 right-2">WATER PHASE</span>
                         </div>
                     </div>
 
@@ -1616,9 +1615,9 @@ const WaterCutProbe = () => {
                         <p className="text-xs text-gray-400">εr</p>
                     </div>
 
-                    <div className={`p-4 rounded-xl border flex items-center justify-center gap-3 transition-colors duration-300 ${dielectricValue > 10 ? 'bg-blue-900/20 border-blue-500/50' : 'bg-amber-900/20 border-amber-500/50'}`}>
-                        <div className={`w-3 h-3 rounded-full ${dielectricValue > 10 ? 'bg-blue-500' : 'bg-amber-500'}`}></div>
-                        <span className={`font-bold ${dielectricValue > 10 ? 'text-blue-400' : 'text-amber-400'}`}>
+                    <div className={`p-4 rounded-xl border flex items-center justify-center gap-3 transition-colors duration-300 ${dielectricValue > 10 ? 'bg-emerald-900/20 border-emerald-500/50' : 'bg-amber-900/20 border-amber-500/50'}`}>
+                        <div className={`w-3 h-3 rounded-full ${dielectricValue > 10 ? 'bg-emerald-500' : 'bg-amber-500'}`}></div>
+                        <span className={`font-bold ${dielectricValue > 10 ? 'text-emerald-400' : 'text-amber-400'}`}>
                             {dielectricValue > 10 ? 'WATER DETECTED' : 'OIL DETECTED'}
                         </span>
                     </div>
@@ -1663,7 +1662,7 @@ const TankVisual = ({ type }: { type: 'atg' | 'water' }) => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        {type === 'atg' ? <ScanLine size={18} className="text-cyan-400" /> : <Droplets size={18} className="text-blue-400" />}
+                        {type === 'atg' ? <ScanLine size={18} className="text-emerald-400" /> : <Droplets size={18} className="text-emerald-400" />}
                         {type === 'atg' ? 'Automated Tank Gauge' : 'Water Finding Paste'}
                     </h3>
                     <p className="text-xs text-gray-400">{type === 'atg' ? 'Real-time Inventory Monitoring' : 'Manual Interface Detection'}</p>
@@ -1690,7 +1689,7 @@ const TankVisual = ({ type }: { type: 'atg' | 'water' }) => {
                         />
                         {/* Water */}
                         <motion.div 
-                            className="absolute bottom-0 left-0 right-0 bg-blue-600/80"
+                            className="absolute bottom-0 left-0 right-0 bg-emerald-600/80"
                             animate={{ height: `${waterLevel}%` }}
                         />
                         
@@ -1704,7 +1703,7 @@ const TankVisual = ({ type }: { type: 'atg' | 'water' }) => {
                             >
                                 {/* Paste reaction color change */}
                                 <motion.div 
-                                    className="absolute bottom-0 left-0 right-0 bg-red-500"
+                                    className="absolute bottom-0 left-0 right-0 bg-emerald-600/80"
                                     initial={{ height: 0 }}
                                     animate={{ height: dipstickInserted ? `${(waterLevel / 100) * 256}px` : 0 }} // height relative to tank px roughly
                                     transition={{ delay: 1, duration: 0.5 }} 
@@ -1724,7 +1723,7 @@ const TankVisual = ({ type }: { type: 'atg' | 'water' }) => {
                             </div>
                             <div>
                                 <p className="text-xs text-gray-500 uppercase font-bold mb-1">Water Volume</p>
-                                <p className="text-xl font-mono font-bold text-blue-400">{(waterLevel * 150).toFixed(0)} L</p>
+                                <p className="text-xl font-mono font-bold text-emerald-400">{(waterLevel * 150).toFixed(0)} L</p>
                             </div>
                             <div>
                                 <p className="text-xs text-gray-500 uppercase font-bold mb-1">Temp</p>
@@ -1798,7 +1797,7 @@ const NitrogenPressureTest = () => {
             <div className="p-4 border-b border-white/5 bg-[#0f172a] flex justify-between items-center">
                 <div>
                     <h3 className="text-white font-bold flex items-center gap-2">
-                        <Activity size={18} className="text-green-400" />
+                        <Activity size={18} className="text-emerald-400" />
                         Nitrogen Integrity Test
                     </h3>
                     <p className="text-xs text-gray-400">Standard: Hold 60 PSI for 15 min</p>
@@ -1806,7 +1805,7 @@ const NitrogenPressureTest = () => {
                 <button 
                     onClick={startTest}
                     disabled={isTesting}
-                    className="px-4 py-2 bg-green-600 hover:bg-green-500 disabled:opacity-50 text-white text-xs font-bold rounded transition-all"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white text-xs font-bold rounded transition-all"
                 >
                     {isTesting ? 'TESTING...' : 'START SEQUENCE'}
                 </button>
@@ -1819,7 +1818,7 @@ const NitrogenPressureTest = () => {
                         <circle cx="50" cy="50" r="45" stroke="#1e293b" strokeWidth="10" fill="none" />
                         <motion.circle 
                             cx="50" cy="50" r="45" 
-                            stroke={result === 'fail' ? '#ef4444' : '#22c55e'} 
+                            stroke={result === 'fail' ? '#ef4444' : '#10b981'} 
                             strokeWidth="10" fill="none" 
                             strokeDasharray="283" 
                             strokeDashoffset={283 - (283 * pressure) / 100}
@@ -1838,7 +1837,7 @@ const NitrogenPressureTest = () => {
                     <motion.div 
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className={`mt-8 px-6 py-2 rounded-full border font-bold uppercase tracking-widest ${result === 'pass' ? 'bg-green-500/20 border-green-500 text-green-400' : 'bg-red-500/20 border-red-500 text-red-400'}`}
+                        className={`mt-8 px-6 py-2 rounded-full border font-bold uppercase tracking-widest ${result === 'pass' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-red-500/20 border-red-500 text-red-400'}`}
                     >
                         TEST {result}ED
                     </motion.div>
@@ -1846,7 +1845,7 @@ const NitrogenPressureTest = () => {
                 
                 <div className="absolute bottom-6 flex gap-8 text-xs text-gray-500">
                     <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full" /> Target: 60 PSI
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full" /> Target: 60 PSI
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-red-500 rounded-full" /> Limit: &lt;1 PSI Decay
@@ -1877,7 +1876,7 @@ const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => 
     // Map hardware names to components
     if (hardware.includes('Power Analyzer')) content = <Oscilloscope />;
     else if (hardware.includes('VOC')) content = <GoldSilverModule />;
-    else if (hardware.includes('Manometer') || hardware.includes('Pressure')) content = <LiveGraph title="Differential Pressure" unit="mbar" color="#22d3ee" min={-5} max={5} />;
+    else if (hardware.includes('Manometer') || hardware.includes('Pressure')) content = <LiveGraph title="Differential Pressure" unit="mbar" color="#10b981" min={-5} max={5} />;
     else if (hardware.includes('Flowmeter')) content = <FlowSimulation />;
     else if (hardware.includes('Thermal')) content = <ThermalView />;
     else if (hardware.includes('PLC')) content = <LogicGrid />;
@@ -1901,8 +1900,8 @@ const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => 
         <div className="mt-8 w-full max-w-6xl mx-auto">
             <div className="bg-[#0F1225] rounded-2xl border border-white/10 overflow-hidden p-8">
                 <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/10">
-                    <Terminal size={20} className="text-cyan-400" />
-                    <h3 className="text-lg font-bold text-white">Diagnostic Terminal: <span className="text-cyan-400">{hardware}</span></h3>
+                    <Terminal size={20} className="text-emerald-400" />
+                    <h3 className="text-lg font-bold text-white">Diagnostic Terminal: <span className="text-emerald-400">{hardware}</span></h3>
                 </div>
                 <div className="h-[450px]">
                     {content}
@@ -1926,9 +1925,9 @@ const VruTestingPage: React.FC = () => {
             title: "Standard Compliance",
             subtitle: "Routine Verification",
             icon: ClipboardCheck,
-            color: "text-cyan-400",
-            bg: "bg-cyan-500/10",
-            border: "border-cyan-500/30",
+            color: "text-emerald-400",
+            bg: "bg-emerald-500/10",
+            border: "border-emerald-500/30",
             description: "The foundational layer of our quality assurance. Every unit deployed undergoes this mandatory testing sequence to ensure it meets basic regulatory and operational standards.",
             features: [
                 "Vapor Pressure (RVP) Check",
@@ -1951,9 +1950,9 @@ const VruTestingPage: React.FC = () => {
             title: "Deep-Dive Audit",
             subtitle: "Efficiency Optimization",
             icon: Activity,
-            color: "text-purple-400",
-            bg: "bg-purple-500/10",
-            border: "border-purple-500/30",
+            color: "text-teal-400",
+            bg: "bg-teal-500/10",
+            border: "border-teal-500/30",
             description: "A rigorous examination of system efficiency. This level introduces manual auditing tools to verify sensor accuracy, physical integrity, and detailed electrical consumption analysis.",
             features: [
                 "Manual Pressure Verification",
@@ -2018,11 +2017,11 @@ const VruTestingPage: React.FC = () => {
                     initial="initial"
                     animate="animate"
                 >
-                    <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
+                    <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                         Quality Assurance
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        Validation <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Protocols</span>
+                        Validation <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Protocols</span>
                     </h1>
                     <p className="mt-4 max-w-3xl mx-auto text-gray-400 text-lg">
                         We don't just build machines; we certify performance. Our 3-tiered testing regime ensures every VRU meets the specific demands of its deployment environment.
@@ -2124,7 +2123,7 @@ const VruTestingPage: React.FC = () => {
                                                 {activeLevel === 3 && <Zap size={48} />}
                                             </motion.div>
                                         </div>
-                                        <button className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider bg-white text-black hover:bg-cyan-50 transition-colors flex items-center justify-center gap-2 group">
+                                        <button className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider bg-white text-black hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2 group">
                                             Request Level {activeLevel} Audit
                                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                         </button>
@@ -2172,17 +2171,17 @@ const VruTestingPage: React.FC = () => {
                                                         initial={{ opacity: 0, y: 10 }}
                                                         animate={{ opacity: 1, y: 0 }}
                                                         transition={{ delay: idx * 0.1 }}
-                                                        className={`flex gap-4 p-4 rounded-xl border transition-all cursor-pointer group relative overflow-hidden ${isSelected ? 'bg-cyan-500/10 border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.15)]' : 'bg-black/30 border-white/5 hover:border-white/20 hover:bg-black/50'}`}
+                                                        className={`flex gap-4 p-4 rounded-xl border transition-all cursor-pointer group relative overflow-hidden ${isSelected ? 'bg-emerald-500/10 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.15)]' : 'bg-black/30 border-white/5 hover:border-white/20 hover:bg-black/50'}`}
                                                     >
-                                                        {isSelected && <div className="absolute inset-0 bg-cyan-500/5 animate-pulse pointer-events-none" />}
+                                                        {isSelected && <div className="absolute inset-0 bg-emerald-500/5 animate-pulse pointer-events-none" />}
                                                         <div className="mt-1 relative z-10">
-                                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors ${isSelected ? 'bg-cyan-500/20 border-cyan-500 text-cyan-400' : 'bg-white/5 border-white/10 text-gray-500 group-hover:border-white/30 group-hover:text-gray-300'}`}>
+                                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors ${isSelected ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-white/5 border-white/10 text-gray-500 group-hover:border-white/30 group-hover:text-gray-300'}`}>
                                                                 <ItemIcon size={18} />
                                                             </div>
                                                         </div>
                                                         <div className="relative z-10">
                                                             <div className="flex items-center gap-2 mb-1">
-                                                                <span className={`text-[10px] font-bold uppercase tracking-wider ${isSelected ? 'text-cyan-300' : 'text-gray-500'}`}>{item.category}</span>
+                                                                <span className={`text-[10px] font-bold uppercase tracking-wider ${isSelected ? 'text-emerald-300' : 'text-gray-500'}`}>{item.category}</span>
                                                             </div>
                                                             <h4 className={`text-sm font-bold mb-1 ${isSelected ? 'text-white' : 'text-gray-300'}`}>{item.equipment}</h4>
                                                             <p className="text-xs text-gray-400 leading-relaxed">{item.purpose}</p>
@@ -2190,7 +2189,7 @@ const VruTestingPage: React.FC = () => {
                                                         
                                                         {/* Click Hint */}
                                                         <div className={`absolute top-2 right-2 transition-opacity duration-300 ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}>
-                                                            <MousePointerClick size={14} className={isSelected ? 'text-cyan-400' : 'text-gray-600'} />
+                                                            <MousePointerClick size={14} className={isSelected ? 'text-emerald-400' : 'text-gray-600'} />
                                                         </div>
                                                     </motion.div>
                                                 );

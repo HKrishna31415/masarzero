@@ -15,7 +15,7 @@ const SimplifiedVRU: React.FC<{ position: [number, number, number], scale?: [num
             <Text 
                 position={[0, 0.5, 0.61]} 
                 fontSize={0.15} 
-                color="#0ea5e9" 
+                color="#10b981" 
                 anchorX="center" 
                 anchorY="middle"
                 font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
@@ -26,7 +26,7 @@ const SimplifiedVRU: React.FC<{ position: [number, number, number], scale?: [num
             {/* Status Light Strip */}
             <mesh position={[0, 0.75, 0.61]}>
                 <boxGeometry args={[1.0, 0.05, 0.02]} />
-                <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={2} toneMapped={false} />
+                <meshStandardMaterial color="#10b981" emissive="#10b981" emissiveIntensity={2} toneMapped={false} />
             </mesh>
 
             {/* Interface Screen */}

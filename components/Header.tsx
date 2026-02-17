@@ -82,7 +82,7 @@ const DropdownMenu: React.FC<{ item: NavItem }> = ({ item }) => {
         >
             <button className={`flex items-center gap-1 transition-colors px-3 py-1 rounded-full text-sm ${
                 isParentActive
-                ? 'text-white bg-gradient-to-r from-cyan-500/10 to-blue-500/10'
+                ? 'text-white bg-gradient-to-r from-emerald-500/10 to-teal-500/10'
                 : 'text-gray-300 hover:text-white'
             }`}>
                 {item.title}
@@ -104,7 +104,7 @@ const DropdownMenu: React.FC<{ item: NavItem }> = ({ item }) => {
                                 onClick={() => setIsOpen(false)}
                                 className={`block w-full text-left px-3 py-2 text-sm rounded-md transition-colors cursor-pointer flex items-center justify-between ${
                                     location.pathname === child.path 
-                                    ? 'text-white bg-gradient-to-r from-cyan-500/20 to-blue-500/20'
+                                    ? 'text-white bg-gradient-to-r from-emerald-500/20 to-teal-500/20'
                                     : 'text-gray-300 hover:bg-white/5'
                                 }`}
                             >
@@ -130,7 +130,7 @@ const MobileMenuItem: React.FC<{ item: NavItem }> = ({ item }) => {
         return (
             <Link 
                 to={item.path!}
-                className={`block w-full text-left py-3 text-lg font-medium border-b border-white/5 ${isActive ? 'text-cyan-400' : 'text-white'}`}
+                className={`block w-full text-left py-3 text-lg font-medium border-b border-white/5 ${isActive ? 'text-emerald-400' : 'text-white'}`}
             >
                 {item.title}
             </Link>
@@ -141,7 +141,7 @@ const MobileMenuItem: React.FC<{ item: NavItem }> = ({ item }) => {
         <div className="border-b border-white/5">
             <button 
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-full flex items-center justify-between py-3 text-lg font-medium ${isParentActive ? 'text-cyan-400' : 'text-white'}`}
+                className={`w-full flex items-center justify-between py-3 text-lg font-medium ${isParentActive ? 'text-emerald-400' : 'text-white'}`}
             >
                 {item.title}
                 <ChevronDown size={18} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -160,7 +160,7 @@ const MobileMenuItem: React.FC<{ item: NavItem }> = ({ item }) => {
                                 to={child.path!}
                                 className={`block w-full text-left py-3 text-sm flex items-center justify-between ${
                                     location.pathname === child.path 
-                                    ? 'text-cyan-300'
+                                    ? 'text-emerald-300'
                                     : 'text-gray-300'
                                 }`}
                             >
@@ -190,10 +190,10 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="fixed top-0 left-0 right-0 z-[10000] p-4">
       <div className="container mx-auto flex justify-between items-center glass-card rounded-full p-2 px-6 relative bg-[#000212]/80 backdrop-blur-xl">
         <h1 
-          className="text-xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 uppercase cursor-pointer"
+          className="cursor-pointer flex items-center"
           onClick={() => handleMobileNavigate('/')}
         >
-          MasarZero
+          <img src="/masarzerologo.png" alt="MasarZero" className="h-12 md:h-14 w-auto" />
         </h1>
         
         {/* Desktop Navigation */}
@@ -207,7 +207,7 @@ const Header: React.FC<HeaderProps> = () => {
                 to={item.path!}
                 className={`transition-colors cursor-pointer px-3 py-1 rounded-full text-sm ${
                   location.pathname === item.path
-                    ? 'text-white bg-gradient-to-r from-cyan-500/10 to-blue-500/10' 
+                    ? 'text-white bg-gradient-to-r from-emerald-500/10 to-teal-500/10' 
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -220,7 +220,7 @@ const Header: React.FC<HeaderProps> = () => {
         <div className="hidden md:block">
             <Link 
                 to="/pipeline"
-                className="relative aurora-border font-semibold text-sm px-6 py-2 rounded-full hover:bg-blue-500/20 transition-all duration-300 flex items-center gap-2"
+                className="relative aurora-border font-semibold text-sm px-6 py-2 rounded-full hover:bg-emerald-500/20 transition-all duration-300 flex items-center gap-2"
             >
               Client Platform
               <Lock size={12} />
@@ -229,7 +229,7 @@ const Header: React.FC<HeaderProps> = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-            className="md:hidden p-2 text-white hover:text-cyan-300 transition-colors"
+            className="md:hidden p-2 text-white hover:text-emerald-300 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
         >
@@ -257,7 +257,7 @@ const Header: React.FC<HeaderProps> = () => {
                      <Link 
                         to="/pipeline"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="mt-6 w-full relative aurora-border font-semibold text-sm px-6 py-3 rounded-xl hover:bg-blue-500/20 transition-all duration-300 flex items-center justify-center gap-2"
+                        className="mt-6 w-full relative aurora-border font-semibold text-sm px-6 py-3 rounded-xl hover:bg-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2"
                     >
                         Client Platform
                         <Lock size={12} />

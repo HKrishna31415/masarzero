@@ -30,7 +30,7 @@ const ComparisonSection: React.FC = () => {
             animate="animate"
             transition={{ duration: 0.5 }}
         >
-            <span className="text-sm font-bold text-cyan-400 tracking-widest uppercase">Unmatched Performance</span>
+            <span className="text-sm font-bold text-emerald-400 tracking-widest uppercase">Unmatched Performance</span>
             <h1 className="text-4xl md:text-5xl font-bold mt-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
                 Why We're The Clear Choice
             </h1>
@@ -46,7 +46,7 @@ const ComparisonSection: React.FC = () => {
                     <div className="space-y-4 flex-grow">
                         {advancedFeatures.map(feature => (
                             <div key={feature.text} className="flex items-start">
-                                <CheckCircle2 className="text-green-400 w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
+                                <CheckCircle2 className="text-emerald-400 w-5 h-5 mr-3 mt-0.5 flex-shrink-0" />
                                 <div>
                                     <h3 className="font-semibold">{feature.text}</h3>
                                     <p className="text-gray-400 text-sm">{feature.description}</p>
@@ -55,7 +55,7 @@ const ComparisonSection: React.FC = () => {
                         ))}
                     </div>
                      <p className="text-xs text-gray-500 mt-6">*Performance metrics for our new Ascent A-200 models. Not applicable to GEVLR models.</p>
-                    <button className="w-full mt-4 relative aurora-border font-bold py-3 rounded-lg text-cyan-300 hover:bg-cyan-400/20 transition-all duration-300">
+                    <button className="w-full mt-4 relative aurora-border font-bold py-3 rounded-lg text-emerald-300 hover:bg-emerald-400/20 transition-all duration-300">
                         Learn More
                     </button>
                 </div>

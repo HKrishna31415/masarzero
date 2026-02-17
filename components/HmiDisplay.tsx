@@ -37,7 +37,7 @@ const HmiDisplay: React.FC = () => {
         setIsFault(true);
     };
 
-    const FlowPath = ({ d, color = "#06b6d4", active, width = 3, dashed = false }: { d: string, color?: string, active: boolean, width?: number, dashed?: boolean }) => (
+    const FlowPath = ({ d, color = "#14b8a6", active, width = 3, dashed = false }: { d: string, color?: string, active: boolean, width?: number, dashed?: boolean }) => (
         <>
             {/* Background Pipe */}
             <path d={d} stroke="#1e293b" strokeWidth={width + 4} fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -78,13 +78,13 @@ const HmiDisplay: React.FC = () => {
                 height={h} 
                 rx="6" 
                 fill={`url(#grad-${title})`} 
-                stroke={warning ? "#ef4444" : active ? "#06b6d4" : "#475569"} 
+                stroke={warning ? "#ef4444" : active ? "#10b981" : "#475569"} 
                 strokeWidth={active || warning ? 2 : 1}
                 filter={active && !warning ? "url(#glow-active)" : ""}
             />
             
             {/* Header Strip */}
-            <rect width={w} height="20" rx="6" fill={warning ? "#7f1d1d" : active ? "#0e7490" : "#334155"} clipPath={`inset(0 0 ${h-20}px 0)`} />
+            <rect width={w} height="20" rx="6" fill={warning ? "#7f1d1d" : active ? "#065f46" : "#334155"} clipPath={`inset(0 0 ${h-20}px 0)`} />
             <text x={10} y={14} fill="white" fontSize="10" fontWeight="bold" fontFamily="monospace">{title}</text>
             
             {/* Icon */}
@@ -105,16 +105,16 @@ const HmiDisplay: React.FC = () => {
                     <div className="flex items-center gap-4">
                         <div className="flex flex-col">
                             <span className="text-[9px] text-slate-400 tracking-widest uppercase">Status</span>
-                            <span className={`text-xs font-bold ${isFault ? 'text-red-500 animate-pulse' : isOn ? 'text-green-400' : 'text-slate-500'}`}>
+                            <span className={`text-xs font-bold ${isFault ? 'text-red-500 animate-pulse' : isOn ? 'text-emerald-400' : 'text-slate-500'}`}>
                                 {isFault ? 'FAULT' : isOn ? 'RUNNING' : 'STANDBY'}
                             </span>
                         </div>
                         <div className="h-6 w-px bg-slate-700"></div>
                         <div className="flex gap-3">
                             <div className="flex flex-col">
-                                <span className="text-[9px] text-slate-400 uppercase">Mode</span>
-                                <span className="text-xs text-cyan-400 font-bold">AUTO</span>
-                            </div>
+                            <span className="text-[9px] text-slate-400 uppercase">Mode</span>
+                            <span className="text-xs text-teal-400 font-bold">AUTO</span>
+                        </div>
                         </div>
                     </div>
                     <div className="text-right">
@@ -133,10 +133,10 @@ const HmiDisplay: React.FC = () => {
                         </defs>
 
                         {/* --- PIPES --- */}
-                        <FlowPath d="M 100 320 L 100 250 L 200 250" active={isOn && !isFault} color="#f59e0b" width={4} dashed />
-                        <FlowPath d="M 280 250 L 350 250 L 350 150 L 400 150" active={isOn && !isFault} color="#ef4444" width={4} />
-                        <FlowPath d="M 520 150 L 580 150 L 580 250 L 620 250" active={isOn && !isFault} color="#3b82f6" width={4} />
-                        <FlowPath d="M 660 300 L 660 350 L 400 350" active={isOn && !isFault} color="#22c55e" width={4} />
+                        <FlowPath d="M 100 320 L 100 250 L 200 250" active={isOn && !isFault} color="#14b8a6" width={4} dashed />
+                        <FlowPath d="M 280 250 L 350 250 L 350 150 L 400 150" active={isOn && !isFault} color="#14b8a6" width={4} />
+                        <FlowPath d="M 520 150 L 580 150 L 580 250 L 620 250" active={isOn && !isFault} color="#10b981" width={4} />
+                        <FlowPath d="M 660 300 L 660 350 L 400 350" active={isOn && !isFault} color="#10b981" width={4} />
 
                         {/* --- COMPONENTS --- */}
                         <g transform="translate(40, 320)">
@@ -154,7 +154,7 @@ const HmiDisplay: React.FC = () => {
                             <circle cx="30" cy="30" r="20" fill="#0f172a" stroke="#334155" />
                             <motion.path 
                                 d="M 15 30 L 45 30 M 30 15 L 30 45" 
-                                stroke={isFault ? "#ef4444" : "#06b6d4"} 
+                                stroke={isFault ? "#ef4444" : "#10b981"} 
                                 strokeWidth="3" 
                                 animate={isOn && !isFault ? { rotate: 360 } : {}}
                                 style={{ transformOrigin: "30px 30px" }}
@@ -166,8 +166,8 @@ const HmiDisplay: React.FC = () => {
                         <g transform="translate(410, 135)">
                             <path d="M 10 10 H 90 M 10 20 H 90 M 10 30 H 90" stroke="#475569" strokeWidth="2" />
                             <g transform="translate(50, 30)">
-                                    <motion.circle r="25" fill="none" stroke="#06b6d4" strokeWidth="2" strokeDasharray="4 4" animate={isOn && !isFault ? { rotate: -360 } : {}} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
-                                    <text x="0" y="40" textAnchor="middle" fill="#06b6d4" fontSize="10">{isOn && !isFault ? refTemp.toFixed(1) : 20}°C</text>
+                                    <motion.circle r="25" fill="none" stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" animate={isOn && !isFault ? { rotate: -360 } : {}} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
+                                    <text x="0" y="40" textAnchor="middle" fill="#10b981" fontSize="10">{isOn && !isFault ? refTemp.toFixed(1) : 20}°C</text>
                             </g>
                         </g>
 
@@ -180,7 +180,7 @@ const HmiDisplay: React.FC = () => {
                                     <motion.rect 
                                     width={`${tankLevel * 0.55}`} 
                                     height="6" 
-                                    fill="#22c55e" 
+                                    fill="#10b981" 
                                     animate={{ width: `${tankLevel * 0.55}` }}
                                     />
                             </g>
@@ -200,7 +200,7 @@ const HmiDisplay: React.FC = () => {
                     
                     {/* Run Lamp (Green) */}
                     <div className="flex flex-col items-center gap-1">
-                        <div className={`w-12 h-12 rounded-full border-4 border-slate-600 shadow-inner transition-all duration-300 flex items-center justify-center relative ${isOn && !isFault ? 'bg-green-500 shadow-[0_0_20px_#22c55e]' : 'bg-green-900/30'}`}>
+                        <div className={`w-12 h-12 rounded-full border-4 border-slate-600 shadow-inner transition-all duration-300 flex items-center justify-center relative ${isOn && !isFault ? 'bg-emerald-500 shadow-[0_0_20px_#10b981]' : 'bg-emerald-900/30'}`}>
                             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent pointer-events-none"></div>
                         </div>
                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Run</span>
@@ -232,7 +232,7 @@ const HmiDisplay: React.FC = () => {
                          <motion.button
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setIsOn(!isOn)}
-                            className={`w-12 h-12 rounded border-2 flex items-center justify-center transition-all ${isOn ? 'bg-slate-700 border-green-500/50 text-green-400' : 'bg-slate-800 border-slate-600 text-slate-500'}`}
+                            className={`w-12 h-12 rounded border-2 flex items-center justify-center transition-all ${isOn ? 'bg-slate-700 border-emerald-500/50 text-emerald-400' : 'bg-slate-800 border-slate-600 text-slate-500'}`}
                         >
                             <Power size={20} />
                         </motion.button>

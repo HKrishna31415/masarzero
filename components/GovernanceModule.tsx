@@ -81,7 +81,7 @@ const GovernanceModule: React.FC = () => {
                                     {isActive && (
                                         <motion.div
                                             layoutId="gov-active-indicator"
-                                            className="absolute bg-cyan-400 shadow-[0_0_15px_#22d3ee] z-10"
+                                            className="absolute bg-emerald-400 shadow-[0_0_15px_#10b981] z-10"
                                             style={{ borderRadius: '999px' }}
                                             initial={false}
                                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -89,14 +89,14 @@ const GovernanceModule: React.FC = () => {
                                             // We use specific classes for layout
                                         >
                                             {/* Desktop Indicator (Right Edge) */}
-                                            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-1 bg-cyan-400" />
+                                            <div className="hidden md:block absolute right-0 top-0 bottom-0 w-1 bg-emerald-400" />
                                             {/* Mobile Indicator (Bottom Edge) */}
-                                            <div className="md:hidden absolute bottom-0 left-0 right-0 h-1 bg-cyan-400" />
+                                            <div className="md:hidden absolute bottom-0 left-0 right-0 h-1 bg-emerald-400" />
                                         </motion.div>
                                     )}
 
                                     {/* Icon */}
-                                    <div className={`p-2 rounded-lg transition-colors duration-300 border ${isActive ? 'text-cyan-300 bg-cyan-500/20 border-cyan-500/30' : 'text-gray-400 border-white/5 group-hover:text-gray-200 group-hover:border-white/10'}`}>
+                                    <div className={`p-2 rounded-lg transition-colors duration-300 border ${isActive ? 'text-emerald-300 bg-emerald-500/20 border-emerald-500/30' : 'text-gray-400 border-white/5 group-hover:text-gray-200 group-hover:border-white/10'}`}>
                                         <Icon size={20} />
                                     </div>
                                     
@@ -127,7 +127,7 @@ const GovernanceModule: React.FC = () => {
                                     className="h-full flex flex-col relative z-10"
                                 >
                                     <div className="flex items-center gap-4 mb-8">
-                                        <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+                                        <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.15)]">
                                             {React.createElement(activeTabData.icon, { size: 32 })}
                                         </div>
                                         <h3 className="text-3xl font-bold text-white tracking-tight">{activeTabData.title}</h3>
@@ -149,10 +149,10 @@ const GovernanceModule: React.FC = () => {
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: 0.2 + (i * 0.1) }}
-                                                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 transition-colors group"
+                                                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 transition-colors group"
                                                 >
-                                                    <div className="w-8 h-8 rounded-full bg-black/40 flex items-center justify-center border border-white/10 group-hover:border-cyan-500/50 transition-colors">
-                                                        <CheckCircle2 className="w-4 h-4 text-cyan-500" />
+                                                    <div className="w-8 h-8 rounded-full bg-black/40 flex items-center justify-center border border-white/10 group-hover:border-emerald-500/50 transition-colors">
+                                                        <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                                                     </div>
                                                     <span className="text-sm font-medium text-gray-200">{point}</span>
                                                 </motion.div>

@@ -24,12 +24,12 @@ const Truck = React.forwardRef<THREE.Group, any>((props, ref) => (
             <meshStandardMaterial color="#e2e8f0" metalness={0.7} roughness={0.2} />
         </mesh>
          {/* Tank End Caps */}
-        <mesh position={[-2.3, 0.9, 0]}>
-             <sphereGeometry args={[0.85, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2]} rotation={[0, -Math.PI/2, 0]}/>
+        <mesh position={[-2.3, 0.9, 0]} rotation={[0, -Math.PI/2, 0]}>
+             <sphereGeometry args={[0.85, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
              <meshStandardMaterial color="#e2e8f0" metalness={0.7} roughness={0.2} />
         </mesh>
-         <mesh position={[1.3, 0.9, 0]}>
-             <sphereGeometry args={[0.85, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2]} rotation={[0, Math.PI/2, 0]}/>
+         <mesh position={[1.3, 0.9, 0]} rotation={[0, Math.PI/2, 0]}>
+             <sphereGeometry args={[0.85, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2]} />
              <meshStandardMaterial color="#e2e8f0" metalness={0.7} roughness={0.2} />
         </mesh>
 
@@ -37,11 +37,11 @@ const Truck = React.forwardRef<THREE.Group, any>((props, ref) => (
         <group position={[2.6, 0.8, 0]}>
             <mesh position={[0, 0, 0]}>
                 <boxGeometry args={[1.2, 1.4, 1.4]} />
-                <meshStandardMaterial color="#0ea5e9" metalness={0.5} roughness={0.2} />
+                <meshStandardMaterial color="#10b981" metalness={0.5} roughness={0.2} />
             </mesh>
              {/* Windshield */}
-             <mesh position={[0.61, 0.2, 0]}>
-                <planeGeometry args={[0.1, 0.8]} rotation={[0, Math.PI/2, 0]} />
+             <mesh position={[0.61, 0.2, 0]} rotation={[0, Math.PI/2, 0]}>
+                <planeGeometry args={[0.1, 0.8]} />
                 <meshStandardMaterial color="#0f172a" />
             </mesh>
         </group>
@@ -67,9 +67,9 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
     const timerRef = useRef(0);
     const vaporRateMultiplier = useMemo(() => truckState === 'filling' ? 5 : 1, [truckState]);
 
-    const [isBlueFlowVisible, setIsBlueFlowVisible] = useState(false);
+    const [isEmeraldFlowVisible, setIsEmeraldFlowVisible] = useState(false);
     const lastTriggerLiters = useRef(0);
-    const blueFlowTimeoutRef = useRef<number | null>(null);
+    const emeraldFlowTimeoutRef = useRef<number | null>(null);
 
     const startPosition = useMemo(() => new THREE.Vector3(-8, -1, -15), []);
     const fillingPosition = useMemo(() => new THREE.Vector3(-8, -1, 2), []);
@@ -102,16 +102,16 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
         };
     }, [isRunning, startPosition]);
 
-    // Effect to control the blue (Product A) flow based on recovered liters
+    // Effect to control the emerald (Product A) flow based on recovered liters
     useEffect(() => {
         if (isRunning && litersRecovered >= lastTriggerLiters.current + 14) {
-            setIsBlueFlowVisible(true);
+            setIsEmeraldFlowVisible(true);
             lastTriggerLiters.current = Math.floor(litersRecovered / 14) * 14;
 
-            if (blueFlowTimeoutRef.current) clearTimeout(blueFlowTimeoutRef.current);
+            if (emeraldFlowTimeoutRef.current) clearTimeout(emeraldFlowTimeoutRef.current);
             
-            blueFlowTimeoutRef.current = window.setTimeout(() => {
-                setIsBlueFlowVisible(false);
+            emeraldFlowTimeoutRef.current = window.setTimeout(() => {
+                setIsEmeraldFlowVisible(false);
             }, 3000);
         }
     }, [isRunning, litersRecovered]);
@@ -119,11 +119,11 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
     // Reset flow state when simulation is stopped
     useEffect(() => {
         if (!isRunning) {
-            setIsBlueFlowVisible(false);
+            setIsEmeraldFlowVisible(false);
             lastTriggerLiters.current = 0;
-            if (blueFlowTimeoutRef.current) {
-                clearTimeout(blueFlowTimeoutRef.current);
-                blueFlowTimeoutRef.current = null;
+            if (emeraldFlowTimeoutRef.current) {
+                clearTimeout(emeraldFlowTimeoutRef.current);
+                emeraldFlowTimeoutRef.current = null;
             }
         }
     }, [isRunning]);
@@ -177,8 +177,8 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
         new THREE.Vector3(-0.6, -1.0, 0),   // VRU inlet
     ], []);
 
-    // Path for recovered liquid (BLUE) from VRU back to UST 1
-    const liquidPathBlue = useMemo(() => [
+    // Path for recovered liquid (EMERALD) from VRU back to UST 1
+    const liquidPathEmerald = useMemo(() => [
         new THREE.Vector3(0, -1.5, 0.5),    // VRU liquid out (bottom)
         new THREE.Vector3(-2, -2, 1),     // Midpoint for curve
         new THREE.Vector3(-3, -2.5, 0.5),   // Into side of UST 1
@@ -208,7 +208,7 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
     return (
         <>
             {/* Ground Plane */}
-            <Grid infiniteGrid sectionColor={'#0ea5e9'} cellColor={'#1e293b'} sectionThickness={1} cellThickness={0.5} fadeDistance={40} position={[0, -1.5, 0]} />
+            <Grid infiniteGrid sectionColor={'#10b981'} cellColor={'#1e293b'} sectionThickness={1} cellThickness={0.5} fadeDistance={40} position={[0, -1.5, 0]} />
 
             {/* VRU */}
             <SimplifiedVRU position={[0, -0.75, 0]} />
@@ -265,12 +265,12 @@ const GasStationScene: React.FC<{ isRunning: boolean; litersRecovered?: number }
             )}
 
             {/* Particle Flows */}
-            <FlowingParticles points={vaporPath1} count={25} color="#f59e0b" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
-            <FlowingParticles points={vaporPath2} count={25} color="#f59e0b" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
-            <FlowingParticles points={vaporPath3} count={25} color="#f59e0b" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
+            <FlowingParticles points={vaporPath1} count={25} color="#14b8a6" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
+            <FlowingParticles points={vaporPath2} count={25} color="#14b8a6" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
+            <FlowingParticles points={vaporPath3} count={25} color="#14b8a6" size={0.05} isRunning={isRunning} rateMultiplier={vaporRateMultiplier} />
             
-            {/* Blue liquid to UST 1 */}
-            {isBlueFlowVisible && <FlowingParticles points={liquidPathBlue} count={30} color="#06b6d4" size={0.06} isRunning={isRunning} />}
+            {/* Emerald liquid to UST 1 */}
+            {isEmeraldFlowVisible && <FlowingParticles points={liquidPathEmerald} count={30} color="#34d399" size={0.06} isRunning={isRunning} />}
             
             {/* Green liquid to UST 1 & 2 */}
             <FlowingParticles points={liquidPathGreenToUST1} count={30} color="#10b981" size={0.06} isRunning={isRunning} />
