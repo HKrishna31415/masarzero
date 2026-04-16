@@ -429,6 +429,19 @@ const RoiCalculatorPage: React.FC = () => {
                     </motion.div>
                 </div>
 
+                {/* Dedicated Calculator CTA */}
+                <div className="flex justify-center mb-8">
+                    <a
+                        href="https://calc.masarzero.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 font-semibold text-sm"
+                    >
+                        <Calculator size={16} />
+                        Open Dedicated Calculator
+                    </a>
+                </div>
+
                 {/* Mode Switcher */}
                 <div className="flex justify-center mb-16">
                     <div className="bg-white/5 p-1.5 rounded-full border border-white/10 relative flex">

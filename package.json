@@ -9,16 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.2.0",
-    "lucide-react": "^0.553.0",
-    "recharts": "^3.3.0",
-    "react-dom": "^19.2.0",
-    "framer-motion": "^12.23.24",
-    "three": "^0.168.0",
-    "@react-three/fiber": "^9.4.0",
-    "@react-three/drei": "^10.5.0",
     "@google/genai": "^1.29.1",
-    "react-router-dom": "^7.9.6"
+    "@react-three/drei": "^10.5.0",
+    "@react-three/fiber": "^9.4.0",
+    "@tailwindcss/vite": "^4.2.2",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.553.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6",
+    "recharts": "^3.3.0",
+    "tailwindcss": "^4.2.2",
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

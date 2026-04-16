@@ -13,7 +13,7 @@ const documents = [
     date: 'Oct 15, 2024',
     icon: FileCode,
     color: 'text-emerald-400',
-    desc: 'Detailed hardware breakdown, electrical requirements, and performance curves for the 9000 series.'
+    desc: 'Detailed hardware breakdown, electrical requirements, and performance curves for the MZ-1 and MZ-9000.'
   },
   { 
     id: 'doc-002',

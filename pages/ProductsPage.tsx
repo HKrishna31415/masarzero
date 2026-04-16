@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Fuel, Zap, Atom, Layers, ArrowRight, CheckCircle2, Box } from 'lucide-react';
+import { Fuel, Zap, Atom, Layers, ArrowRight, CheckCircle2, Box, Flame, Thermometer, FlaskConical } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import MagneticButton from '../components/MagneticButton';
 
@@ -58,13 +58,16 @@ const ProductsPage: React.FC = () => {
                                         <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
                                             Flagship Series
                                         </span>
+                                        <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30">
+                                            MZ-1 · Gas Stations
+                                        </span>
                                         <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-bold uppercase tracking-wider border border-green-500/30">
-                                            Available Now
+                                            MZ-9000 · Storage Tanks
                                         </span>
                                     </div>
-                                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">MZ-VRU 9000 Series</h2>
+                                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">MZ-1 / MZ-9000</h2>
                                     <p className="text-lg text-gray-300 mb-8">
-                                        The industry standard for intelligent vapor recovery. Our 9000 Series captures up to 99.9% of fugitive emissions, converting waste into a localized revenue stream with zero upfront CapEx.
+                                        The industry standard for intelligent vapor recovery. The MZ-1 serves gas stations while the MZ-9000 is engineered for storage tanks — both capturing up to 99.9% of fugitive emissions and converting waste into a localized revenue stream with zero upfront CapEx.
                                     </p>
                                     
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -121,18 +124,39 @@ const ProductsPage: React.FC = () => {
                                 },
                                 { 
                                     icon: Atom, 
-                                    title: 'MZ-PG 750', 
-                                    subtitle: 'Plasma Gasification',
+                                    title: 'MZ-W2E', 
+                                    subtitle: 'W2E',
                                     status: 'Prototype',
-                                    desc: 'Transforming solid waste into hydrogen-rich syngas.'
+                                    desc: 'Waste-to-energy conversion via pyrolysis, plasma arc gasification, hydrothermal liquefaction, and more.'
                                 },
                                 { 
                                     icon: Layers, 
-                                    title: 'MZ-VRU Custom', 
+                                    title: 'MZ Custom', 
                                     subtitle: 'Bespoke Units',
                                     status: 'Made to Order',
                                     desc: 'Tailored engineering for unique flow rates and footprints.'
-                                }
+                                },
+                                {
+                                    icon: FlaskConical,
+                                    title: 'MZ-MFT',
+                                    subtitle: 'Molecular Fuel Treatment',
+                                    status: 'In Development',
+                                    desc: 'Molecular-level fuel conditioning to improve combustion efficiency and reduce harmful emissions.'
+                                },
+                                {
+                                    icon: Thermometer,
+                                    title: 'MZ-HC',
+                                    subtitle: 'Heat Capture',
+                                    status: 'In Development',
+                                    desc: 'Industrial heat recovery through MVR, high-temperature heat pumps (HTHP), and advanced thermal coatings.'
+                                },
+                                {
+                                    icon: Flame,
+                                    title: 'MZ-ESCO',
+                                    subtitle: 'Process Efficiency ESCO',
+                                    status: 'In Development',
+                                    desc: 'Energy Services Company model delivering guaranteed process efficiency improvements with performance-based contracts.'
+                                },
                             ].map((item, i) => {
                                 const Icon = item.icon;
                                 return (

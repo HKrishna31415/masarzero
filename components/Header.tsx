@@ -217,14 +217,24 @@ const Header: React.FC<HeaderProps> = () => {
           )}
         </nav>
         
-        <div className="hidden md:block">
-            <Link 
-                to="/pipeline"
+        <div className="hidden md:flex items-center gap-3">
+            <a
+                href="https://calc.masarzero.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-sm px-5 py-2 rounded-full border border-white/10 text-gray-300 hover:text-white hover:border-emerald-500/40 transition-all duration-300"
+            >
+              Calculator
+            </a>
+            <a
+                href="https://app.masarzero.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative aurora-border font-semibold text-sm px-6 py-2 rounded-full hover:bg-emerald-500/20 transition-all duration-300 flex items-center gap-2"
             >
               Client Platform
               <Lock size={12} />
-            </Link>
+            </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -254,14 +264,25 @@ const Header: React.FC<HeaderProps> = () => {
                             item={item} 
                         />
                     ))}
-                     <Link 
-                        to="/pipeline"
+                     <a
+                        href="https://calc.masarzero.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="mt-6 w-full relative aurora-border font-semibold text-sm px-6 py-3 rounded-xl hover:bg-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2"
+                        className="mt-6 w-full font-semibold text-sm px-6 py-3 rounded-xl border border-white/10 text-gray-300 hover:text-white hover:border-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-2"
+                    >
+                        Calculator
+                    </a>
+                     <a
+                        href="https://app.masarzero.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="mt-3 w-full relative aurora-border font-semibold text-sm px-6 py-3 rounded-xl hover:bg-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2"
                     >
                         Client Platform
                         <Lock size={12} />
-                    </Link>
+                    </a>
                 </div>
             </motion.div>
         )}

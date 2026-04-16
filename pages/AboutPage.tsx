@@ -10,7 +10,7 @@ import VectorBorderCard from '../components/VectorBorderCard';
 const teamMembers = [
     { name: 'Dr. A. Latif Alkhaja', role: 'Managing Director', icon: Globe, bio: '20+ years in global energy infrastructure.' },
     { name: 'Mr. Yalçın Aliyev', role: 'Senior Partner', icon: Zap, bio: 'Pioneer in sustainable industrial finance.' },
-    { name: 'Yang Qishan', role: 'Chief Technology Officer', icon: Cpu, bio: 'Lead architect of the MZ-9000 series.' },
+    { name: 'Yang Qishan', role: 'Chief Technology Officer', icon: Cpu, bio: 'Lead architect of the MZ-1 and MZ-9000.' },
     { name: 'Sultan Alkhaja', role: 'Head of Operations', icon: BrainCircuit, bio: 'Expert in large-scale deployment logistics.' },
     { name: 'Hari Krishna', role: 'Lead Engineer', icon: Code, bio: 'Specialist in SCADA and AI integration.' },
     { name: 'Ann Balushi', role: 'Director of Human Resources', icon: Users, bio: 'Driving global talent acquisition and culture.' },

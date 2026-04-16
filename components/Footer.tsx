@@ -62,12 +62,12 @@ const Footer: React.FC<FooterProps> = () => {
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                         {/* MasarZero Info */}
                         <div className="col-span-2 md:col-span-1">
-                            <h3 
-                                className="text-xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-500 uppercase cursor-pointer mb-2"
+                            <img 
+                                src="/masarzerologo.png" 
+                                alt="MasarZero" 
+                                className="h-24 w-auto mb-6 cursor-pointer" 
                                 onClick={() => navigate('/')}
-                            >
-                                MasarZero
-                            </h3>
+                            />
                             <p className="text-gray-400 text-sm">Intelligent Recovery. Tangible Returns.</p>
                         </div>
 

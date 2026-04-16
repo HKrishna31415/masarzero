@@ -31,6 +31,7 @@ import GalleryPage from './pages/GalleryPage';
 import CycleSystemPage from './pages/CycleSystemPage';
 import MaintenanceGuidePage from './pages/MaintenanceGuidePage';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import DynamicFavicon from './components/DynamicFavicon';
 
 function App() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <>
+      <DynamicFavicon />
       <CustomCursor />
       <div className="bg-[#000212] relative min-h-screen">
         <Header />
