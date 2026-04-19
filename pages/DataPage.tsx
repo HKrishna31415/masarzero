@@ -300,7 +300,7 @@ const ComparisonSection = () => {
     ];
 
     return (
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-6 mb-16 md:mb-24">
             {/* Advanced System Card */}
             <VectorBorderCard glowing className="h-full">
                 <div className="flex flex-col h-full">
@@ -391,7 +391,7 @@ const AnalysisLab = () => {
                 
                 {/* Input Sample */}
                 <div className="w-full lg:w-80 flex flex-col">
-                    <div className="bg-slate-900/60 border border-slate-700 p-8 rounded-2xl text-center relative z-10 flex flex-col items-center justify-center h-full shadow-xl">
+                    <div className="bg-slate-900/60 border border-slate-700 p-5 md:p-8 rounded-2xl text-center relative z-10 flex flex-col items-center justify-center h-full shadow-xl">
                         <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2">
                             <Globe size={12} /> {t('pages.data.lab.input')} ({currentSample.code})
                         </div>
@@ -547,7 +547,7 @@ const DataPage: React.FC = () => {
                     <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                         {t('pages.data.badge')}
                     </span>
-                    <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
+                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-6">
                         {t('pages.data.title')}
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
@@ -559,7 +559,7 @@ const DataPage: React.FC = () => {
                 <ComparisonSection />
 
                 {/* Independent Recovery Validation */}
-                <div className="grid md:grid-cols-2 gap-8 mb-24">
+                <div className="grid md:grid-cols-2 gap-6 mb-16 md:mb-24">
                     <div className="bg-slate-900/60 border border-slate-700 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
                         <div className="absolute inset-0 bg-emerald-500/5 group-hover:bg-emerald-500/10 transition-colors" />
                         <div className="relative z-10">

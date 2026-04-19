@@ -259,7 +259,7 @@ const EnvironmentalHero = () => {
       />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
             
             {/* Left Column: Typography */}
             <motion.div
@@ -274,21 +274,21 @@ const EnvironmentalHero = () => {
                     </span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
+                <h1 className="text-3xl md:text-5xl lg:text-7xl font-black tracking-tighter text-white mb-8 leading-tight">
                     {t('pages.environmental.hero.title')}
                 </h1>
                 
-                <p className="text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed font-light mb-10 border-l-2 border-white/10 pl-6">
+                <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light mb-10 border-l-2 border-white/10 pl-6">
                     {t('pages.environmental.hero.description')}
                 </p>
                 
-                <div className="flex flex-wrap gap-4">
-                    <a href="https://calc.masarzero.com" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden bg-white text-black font-bold py-4 px-8 rounded-none skew-x-[-10deg] transition-all hover:bg-emerald-400">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                    <a href="https://calc.masarzero.com" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden bg-white text-black font-bold py-3 px-6 rounded-none skew-x-[-10deg] transition-all hover:bg-emerald-400">
                         <div className="skew-x-[10deg] flex items-center gap-2">
                              {t('common.startCalculation') || 'Start Calculation'} <TrendingUp size={18} />
                         </div>
                     </a>
-                     <a href="/library" className="relative group overflow-hidden border border-white/20 text-white font-bold py-4 px-8 rounded-none skew-x-[-10deg] hover:border-emerald-400 transition-all cursor-pointer">
+                     <a href="/library" className="relative group overflow-hidden border border-white/20 text-white font-bold py-3 px-6 rounded-none skew-x-[-10deg] hover:border-emerald-400 transition-all cursor-pointer">
                         <div className="skew-x-[10deg] flex items-center gap-2">
                              {t('common.viewCaseStudies') || 'View Case Studies'} <Activity size={18} />
                         </div>
@@ -297,7 +297,7 @@ const EnvironmentalHero = () => {
             </motion.div>
 
             {/* Right Column: Vector Visualization */}
-            <div className="relative min-h-[500px]">
+            <div className="relative min-h-[300px] md:min-h-[500px]">
                 
                 {/* Main Chart Container */}
                 <motion.div
@@ -306,7 +306,7 @@ const EnvironmentalHero = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative z-10"
                 >
-                   <TechFrame className="h-[420px]">
+                   <TechFrame className="h-[280px] md:h-[420px]">
                         <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                             <div>
                                 <h3 className="text-white font-bold flex items-center gap-2 text-lg">
@@ -327,7 +327,7 @@ const EnvironmentalHero = () => {
                 {/* Floating Vector Metric Cards */}
                 
                 {/* Card 1: Carbon Credits (Blue/Purple) */}
-                <div className="absolute -top-8 -right-4 md:-right-12 z-20 w-48">
+                <div className="hidden md:block absolute -top-8 -right-12 z-20 w-48">
                     <VectorBorderCard delay={0.6} glowing>
                         <div className="flex items-center justify-between mb-2">
                             <Leaf size={16} className="text-teal-400" />
@@ -348,7 +348,7 @@ const EnvironmentalHero = () => {
                 </div>
 
                 {/* Card 2: Compliance Score (Cyan) */}
-                <div className="absolute -bottom-8 -left-4 md:-left-12 z-20 w-52">
+                <div className="hidden md:block absolute -bottom-8 -left-12 z-20 w-52">
                     <VectorBorderCard delay={0.8}>
                         <div className="flex items-center justify-between mb-2">
                             <ShieldCheck size={16} className="text-emerald-400" />
@@ -532,8 +532,8 @@ const EnvironmentalPage: React.FC = () => {
           })}
         </div>
 
-        <div className="mt-24 grid lg:grid-cols-2 gap-8">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-8">
                 <h2 className="text-3xl font-bold text-white mb-6">{t('pages.environmental.beforeAfter.title')}</h2>
                 <div className="space-y-5 text-sm">
                     <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-5">
@@ -547,7 +547,7 @@ const EnvironmentalPage: React.FC = () => {
                 </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-8">
                 <h2 className="text-3xl font-bold text-white mb-6">{t('pages.environmental.odorValue.title')}</h2>
                 <p className="text-gray-400 leading-relaxed mb-5">
                     {t('pages.environmental.odorValue.description')}

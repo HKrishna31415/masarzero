@@ -35,7 +35,7 @@ const ScadaPage: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-emerald-400 font-mono text-sm tracking-[0.2em] uppercase mb-4 block">{t('pages.scada.badge')}</span>
-            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
+            <h1 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-500">
               {t('pages.scada.title')}
             </h1>
             <p className="mt-6 text-lg text-gray-400 leading-relaxed">
@@ -43,9 +43,9 @@ const ScadaPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-[1.15fr,0.85fr] gap-8 mb-20">
-            <div className="rounded-3xl border border-white/10 bg-[#0b1021] p-8">
-              <h2 className="text-3xl font-bold text-white mb-6">{t('pages.scada.whatItDoesTitle', { defaultValue: 'What the platform actually does' })}</h2>
+          <div className="grid lg:grid-cols-[1.15fr,0.85fr] gap-6 mb-12">
+            <div className="rounded-3xl border border-white/10 bg-[#0b1021] p-5 md:p-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('pages.scada.whatItDoesTitle', { defaultValue: 'What the platform actually does' })}</h2>
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
                   {t('pages.scada.whatItDoesDesc1', { defaultValue: 'PinnacleOS connects machine telemetry, alarm states, service context, and commercial reporting into one operating layer. It gives teams a single place to understand how the recovery system is performing and what needs attention.' })}
@@ -93,7 +93,7 @@ const ScadaPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
               {screenshots.map((shot, index) => (
                 <motion.div
                   key={shot.title}
@@ -104,7 +104,7 @@ const ScadaPage: React.FC = () => {
                   className="rounded-3xl overflow-hidden border border-white/10 bg-[#0b1021] relative group shadow-[0_0_15px_rgba(16,185,129,0.0)] hover:shadow-[0_0_25px_rgba(16,185,129,0.2)] hover:border-emerald-500/50 transition-all duration-500"
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#000212]/80 z-10 pointer-events-none group-hover:opacity-50 transition-opacity" />
-                  <img src={screenshotImages[index]} alt={shot.title} className="w-full h-72 object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" />
+                  <img src={screenshotImages[index]} alt={shot.title} className="w-full h-48 md:h-72 object-cover relative z-0 transition-transform duration-700 group-hover:scale-105" />
                   <div className="p-6 relative z-20 border-t border-white/10 bg-[#0b1021]/80 backdrop-blur-md">
                     <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">{shot.title}</h3>
                     <p className="text-gray-400">{shot.text}</p>

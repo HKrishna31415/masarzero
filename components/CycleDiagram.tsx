@@ -1,14 +1,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '../context/TranslationContext';
 
 const CycleDiagram: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <div className="relative w-full aspect-video bg-[#0B1021] rounded-xl border border-white/10 overflow-hidden select-none shadow-2xl">
         
         {/* --- Ground Line --- */}
         <div className="absolute top-[55%] left-0 right-0 h-0.5 bg-slate-700 border-t border-slate-600 border-dashed z-10" />
-        <div className="absolute top-[52%] right-4 text-[10px] text-slate-500 uppercase font-mono font-bold tracking-wider z-10">Ground Level</div>
+        <div className="absolute top-[52%] right-4 text-[10px] text-slate-500 uppercase font-mono font-bold tracking-wider z-10">{t('pages.cycle.diagram.groundLevel')}</div>
 
         {/* --- USTs (Underground) --- */}
         <div className="absolute left-[5%] top-[60%] w-[60%] h-[30%] flex gap-4 z-0">
@@ -22,13 +24,13 @@ const CycleDiagram: React.FC = () => {
                         animate={{ opacity: [0.1, 0.3, 0.1] }}
                         transition={{ duration: 4, repeat: Infinity }}
                      />
-                     <span className="absolute top-2 text-[9px] font-bold text-emerald-300/40 tracking-widest">VAPOR SPACE</span>
+                     <span className="absolute top-2 text-[9px] font-bold text-emerald-300/40 tracking-widest">{t('pages.cycle.diagram.vaporSpace')}</span>
                 </div>
                 {/* Liquid Fuel */}
                 <div className="relative h-[40%] w-full bg-emerald-900/80 border-t border-emerald-500/50">
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
                     <div className="absolute bottom-2 left-0 right-0 text-center">
-                        <span className="text-[9px] font-bold text-emerald-200/60 tracking-widest">LIQUID FUEL</span>
+                        <span className="text-[9px] font-bold text-emerald-200/60 tracking-widest">{t('pages.cycle.diagram.liquidFuel')}</span>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,7 @@ const CycleDiagram: React.FC = () => {
                         animate={{ opacity: [0.1, 0.3, 0.1] }}
                         transition={{ duration: 4, repeat: Infinity, delay: 1 }}
                      />
-                     <span className="absolute top-2 text-[9px] font-bold text-emerald-300/40 tracking-widest">BUFFER</span>
+                     <span className="absolute top-2 text-[9px] font-bold text-emerald-300/40 tracking-widest">{t('pages.cycle.diagram.buffer')}</span>
                 </div>
                 {/* Liquid Fuel */}
                 <div className="relative h-[40%] w-full bg-emerald-900/80 border-t border-emerald-500/50">
@@ -61,10 +63,10 @@ const CycleDiagram: React.FC = () => {
                 />
                 <div className="w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.7)]" />
             </div>
-            <span className="text-xs font-bold text-white tracking-wider">VRU CORE</span>
+            <span className="text-xs font-bold text-white tracking-wider">{t('pages.cycle.diagram.vruCore')}</span>
             <div className="flex gap-1 mt-1">
                 <motion.div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" animate={{ opacity: [0.3, 1, 0.3] }} transition={{ duration: 1, repeat: Infinity }} />
-                <span className="text-[9px] text-emerald-400 font-mono">PROCESSING</span>
+                <span className="text-[9px] text-emerald-400 font-mono">{t('pages.cycle.diagram.processing')}</span>
             </div>
         </div>
 
@@ -170,20 +172,20 @@ const CycleDiagram: React.FC = () => {
         {/* Labels */}
         <div className="absolute top-[42%] left-[45%] text-center z-20">
              <div className="bg-black/60 border border-white/20 px-2 py-0.5 rounded text-[8px] text-white font-mono backdrop-blur-sm">
-                VAPOR INTAKE
+                {t('pages.cycle.diagram.vaporIntake')}
              </div>
         </div>
 
         <div className="absolute top-[53%] right-[2%] text-center z-20">
              <div className="bg-black/60 border border-white/20 px-2 py-0.5 rounded text-[8px] text-slate-300 font-mono backdrop-blur-sm">
-                EXCESS RETURN
+                {t('pages.cycle.diagram.excessReturn')}
              </div>
         </div>
 
         <div className="absolute bottom-[10%] right-[25%] text-center z-20">
              <div className="bg-emerald-900/80 border border-emerald-500/30 px-3 py-1 rounded-full backdrop-blur-md flex items-center gap-2 shadow-lg">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                <span className="text-[9px] font-bold text-emerald-200">LIQUID RECOVERY</span>
+                <span className="text-[9px] font-bold text-emerald-200">{t('pages.cycle.diagram.liquidRecovery')}</span>
              </div>
         </div>
 

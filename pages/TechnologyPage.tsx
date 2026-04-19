@@ -83,7 +83,7 @@ const TechnologyPage: React.FC = () => {
   return (
     <section className="min-h-screen bg-[#050714] text-white">
       <div className="container mx-auto px-4 pt-32 pb-20">
-        <div className="max-w-4xl mb-16">
+        <div className="max-w-4xl mb-10">
           <p className="text-sm uppercase tracking-[0.3em] text-emerald-400 font-mono mb-4">{t('pages.technology.badge')}</p>
           <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
             {t('pages.technology.title')}
@@ -93,7 +93,7 @@ const TechnologyPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           {overviewCards.map(item => {
             const Icon = item.icon;
             return (
@@ -108,9 +108,9 @@ const TechnologyPage: React.FC = () => {
           })}
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
           <div className="rounded-3xl border border-emerald-500/30 bg-[#0b1120] overflow-hidden">
-            <img src="/factorypictures/machinesinfactory.pic.jpg" alt="MZ-1 units" className="w-full h-72 object-cover" />
+            <img src="/factorypictures/machinesinfactory.pic.jpg" alt="MZ-1 units" className="w-full h-48 md:h-72 object-cover" />
             <div className="p-8">
               <p className="text-xs uppercase tracking-[0.2em] text-emerald-400 mb-3">Select Product</p>
               <h2 className="text-3xl font-bold mb-4">MZ-1</h2>
@@ -136,7 +136,7 @@ const TechnologyPage: React.FC = () => {
           </div>
 
           <div className="rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
-            <img src="/otherinstalls/largeinstall.png" alt="MZ-9000 deployment" className="w-full h-72 object-cover" />
+            <img src="/otherinstalls/largeinstall.png" alt="MZ-9000 deployment" className="w-full h-48 md:h-72 object-cover" />
             <div className="p-8">
               <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Select Product</p>
               <h2 className="text-3xl font-bold mb-4">MZ-9000</h2>
@@ -175,11 +175,11 @@ const TechnologyPage: React.FC = () => {
       </div>
 
       {selectedProduct === 'mz1' && (
-        <div ref={modelRef} className="h-screen w-screen relative bg-[#050714] overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 z-10 p-8 pt-40 pointer-events-none bg-gradient-to-b from-[#000212] via-[#000212]/80 to-transparent">
+        <div ref={modelRef} className="h-[80vh] w-screen relative bg-[#050714] overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 z-10 p-4 pt-28 md:pt-40 pointer-events-none bg-gradient-to-b from-[#000212] via-[#000212]/80 to-transparent">
             <div className="container mx-auto">
               <div className="pointer-events-auto">
-                <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
+                <h2 className="text-2xl md:text-5xl font-bold text-white tracking-tighter">
                   {t('pages.technology.schematic.title')}
                 </h2>
                 <p className="text-gray-400 mt-2 max-w-lg text-sm md:text-base">

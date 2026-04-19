@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
 import { AreaChart, Area, ResponsiveContainer } from 'recharts';
 import { Server, Cloud, AlertTriangle, Activity, Zap, Lock, Wifi, Database, ChevronDown } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
 // --- Mock Data ---
 const performanceData = [
@@ -16,6 +17,7 @@ const performanceData = [
 
 // A high-fidelity mock of the dashboard designed at a fixed logical width
 const DashboardUI = ({ step }: { step: number }) => {
+    const { t } = useTranslation();
     return (
         <div className="w-[350px] md:w-[600px] aspect-[3/4] md:aspect-video bg-[#0f172a] rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col relative select-none">
             {/* Glow Effect Background */}
@@ -40,7 +42,7 @@ const DashboardUI = ({ step }: { step: number }) => {
                 <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
                     <div className="flex items-center gap-2 mb-2">
                         <Activity size={14} className="text-emerald-400" />
-                        <span className="text-[10px] uppercase text-slate-400 font-bold">Flow Rate</span>
+                        <span className="text-[10px] uppercase text-slate-400 font-bold">{t('pages.scada.animation.flowRate')}</span>
                     </div>
                     <div className="text-2xl font-bold text-white">1,240 <span className="text-xs font-normal text-slate-500">L/min</span></div>
                 </div>
@@ -48,14 +50,14 @@ const DashboardUI = ({ step }: { step: number }) => {
                 <div className={`col-span-1 bg-slate-800/50 p-3 rounded-xl border border-slate-700 transition-all duration-500 ${step === 2 ? 'ring-2 ring-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)] bg-slate-800 z-10 relative' : 'opacity-60 grayscale'}`}>
                      <div className="flex items-center gap-2 mb-2">
                         <Zap size={14} className="text-yellow-400" />
-                        <span className="text-[10px] uppercase text-slate-400 font-bold">Pressure</span>
+                        <span className="text-[10px] uppercase text-slate-400 font-bold">{t('pages.scada.animation.pressure')}</span>
                     </div>
                     <div className="text-2xl font-bold text-white">14.5 <span className="text-xs font-normal text-slate-500">PSI</span></div>
                 </div>
 
                 {/* Main Chart */}
                 <div className={`col-span-2 bg-slate-800/30 rounded-xl border border-slate-700 p-4 h-32 relative overflow-hidden transition-all duration-500 ${step === 2 ? 'ring-1 ring-emerald-500/50 shadow-lg z-10 relative' : 'opacity-60 grayscale'}`}>
-                    <p className="text-[10px] text-slate-400 mb-2 absolute top-3 left-4">Recovery Efficiency Trend</p>
+                    <p className="text-[10px] text-slate-400 mb-2 absolute top-3 left-4">{t('pages.scada.animation.recoveryTrend')}</p>
                     <ResponsiveContainer width="100%" height="100%">
                         <AreaChart data={performanceData}>
                             <defs>
@@ -72,14 +74,14 @@ const DashboardUI = ({ step }: { step: number }) => {
                 {/* Alerts Section */}
                 <div className={`col-span-2 md:col-span-1 bg-slate-800/50 rounded-xl border border-slate-700 p-3 transition-all duration-500 ${step === 3 ? 'ring-2 ring-red-500 shadow-[0_0_20px_rgba(239,68,68,0.4)] bg-slate-800 scale-105 z-10' : 'opacity-60 grayscale'}`}>
                     <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase">System Alerts</span>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase">{t('pages.scada.animation.systemAlerts')}</span>
                         <div className={`w-2 h-2 bg-red-500 rounded-full ${step === 3 ? 'animate-ping' : ''}`} />
                     </div>
                     <div className="flex items-start gap-2 bg-red-500/10 p-2 rounded border border-red-500/20">
                         <AlertTriangle size={14} className="text-red-400 mt-0.5 flex-shrink-0" />
                         <div>
-                            <p className="text-xs font-bold text-red-300">Filter Maintenance</p>
-                            <p className="text-[10px] text-red-400/70">Delta P {'>'} 2.5 PSI</p>
+                            <p className="text-xs font-bold text-red-300">{t('pages.scada.animation.filterMaintenance')}</p>
+                            <p className="text-[10px] text-red-400/70">{t('pages.scada.animation.deltaP')}</p>
                         </div>
                     </div>
                 </div>
@@ -87,7 +89,7 @@ const DashboardUI = ({ step }: { step: number }) => {
                 {/* Controls Section */}
                 <div className={`col-span-2 md:col-span-1 bg-slate-800/50 rounded-xl border border-slate-700 p-3 flex flex-col justify-between transition-all duration-500 ${step === 4 ? 'ring-2 ring-teal-500 shadow-[0_0_20px_rgba(20,184,166,0.4)] bg-slate-800 scale-105 z-10' : 'opacity-60 grayscale'}`}>
                     <div className="flex items-center justify-between mb-2">
-                         <span className="text-[10px] font-bold text-slate-400 uppercase">Remote Ops</span>
+                         <span className="text-[10px] font-bold text-slate-400 uppercase">{t('pages.scada.animation.remoteOps')}</span>
                          <Lock size={12} className="text-slate-500" />
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -142,7 +144,9 @@ const CloudNode = ({ opacity, scale }: { opacity: any, scale: any }) => (
     </motion.div>
 );
 
-const HeroTitle = ({ opacity, scale }: { opacity: any, scale: any }) => (
+const HeroTitle = ({ opacity, scale }: { opacity: any, scale: any }) => {
+    const { t } = useTranslation();
+    return (
     <motion.div 
         style={{ opacity, scale }} 
         className="absolute inset-0 flex flex-col items-center justify-center z-40 pointer-events-none text-center px-4"
@@ -153,19 +157,21 @@ const HeroTitle = ({ opacity, scale }: { opacity: any, scale: any }) => (
                 PINNACLE <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">OS</span>
             </h1>
             <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-light tracking-wide">
-                The Operating System for Industrial Sustainability.
+                {t('pages.scada.animation.tagline')}
             </p>
             <div className="mt-16 animate-bounce text-emerald-500 flex justify-center">
                 <ChevronDown size={48} />
             </div>
         </div>
     </motion.div>
-);
+    );
+};
 
 // --- Main Component ---
 
 const ScadaScrollAnimation: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation();
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start start', 'end end']
@@ -245,20 +251,20 @@ const ScadaScrollAnimation: React.FC = () => {
                     <AnimatePresence mode="wait">
                         {step === 2 && (
                             <motion.div key="text2" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-emerald-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
-                                <h3 className="text-emerald-400 font-bold text-lg md:text-xl mb-1">Real-Time Telemetry</h3>
-                                <p className="text-xs md:text-sm text-gray-300">Instant visibility into flow rates and pressures.</p>
+                                <h3 className="text-emerald-400 font-bold text-lg md:text-xl mb-1">{t('pages.scada.animation.telemetry')}</h3>
+                                <p className="text-xs md:text-sm text-gray-300">{t('pages.scada.animation.telemetryDesc')}</p>
                             </motion.div>
                         )}
                         {step === 3 && (
                             <motion.div key="text3" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-red-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
-                                <h3 className="text-red-400 font-bold text-lg md:text-xl mb-1">Predictive Alerts</h3>
-                                <p className="text-xs md:text-sm text-gray-300">AI diagnostics detect anomalies before failures occur.</p>
+                                <h3 className="text-red-400 font-bold text-lg md:text-xl mb-1">{t('pages.scada.animation.predictiveAlerts')}</h3>
+                                <p className="text-xs md:text-sm text-gray-300">{t('pages.scada.animation.predictiveDesc')}</p>
                             </motion.div>
                         )}
                         {step === 4 && (
                             <motion.div key="text4" variants={textVariants} initial="hidden" animate="visible" exit="exit" className="bg-slate-900/90 backdrop-blur-md border border-teal-500/30 p-4 md:p-6 rounded-2xl max-w-sm text-center shadow-2xl">
-                                <h3 className="text-teal-400 font-bold text-lg md:text-xl mb-1">Remote Command</h3>
-                                <p className="text-xs md:text-sm text-gray-300">Secure, encrypted control from anywhere in the world.</p>
+                                <h3 className="text-teal-400 font-bold text-lg md:text-xl mb-1">{t('pages.scada.animation.remoteCommand')}</h3>
+                                <p className="text-xs md:text-sm text-gray-300">{t('pages.scada.animation.remoteCommandDesc')}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>

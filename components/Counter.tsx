@@ -4,12 +4,12 @@ import { animate, useMotionValue } from 'framer-motion';
 
 const Counter: React.FC = () => {
     // A large, realistic starting number
-    const initialValue = 231900203;
+    const initialValue = 2319002;
     // A realistic rate of recovery in liters per second across all clients
-    const ratePerSecond = 15.7;
+    const ratePerSecond = 0.157;
 
     const count = useMotionValue(initialValue);
-    const [display, setDisplay] = useState({ integerPart: '231,900', decimalPart: '203' });
+    const [display, setDisplay] = useState({ integerPart: '2,319', decimalPart: '002' });
 
     useEffect(() => {
         const animation = animate(count, 1e12, { // Animate to a very large number to simulate infinity

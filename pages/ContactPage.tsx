@@ -109,7 +109,7 @@ const ContactPage: React.FC = () => {
                     
                     {/* Header */}
                     <motion.div 
-                        className="text-center mb-16"
+                        className="text-center mb-8 md:mb-12"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -117,7 +117,7 @@ const ContactPage: React.FC = () => {
                         <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
                             {t('pages.contact.badge')}
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
+                        <h1 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter mb-4">
                             {t('pages.contact.title')}
                         </h1>
                         <p className="text-gray-400 max-w-xl mx-auto">
@@ -125,17 +125,17 @@ const ContactPage: React.FC = () => {
                         </p>
                     </motion.div>
 
-                    <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
                         
                         {/* Left Column: Offices */}
                         <VectorBorderCard className="bg-slate-900/70 backdrop-blur-md h-full">
-                            <div className="p-8 h-full flex flex-col">
+                            <div className="p-5 md:p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
                                     <Globe className="text-emerald-400" size={24} />
                                     <h3 className="text-xl font-bold text-white uppercase tracking-widest">{t('pages.contact.nexus')}</h3>
                                 </div>
 
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     {offices.map((office, i) => (
                                         <motion.div 
                                             key={office.city}
@@ -165,7 +165,7 @@ const ContactPage: React.FC = () => {
 
                         {/* Right Column: Direct Contacts */}
                         <VectorBorderCard className="bg-slate-900/70 backdrop-blur-md h-full">
-                            <div className="p-8 h-full flex flex-col">
+                            <div className="p-5 md:p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
                                     <Phone className="text-emerald-400" size={24} />
                                     <h3 className="text-xl font-bold text-white uppercase tracking-widest">{t('pages.contact.channels')}</h3>
@@ -190,7 +190,7 @@ const ContactPage: React.FC = () => {
                                                     <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">{dept.name}</h4>
                                                     <p className="text-xs text-gray-400 mt-0.5">{dept.desc}</p>
                                                 </div>
-                                                <div className="text-right hidden sm:block">
+                                                <div className="text-right hidden md:block">
                                                     <p className="text-xs font-mono text-emerald-500/80 group-hover:text-emerald-400">{dept.email}</p>
                                                 </div>
                                             </motion.a>

@@ -39,7 +39,7 @@ const Footer: React.FC<FooterProps> = () => {
         { title: t('header.nav.clientPipeline'), path: '/pipeline', locked: true },
         { title: t('header.nav.esgHub'), path: '/esg' },
         { title: t('header.nav.aboutUs'), path: '/about' },
-        { title: t('header.nav.investorRelations'), path: '/investor' },
+        { title: t('header.nav.investorRelations'), path: '/investor', locked: true },
         { title: t('header.nav.newsroom'), path: '/newsroom' },
         { title: t('header.nav.legalCompliance'), path: '/legal' },
         { title: t('header.nav.contactUs'), path: '/contact' },
@@ -49,7 +49,7 @@ const Footer: React.FC<FooterProps> = () => {
     return (
         <footer className="relative overflow-hidden">
             {/* Counter Section */}
-            <div className="bg-[#0d1117] py-20 text-center">
+            <div className="bg-[#0d1117] py-12 md:py-20 text-center">
                 <div className="container mx-auto px-4">
                     <h2 className="text-2xl md:text-3xl font-medium text-emerald-400 mb-4">{t('footer.counterTitle')}</h2>
                     <Counter />
@@ -72,15 +72,15 @@ const Footer: React.FC<FooterProps> = () => {
             </div>
 
             {/* Links Section */}
-            <div className="bg-[#000212] py-20">
+            <div className="bg-[#000212] py-12 md:py-20">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         {/* MasarZero Info */}
                         <div className="col-span-2 md:col-span-1">
                             <img 
                                 src="/masarzerologo.png" 
                                 alt="MasarZero" 
-                                className="h-24 w-auto mb-6 cursor-pointer" 
+                                className="h-16 md:h-24 w-auto mb-4 cursor-pointer" 
                                 onClick={() => navigate('/')}
                             />
                             <p className="text-gray-400 text-sm">{t('footer.tagline')}</p>
@@ -108,7 +108,7 @@ const Footer: React.FC<FooterProps> = () => {
                     </div>
 
                     {/* Bottom Bar */}
-                    <div className="mt-20 pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
+                    <div className="mt-10 md:mt-20 pt-6 md:pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
                         <p>&copy; {new Date().getFullYear()} {t('footer.copyright')}</p>
                     </div>
                 </div>

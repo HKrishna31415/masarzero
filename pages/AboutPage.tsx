@@ -27,8 +27,8 @@ const AboutPage: React.FC = () => {
     <section className="relative py-32 min-h-screen">
       <ThreeJSBackground />
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
+        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-16">
+          <h1 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
             {t('pages.about.title')}
           </h1>
           <p className="mt-6 text-gray-300 text-lg leading-relaxed">
@@ -36,14 +36,14 @@ const AboutPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="rounded-3xl overflow-hidden border border-white/10">
-            <img src="/factorypictures/machinesinfactory.pic.jpg" alt="MasarZero factory" className="w-full h-full min-h-[360px] object-cover" />
+            <img src="/factorypictures/machinesinfactory.pic.jpg" alt="MasarZero factory" className="w-full h-full min-h-[220px] md:min-h-[360px] object-cover" />
           </div>
-          <div className="rounded-3xl border border-white/10 bg-[#0A0D22] p-8 md:p-10">
+          <div className="rounded-3xl border border-white/10 bg-[#0A0D22] p-5 md:p-8">
             <div className="flex items-center gap-3 mb-5">
               <Factory className="text-emerald-400" />
-              <h2 className="text-3xl font-bold text-white">{t('pages.about.trustTitle')}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">{t('pages.about.trustTitle')}</h2>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
               {t('pages.about.trustDescription')}
@@ -59,7 +59,7 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           <VectorBorderCard className="bg-[#0A0D22] h-full">
             <div className="p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -103,7 +103,7 @@ const AboutPage: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('pages.about.team.title')}</h2>
             <p className="text-gray-400">{t('pages.about.team.subtitle')}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {(Array.isArray(t('pages.about.team.members', { returnObjects: true })) ? (t('pages.about.team.members', { returnObjects: true }) as unknown as any[]) : []).map((member, i) => {
               const icons: any = {
                 'Globe': Globe,
@@ -137,7 +137,7 @@ const AboutPage: React.FC = () => {
               <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('pages.about.dna.title')}</h2>
               <p className="text-gray-400">{t('pages.about.dna.subtitle')}</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
               {(Array.isArray(t('pages.about.dna.values', { returnObjects: true })) ? (t('pages.about.dna.values', { returnObjects: true }) as unknown as any[]) : []).map((value, i) => {
                  const icons: any = {
                     'Audacity': Zap,
@@ -167,9 +167,9 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-4 mb-12">
           {(Array.isArray(t('pages.about.testimonials', { returnObjects: true })) ? (t('pages.about.testimonials', { returnObjects: true }) as unknown as any[]) : []).map(item => (
-            <div key={item.author} className="rounded-3xl border border-white/10 bg-white/5 p-8 h-full">
+            <div key={item.author} className="rounded-3xl border border-white/10 bg-white/5 p-5 md:p-8 h-full">
               <Quote className="text-emerald-400 mb-5" />
               <p className="text-lg text-gray-200 leading-relaxed mb-4">“{item.quote}”</p>
               <p className="text-sm uppercase tracking-[0.2em] text-gray-500">{item.author}</p>

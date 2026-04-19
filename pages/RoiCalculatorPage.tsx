@@ -111,9 +111,9 @@ const SimplifiedCalculator = () => {
     }, [volume, price, days]);
 
     return (
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div className="grid lg:grid-cols-12 gap-6 md:gap-8">
             {/* Controls Side */}
-            <div className="lg:col-span-4 space-y-8">
+            <div className="lg:col-span-4 space-y-6 md:space-y-8">
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl backdrop-blur-sm">
                     <div className="flex items-center gap-3 mb-6">
                         <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
@@ -189,7 +189,7 @@ const SimplifiedCalculator = () => {
                     />
                 </div>
 
-                <div className="bg-[#0f172a]/50 border border-white/10 rounded-2xl p-6 h-[400px] relative overflow-hidden">
+                <div className="bg-[#0f172a]/50 border border-white/10 rounded-2xl p-4 md:p-6 h-[300px] md:h-[400px] relative overflow-hidden">
                      <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
                         <TrendingUp size={18} className="text-emerald-400" />
                         Cumulative Revenue Projection (Year 1)
@@ -316,9 +316,9 @@ const AdvancedCalculator = () => {
     }, [volume, price, capex, energyCosts, maintenanceCosts, efficiency, carbonPrice, uptime, depreciationPeriod, discountRate, finesAvoided, annualConsumables, annualWarranty]);
 
     return (
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div className="grid lg:grid-cols-12 gap-6 md:gap-8">
              {/* Inputs Column */}
-             <div className="lg:col-span-4 space-y-6 h-fit lg:sticky lg:top-24 overflow-y-auto max-h-[85vh] pr-2 custom-scrollbar">
+             <div className="lg:col-span-4 space-y-6 h-fit lg:sticky lg:top-24 overflow-y-auto lg:max-h-[85vh] pr-2 custom-scrollbar">
                 <div className="bg-[#0f172a]/50 border border-white/10 p-6 rounded-2xl">
                     <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-emerald-300"><Activity size={18}/> Operational</h3>
                     <SliderInput label="Vapor Volume" value={volume} min={5000} max={200000} step={1000} unit="L/day" onChange={setVolume} format={formatNumber} />
@@ -421,7 +421,7 @@ const RoiCalculatorPage: React.FC = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">{t('roi.badge')}</span>
-                        <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6">
+                        <h1 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter mb-6">
                             {t('roi.title')}
                         </h1>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
@@ -444,8 +444,8 @@ const RoiCalculatorPage: React.FC = () => {
                 </div>
 
                 {/* Mode Switcher */}
-                <div className="flex justify-center mb-16">
-                    <div className="bg-white/5 p-1.5 rounded-full border border-white/10 relative flex">
+                <div className="flex justify-center mb-10 md:mb-16">
+                    <div className="bg-white/5 p-1.5 rounded-full border border-white/10 relative flex w-full max-w-xs sm:max-w-sm md:w-auto">
                          {/* Sliding Background */}
                         <motion.div 
                             className="absolute top-1.5 bottom-1.5 bg-emerald-600 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]"
@@ -460,13 +460,13 @@ const RoiCalculatorPage: React.FC = () => {
                         
                         <button 
                             onClick={() => setMode('simplified')}
-                            className={`relative z-10 px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'simplified' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                            className={`relative z-10 flex-1 md:flex-none px-5 md:px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'simplified' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
                         >
                             {t('roi.switcher.quick')}
                         </button>
                         <button 
                             onClick={() => setMode('advanced')}
-                            className={`relative z-10 px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'advanced' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                            className={`relative z-10 flex-1 md:flex-none px-5 md:px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'advanced' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
                         >
                             {t('roi.switcher.deep')}
                         </button>

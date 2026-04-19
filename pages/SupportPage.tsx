@@ -168,7 +168,7 @@ const SupportPage: React.FC = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-12 gap-8 mb-24">
+                <div className="grid lg:grid-cols-12 gap-6 mb-16 md:mb-24">
                     {/* Left: Interactive Schematic */}
                     <div className="lg:col-span-7">
                         <SystemSchematic 
@@ -180,7 +180,7 @@ const SupportPage: React.FC = () => {
 
                     {/* Right: Diagnostic Interface */}
                     <div className="lg:col-span-5">
-                        <VectorBorderCard className="h-full min-h-[600px] bg-[#0A0E1F]">
+                        <VectorBorderCard className="h-full min-h-[400px] md:min-h-[600px] bg-[#0A0E1F]">
                             <div className="p-6 md:p-8 h-full flex flex-col">
                                 {/* Header */}
                                 <div className="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
@@ -261,7 +261,7 @@ const SupportPage: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="grid lg:grid-cols-3 gap-6 mb-24">
+                <div className="grid lg:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-24">
                     <VectorBorderCard className="bg-[#0A0E1F] group hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(16,185,129,0.15)] hover:border-emerald-500/30 transition-all duration-300">
                         <div className="p-6">
                             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2 group-hover:text-emerald-400 transition-colors"><Settings size={20} className="text-emerald-500"/> {d.serviceWorkflow}</h2>
@@ -309,7 +309,7 @@ const SupportPage: React.FC = () => {
                         </h2>
                         <p className="text-gray-400">{d.expertNetworkDesc}</p>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
                         {technicians.map((tech) => (
                             <motion.div key={tech.name} className="glass-card p-6 rounded-2xl border border-white/10 hover:border-emerald-500/30 transition-all group">
                                 <div className="flex items-start justify-between mb-4">

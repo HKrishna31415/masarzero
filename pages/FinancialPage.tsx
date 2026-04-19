@@ -21,7 +21,7 @@ const FinancialHero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-6 block">{t('pages.financial.badge')}</span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[0.92]">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-black text-white tracking-tighter mb-8 leading-tight">
             {t('pages.financial.title')}
           </h1>
           <p className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed">
@@ -55,14 +55,14 @@ const RevenueProjector = () => {
   return (
     <div className="mb-28">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-white">{t('pages.financial.estimator.title')}</h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-white">{t('pages.financial.estimator.title')}</h2>
         <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
           {t('pages.financial.estimator.subtitle')}
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-[420px,1fr] gap-8">
-        <div className="rounded-3xl border border-white/10 bg-[#0b1120] p-8 space-y-8">
+      <div className="grid lg:grid-cols-[380px,1fr] gap-6">
+        <div className="rounded-3xl border border-white/10 bg-[#0b1120] p-5 md:p-8 space-y-6">
           <div>
             <div className="flex justify-between mb-2">
               <label className="text-sm font-bold text-gray-300">{t('pages.financial.estimator.volume')}</label>
@@ -133,7 +133,7 @@ const RevenueProjector = () => {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-[#09101d] p-8">
+        <div className="rounded-3xl border border-white/10 bg-[#09101d] p-5 md:p-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-2xl font-bold text-white">{t('pages.financial.estimator.results.cumulative')}</h3>
@@ -143,7 +143,7 @@ const RevenueProjector = () => {
               {t('pages.financial.badge')}
             </div>
           </div>
-          <div className="h-[380px]">
+          <div className="h-[280px] md:h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data}>
                 <defs>
@@ -183,7 +183,7 @@ const FinancialPage: React.FC = () => {
       <FinancialHero />
 
       <div className="container mx-auto px-4 pb-24">
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {summaryCards.map((card, index) => {
             const Icon = card.icon;
             return (
@@ -201,8 +201,8 @@ const FinancialPage: React.FC = () => {
         </div>
 
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-24">
-          <div className="rounded-3xl border border-white/10 bg-[#0f1222] p-8">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <div className="rounded-3xl border border-white/10 bg-[#0f1222] p-5 md:p-8">
             <h2 className="text-3xl font-bold text-white mb-6">{t('pages.financial.oldStandard.title')}</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
@@ -229,7 +229,7 @@ const FinancialPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-[#09121f] to-[#0f1b2b] p-8">
+          <div className="rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-[#09121f] to-[#0f1b2b] p-5 md:p-8">
             <h2 className="text-3xl font-bold text-white mb-6">{t('pages.financial.masarzeroModel.title')}</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">

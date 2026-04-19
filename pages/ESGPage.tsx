@@ -152,7 +152,7 @@ const ESGPage: React.FC = () => {
                         </div>
                     </div>
 
-                    <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 leading-[0.9]">
+                    <h1 className="text-3xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-tight">
                         {t('pages.esg.title')}
                     </h1>
                     
@@ -202,7 +202,7 @@ const ESGPage: React.FC = () => {
                             initial="initial"
                             animate="animate"
                             exit="exit"
-                            className="space-y-24"
+                            className="space-y-12 md:space-y-24"
                         >
                             {/* Dashboard */}
                             <div className="space-y-8">
@@ -231,7 +231,7 @@ const ESGPage: React.FC = () => {
                             {/* Lifecycle */}
                             <LifecycleAnalysis />
 
-                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                                 <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
                                     <h3 className="text-2xl font-bold text-white mb-4">{t('pages.esg.env.carbonCredits.title')}</h3>
                                     <p className="text-gray-400 leading-relaxed mb-4">
@@ -277,7 +277,7 @@ const ESGPage: React.FC = () => {
                             initial="initial"
                             animate="animate"
                             exit="exit"
-                            className="space-y-24"
+                            className="space-y-12 md:space-y-24"
                         >
                             {/* Safety Header */}
                             <div className="text-center max-w-3xl mx-auto">
@@ -320,7 +320,7 @@ const ESGPage: React.FC = () => {
                             className="space-y-20"
                         >
                             {/* Governance Header */}
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="grid md:grid-cols-2 gap-8 items-center">
                                 <div>
                                     <h2 className="text-4xl font-bold text-white mb-6">{t('pages.esg.gov.title')}</h2>
                                     <p className="text-gray-400 text-lg mb-8">
@@ -351,10 +351,10 @@ const ESGPage: React.FC = () => {
                             </div>
                             
                             {/* Download CTA */}
-                            <div className="glass-card bg-gradient-to-r from-slate-900 to-slate-800 p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden group">
+                            <div className="glass-card bg-gradient-to-r from-slate-900 to-slate-800 p-6 md:p-10 rounded-3xl border border-white/10 relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/10 transition-colors" />
                                 
-                                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                                <div className="relative z-10 flex flex-col gap-6">
                                     <div>
                                         <h3 className="text-2xl font-bold text-white mb-2">{t('pages.esg.gov.reportTitle')}</h3>
                                         <p className="text-gray-400 max-w-lg">

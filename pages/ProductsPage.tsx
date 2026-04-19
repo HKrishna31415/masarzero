@@ -61,14 +61,14 @@ const ProductsPage: React.FC = () => {
 
       <div className="container mx-auto px-4">
         <motion.div
-          className="text-center mb-20 max-w-4xl mx-auto"
+          className="text-center mb-10 md:mb-16 max-w-4xl mx-auto"
           variants={headerVariants}
           initial="initial"
           animate="animate"
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-[0.3em] text-emerald-400 font-mono mb-5">{t('pages.products.badge')}</p>
-          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
+          <h1 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
             {t('pages.products.title')}
           </h1>
           <p className="mt-5 text-lg text-gray-400">
@@ -76,7 +76,7 @@ const ProductsPage: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-10 mb-24">
+        <div className="space-y-6 mb-16">
           {flagshipProducts.map((product, index) => (
             <motion.div
               key={product.name}
@@ -87,12 +87,12 @@ const ProductsPage: React.FC = () => {
               className="rounded-3xl overflow-hidden border border-white/10 bg-[#09101d]"
             >
               <div className="grid lg:grid-cols-2">
-                <div className="relative min-h-[320px]">
+                <div className="relative min-h-[200px] md:min-h-[320px]">
                   <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-[#09101d]" />
                 </div>
 
-                <div className="p-8 md:p-10 flex flex-col justify-center">
+                <div className="p-5 md:p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
                       {product.label}
@@ -102,8 +102,8 @@ const ProductsPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-4xl font-bold text-white mb-4">{product.name}</h2>
-                  <p className="text-gray-300 text-lg leading-relaxed mb-8">{product.description}</p>
+                  <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">{product.name}</h2>
+                  <p className="text-gray-300 text-base leading-relaxed mb-5">{product.description}</p>
 
                   <div className="grid sm:grid-cols-2 gap-4 mb-8">
                     {product.metrics.map(metric => (
@@ -135,7 +135,7 @@ const ProductsPage: React.FC = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-white">{t('pages.products.solutions.title')}</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-4">
             {solutionFamilies.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -145,7 +145,7 @@ const ProductsPage: React.FC = () => {
                   initial="initial"
                   animate="animate"
                   transition={{ delay: 0.2 + index * 0.05 }}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6"
                 >
                   <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
                     <Icon className="text-emerald-400" size={22} />
