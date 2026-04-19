@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
 export interface GalleryImage {
     url: string;
@@ -74,6 +75,8 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({ image }) => {
 
 const GalleryPage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const items = t('pages.gallery.items', { returnObjects: true }) as { title: string; subtitle: string }[];
 
   useEffect(() => {
     const container = containerRef.current;
@@ -118,8 +121,13 @@ const GalleryPage: React.FC = () => {
     <section className="bg-[#000212] h-screen w-full flex flex-col pt-24 pb-8">
         <div className="px-12 mb-4 flex justify-between items-end shrink-0">
             <div>
-                <h1 className="text-4xl md:text-6xl font-bold text-white">Visual <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Journey</span></h1>
-                <p className="text-gray-400 mt-2">Scroll to explore our global impact.</p>
+                <h1 className="text-4xl md:text-6xl font-bold text-white">
+                  {t('pages.gallery.title').split(' ').slice(0, -1).join(' ')}{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+                    {t('pages.gallery.title').split(' ').slice(-1)[0]}
+                  </span>
+                </h1>
+                <p className="text-gray-400 mt-2">{t('pages.gallery.subtitle')}</p>
             </div>
             <div className="flex gap-4 text-gray-500">
                  <ArrowLeft className="w-6 h-6 animate-pulse" />
@@ -134,15 +142,15 @@ const GalleryPage: React.FC = () => {
             style={{ scrollBehavior: 'auto' }}
         >
             {galleryImages.map((image, i) => (
-                <ParallaxImage key={i} image={image} />
+                <ParallaxImage key={i} image={{ ...image, title: items[i]?.title || image.title, subtitle: items[i]?.subtitle || image.subtitle }} />
             ))}
             
              {/* CTA Card */}
              <div className="relative h-[70vh] w-[80vw] md:w-[30vw] flex-shrink-0 rounded-3xl overflow-hidden flex items-center justify-center bg-slate-900/30 border border-white/10 mx-4 group hover:bg-slate-900/50 transition-colors">
                  <div className="text-center p-8">
-                     <h3 className="text-3xl font-bold mb-6 text-white">See it in person.</h3>
+                     <h3 className="text-3xl font-bold mb-6 text-white">{t('pages.gallery.visitTitle')}</h3>
                      <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform">
-                         Schedule Visit
+                         {t('pages.gallery.visitCTA')}
                      </button>
                  </div>
             </div>

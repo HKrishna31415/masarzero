@@ -1,5 +1,6 @@
 
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import Globe from '../components/Globe';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectModal from '../components/ProjectModal';
@@ -10,76 +11,189 @@ import VectorBorderCard from '../components/VectorBorderCard';
 
 const projects: Project[] = [
   { 
-    name: 'Houston Gas Corp Terminal',
-    location: 'Houston, USA',
+    name: 'Brazil Industrial Port',
+    location: 'Santos, Brazil',
+    countryCode: 'BR',
+    coordinates: [-23.9608, -46.3331],
+    operator: 'Aramco Logistics',
+    vru_model: 'MZ-9000 Pro',
+    status: 'Online',
+    annual_revenue: '$3.5M',
+    co2_reduction: '9,800 tons/year',
+    image: '/otherinstalls/largeinstall.png',
+    images: ['/otherinstalls/largeinstall.png', '/machinepictures/cryocore.jpg']
+  },
+  { 
+    name: 'North American Hub',
+    location: 'Silicon Valley, USA',
     countryCode: 'US',
-    coordinates: [29.7604, -95.3698],
-    operator: 'Houston Gas Corp',
+    coordinates: [37.7749, -122.4194],
+    operator: 'SASCO US',
     vru_model: 'MZ-9000 Pro',
     status: 'Online',
     annual_revenue: '$4.2M',
     co2_reduction: '12,500 tons/year',
-    image: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?q=80&w=2574&auto=format&fit=crop'
+    image: '/appscreenshots/dashboardss.png',
+    images: ['/appscreenshots/dashboardss.png', '/factorypictures/machinesinfactory.pic.jpg']
   },
   { 
-    name: 'EuroPort Logistics Hub',
-    location: 'Rotterdam, Netherlands',
-    countryCode: 'NL',
-    coordinates: [51.9244, 4.4777],
-    operator: 'EuroPort Logistics',
-    vru_model: 'MZ-9000 Pro',
+    name: 'Oman Energy Terminal',
+    location: 'Muscat, Oman',
+    countryCode: 'OM',
+    coordinates: [23.5859, 58.4059],
+    operator: 'Bapco energies',
+    vru_model: 'MZ-9000 Enterprise',
     status: 'Online',
-    annual_revenue: '$3.8M',
-    co2_reduction: '11,000 tons/year',
-    image: 'https://images.unsplash.com/photo-1516937941348-c096a98cb6b7?q=80&w=2670&auto=format&fit=crop'
-   },
+    annual_revenue: '$5.8M',
+    co2_reduction: '15,200 tons/year',
+    image: '/otherinstalls/bahraininstall.jpeg',
+    images: ['/otherinstalls/bahraininstall.jpeg']
+  },
   { 
-    name: 'Jubail Industrial Complex',
-    location: 'Jubail, Saudi Arabia',
+    name: 'Riyadh Strategic Reserve',
+    location: 'Riyadh, Saudi Arabia',
     countryCode: 'SA',
-    coordinates: [27.0123, 49.6631],
-    operator: 'Aramco Petrochemicals',
+    coordinates: [24.7136, 46.6753],
+    operator: 'Aramco',
+    vru_model: 'MZ-9000 Enterprise',
+    status: 'Online',
+    annual_revenue: '$8.2M',
+    co2_reduction: '28,000 tons/year',
+    image: '/saudiinstalls/abhainstall.jpeg',
+    images: ['/saudiinstalls/abhainstall.jpeg', '/factorypictures/machinesinfactory.pic.jpg']
+  },
+  { 
+    name: 'Bahrain Industrial Complex',
+    location: 'Manama, Bahrain',
+    countryCode: 'BH',
+    coordinates: [26.0667, 50.5577],
+    operator: 'Bapco energies',
     vru_model: 'MZ-9000 Enterprise',
     status: 'Online',
     annual_revenue: '$7.1M',
     co2_reduction: '25,000 tons/year',
-    image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2670&auto=format&fit=crop'
+    image: '/otherinstalls/bahraininstall.jpeg',
+    images: ['/otherinstalls/bahraininstall.jpeg']
   },
   { 
-    name: 'Singapore Refining Co.',
-    location: 'Singapore',
-    countryCode: 'SG',
-    coordinates: [1.3521, 103.8198],
-    operator: 'SRC Global',
+    name: 'Jordan Supply Node',
+    location: 'Amman, Jordan',
+    countryCode: 'JO',
+    coordinates: [31.9454, 35.9284],
+    operator: 'Aramco Services',
+    vru_model: 'MZ-9000 Pro',
+    status: 'Online',
+    annual_revenue: '$2.9M',
+    co2_reduction: '7,500 tons/year',
+    image: '/otherinstalls/largeinstall.png',
+    images: ['/otherinstalls/largeinstall.png']
+  },
+  { 
+    name: 'Tunisia Recovery Project',
+    location: 'Tunis, Tunisia',
+    countryCode: 'TN',
+    coordinates: [36.8065, 10.1815],
+    operator: 'SASCO',
+    vru_model: 'MZ-9000 Pro',
+    status: 'Online',
+    annual_revenue: '$3.1M',
+    co2_reduction: '8,200 tons/year',
+    image: '/otherinstalls/bahraininstall.jpeg',
+    images: ['/otherinstalls/bahraininstall.jpeg']
+  },
+  { 
+    name: 'Sri Lanka Energy Hub',
+    location: 'Colombo, Sri Lanka',
+    countryCode: 'LK',
+    coordinates: [6.9271, 79.8612],
+    operator: 'Bapco energies',
+    vru_model: 'MZ-9000 Enterprise',
+    status: 'Online',
+    annual_revenue: '$4.5M',
+    co2_reduction: '11,800 tons/year',
+    image: '/otherinstalls/largeinstall.png',
+    images: ['/otherinstalls/largeinstall.png']
+  },
+  { 
+    name: 'Korea Retail Program',
+    location: 'Multiple Sites, South Korea',
+    countryCode: 'KR',
+    coordinates: [35.1796, 129.0756],
+    operator: 'S-Oil',
+    vru_model: 'MZ-1 Portfolio',
+    status: 'Online',
+    annual_revenue: '$6.2M',
+    co2_reduction: '18,500 tons/year',
+    image: '/koreainstalls/twomachineskorea.jpeg',
+    images: [
+      '/koreainstalls/twomachineskorea.jpeg',
+      '/koreainstalls/ansansupermanstation.png',
+      '/koreainstalls/baekjaestatoinjeonju.png',
+      '/koreainstalls/batmanstationsuwon.png',
+      '/koreainstalls/cloverstationincheon.png',
+      '/koreainstalls/ironmanstationyongin.png',
+      '/koreainstalls/newtownanseong.png',
+      '/koreainstalls/supermananyongin.png',
+      '/koreainstalls/sinsunganseong.png',
+      '/koreainstalls/yonginsoilgyeonggi.png',
+      '/koreainstalls/myeongpum.png'
+    ],
+    installations: [
+      {id: 1, kr_name: '아리랑주유소', en_name: 'Arirang', address: '582 1-sunhwan-ro, Heungdeok-gu, Cheongju', date: 'Feb 17, 2023'},
+      {id: 2, kr_name: '뉴타운주유소', en_name: 'New Town', address: '862 Anseongmachum-daero, Anseong-si', date: 'Mar 01, 2023'},
+      {id: 3, kr_name: '신성주유소', en_name: 'Sinsung', address: '511 Jungang-ro, Anseong-si', date: 'Mar 01, 2023'},
+      {id: 4, kr_name: '거봉주유소', en_name: 'Geobong', address: '1546 Seodong-daero, Anseong-si', date: 'Mar 02, 2023'},
+      {id: 5, kr_name: '진사주유소', en_name: 'Jinsa', address: '536 Seodong-daero, Gongdo-eup, Anseong', date: 'Mar 02, 2023'},
+      {id: 6, kr_name: '공도주유소', en_name: 'Gongdo', address: '438 Seodong-daero, Gongdo-eup, Anseong', date: 'Mar 03, 2023'},
+      {id: 7, kr_name: '안성주유소', en_name: 'Anseong', address: '400 Seodong-daero, Gongdo-eup, Anseong', date: 'Mar 03, 2023'},
+      {id: 8, kr_name: '대왕주유소', en_name: 'Daewang', address: '609 Sujeong-ro, Sujeong-gu, Seongnam-si', date: 'Mar 16, 2023'},
+      {id: 9, kr_name: '명품주유소', en_name: 'Myeongpum', address: '653 Guseong-ro, Sujeong-gu, Seongnam-si', date: 'Mar 16, 2023'},
+      {id: 10, kr_name: '동천주유소', en_name: 'Dongcheon', address: '506 Suji-ro, Suji-gu, Yongin-si', date: 'Mar 20, 2023'},
+      {id: 11, kr_name: '슈퍼맨주유소', en_name: 'Superman', address: '20 Mandeok-ro, Giheung-gu, Yongin-si', date: 'Mar 20, 2023'},
+      {id: 12, kr_name: '배트맨주유소', en_name: 'Batman', address: '120 Gwonseon-ro, Gwonseon-gu, Suwon-si', date: 'Mar 25, 2023'},
+      {id: 13, kr_name: '아이언맨주유소', en_name: 'Iron Man', address: '88 Jungbu-daero, Yongin-si', date: 'Mar 27, 2023'},
+      {id: 14, kr_name: '백제주유소', en_name: 'Baekjae', address: '450 Baekje-daero, Jeonju-si', date: 'Apr 02, 2023'},
+      {id: 15, kr_name: '클로버주유소', en_name: 'Clover', address: '12 Inju-daero, Michuhol-gu, Incheon', date: 'Apr 05, 2023'}
+    ]
+  },
+  { 
+    name: 'Shanghai Manufacturing Facility',
+    location: 'Shanghai, China',
+    countryCode: 'CN',
+    coordinates: [31.2304, 121.4737],
+    operator: 'Aramco Services',
     vru_model: 'MZ-9000 Pro',
     status: 'Online',
     annual_revenue: '$5.5M',
     co2_reduction: '18,000 tons/year',
-    image: 'https://images.unsplash.com/photo-1535137033828-17648eb7c7cf?q=80&w=2670&auto=format&fit=crop'
+    image: '/chinainstalls/whiteunitchina.JPG',
+    images: ['/chinainstalls/whiteunitchina.JPG', '/factorypictures/machinesinfactory.pic.jpg']
   },
   { 
-    name: 'Guanabara Bay Terminal',
-    location: 'Rio de Janeiro, Brazil',
-    countryCode: 'BR',
-    coordinates: [-22.9068, -43.1729],
-    operator: 'Petrobras',
-    vru_model: 'MZ-9000 Lite',
+    name: 'Cambodia Port Ops',
+    location: 'Phnom Penh, Cambodia',
+    countryCode: 'KH',
+    coordinates: [11.5449, 104.8922],
+    operator: 'Aramco',
+    vru_model: 'MZ-9000 Pro',
     status: 'Online',
-    annual_revenue: '$2.1M',
-    co2_reduction: '6,500 tons/year',
-    image: 'https://images.unsplash.com/photo-1496247749665-49cf5bf87565?q=80&w=2642&auto=format&fit=crop'
+    annual_revenue: '$2.5M',
+    co2_reduction: '6,200 tons/year',
+    image: '/otherinstalls/largeinstall.png',
+    images: ['/otherinstalls/largeinstall.png']
   },
   { 
-    name: 'Kwinana Industrial Area',
-    location: 'Perth, Australia',
-    countryCode: 'AU',
-    coordinates: [-32.2350, 115.7720],
-    operator: 'Wesfarmers LNG',
-    vru_model: 'MZ-9000 Enterprise',
-    status: 'Under Construction',
-    annual_revenue: 'N/A',
-    co2_reduction: 'N/A',
-    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2670&auto=format&fit=crop'
+    name: 'Vietnam Industrial Zone',
+    location: 'Ho Chi Minh City, Vietnam',
+    countryCode: 'VN',
+    coordinates: [10.8231, 106.6297],
+    operator: 'Aramco Logistics',
+    vru_model: 'MZ-9000 Pro',
+    status: 'Online',
+    annual_revenue: '$3.8M',
+    co2_reduction: '10,500 tons/year',
+    image: '/saudiinstalls/abhainstall.jpeg',
+    images: ['/saudiinstalls/abhainstall.jpeg']
   },
 ];
 
@@ -122,6 +236,7 @@ const ProjectListItem = ({ project, onClick }: { project: Project, onClick: () =
 );
 
 const GlobalPage: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -158,16 +273,23 @@ const GlobalPage: React.FC = () => {
     setSelectedProject(null);
   };
 
+  const handleCountryDoubleClick = (countryCode: string) => {
+    const countryProjects = projects.filter(project => project.countryCode === countryCode);
+    if (countryProjects.length === 1) {
+      setSelectedProject(countryProjects[0]);
+    }
+  };
+
   return (
     <section className="h-screen w-screen relative flex items-center justify-center overflow-hidden bg-[#000212]">
       
       {/* --- 3D Globe Layer --- */}
       <div className="absolute inset-0 z-0">
-        <Globe projects={projects} onProjectClick={handleProjectClick} />
+        <Globe projects={projects} onProjectClick={handleProjectClick} onCountryDoubleClick={handleCountryDoubleClick} />
       </div>
 
       {/* --- HUD Overlay Layer --- */}
-      <div className="absolute inset-0 z-10 pointer-events-none flex flex-col p-4 md:p-8 pt-72 pb-24 md:pb-8 justify-end">
+      <div className="absolute inset-0 z-10 pointer-events-none flex flex-col p-4 md:p-8 pt-36 md:pt-40 pb-24 md:pb-8 justify-end">
         
         {/* Main Layout */}
         <div className="flex-1 flex flex-col md:flex-row justify-between items-end gap-6">
@@ -181,28 +303,28 @@ const GlobalPage: React.FC = () => {
             >
                 <StatWidget 
                     icon={Building} 
-                    label="Active Sites" 
+                    label={t('pages.global.stats.activeSites')} 
                     value={<AnimatedCounter to={totalSites} />} 
                     color="text-cyan-400" 
                 />
                 <StatWidget 
                     icon={GlobeIcon} 
-                    label="Markets Online" 
+                    label={t('pages.global.stats.marketsOnline')} 
                     value={<AnimatedCounter to={activeCountries} />} 
                     color="text-purple-400" 
                 />
                  <StatWidget 
                     icon={Zap} 
-                    label="Global Revenue" 
+                    label={t('pages.global.stats.globalRevenue')} 
                     value={<AnimatedCounter to={totalRevenue} prefix="$" suffix="M" fractionDigits={1} />} 
-                    subtext="Annual Run Rate"
+                    subtext={t('pages.global.stats.annualRunRate')}
                     color="text-green-400" 
                 />
                  <StatWidget 
                     icon={Wind} 
-                    label="Carbon Offset" 
+                    label={t('pages.global.stats.carbonOffset')} 
                     value={<AnimatedCounter to={73.5} suffix="k" fractionDigits={1} />} 
-                    subtext="Metric Tons / Year"
+                    subtext={t('pages.global.stats.metricTonsYear')}
                     color="text-blue-400" 
                 />
             </motion.div>
@@ -220,7 +342,7 @@ const GlobalPage: React.FC = () => {
                     <div className="relative group">
                         <input 
                             type="text" 
-                            placeholder="Filter signal..." 
+                            placeholder={t('pages.global.feed.filterSignal')} 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-black/40 border border-white/10 rounded py-1 pl-7 pr-2 text-[10px] text-white focus:outline-none focus:border-cyan-500/50 transition-colors placeholder-gray-600 font-mono"
@@ -241,7 +363,7 @@ const GlobalPage: React.FC = () => {
                 </div>
                 
                 <div className="p-1.5 border-t border-white/5 text-[8px] text-center text-gray-700 font-mono uppercase">
-                    Scanning Sector 7...
+                    {t('pages.global.feed.scanningSector')}
                 </div>
             </motion.div>
 
@@ -258,11 +380,11 @@ const GlobalPage: React.FC = () => {
       {/* Mobile Stats Bar (Bottom) */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-lg border-t border-white/10 p-4 grid grid-cols-3 gap-2 z-20">
            <div className="text-center">
-                <p className="text-[9px] text-gray-400 uppercase font-bold">Sites</p>
+                <p className="text-[9px] text-gray-400 uppercase font-bold">{t('pages.global.modal.sites')}</p>
                 <p className="font-bold text-white text-lg">{totalSites}</p>
            </div>
            <div className="text-center border-l border-white/10">
-                <p className="text-[9px] text-gray-400 uppercase font-bold">Markets</p>
+                <p className="text-[9px] text-gray-400 uppercase font-bold">{t('header.nav.global')}</p>
                 <p className="font-bold text-white text-lg">{activeCountries}</p>
            </div>
            <div className="text-center border-l border-white/10">

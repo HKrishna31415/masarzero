@@ -4,15 +4,16 @@ import { motion } from 'framer-motion';
 import { Leaf, Droplets, Sprout, Recycle, ArrowUpRight } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
 import VectorBorderCard from './VectorBorderCard';
+import { useTranslation } from '../context/TranslationContext';
 
-const stats = [
+const getStats = (t: any) => [
     { 
         id: 'co2',
         icon: Leaf, 
         to: 8200000, 
         suffix: ' tons', 
-        label: 'CO₂ Reduced', 
-        sub: 'Annual Run Rate',
+        label: t('pages.esg.impactDashboard.co2.label'), 
+        sub: t('pages.esg.impactDashboard.co2.sub'),
         color: 'text-emerald-400' 
     },
     { 
@@ -20,8 +21,8 @@ const stats = [
         icon: Droplets, 
         to: 231900203, 
         suffix: ' L', 
-        label: 'Fuel Recovered', 
-        sub: 'Cumulative Global',
+        label: t('pages.esg.impactDashboard.fuel.label'), 
+        sub: t('pages.esg.impactDashboard.fuel.sub'),
         color: 'text-teal-400' 
     },
     { 
@@ -29,8 +30,8 @@ const stats = [
         icon: Sprout, 
         to: 12300000, 
         suffix: '', 
-        label: 'Tree Equivalent', 
-        sub: 'Sequestration Match',
+        label: t('pages.esg.impactDashboard.trees.label'), 
+        sub: t('pages.esg.impactDashboard.trees.sub'),
         color: 'text-emerald-400' 
     },
     { 
@@ -39,21 +40,23 @@ const stats = [
         to: 3.1, 
         fractionDigits: 1, 
         suffix: 'B L', 
-        label: 'Water Conserved', 
-        sub: 'Cooling Efficiency',
+        label: t('pages.esg.impactDashboard.water.label'), 
+        sub: t('pages.esg.impactDashboard.water.sub'),
         color: 'text-emerald-400' 
     },
 ];
 
 const ImpactDashboard: React.FC = () => {
+    const { t } = useTranslation();
+    const stats = getStats(t);
     return (
         <div className="w-full">
             <div className="flex items-center justify-between mb-8 px-2">
                 <h3 className="text-xl font-bold text-white flex items-center gap-3">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
-                    Live Impact Telemetry
+                    {t('pages.esg.impactDashboard.title')}
                 </h3>
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Global Aggregation</span>
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">{t('pages.esg.impactDashboard.subtitle')}</span>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

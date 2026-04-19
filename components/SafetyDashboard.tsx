@@ -2,14 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, HeartPulse, HardHat } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
+import { useTranslation } from '../context/TranslationContext';
 
-const safetyStats = [
-    { icon: ShieldCheck, to: 0.05, fractionDigits: 2, label: 'Total Recordable Incident Rate (TRIR)' },
-    { icon: HeartPulse, to: 0, label: 'Lost Time Injuries (LTI)' },
-    { icon: HardHat, to: 15000, suffix: '+ hours', label: 'Annual Employee Safety Training' },
+const getSafetyStats = (t: any) => [
+    { icon: ShieldCheck, to: 0.05, fractionDigits: 2, label: t('pages.esg.safety.stats.0.label') },
+    { icon: HeartPulse, to: 0, label: t('pages.esg.safety.stats.1.label') },
+    { icon: HardHat, to: 15000, suffix: t('pages.esg.safety.stats.2.suffix'), label: t('pages.esg.safety.stats.2.label') },
 ];
 
 const SafetyDashboard: React.FC = () => {
+    const { t } = useTranslation();
+    const safetyStats = getSafetyStats(t);
     const sectionVariants = {
         initial: { opacity: 0 },
         inView: { opacity: 1, transition: { staggerChildren: 0.2 } }
@@ -23,9 +26,9 @@ const SafetyDashboard: React.FC = () => {
     return (
         <section className="py-24">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold">Commitment to Health & Safety</h2>
+                <h2 className="text-3xl md:text-5xl font-bold">{t('pages.esg.safety.title')}</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-gray-400">
-                    The well-being of our employees, partners, and communities is our highest priority. We maintain a world-class safety culture through rigorous training and proactive measures.
+                    {t('pages.esg.safety.subtitle')}
                 </p>
             </div>
             <motion.div 

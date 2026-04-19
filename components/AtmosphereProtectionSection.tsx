@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import VectorBorderCard from './VectorBorderCard';
+import { useTranslation } from '../context/TranslationContext';
 
 // --- Animated SVG Icons ---
 
@@ -71,26 +72,28 @@ const AtmosphereIcon = () => (
 );
 
 
-const features = [
+const features = (t: any) => [
   {
     icon: SmogFormationIcon,
-    title: 'Inhibits Smog Formation (N₂O₄)',
-    description: 'VRUs capture VOCs & NOx. These compounds not only form smog but also act as greenhouse gases that trap heat in the atmosphere. Preventing their release is key for cleaner air and a stable climate.',
+    title: t('pages.environmental.atmosphere.smog.title'),
+    description: t('pages.environmental.atmosphere.smog.desc'),
   },
   {
     icon: AtmosphereIcon,
-    title: 'Protecting Our Atmosphere',
-    description: 'By capturing Volatile Organic Compounds (VOCs), VRUs reduce the formation of ground-level ozone (smog) and protect the vital stratospheric ozone layer.',
+    title: t('pages.environmental.atmosphere.protection.title'),
+    description: t('pages.environmental.atmosphere.protection.desc'),
   },
 ];
 
 
 const AtmosphereProtectionSection: React.FC = () => {
+    const { t } = useTranslation();
+    const atmosphereFeatures = features(t);
     return (
         <section className="pt-0 pb-20 sm:pb-24">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {features.map((feature, i) => {
+                    {atmosphereFeatures.map((feature, i) => {
                         const Icon = feature.icon;
                         return (
                              <VectorBorderCard
@@ -98,7 +101,7 @@ const AtmosphereProtectionSection: React.FC = () => {
                                 className="flex flex-col items-center text-center h-full"
                                 delay={i * 0.1}
                             >
-                                <div className="h-28 flex items-center justify-center">
+                                <div className="h-24 flex items-center justify-center">
                                     <Icon />
                                 </div>
                                 <h3 className="text-xl font-bold mt-4 mb-2 text-white">{feature.title}</h3>

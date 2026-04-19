@@ -4,6 +4,7 @@ import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { FlaskConical, ClipboardCheck, ShieldAlert, Activity, CheckCircle2, Microscope, Zap, ArrowRight, Server, Ruler, Database, Cpu, ScanLine, Radio, Layers, Droplets, MousePointerClick, Terminal, Crosshair, BoxSelect, Map as MapIcon, RotateCcw, Play, Timer, Umbrella, Gauge, Wifi, AudioWaveform, Signal, Volume2, Mic, Power, Cable, X, Waves } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, CartesianGrid, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, LineChart, Line, AreaChart, Area, ReferenceLine } from 'recharts';
 import VectorBorderCard from '../components/VectorBorderCard';
+import { useDict } from '../translations';
 
 // --- Animation Components ---
 
@@ -1856,7 +1857,7 @@ const NitrogenPressureTest = () => {
     );
 };
 
-const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => {
+const HardwareSimulationModule = ({ hardware, d }: { hardware: string | null, d: ReturnType<typeof useDict>['vruTesting'] }) => {
     if (!hardware) {
         return (
             <div className="mt-8 w-full max-w-6xl mx-auto">
@@ -1864,8 +1865,8 @@ const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => 
                     <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-4">
                         <MousePointerClick size={32} className="text-gray-500" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">Select Hardware</h3>
-                    <p className="text-gray-400">Click on a component above to initialize its specific diagnostic simulation.</p>
+                    <h3 className="text-xl font-bold text-white mb-2">{d.selectHardware}</h3>
+                    <p className="text-gray-400">{d.selectHardwareDesc}</p>
                 </div>
             </div>
         );
@@ -1901,7 +1902,7 @@ const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => 
             <div className="bg-[#0F1225] rounded-2xl border border-white/10 overflow-hidden p-8">
                 <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/10">
                     <Terminal size={20} className="text-emerald-400" />
-                    <h3 className="text-lg font-bold text-white">Diagnostic Terminal: <span className="text-emerald-400">{hardware}</span></h3>
+                    <h3 className="text-lg font-bold text-white">{d.diagnosticTerminal} <span className="text-emerald-400">{hardware}</span></h3>
                 </div>
                 <div className="h-[450px]">
                     {content}
@@ -1914,87 +1915,32 @@ const HardwareSimulationModule = ({ hardware }: { hardware: string | null }) => 
 const VruTestingPage: React.FC = () => {
     const [activeLevel, setActiveLevel] = useState(1);
     const [selectedHardware, setSelectedHardware] = useState<string | null>(null);
+    const d = useDict().vruTesting;
 
     useEffect(() => {
         setSelectedHardware(null);
     }, [activeLevel]);
 
-    const levels = [
-        {
-            level: 1,
-            title: "Standard Compliance",
-            subtitle: "Routine Verification",
-            icon: ClipboardCheck,
-            color: "text-emerald-400",
-            bg: "bg-emerald-500/10",
-            border: "border-emerald-500/30",
-            description: "The foundational layer of our quality assurance. Every unit deployed undergoes this mandatory testing sequence to ensure it meets basic regulatory and operational standards.",
-            features: [
-                "Vapor Pressure (RVP) Check",
-                "Output Octane Rating Analysis",
-                "Basic Leak Detection Scan",
-                "4-Hour Continuous Run Test"
-            ],
-            hardware: [
-                { category: "Primary Equipment", icon: Server, equipment: "Hybrid VRU (Ref + Carbon)", purpose: "Standard recovery unit with >98% efficiency rating." },
-                { category: "Vapor Manifolding", icon: Ruler, equipment: "Double-walled FRP & P/V Valves", purpose: "Ensures system integrity and pressure safety." },
-                { category: "Leak Detection", icon: Droplets, equipment: "Bubble Leak Test", purpose: "Visual verification of joint tightness using surfactant solution." },
-                { category: "Tank Monitoring", icon: ScanLine, equipment: "High-Precision ATG", purpose: "Automated Tank Gauging for inventory tracking." },
-                { category: "Control System", icon: Cpu, equipment: "Standard PLC Interface", purpose: "Basic automated control and emergency logic." },
-                { category: "Quality Verification", icon: FlaskConical, equipment: "Gasoline Quality Lab Test", purpose: "External laboratory analysis to certify fuel composition." },
-                { category: "Manual Audit", icon: Droplets, equipment: "Water Finding Paste", purpose: "Color-change verification of tank bottom water." }
-            ]
-        },
-        {
-            level: 2,
-            title: "Deep-Dive Audit",
-            subtitle: "Efficiency Optimization",
-            icon: Activity,
-            color: "text-teal-400",
-            bg: "bg-teal-500/10",
-            border: "border-teal-500/30",
-            description: "A rigorous examination of system efficiency. This level introduces manual auditing tools to verify sensor accuracy, physical integrity, and detailed electrical consumption analysis.",
-            features: [
-                "Manual Pressure Verification",
-                "Gross Flow Volume Audit",
-                "Power Consumption Profiling",
-                "Physical Seal Integrity Scan"
-            ],
-            hardware: [
-                { category: "Foundation", icon: Layers, equipment: "Includes All Level 1 Hardware", purpose: "Builds upon the standard equipment baseline." },
-                { category: "Integrity Test", icon: Activity, equipment: "Nitrogen Integrity Test", purpose: "High-pressure decay simulation to verify manifold seal." },
-                { category: "Chemistry", icon: FlaskConical, equipment: "Gasoline Reformates Analysis", purpose: "Simulation of non-evaporative octane boosters." },
-                { category: "Power Analysis", icon: Zap, equipment: "3-Phase Power Analyzer", purpose: "Logs voltage, current, and power factor." },
-                { category: "Sensor Audit", icon: Droplets, equipment: "Electronic Water Cut", purpose: "Digital interface probe calibration check." }
-            ]
-        },
-        {
-            level: 3,
-            title: "Forensic Stress Test",
-            subtitle: "Maximum Durability",
-            icon: ShieldAlert,
-            color: "text-red-400",
-            bg: "bg-red-500/10",
-            border: "border-red-500/30",
-            description: "Our most extreme testing protocol. Includes Gold/Silver standard methodology for precise emissions calculation, chemical speciation, and thermal performance analysis.",
-            features: [
-                "Full Hydrocarbon Speciation",
-                "Contaminant Injection Simulation",
-                "Surge Flow Load Testing (150%)",
-                "Gold/Silver Standard Validation"
-            ],
-            hardware: [
-                { category: "Advanced Leak", icon: ScanLine, equipment: "Optical Gas Imaging", purpose: "Visualizing fugitive hydrocarbon emissions invisible to the naked eye." },
-                { category: "Thermal Control", icon: Umbrella, equipment: "SHED Analysis", purpose: "Canopy/Shade impact simulation on core operating temperature." },
-                { category: "Sensory Audit", icon: MapIcon, equipment: "Olfactory Test", purpose: "Station map and field olfactometry verification." },
-                { category: "Precise Emissions", icon: Radio, equipment: "VOC Analyzer (PID/FID)", purpose: "Real-time ppm concentration." },
-                { category: "Chemical Analysis", icon: FlaskConical, equipment: "Gas Chromatograph", purpose: "Full chemical speciation (C4-C6 chains)." },
-                { category: "Advanced Diagnostics", icon: Database, equipment: "Thermal Imager", purpose: "Thermal core uniformity analysis." },
-                { category: "Remote Comms", icon: Cable, equipment: "Wired Internet Connection Test", purpose: "Ethernet link latency & packet loss verification." },
-                { category: "Mechanical Health", icon: AudioWaveform, equipment: "Acoustic Monitoring", purpose: "Ultrasonic bearing & cavitation detection." }
-            ]
-        }
+    const levelIcons = [ClipboardCheck, Activity, ShieldAlert];
+    const levelColors = [
+        { color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30" },
+        { color: "text-teal-400", bg: "bg-teal-500/10", border: "border-teal-500/30" },
+        { color: "text-red-400", bg: "bg-red-500/10", border: "border-red-500/30" },
     ];
+
+    const levels = d.levels.map((lvl, i) => ({
+        ...lvl,
+        level: i + 1,
+        icon: levelIcons[i],
+        ...levelColors[i],
+        hardware: lvl.hardware.map((hw, j) => ({
+            ...hw,
+            icon: [Server, Ruler, Droplets, ScanLine, Cpu, FlaskConical, Droplets,
+                   Layers, Activity, FlaskConical, Zap, Droplets,
+                   ScanLine, Umbrella, MapIcon, Radio, FlaskConical, Database, Cable, AudioWaveform][
+                       i * 7 + j] ?? Server,
+        })),
+    }));
 
     const headerVariants: Variants = {
         initial: { opacity: 0, y: 20 },
@@ -2018,15 +1964,24 @@ const VruTestingPage: React.FC = () => {
                     animate="animate"
                 >
                     <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
-                        Quality Assurance
+                        {d.badge}
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        Validation <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Protocols</span>
+                        {d.title.split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">{d.title.split(' ').slice(1).join(' ')}</span>
                     </h1>
                     <p className="mt-4 max-w-3xl mx-auto text-gray-400 text-lg">
-                        We don't just build machines; we certify performance. Our 3-tiered testing regime ensures every VRU meets the specific demands of its deployment environment.
+                        {d.description}
                     </p>
                 </motion.div>
+
+                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                    {(['overview', 'workflow', 'outputs'] as const).map(key => (
+                        <div key={key} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                            <h2 className="text-xl font-bold text-white mb-3">{d.intro[key].title}</h2>
+                            <p className="text-sm text-gray-400">{d.intro[key].desc}</p>
+                        </div>
+                    ))}
+                </div>
 
                 {/* Level Selectors */}
                 <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -2077,7 +2032,7 @@ const VruTestingPage: React.FC = () => {
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-6">
                                             <span className={`text-sm font-bold px-3 py-1 rounded-full border ${levels[activeLevel-1].color.replace('text-', 'border-').replace('400', '500/30')} bg-black/20`}>
-                                                Level {activeLevel} Scope
+                                                {d.levelScope.replace('{n}', String(activeLevel))}
                                             </span>
                                         </div>
                                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -2124,7 +2079,7 @@ const VruTestingPage: React.FC = () => {
                                             </motion.div>
                                         </div>
                                         <button className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-wider bg-white text-black hover:bg-emerald-50 transition-colors flex items-center justify-center gap-2 group">
-                                            Request Level {activeLevel} Audit
+                                            {d.requestAudit.replace('{n}', String(activeLevel))}
                                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                         </button>
                                     </div>
@@ -2151,12 +2106,12 @@ const VruTestingPage: React.FC = () => {
                                                     <Server size={24} />
                                                 </div>
                                                 <div>
-                                                    <h3 className="text-xl font-bold text-white">Hardware Diagnostics</h3>
-                                                    <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">Select component to run simulation</p>
+                                                    <h3 className="text-xl font-bold text-white">{d.hardwareDiagnostics}</h3>
+                                                    <p className="text-xs text-gray-500 font-mono uppercase tracking-widest">{d.selectComponentDesc}</p>
                                                 </div>
                                             </div>
                                             <div className="hidden md:block text-[10px] font-bold px-2 py-1 rounded bg-white/5 text-gray-400 border border-white/10">
-                                                SPECIFICATION_SHEET_V2.4
+                                                {d.specSheet}
                                             </div>
                                         </div>
 
@@ -2211,10 +2166,19 @@ const VruTestingPage: React.FC = () => {
                                 animate="animate"
                                 exit="exit"
                             >
-                                <HardwareSimulationModule hardware={selectedHardware} />
+                                <HardwareSimulationModule hardware={selectedHardware} d={d} />
                             </motion.div>
                         )}
                     </AnimatePresence>
+
+                    <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                        <h3 className="text-2xl font-bold text-white mb-4">{d.expectedDeliverables}</h3>
+                        <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
+                            {d.deliverables.map((item, i) => (
+                                <div key={i} className="rounded-2xl border border-white/10 bg-black/20 p-4">{item}</div>
+                            ))}
+                        </div>
+                    </div>
 
                 </div>
 
@@ -2222,7 +2186,7 @@ const VruTestingPage: React.FC = () => {
                 <div className="mt-24 text-center">
                     <div className="inline-flex items-center gap-3 text-gray-500 text-sm bg-white/5 px-6 py-3 rounded-full border border-white/5">
                         <Microscope size={16} />
-                        <span>All testing is conducted by ISO 17025 accredited laboratories.</span>
+                        <span>{d.labNote}</span>
                     </div>
                 </div>
 

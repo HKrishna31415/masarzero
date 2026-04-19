@@ -2,25 +2,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, CheckCircle2, Activity } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
 const clients = [
-    "ARAMCO", "TOTAL ENERGIES", "BP", "SHELL", "CHEVRON", "EXXONMOBIL", "ADNOC", "PETROBRAS", "EQUINOR", "ENI"
+    "ARAMCO", "BAPCO", "S-OIL", "SASCO"
 ];
 
 // Duplicate for infinite scroll
-const marqueeClients = [...clients, ...clients];
-
-const stats = [
-    { icon: Globe, value: "12+", label: "Countries Deployed" },
-    { icon: CheckCircle2, value: "500+", label: "Active Installations" },
-    { icon: Activity, value: "99.9%", label: "Operational Uptime" },
-];
+const marqueeClients = [...clients, ...clients, ...clients, ...clients];
 
 const SocialProofSection: React.FC = () => {
+    const { t } = useTranslation();
+    const stats = [
+        { icon: Globe, value: '5+', label: t('home.socialProof.countries') },
+        { icon: CheckCircle2, value: '50+', label: t('home.socialProof.installations') },
+        { icon: Activity, value: '99%+', label: t('home.socialProof.uptime') },
+    ];
+
     return (
         <section className="py-12 border-b border-white/5 bg-[#000212]">
             <div className="container mx-auto px-4 mb-12">
-                <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-8">Trusted by Global Energy Leaders</p>
+                <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-8">{t('home.socialProof.trustedBy')}</p>
                 
                 {/* Marquee */}
                 <div className="relative flex overflow-x-hidden mask-linear-gradient">

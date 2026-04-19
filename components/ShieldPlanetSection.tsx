@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import VectorBorderCard from './VectorBorderCard';
+import { useTranslation } from '../context/TranslationContext';
 
 // --- Animated SVG Icons ---
 
@@ -166,41 +167,43 @@ const ImprovesSafetyIcon = () => (
 );
 
 
-const shieldFeatures = [
+const shieldFeatures = (t: any) => [
   {
     icon: AirPollutionIcon,
-    title: 'Reduces Air Pollution',
-    description: 'Filters over 95% of Volatile Organic Compounds (VOCs) and other harmful vapors before they enter the atmosphere.',
+    title: t('pages.environmental.shield.pollution.title'),
+    description: t('pages.environmental.shield.pollution.desc'),
   },
   {
     icon: ConservesResourcesIcon,
-    title: 'Conserves Resources',
-    description: 'Recovers valuable hydrocarbon vapors and converts them back into usable liquid products, preventing resource waste.',
+    title: t('pages.environmental.shield.resources.title'),
+    description: t('pages.environmental.shield.resources.desc'),
   },
   {
     icon: PreventsOzoneFormationIcon,
-    title: 'Prevents Ozone Formation',
-    description: 'By capturing VOCs, VRUs help prevent the formation of ground-level ozone (smog), a major component of air pollution.',
+    title: t('pages.environmental.shield.ozone.title'),
+    description: t('pages.environmental.shield.ozone.desc'),
   },
   {
     icon: ImprovesSafetyIcon,
-    title: 'Improves Safety',
-    description: 'Reduces the risk of fire and explosion by minimizing flammable vapor concentrations at industrial sites.',
+    title: t('pages.environmental.shield.safety.title'),
+    description: t('pages.environmental.shield.safety.desc'),
   },
 ];
 
 const ShieldPlanetSection: React.FC = () => {
+    const { t } = useTranslation();
+    const features = shieldFeatures(t);
     return (
         <section className="pt-20 sm:pt-32 pb-0">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold">A Shield For Our Planet</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold">{t('pages.environmental.shield.title')}</h2>
                     <p className="mt-4 max-w-3xl mx-auto text-gray-400">
-                        VRUs deliver a powerful combination of environmental protection, resource conservation, and improved safety.
+                        {t('pages.environmental.shield.tagline')}
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {shieldFeatures.map((feature, i) => {
+                    {features.map((feature, i) => {
                         const Icon = feature.icon;
                         return (
                             <VectorBorderCard

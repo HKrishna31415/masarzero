@@ -1,31 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, FlaskConical, Briefcase, Award } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
-const impactAreas = [
+const getImpactAreas = (t: any) => [
     {
         icon: Users,
-        title: "Community Partnerships",
-        description: "We invest in STEM education programs in our local communities, inspiring the next generation of engineers and environmental scientists."
+        title: t('pages.esg.community.areas.0.title'),
+        description: t('pages.esg.community.areas.0.desc')
     },
     {
         icon: Briefcase,
-        title: "Local Hiring & Development",
-        description: "Our policy prioritizes hiring and developing local talent, ensuring our growth contributes directly to the economic vitality of the regions we operate in."
+        title: t('pages.esg.community.areas.1.title'),
+        description: t('pages.esg.community.areas.1.desc')
     },
     {
         icon: FlaskConical,
-        title: "Innovation for Good",
-        description: "The MasarZero Innovation Lab is dedicated to pioneering next-gen solutions, including affordable carbon capture and water purification technologies."
+        title: t('pages.esg.community.areas.2.title'),
+        description: t('pages.esg.community.areas.2.desc')
     },
     {
         icon: Award,
-        title: "Employee Volunteer Program",
-        description: "We provide paid time off for employees to volunteer for environmental and social causes, amplifying our positive impact beyond our core business."
+        title: t('pages.esg.community.areas.3.title'),
+        description: t('pages.esg.community.areas.3.desc')
     }
 ];
 
 const CommunityImpactSection: React.FC = () => {
+    const { t } = useTranslation();
+    const impactAreas = getImpactAreas(t);
     const sectionVariants = {
         initial: { opacity: 0 },
         inView: { opacity: 1, transition: { staggerChildren: 0.2 } }
@@ -39,9 +42,9 @@ const CommunityImpactSection: React.FC = () => {
     return (
         <section className="py-24">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold">Community & Innovation</h2>
+                <h2 className="text-3xl md:text-5xl font-bold">{t('pages.esg.community.title')}</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-gray-400">
-                    Our responsibility extends beyond our facilities. We're committed to building stronger communities and pioneering technology for a better world.
+                    {t('pages.esg.community.subtitle')}
                 </p>
             </div>
             <motion.div 

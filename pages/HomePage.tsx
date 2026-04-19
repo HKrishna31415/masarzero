@@ -6,6 +6,7 @@ import HowItWorksSection from '../components/HowItWorksSection';
 import FeaturesSection from '../components/FeaturesSection';
 import ProductShowcaseSection from '../components/ProductShowcaseSection';
 import SustainabilitySection from '../components/SustainabilitySection';
+import DeploymentProofSection from '../components/DeploymentProofSection';
 
 interface HomePageProps {
 }
@@ -17,6 +18,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             <SocialProofSection />
             <HowItWorksSection />
             <FeaturesSection />
+            <DeploymentProofSection />
             <ProductShowcaseSection />
             <SustainabilitySection />
         </>

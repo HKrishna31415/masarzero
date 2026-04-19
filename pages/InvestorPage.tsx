@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, FileText, Download, TrendingUp, Cpu, ShieldCheck, Globe, Activity, DollarSign, PieChart, ArrowUpRight, Calendar, Clock, ChevronDown, Briefcase, Search } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
@@ -33,6 +33,7 @@ const documents = [
 // --- Components ---
 
 const TickerTape = () => {
+    const { t } = useTranslation();
     const items = [
         "MSZ: $24.50 ▲ 1.2%", "REVENUE: +320% YOY", "ACTIVE UNITS: 500+", "CARBON CREDITS: $125/TON", "NEW PARTNERSHIP: ARAMCO", "EXPANSION: BRAZIL ONLINE"
     ];
@@ -130,6 +131,7 @@ const PasswordScreen = ({ onLogin, error }: { onLogin: (password: string) => voi
 };
 
 const InvestorView = () => {
+    const { t } = useTranslation();
     const [activeChart, setActiveChart] = useState<'revenue' | 'margin'>('revenue');
 
     return (
@@ -144,20 +146,20 @@ const InvestorView = () => {
                     <div>
                         <div className="flex items-center gap-2 mb-3">
                             <div className="px-2 py-0.5 rounded bg-emerald-950/30 border border-emerald-500/30 text-[10px] font-mono text-emerald-400 uppercase">
-                                Investor Relations
+                                {t('pages.investor.badge')}
                             </div>
-                            <span className="text-xs text-gray-500 font-mono">Last Updated: 14:02 GMT</span>
+                            <span className="text-xs text-gray-500 font-mono">{t('pages.investor.updated')}: 14:02 GMT</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
-                            Investor <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Terminal</span>
+                            {t('pages.investor.title')}
                         </h1>
                     </div>
                     <div className="mt-6 md:mt-0 flex gap-4">
                         <button className="px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors text-sm">
-                            Contact IR
+                            {t('pages.investor.contact')}
                         </button>
                         <button className="px-6 py-3 border border-white/20 rounded-lg hover:bg-white/5 transition-colors text-sm font-bold flex items-center gap-2">
-                            <Download size={16} /> 2024 Prospectus
+                            <Download size={16} /> {t('pages.investor.prospectus')}
                         </button>
                     </div>
                 </div>
@@ -170,10 +172,10 @@ const InvestorView = () => {
                         
                         {/* Key Metrics Row */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <StatBox label="Revenue (TTM)" value="45.2" suffix="M" prefix="$" change={320} />
-                            <StatBox label="Gross Margin" value="75" suffix="%" change={5.2} />
-                            <StatBox label="Deployments" value="512" change={12} />
-                            <StatBox label="Retention" value="100" suffix="%" change={0} />
+                            <StatBox label={t('pages.investor.metrics.revenue')} value="45.2" suffix="M" prefix="$" change={320} />
+                            <StatBox label={t('pages.investor.metrics.margin')} value="75" suffix="%" change={5.2} />
+                            <StatBox label={t('pages.investor.metrics.deployments')} value="512" change={12} />
+                            <StatBox label={t('pages.investor.metrics.retention')} value="100" suffix="%" change={0} />
                         </div>
 
                         {/* Main Chart Card */}
@@ -215,7 +217,7 @@ const InvestorView = () => {
                         <VectorBorderCard className="h-full bg-[#0c1222]">
                             <div className="flex flex-col h-full p-8">
                                 <h3 className="font-bold text-white mb-8 flex items-center gap-3 text-lg">
-                                    <PieChart size={20} className="text-teal-400" /> Investment Thesis
+                                    <PieChart size={20} className="text-teal-400" /> {t('pages.investor.thesis')}
                                 </h3>
                                 <div className="space-y-8 flex-grow">
                                     <div className="flex gap-4 group hover:translate-x-1 transition-transform">
@@ -242,7 +244,7 @@ const InvestorView = () => {
                                 </div>
                                 
                                 <div className="mt-10 pt-8 border-t border-white/10">
-                                    <h4 className="text-xs font-bold text-gray-500 uppercase mb-4 tracking-widest">Upcoming Catalysts</h4>
+                                    <h4 className="text-xs font-bold text-gray-500 uppercase mb-4 tracking-widest">{t('pages.investor.catalysts')}</h4>
                                     <div className="space-y-3">
                                         <div className="flex items-center justify-between text-sm group cursor-pointer hover:bg-white/5 p-3 rounded-lg transition-colors border border-transparent hover:border-white/5">
                                             <div className="flex items-center gap-3">
@@ -268,14 +270,14 @@ const InvestorView = () => {
                 {/* Data Room Section */}
                 <div className="mb-12">
                     <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                        <Briefcase size={24} className="text-emerald-400" /> Data Room
+                        <Briefcase size={24} className="text-emerald-400" /> {t('pages.investor.dataRoom.title')}
                     </h3>
                     <div className="bg-[#0c1222] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
                         <div className="grid grid-cols-12 gap-4 p-5 border-b border-white/10 bg-white/5 text-xs font-bold text-gray-400 uppercase tracking-wider">
-                            <div className="col-span-6 pl-2">Document Name</div>
-                            <div className="col-span-2 text-center hidden md:block">Type</div>
-                            <div className="col-span-2 text-center hidden md:block">Date</div>
-                            <div className="col-span-6 md:col-span-2 text-right pr-2">Action</div>
+                            <div className="col-span-6 pl-2">{t('pages.investor.dataRoom.docName')}</div>
+                            <div className="col-span-2 text-center hidden md:block">{t('pages.investor.dataRoom.type')}</div>
+                            <div className="col-span-2 text-center hidden md:block">{t('pages.investor.dataRoom.date')}</div>
+                            <div className="col-span-6 md:col-span-2 text-right pr-2">{t('pages.investor.dataRoom.action')}</div>
                         </div>
                         {documents.map((doc, i) => (
                             <div key={doc.id} className="grid grid-cols-12 gap-4 p-5 border-b border-white/5 items-center hover:bg-white/5 transition-colors group">

@@ -3,6 +3,9 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, CheckCircle2, Upload, Type, PenTool, Trash2, Calendar } from 'lucide-react';
 import { acceptanceTestData as initialData, TestSection } from '../data/acceptanceTestData';
+import { useTranslation } from '../context/TranslationContext';
+import { useDict } from '../translations';
+import { useAcceptanceTestData } from '../data/useLocalizedData';
 
 // --- Date Helper Functions ---
 const calculateNextDueDate = (lastCompleted: string, frequency: string): Date | null => {
@@ -21,12 +24,12 @@ const calculateNextDueDate = (lastCompleted: string, frequency: string): Date | 
     return nextDate;
 };
 
-const formatDueDateStatus = (nextDate: Date | null, frequency: string): { dateString: string; relativeString: string; color: string } => {
+const formatDueDateStatus = (nextDate: Date | null, frequency: string, d: { asRequired: string, trackManually: string, setDate: string, overdue: string, dueToday: string, dueIn: string }): { dateString: string; relativeString: string; color: string } => {
     if (frequency === 'Periodic' || frequency === 'Every 2000 Hrs') {
-        return { dateString: 'As Required', relativeString: '(Track Manually)', color: 'text-gray-400' };
+        return { dateString: d.asRequired, relativeString: d.trackManually, color: 'text-gray-400' };
     }
     if (!nextDate) {
-        return { dateString: 'Set Date', relativeString: '', color: 'text-gray-500' };
+        return { dateString: d.setDate, relativeString: '', color: 'text-gray-500' };
     }
 
     const today = new Date();
@@ -38,16 +41,16 @@ const formatDueDateStatus = (nextDate: Date | null, frequency: string): { dateSt
     let color = 'text-green-400';
 
     if (diffDays < 0) {
-        relativeString = `(Overdue by ${Math.abs(diffDays)}d)`;
+        relativeString = `(${d.overdue} ${Math.abs(diffDays)}d)`;
         color = 'text-red-400';
     } else if (diffDays === 0) {
-        relativeString = '(Due today)';
+        relativeString = d.dueToday;
         color = 'text-yellow-400';
     } else if (diffDays <= 7) {
-        relativeString = `(Due in ${diffDays}d)`;
+        relativeString = `(${d.dueIn} ${diffDays}d)`;
         color = 'text-yellow-400';
     } else {
-        relativeString = `(Due in ${diffDays}d)`;
+        relativeString = `(${d.dueIn} ${diffDays}d)`;
     }
     
     const dateString = nextDate.toLocaleDateString('en-CA');
@@ -55,7 +58,7 @@ const formatDueDateStatus = (nextDate: Date | null, frequency: string): { dateSt
 };
 
 // --- Signature Component ---
-const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
+const SignaturePad = ({ label, role, dict }: { label: string, role?: string, dict: { signatureRequired: string, type: string, draw: string, upload: string, signHere: string, clickToUpload: string, nameTitlePlaceholder: string, dateSigned: string, nameTitleLabel: string, typeFullName: string } }) => {
     const [mode, setMode] = useState<'type' | 'draw' | 'upload'>('draw');
     const [name, setName] = useState('');
     const [title, setTitle] = useState(role || '');
@@ -147,27 +150,27 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
             <div className="flex justify-between items-center mb-2">
                 <div className="flex flex-col">
                     <label className="text-sm font-bold text-white uppercase tracking-wider">{label}</label>
-                    <span className="text-[10px] text-gray-500">Signature Required</span>
+                    <span className="text-[10px] text-gray-500">{dict.signatureRequired}</span>
                 </div>
                 <div className="flex bg-black/40 rounded-lg p-1 border border-white/10">
                     <button
                         onClick={() => setMode('type')}
                         className={`p-1.5 rounded transition-all ${mode === 'type' ? 'bg-cyan-600 text-white' : 'text-gray-500 hover:text-white'}`}
-                        title="Type"
+                        title={dict.type}
                     >
                         <Type size={14} />
                     </button>
                     <button
                         onClick={() => setMode('draw')}
                         className={`p-1.5 rounded transition-all ${mode === 'draw' ? 'bg-cyan-600 text-white' : 'text-gray-500 hover:text-white'}`}
-                        title="Draw"
+                        title={dict.draw}
                     >
                         <PenTool size={14} />
                     </button>
                     <button
                         onClick={() => setMode('upload')}
                         className={`p-1.5 rounded transition-all ${mode === 'upload' ? 'bg-cyan-600 text-white' : 'text-gray-500 hover:text-white'}`}
-                        title="Upload"
+                        title={dict.upload}
                     >
                         <Upload size={14} />
                     </button>
@@ -181,7 +184,7 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Type Full Name"
+                        placeholder={dict.typeFullName}
                         className="w-full h-full bg-transparent text-center text-3xl text-cyan-400 focus:outline-none placeholder-slate-700"
                         style={{ fontFamily: 'cursive' }}
                     />
@@ -210,7 +213,7 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
                             <Trash2 size={14} />
                         </button>
                         {!isDrawing && (
-                            <div className="absolute bottom-2 left-2 text-[9px] text-slate-600 pointer-events-none">Sign Here</div>
+                            <div className="absolute bottom-2 left-2 text-[9px] text-slate-600 pointer-events-none">{dict.signHere}</div>
                         )}
                     </>
                 )}
@@ -230,7 +233,7 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
                         ) : (
                             <label className="cursor-pointer flex flex-col items-center gap-2 text-gray-500 hover:text-cyan-400 transition-colors">
                                 <Upload size={24} />
-                                <span className="text-xs">Click to Upload Image</span>
+                                <span className="text-xs">{dict.clickToUpload}</span>
                                 <input type="file" accept="image/*" onChange={handleUpload} className="hidden" />
                             </label>
                         )}
@@ -241,17 +244,17 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
             {/* Info Fields */}
             <div className="grid grid-cols-2 gap-4">
                 <div>
-                    <label className="text-[10px] text-gray-500 uppercase font-bold mb-1 block">Name / Title</label>
+                    <label className="text-[10px] text-gray-500 uppercase font-bold mb-1 block">{dict.nameTitleLabel}</label>
                     <input
                         type="text"
                         value={mode === 'type' ? name : title}
                         onChange={(e) => mode === 'type' ? setName(e.target.value) : setTitle(e.target.value)}
-                        placeholder="Name & Title"
+                        placeholder={dict.nameTitlePlaceholder}
                         className="w-full bg-black/30 border border-slate-700 rounded px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none transition-colors"
                     />
                 </div>
                 <div>
-                    <label className="text-[10px] text-gray-500 uppercase font-bold mb-1 block">Date Signed</label>
+                    <label className="text-[10px] text-gray-500 uppercase font-bold mb-1 block">{dict.dateSigned}</label>
                     <div className="relative">
                         <input
                             type="date"
@@ -267,10 +270,30 @@ const SignaturePad = ({ label, role }: { label: string, role?: string }) => {
 };
 
 const EquipmentAcceptanceTestPage: React.FC = () => {
+    const localizedData = useAcceptanceTestData();
     const [testData, setTestData] = useState<TestSection[]>(initialData);
     const [activeTabId, setActiveTabId] = useState(initialData[0].id);
+    const { t } = useTranslation();
+    const d = useDict().acceptanceTest;
 
-    const activeSection = useMemo(() => testData.find(section => section.id === activeTabId) || testData[0], [testData, activeTabId]);
+    // Use localized data for display, but keep testData for checkbox state
+    const translatedTestData = useMemo(() => localizedData.map((section, idx) => ({
+        ...section,
+        checklistSections: section.checklistSections.map((cs, csIdx) => ({
+            ...cs,
+            checkpoints: cs.checkpoints.map((cp, cpIdx) => ({
+                ...cp,
+                // Merge checkbox state from testData
+                checked: testData[idx]?.checklistSections[csIdx]?.checkpoints[cpIdx]?.checked ?? false,
+                notes: testData[idx]?.checklistSections[csIdx]?.checkpoints[cpIdx]?.notes ?? '',
+                lastCompleted: testData[idx]?.checklistSections[csIdx]?.checkpoints[cpIdx]?.lastCompleted ?? null,
+                // Use original EN id for state tracking
+                id: initialData[idx]?.checklistSections[csIdx]?.checkpoints[cpIdx]?.id ?? cp.id,
+            })),
+        })),
+    })), [localizedData, testData]);
+
+    const activeSection = useMemo(() => translatedTestData.find(section => section.id === activeTabId) || translatedTestData[0], [translatedTestData, activeTabId]);
 
     const progress = useMemo(() => {
         if (!activeSection) return 0;
@@ -353,21 +376,21 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                 <div className="mb-12">
                     <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-8">
                         <div>
-                            <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">Quality Assurance</span>
+                            <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">{t('pages.acceptanceTest.badge')}</span>
                             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                                Acceptance <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Protocol</span>
+                                {t('pages.acceptanceTest.title').split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">{t('pages.acceptanceTest.title').split(' ').slice(1).join(' ')}</span>
                             </h1>
                         </div>
                         <div className="flex gap-3">
                             <div className="bg-[#0f172a] px-4 py-3 rounded-xl border border-white/10 flex flex-col justify-center min-w-[140px]">
-                                <span className="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Section Status</span>
+                                <span className="text-[10px] uppercase text-gray-500 font-bold tracking-wider">{t('pages.acceptanceTest.sectionStatus')}</span>
                                 <span className={`font-mono font-bold text-lg ${progress === 100 ? 'text-green-400' : 'text-cyan-400'}`}>
-                                    {progress === 100 ? 'COMPLETE' : 'IN PROGRESS'}
+                                    {progress === 100 ? t('pages.acceptanceTest.complete') : t('pages.acceptanceTest.inProgress')}
                                 </span>
                             </div>
                             <button className="flex items-center justify-center gap-2 bg-[#0f172a] hover:bg-white/10 border border-white/10 text-white font-bold px-6 py-3 rounded-xl transition-colors h-full group">
                                 <Download size={20} className="text-gray-400 group-hover:text-white transition-colors" />
-                                <span className="hidden md:inline">Export PDF</span>
+                                <span className="hidden md:inline">{t('pages.acceptanceTest.exportPdf')}</span>
                             </button>
                         </div>
                     </div>
@@ -375,7 +398,7 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                     {/* Navigation Tabs */}
                     <div className="overflow-x-auto pb-2 custom-scrollbar">
                         <div className="flex gap-2 min-w-max">
-                            {testData.map(tab => (
+                            {translatedTestData.map(tab => (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTabId(tab.id)}
@@ -434,7 +457,7 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                                     <div className="divide-y divide-white/5">
                                         {checklistSection.checkpoints.map(checkpoint => {
                                             const nextDueDate = isMaintSchedule ? calculateNextDueDate(checkpoint.lastCompleted!, checklistSection.title) : null;
-                                            const dueDateStatus = isMaintSchedule ? formatDueDateStatus(nextDueDate, checklistSection.title) : null;
+                                            const dueDateStatus = isMaintSchedule ? formatDueDateStatus(nextDueDate, checklistSection.title, d) : null;
 
                                             return (
                                             <div key={checkpoint.id} className="p-5 hover:bg-white/5 transition-colors grid grid-cols-12 gap-6 items-start group">
@@ -463,7 +486,7 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                                                 {isMaintSchedule && (
                                                     <div className="col-span-12 md:col-span-6 grid grid-cols-2 gap-4 bg-black/20 p-3 rounded-lg">
                                                         <div>
-                                                            <label className="text-[10px] text-gray-500 uppercase font-bold block mb-1">Last Completed</label>
+                                                            <label className="text-[10px] text-gray-500 uppercase font-bold block mb-1">{d.lastCompleted}</label>
                                                              <input 
                                                                 type="date" 
                                                                 value={checkpoint.lastCompleted || ''} 
@@ -484,7 +507,7 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                                                         <textarea 
                                                             value={checkpoint.notes} 
                                                             onChange={e => handleNotesChange(activeSection.id, checkpoint.id, e.target.value)} 
-                                                            placeholder="Observations / Notes..." 
+                                                            placeholder={d.observations} 
                                                             className="w-full bg-black/20 border border-white/5 rounded-lg p-3 text-xs text-gray-300 focus:text-white focus:border-cyan-500/50 focus:outline-none transition-all resize-none placeholder-gray-600 h-full min-h-[60px]" 
                                                         />
                                                     </div>
@@ -499,11 +522,11 @@ const EquipmentAcceptanceTestPage: React.FC = () => {
                         {/* Sign Off Section */}
                         {shouldShowSignOff && (
                             <div className="mt-16 pt-10 border-t border-white/10">
-                                <h3 className="text-2xl font-bold mb-8 text-white">Authorization & Sign-Off</h3>
+                                <h3 className="text-2xl font-bold mb-8 text-white">{d.authorization}</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                    <SignaturePad label="Manufacturer Representative" role="Technical Lead" />
-                                    <SignaturePad label="Client Representative" role="Site Manager" />
-                                    <SignaturePad label="Third Party Inspector" role="QA/QC Auditor" />
+                                    <SignaturePad label={d.sigRoles.manufacturer} role={d.sigRoles.manufacturerRole} dict={d} />
+                                    <SignaturePad label={d.sigRoles.client} role={d.sigRoles.clientRole} dict={d} />
+                                    <SignaturePad label={d.sigRoles.inspector} role={d.sigRoles.inspectorRole} dict={d} />
                                 </div>
                             </div>
                         )}

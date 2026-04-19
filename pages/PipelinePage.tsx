@@ -2,7 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { stages, deals } from '../data/pipelineData';
-import { ChevronDown, Lock, Search, Users, Bot, PieChart, Activity, DollarSign } from 'lucide-react';
+import { ChevronDown, Search, Users, Bot, PieChart, Activity, DollarSign, FileCheck, ClipboardList, Building2, Lock } from 'lucide-react';
 import DealModal from '../components/DealModal';
 import { EnrichedClient, PipelineStage } from '../types/pipeline';
 import VectorBorderCard from '../components/VectorBorderCard';
@@ -21,41 +21,14 @@ const formatValue = (value: number) => {
     return `$${value.toFixed(0)}`;
 };
 
-const PasswordScreen = ({ onLogin, error }: { onLogin: (password: string) => void; error: string }) => {
-    const [password, setPassword] = useState('');
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        onLogin(password);
-    };
-
-    return (
-        <div className="h-screen w-full flex items-center justify-center bg-[#000212]">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="glass-card p-10 rounded-2xl text-center max-w-sm w-full"
-            >
-                <Lock className="mx-auto text-cyan-300 mb-4" size={32} />
-                <h2 className="text-2xl font-bold mb-2">Access Restricted</h2>
-                <p className="text-gray-400 mb-6">Please enter the password to view the client pipeline.</p>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
-                        className="w-full bg-transparent border border-white/20 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cyan-400 focus:outline-none text-center text-white"
-                    />
-                    {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
-                    <button type="submit" className="w-full mt-6 relative aurora-border font-semibold px-6 py-3 rounded-full hover:bg-cyan-400/20 transition-all duration-300 text-white">
-                        Unlock
-                    </button>
-                </form>
-            </motion.div>
-        </div>
-    );
+const nextStepByStage: Record<string, string> = {
+    Prospect: 'Confirm account owner and qualify the commercial need.',
+    Qualified: 'Collect site data, utilities, and operating constraints.',
+    Proposal: 'Review commercial structure and close technical clarifications.',
+    'On Hold': 'Resolve budget timing or stakeholder delay.',
+    'Awaiting Funding': 'Secure capital approval or financing pathway.',
+    'Closed Won': 'Move to kickoff, documentation, and delivery planning.',
+    'Closed Lost': 'Document reasons and keep strategic re-entry notes.',
 };
 
 const CompanyLogo = ({ logo, name }: { logo: string, name: string }) => {
@@ -162,8 +135,11 @@ const PipelineView = () => {
                 <header className="mb-8">
                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
                         <div>
-                            <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">Global Operations</span>
+                            <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">Client Portal Preview</span>
                             <h1 className="text-4xl font-black text-white tracking-tight">Client Pipeline</h1>
+                            <p className="text-gray-400 mt-3 max-w-2xl">
+                                This view now acts more like an admin portal teaser: who we are working with, where they sit in the process, and what we need next to move each opportunity forward.
+                            </p>
                         </div>
                         
                         {/* Quick Stats */}
@@ -181,6 +157,30 @@ const PipelineView = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-4 mb-8">
+                        <VectorBorderCard className="bg-[#151b2e]">
+                            <div className="p-5">
+                                <Users className="text-cyan-400 mb-3" size={20} />
+                                <h2 className="text-xl font-bold text-white mb-2">Admin visibility</h2>
+                                <p className="text-sm text-gray-400">See every active client, stage, owner, and value signal in one board.</p>
+                            </div>
+                        </VectorBorderCard>
+                        <VectorBorderCard className="bg-[#151b2e]">
+                            <div className="p-5">
+                                <ClipboardList className="text-cyan-400 mb-3" size={20} />
+                                <h2 className="text-xl font-bold text-white mb-2">Next-step clarity</h2>
+                                <p className="text-sm text-gray-400">Each stage can now be framed around the single requirement needed to move forward.</p>
+                            </div>
+                        </VectorBorderCard>
+                        <VectorBorderCard className="bg-[#151b2e]">
+                            <div className="p-5">
+                                <Building2 className="text-cyan-400 mb-3" size={20} />
+                                <h2 className="text-xl font-bold text-white mb-2">Portal positioning</h2>
+                                <p className="text-sm text-gray-400">Useful as a teaser for future admin workflows, file exchange, and commercial coordination.</p>
+                            </div>
+                        </VectorBorderCard>
                     </div>
 
                     <div className="flex flex-col md:flex-row items-center justify-between bg-[#1a2035]/80 backdrop-blur-md border border-white/10 p-2 rounded-xl gap-2">
@@ -268,6 +268,10 @@ const PipelineView = () => {
                                                 </div>
                                                 
                                                 <p className="text-xs text-gray-400 line-clamp-2 mb-4 leading-relaxed">{deal.demand}</p>
+                                                <div className="rounded-lg border border-cyan-500/10 bg-cyan-500/5 p-3 mb-4">
+                                                    <p className="text-[10px] uppercase tracking-[0.2em] text-cyan-300 mb-1">Next step</p>
+                                                    <p className="text-xs text-gray-300">{nextStepByStage[deal.stage] || 'Advance stakeholder discussion.'}</p>
+                                                </div>
                                                 
                                                 <div className="flex items-center justify-between pt-3 border-t border-white/5">
                                                     <div>
@@ -305,44 +309,63 @@ const PipelineView = () => {
 };
 
 const PipelinePage: React.FC = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [error, setError] = useState('');
-    const correctPassword = 'MasarZero2025!';
+    const [unlocked, setUnlocked] = useState(false);
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
 
-    const handleLogin = (password: string) => {
-        if (password === correctPassword) {
-            setIsAuthenticated(true);
-            setError('');
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (password === 'MZ2025') {
+            setUnlocked(true);
+            setError(false);
         } else {
-            setError('Incorrect password. Please try again.');
+            setError(true);
+            setPassword('');
         }
     };
 
-    return (
-        <AnimatePresence mode="wait">
-            {isAuthenticated ? (
+    if (!unlocked) {
+        return (
+            <div className="min-h-screen bg-[#000212] flex items-center justify-center px-4">
                 <motion.div
-                    key="pipeline"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="w-full max-w-sm"
                 >
-                    <PipelineView />
+                    <div className="glass-card rounded-2xl p-8 border border-white/10">
+                        <div className="flex flex-col items-center mb-8">
+                            <div className="w-14 h-14 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-4">
+                                <Lock size={24} className="text-cyan-400" />
+                            </div>
+                            <h1 className="text-2xl font-bold text-white">Client Pipeline</h1>
+                            <p className="text-sm text-gray-400 mt-1 text-center">This area is restricted to authorized personnel.</p>
+                        </div>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={e => { setPassword(e.target.value); setError(false); }}
+                                    placeholder="Enter password"
+                                    autoFocus
+                                    className={`w-full bg-black/30 border rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none transition-colors ${error ? 'border-red-500/60 focus:border-red-500' : 'border-white/10 focus:border-cyan-500/50'}`}
+                                />
+                                {error && <p className="text-red-400 text-xs mt-2 font-mono">Incorrect password. Try again.</p>}
+                            </div>
+                            <button
+                                type="submit"
+                                className="w-full py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-colors"
+                            >
+                                Unlock
+                            </button>
+                        </form>
+                    </div>
                 </motion.div>
-            ) : (
-                <motion.div
-                    key="password"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <PasswordScreen onLogin={handleLogin} error={error} />
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+            </div>
+        );
+    }
+
+    return <PipelineView />;
 };
 
 export default PipelinePage;

@@ -2,31 +2,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Box, Factory, Zap, Recycle } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
-const stages = [
+const getStages = (t: any) => [
     {
         icon: Box,
-        title: 'Ethical Sourcing',
-        description: '95% of raw materials sourced from certified sustainable providers with full traceability.'
+        title: t('pages.esg.lifecycle.stages.0.title'),
+        description: t('pages.esg.lifecycle.stages.0.desc')
     },
     {
         icon: Factory,
-        title: 'Green Manufacturing',
-        description: 'Facilities powered by 100% renewable energy with closed-loop water systems.'
+        title: t('pages.esg.lifecycle.stages.1.title'),
+        description: t('pages.esg.lifecycle.stages.1.desc')
     },
     {
         icon: Zap,
-        title: 'High-Efficiency Operation',
-        description: 'Generates 250x the energy consumed. AI-driven optimization minimizes grid impact.'
+        title: t('pages.esg.lifecycle.stages.2.title'),
+        description: t('pages.esg.lifecycle.stages.2.desc')
     },
     {
         icon: Recycle,
-        title: 'Circular Economy',
-        description: 'Over 90% recyclable by weight. Designed for disassembly and remanufacturing.'
+        title: t('pages.esg.lifecycle.stages.3.title'),
+        description: t('pages.esg.lifecycle.stages.3.desc')
     }
 ];
 
 const LifecycleAnalysis: React.FC = () => {
+    const { t } = useTranslation();
+    const stages = getStages(t);
     const stageVariants = {
         initial: { opacity: 0, x: -20 },
         inView: { opacity: 1, x: 0 },
@@ -35,9 +38,9 @@ const LifecycleAnalysis: React.FC = () => {
     return (
         <section className="py-24 relative">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Full Lifecycle Sustainability</h2>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('pages.esg.lifecycle.title')}</h2>
                 <p className="text-gray-400 max-w-2xl mx-auto">
-                    From raw material to end-of-life, every phase is optimized for minimal environmental impact.
+                    {t('pages.esg.lifecycle.subtitle')}
                 </p>
             </div>
 

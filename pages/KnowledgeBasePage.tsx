@@ -4,44 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ShieldCheck, ChevronDown, Terminal, Database, Activity, BookOpen, Wrench, AlertTriangle, Truck, Zap, Layers } from 'lucide-react';
 import ParticleBackground from '../components/ParticleBackground';
 import VectorBorderCard from '../components/VectorBorderCard';
-
-const categories = [
-  { 
-    id: 'Overview',
-    icon: BookOpen, 
-    title: 'System Overview', 
-    color: 'text-emerald-400',
-    borderColor: 'group-hover:border-emerald-500/50'
-  },
-  { 
-    id: 'Safety',
-    icon: ShieldCheck, 
-    title: 'Safety Protocols', 
-    color: 'text-red-400',
-    borderColor: 'group-hover:border-red-500/50'
-  },
-  { 
-    id: 'Installation',
-    icon: Truck, 
-    title: 'Installation & Logistics', 
-    color: 'text-teal-400',
-    borderColor: 'group-hover:border-teal-500/50'
-  },
-  { 
-    id: 'Maintenance',
-    icon: Wrench, 
-    title: 'Maintenance', 
-    color: 'text-emerald-400',
-    borderColor: 'group-hover:border-emerald-500/50'
-  },
-  { 
-    id: 'Troubleshooting',
-    icon: AlertTriangle, 
-    title: 'Troubleshooting', 
-    color: 'text-yellow-400',
-    borderColor: 'group-hover:border-yellow-500/50'
-  },
-];
+import { useTranslation } from '../context/TranslationContext';
+import { useDict } from '../translations';
 
 const knowledgeData: Record<string, { id: string; title: string; content: React.ReactNode; tags: string[] }[]> = {
   Overview: [
@@ -316,6 +280,28 @@ const KnowledgeBasePage: React.FC = () => {
     const [activeCategory, setActiveCategory] = useState<string>('Overview');
     const [searchQuery, setSearchQuery] = useState('');
     const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+    const { t } = useTranslation();
+    const d = useDict().knowledgeBase;
+
+    // Translate article titles using the dictionary
+    const localizedKnowledgeData = useMemo(() => {
+        const result: typeof knowledgeData = {};
+        for (const [cat, items] of Object.entries(knowledgeData)) {
+            result[cat] = items.map(item => ({
+                ...item,
+                title: (d.articleTitles as Record<string, string>)[item.id] ?? item.title,
+            }));
+        }
+        return result;
+    }, [d]);
+
+    const categories = [
+      { id: 'Overview', icon: BookOpen, title: d.categories.overview, color: 'text-emerald-400', borderColor: 'group-hover:border-emerald-500/50' },
+      { id: 'Safety', icon: ShieldCheck, title: d.categories.safety, color: 'text-red-400', borderColor: 'group-hover:border-red-500/50' },
+      { id: 'Installation', icon: Truck, title: d.categories.installation, color: 'text-teal-400', borderColor: 'group-hover:border-teal-500/50' },
+      { id: 'Maintenance', icon: Wrench, title: d.categories.maintenance, color: 'text-emerald-400', borderColor: 'group-hover:border-emerald-500/50' },
+      { id: 'Troubleshooting', icon: AlertTriangle, title: d.categories.troubleshooting, color: 'text-yellow-400', borderColor: 'group-hover:border-yellow-500/50' },
+    ];
 
     const toggleExpand = (id: string) => {
         setExpandedItems(prev => ({ ...prev, [id]: !prev[id] }));
@@ -325,17 +311,15 @@ const KnowledgeBasePage: React.FC = () => {
         const lowerQuery = searchQuery.toLowerCase().trim();
         
         if (!lowerQuery) {
-            // If no search, only show items from the active category
-            return (knowledgeData[activeCategory] || []).map(item => ({
+            return (localizedKnowledgeData[activeCategory] || []).map(item => ({
                 ...item,
                 categoryName: categories.find(c => c.id === activeCategory)?.title || activeCategory
             }));
         }
 
-        // Search is active: Search globally across ALL categories
         const allResults: any[] = [];
         
-        Object.entries(knowledgeData).forEach(([catId, items]) => {
+        Object.entries(localizedKnowledgeData).forEach(([catId, items]) => {
             const catTitle = categories.find(c => c.id === catId)?.title || catId;
             
             items.forEach(item => {
@@ -354,7 +338,7 @@ const KnowledgeBasePage: React.FC = () => {
         });
 
         return allResults;
-    }, [activeCategory, searchQuery]);
+    }, [activeCategory, searchQuery, localizedKnowledgeData]);
 
     return (
         <section className="relative min-h-screen bg-[#000212] pt-32 pb-24 overflow-hidden">
@@ -374,13 +358,13 @@ const KnowledgeBasePage: React.FC = () => {
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-emerald-400 mb-6 uppercase tracking-widest">
                         <Terminal size={12} />
-                        <span>Integrated Technical Manual v2.4</span>
+                        <span>{d.badge}</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
                         Knowledge <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Nexus</span>
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
-                        Official technical documentation, operational procedures, and maintenance protocols for MasarZero systems.
+                        {d.description}
                     </p>
                 </motion.div>
 
@@ -396,11 +380,11 @@ const KnowledgeBasePage: React.FC = () => {
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                placeholder="Search manual (e.g., 'Compressor', 'Safety')..."
+                                placeholder={d.searchPlaceholder}
                                 className="w-full bg-transparent border-none py-4 px-4 text-lg text-white focus:ring-0 placeholder-gray-600 font-mono"
                             />
                             <div className="pr-4 hidden md:block text-[10px] font-mono text-emerald-500 uppercase">
-                                {filteredItems.length} Topics Found
+                                {filteredItems.length} {d.topicsFound}
                             </div>
                         </div>
                     </div>
@@ -428,7 +412,7 @@ const KnowledgeBasePage: React.FC = () => {
                         
                         {searchQuery && (
                             <div className="text-xs font-mono text-emerald-400 uppercase tracking-widest mb-4">
-                                Search Results across all categories:
+                                {d.searchResults}
                             </div>
                         )}
 
@@ -492,7 +476,7 @@ const KnowledgeBasePage: React.FC = () => {
                                                             <div className="pt-6 mt-6 border-t border-white/10 text-gray-300 leading-relaxed text-sm md:text-base">
                                                                 <div className="flex gap-2 mb-4 text-emerald-500 font-mono text-xs uppercase tracking-widest items-center">
                                                                     <Zap size={14} />
-                                                                    <span>Reference ID: {item.id}</span>
+                                                                    <span>{d.refId} {item.id}</span>
                                                                     {searchQuery && (
                                                                         <>
                                                                             <span className="mx-2 text-slate-600">|</span>

@@ -1,193 +1,166 @@
-
 import React from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion, Variants } from 'framer-motion';
-import { Fuel, Zap, Atom, Layers, ArrowRight, CheckCircle2, Box, Flame, Thermometer, FlaskConical } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Factory,
+  Layers,
+  FlaskConical,
+  Thermometer,
+  Zap,
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import MagneticButton from '../components/MagneticButton';
+
+interface ProductItem {
+  name: string;
+  label: string;
+  description: string;
+  metrics: string[];
+  cta: string;
+  image?: string;
+}
 
 const ProductsPage: React.FC = () => {
-    const navigate = useNavigate();
-    const headerVariants = {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-    };
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-    const containerVariants = {
-        initial: {},
-        animate: { transition: { staggerChildren: 0.1 } }
-    };
+  // Images mapping based on product name
+  const productImages: Record<string, string> = {
+    'MZ-1': '/factorypictures/machinesinfactory.pic.jpg',
+    'MZ-9000': '/otherinstalls/largeinstall.png',
+    'Power Filter': '/otherproducts/powerfilter.png',
+    'W2E': '/otherproducts/w2e.png',
+  };
 
-    const itemVariants: Variants = {
-        initial: { opacity: 0, y: 30 },
-        animate: { opacity: 1, y: 0 },
-    };
+  const flagshipProducts = ((t('pages.products.flagship', { returnObjects: true }) as any) as ProductItem[] || []).map(p => ({
+    ...p,
+    image: productImages[p.name] || '/factorypictures/machinesinfactory.pic.jpg'
+  }));
 
-    return (
-        <section className="py-32 min-h-screen relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#000212] via-[#0a0f29] to-[#000212] -z-10"></div>
-            
-            <div className="container mx-auto px-4">
-                <motion.div 
-                    className="text-center mb-20"
-                    variants={headerVariants}
-                    initial="initial"
-                    animate="animate"
-                    transition={{ duration: 0.6 }}
+  const solutionFamilies = [
+    { icon: Layers, title: t('pages.products.solutions.custom.title'), subtitle: t('pages.products.solutions.custom.subtitle'), description: t('pages.products.solutions.custom.description') },
+    { icon: FlaskConical, title: t('pages.products.solutions.fuel.title'), subtitle: t('pages.products.solutions.fuel.subtitle'), description: t('pages.products.solutions.fuel.description') },
+    { icon: Thermometer, title: t('pages.products.solutions.heat.title'), subtitle: t('pages.products.solutions.heat.subtitle'), description: t('pages.products.solutions.heat.description') },
+    { icon: Zap, title: t('pages.products.solutions.efficiency.title'), subtitle: t('pages.products.solutions.efficiency.subtitle'), description: t('pages.products.solutions.efficiency.description') },
+  ];
+
+  const headerVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+  };
+
+  const itemVariants: Variants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <section className="py-32 min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#000212] via-[#07101f] to-[#000212] -z-10" />
+
+      <div className="container mx-auto px-4">
+        <motion.div
+          className="text-center mb-20 max-w-4xl mx-auto"
+          variants={headerVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-sm uppercase tracking-[0.3em] text-emerald-400 font-mono mb-5">{t('pages.products.badge')}</p>
+          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
+            {t('pages.products.title')}
+          </h1>
+          <p className="mt-5 text-lg text-gray-400">
+            {t('pages.products.description')}
+          </p>
+        </motion.div>
+
+        <div className="space-y-10 mb-24">
+          {flagshipProducts.map((product, index) => (
+            <motion.div
+              key={product.name}
+              variants={itemVariants}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: index * 0.1 }}
+              className="rounded-3xl overflow-hidden border border-white/10 bg-[#09101d]"
+            >
+              <div className="grid lg:grid-cols-2">
+                <div className="relative min-h-[320px]">
+                  <img src={product.image} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-[#09101d]" />
+                </div>
+
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                      {product.label}
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-bold uppercase tracking-wider">
+                      {product.name}
+                    </span>
+                  </div>
+
+                  <h2 className="text-4xl font-bold text-white mb-4">{product.name}</h2>
+                  <p className="text-gray-300 text-lg leading-relaxed mb-8">{product.description}</p>
+
+                  <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                    {product.metrics.map(metric => (
+                      <div key={metric} className="flex items-center gap-3 text-sm text-gray-200">
+                        <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                        <span>{metric}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <button
+                      onClick={() => navigate(product.name === 'MZ-1' ? '/technology' : '/contact')}
+                      className="inline-flex items-center gap-3 rounded-full bg-white text-black px-7 py-4 font-bold hover:bg-emerald-50 transition-colors"
+                    >
+                      {product.cta}
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div>
+          <div className="flex items-center gap-3 mb-8">
+            <Factory className="text-emerald-400" />
+            <h3 className="text-2xl md:text-3xl font-bold text-white">{t('pages.products.solutions.title')}</h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {solutionFamilies.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  variants={itemVariants}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: 0.2 + index * 0.05 }}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
                 >
-                    <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400">
-                        Technology Portfolio
-                    </h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-gray-400">
-                        From our flagship vapor recovery systems to experimental energy solutions, we engineer the future of industrial efficiency.
-                    </p>
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+                    <Icon className="text-emerald-400" size={22} />
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-emerald-400 mb-2">{item.subtitle}</p>
+                  <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+                  <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
                 </motion.div>
-
-                <motion.div 
-                    variants={containerVariants}
-                    initial="initial"
-                    animate="animate"
-                    className="space-y-16"
-                >
-                    {/* Flagship Product */}
-                    <motion.div variants={itemVariants} className="relative">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl opacity-20 blur-lg"></div>
-                        <div className="relative glass-card rounded-2xl border border-emerald-500/30 p-8 md:p-12 overflow-hidden">
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
-                                <div>
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-                                            Flagship Series
-                                        </span>
-                                        <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30">
-                                            MZ-1 · Gas Stations
-                                        </span>
-                                        <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-300 text-xs font-bold uppercase tracking-wider border border-green-500/30">
-                                            MZ-9000 · Storage Tanks
-                                        </span>
-                                    </div>
-                                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">MZ-1 / MZ-9000</h2>
-                                    <p className="text-lg text-gray-300 mb-8">
-                                        The industry standard for intelligent vapor recovery. The MZ-1 serves gas stations while the MZ-9000 is engineered for storage tanks — both capturing up to 99.9% of fugitive emissions and converting waste into a localized revenue stream with zero upfront CapEx.
-                                    </p>
-                                    
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                                        {['99.9% Recovery Rate', 'Zero-CapEx Model', 'AI-Powered Optimization', 'ATEX Certified'].map((feat) => (
-                                            <div key={feat} className="flex items-center gap-3">
-                                                <CheckCircle2 className="text-emerald-400 w-5 h-5 flex-shrink-0" />
-                                                <span className="text-sm text-gray-300">{feat}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <button
-                                        onClick={() => navigate('/technology')}
-                                        className="group relative aurora-border bg-slate-900/80 backdrop-blur-md font-bold text-lg px-10 py-4 rounded-full overflow-hidden flex items-center gap-3 shadow-[0_0_40px_rgba(16,185,129,0.3)] hover:shadow-[0_0_60px_rgba(16,185,129,0.6)] transition-all duration-300 cursor-pointer border border-white/20 z-50"
-                                    >
-                                        <span className="relative z-10 text-white group-hover:text-emerald-300 transition-colors duration-300">Launch Interactive 3D Model</span>
-                                        <ArrowRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 text-emerald-400" />
-
-                                        {/* Hover Fill Effect */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-teal-900/80 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                                    </button>
-                                </div>
-
-                                <div className="relative h-full min-h-[300px] flex items-center justify-center">
-                                    {/* Decorative Graphic */}
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-full blur-3xl"></div>
-                                    <Fuel size={200} className="text-white/5 absolute rotate-12 scale-150" />
-                                    <div className="relative z-10 glass-card p-8 rounded-2xl border border-white/10 shadow-2xl transform rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
-                                        <Fuel size={80} className="text-emerald-400 mx-auto mb-4" />
-                                        <div className="space-y-2">
-                                            <div className="h-2 w-32 bg-slate-700 rounded-full overflow-hidden">
-                                                <div className="h-full w-[80%] bg-emerald-400 animate-pulse"></div>
-                                            </div>
-                                            <div className="h-2 w-24 bg-slate-700 rounded-full"></div>
-                                        </div>
-                                        <p className="text-xs text-emerald-300 mt-4 text-center font-mono">SYSTEM ONLINE</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Specialized Solutions */}
-                    <div>
-                        <h3 className="text-2xl font-bold mb-8 border-l-4 border-emerald-500 pl-4">Future Innovations & Specialized Solutions</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { 
-                                    icon: Zap, 
-                                    title: 'MZ-ES 1500', 
-                                    subtitle: 'Electrical Shunt',
-                                    status: 'In Development',
-                                    desc: 'High-precision shunts for industrial power stability.'
-                                },
-                                { 
-                                    icon: Atom, 
-                                    title: 'MZ-W2E', 
-                                    subtitle: 'W2E',
-                                    status: 'Prototype',
-                                    desc: 'Waste-to-energy conversion via pyrolysis, plasma arc gasification, hydrothermal liquefaction, and more.'
-                                },
-                                { 
-                                    icon: Layers, 
-                                    title: 'MZ Custom', 
-                                    subtitle: 'Bespoke Units',
-                                    status: 'Made to Order',
-                                    desc: 'Tailored engineering for unique flow rates and footprints.'
-                                },
-                                {
-                                    icon: FlaskConical,
-                                    title: 'MZ-MFT',
-                                    subtitle: 'Molecular Fuel Treatment',
-                                    status: 'In Development',
-                                    desc: 'Molecular-level fuel conditioning to improve combustion efficiency and reduce harmful emissions.'
-                                },
-                                {
-                                    icon: Thermometer,
-                                    title: 'MZ-HC',
-                                    subtitle: 'Heat Capture',
-                                    status: 'In Development',
-                                    desc: 'Industrial heat recovery through MVR, high-temperature heat pumps (HTHP), and advanced thermal coatings.'
-                                },
-                                {
-                                    icon: Flame,
-                                    title: 'MZ-ESCO',
-                                    subtitle: 'Process Efficiency ESCO',
-                                    status: 'In Development',
-                                    desc: 'Energy Services Company model delivering guaranteed process efficiency improvements with performance-based contracts.'
-                                },
-                            ].map((item, i) => {
-                                const Icon = item.icon;
-                                return (
-                                    <motion.div 
-                                        key={item.title}
-                                        variants={itemVariants}
-                                        className="group relative glass-card p-6 rounded-xl border border-white/5 hover:border-emerald-500/30 transition-all duration-300"
-                                    >
-                                        <div className="flex justify-between items-start mb-4">
-                                            <div className="p-3 bg-white/5 rounded-lg text-emerald-400 group-hover:text-white group-hover:bg-emerald-500 transition-colors">
-                                                <Icon size={24} />
-                                            </div>
-                                            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-white/5 text-gray-400 border border-white/5">
-                                                {item.status}
-                                            </span>
-                                        </div>
-                                        <h4 className="text-lg font-bold text-white mb-1">{item.title}</h4>
-                                        <p className="text-xs text-emerald-300 uppercase tracking-wide mb-3">{item.subtitle}</p>
-                                        <p className="text-sm text-gray-400 mb-6">{item.desc}</p>
-                                        <button className="w-full py-2 rounded-lg border border-white/10 text-sm font-semibold text-gray-300 hover:bg-white/5 transition-colors">
-                                            Contact Engineering
-                                        </button>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
-    );
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default ProductsPage;

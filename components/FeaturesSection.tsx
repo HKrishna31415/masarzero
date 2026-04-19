@@ -5,15 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Sphere, MeshDistortMaterial, Float, Sparkles } from '@react-three/drei';
 import { Cpu, Wind, Layers, Wifi, ShieldCheck, Activity } from 'lucide-react';
 import * as THREE from 'three';
-
-const features = [
-  { id: 'cryo', icon: Wind, title: 'Cryogenic Capture', description: 'Patented sub-zero condensation technology achieving 99.9% recovery efficiency.' },
-  { id: 'ai', icon: Cpu, title: 'Adaptive Intelligence', description: 'Self-learning algorithms optimize pressure and temperature in real-time.' },
-  { id: 'modular', icon: Layers, title: 'Modular Architecture', description: 'Plug-and-play scalability designed for terminals of any capacity.' },
-  { id: 'iot', icon: Wifi, title: 'IoT Connectivity', description: 'Native integration with PinnacleOS for remote command and control.' },
-  { id: 'safety', icon: ShieldCheck, title: 'Ex-Proof Design', description: 'Certified for Zone 1 hazardous environments with intrinsic safety barriers.' },
-  { id: 'health', icon: Activity, title: 'Predictive Health', description: 'Automated diagnostics detect anomalies to prevent downtime before it occurs.' },
-];
+import { useTranslation } from '../context/TranslationContext';
 
 const TechCore = () => {
     const sphereRef = useRef<THREE.Mesh>(null!);
@@ -73,6 +65,15 @@ const TechCore = () => {
 };
 
 const FeaturesSection: React.FC = () => {
+    const { t } = useTranslation();
+    const features = [
+        { id: 'cryo', icon: Wind, title: t('home.features.items.cryo.title'), description: t('home.features.items.cryo.description') },
+        { id: 'ai', icon: Cpu, title: t('home.features.items.ai.title'), description: t('home.features.items.ai.description') },
+        { id: 'modular', icon: Layers, title: t('home.features.items.modular.title'), description: t('home.features.items.modular.description') },
+        { id: 'iot', icon: Wifi, title: t('home.features.items.iot.title'), description: t('home.features.items.iot.description') },
+        { id: 'safety', icon: ShieldCheck, title: t('home.features.items.safety.title'), description: t('home.features.items.safety.description') },
+        { id: 'health', icon: Activity, title: t('home.features.items.health.title'), description: t('home.features.items.health.description') },
+    ];
     const [activeFeature, setActiveFeature] = useState<typeof features[0] | null>(null);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -106,10 +107,10 @@ const FeaturesSection: React.FC = () => {
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-4">
-                            Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Dominance</span>
+                            {t('home.features.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">{t('home.features.highlight')}</span>
                         </h2>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                            Our proprietary architecture combines cryogenic physics with neural network logic.
+                            {t('home.features.description')}
                         </p>
                     </motion.div>
                 </div>
@@ -230,7 +231,7 @@ const FeaturesSection: React.FC = () => {
                                 className="absolute z-30 pointer-events-none text-center"
                             >
                                 <p className="text-xs font-mono text-emerald-500/50 uppercase tracking-[0.2em] animate-pulse">
-                                    System Idle // Hover Nodes
+                                    {t('home.features.idle')}
                                 </p>
                             </motion.div>
                         )}

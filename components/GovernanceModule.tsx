@@ -1,65 +1,51 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Scale, DatabaseZap, Handshake, Users2, CheckCircle2 } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
-const governanceTabs = [
+const getGovernanceTabs = (t: any) => [
     {
         id: 'oversight',
         icon: Scale,
-        title: "Board Oversight",
-        content: "Our board's dedicated ESG committee provides rigorous oversight, ensuring our strategies align with long-term sustainability goals and shareholder interests. They review performance quarterly and guide our strategic direction.",
-        points: [
-            "Independent ESG Committee",
-            "Quarterly Performance Reviews",
-            "Executive Compensation Tied to ESG Targets"
-        ]
+        title: t('pages.esg.governance.tabs.0.title'),
+        content: t('pages.esg.governance.tabs.0.content'),
+        points: (Array.isArray(t('pages.esg.governance.tabs.0.points', { returnObjects: true })) ? t('pages.esg.governance.tabs.0.points', { returnObjects: true }) as string[] : [])
     },
     {
         id: 'privacy',
         icon: DatabaseZap,
-        title: "Data Privacy & Security",
-        content: "We uphold the strictest standards of data privacy, employing end-to-end encryption and robust cybersecurity protocols to protect client operational data and corporate information.",
-        points: [
-            "GDPR & CCPA Compliant",
-            "End-to-End Encryption",
-            "Regular Third-Party Security Audits"
-        ]
+        title: t('pages.esg.governance.tabs.1.title'),
+        content: t('pages.esg.governance.tabs.1.content'),
+        points: (Array.isArray(t('pages.esg.governance.tabs.1.points', { returnObjects: true })) ? t('pages.esg.governance.tabs.1.points', { returnObjects: true }) as string[] : [])
     },
     {
         id: 'ethics',
         icon: Handshake,
-        title: "Business Ethics",
-        content: "A zero-tolerance policy on corruption and bribery is foundational to our operations. All employees and partners undergo mandatory annual ethics training to uphold our code of conduct.",
-        points: [
-            "Zero-Tolerance Anti-Corruption Policy",
-            "Transparent Whistleblower Program",
-            "Annual Mandatory Ethics Training"
-        ]
+        title: t('pages.esg.governance.tabs.2.title'),
+        content: t('pages.esg.governance.tabs.2.content'),
+        points: (Array.isArray(t('pages.esg.governance.tabs.2.points', { returnObjects: true })) ? t('pages.esg.governance.tabs.2.points', { returnObjects: true }) as string[] : [])
     },
     {
         id: 'stakeholders',
         icon: Users2,
-        title: "Stakeholder Engagement",
-        content: "We actively engage with investors, clients, employees, and community members to ensure our ESG strategy is responsive, relevant, and creates shared value for all.",
-        points: [
-            "Annual Stakeholder Forums",
-            "Materiality Assessments to Identify Key Issues",
-            "Transparent ESG Reporting"
-        ]
+        title: t('pages.esg.governance.tabs.3.title'),
+        content: t('pages.esg.governance.tabs.3.content'),
+        points: (Array.isArray(t('pages.esg.governance.tabs.3.points', { returnObjects: true })) ? t('pages.esg.governance.tabs.3.points', { returnObjects: true }) as string[] : [])
     }
 ];
 
 const GovernanceModule: React.FC = () => {
+    const { t } = useTranslation();
+    const governanceTabs = getGovernanceTabs(t);
     const [activeTab, setActiveTab] = useState(governanceTabs[0].id);
     const activeTabData = governanceTabs.find(tab => tab.id === activeTab);
 
     return (
         <section className="py-24">
             <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold">Governance & Ethics in Action</h2>
+                <h2 className="text-3xl md:text-5xl font-bold">{t('pages.esg.governance.title')}</h2>
                 <p className="mt-4 max-w-2xl mx-auto text-gray-400">
-                    Explore the core tenets of our governance framework, built on transparency, integrity, and accountability.
+                    {t('pages.esg.governance.subtitle')}
                 </p>
             </div>
             
@@ -85,8 +71,6 @@ const GovernanceModule: React.FC = () => {
                                             style={{ borderRadius: '999px' }}
                                             initial={false}
                                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                                            // Conditional styling for mobile (bottom) vs desktop (right)
-                                            // We use specific classes for layout
                                         >
                                             {/* Desktop Indicator (Right Edge) */}
                                             <div className="hidden md:block absolute right-0 top-0 bottom-0 w-1 bg-emerald-400" />
@@ -140,7 +124,7 @@ const GovernanceModule: React.FC = () => {
                                     <div className="mt-auto">
                                         <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5 flex items-center gap-2">
                                             <div className="h-px w-8 bg-gray-700"></div>
-                                            Key Mechanisms
+                                            {t('pages.esg.governance.mechanisms')}
                                         </h4>
                                         <div className="grid gap-4">
                                             {activeTabData.points.map((point, i) => (

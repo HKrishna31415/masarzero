@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../context/TranslationContext';
 import { Globe as GlobeIcon, ArrowLeft, Building } from 'lucide-react';
 import { Project } from '../types/appTypes';
 
@@ -13,10 +14,12 @@ declare const am5themes_Animated: any;
 interface GlobeProps {
     projects: Project[];
     onProjectClick: (projectData: any) => void;
+    onCountryDoubleClick?: (countryCode: string) => void;
     supplyLines?: { from: [number, number]; to: [number, number] }[];
 }
 
-const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) => {
+const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, onCountryDoubleClick, supplyLines }) => {
+    const { t } = useTranslation();
     const chartDivRef = useRef<HTMLDivElement>(null);
     const autorotateRef = useRef<any>(null);
     const [zoomedCountry, setZoomedCountry] = useState<{name: string, id: string} | null>(null);
@@ -91,6 +94,9 @@ const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) 
 
         polygonSeries.mapPolygons.template.events.on("click", (ev: any) => {
             const dataItem = ev.target.dataItem;
+            const countryCode = dataItem?.get("id");
+            const countryProjects = projects.filter(p => p.countryCode === countryCode);
+
             if (chart.get("zoomToDataItem") === dataItem) {
                 chart.goHome();
                 autorotateRef.current?.resume();
@@ -98,7 +104,20 @@ const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) 
             } else {
                 polygonSeries.zoomToDataItem(dataItem);
                 autorotateRef.current?.pause();
-                setZoomedCountry({ name: dataItem.dataContext.name, id: dataItem.get("id") });
+                setZoomedCountry({ name: dataItem.dataContext.name, id: countryCode });
+                
+                // NEW: Open modal immediately if there is exactly one project
+                if (countryProjects.length === 1) {
+                    onProjectClick(countryProjects[0]);
+                }
+            }
+        });
+
+        polygonSeries.mapPolygons.template.events.on("dblclick", (ev: any) => {
+            const dataItem = ev.target.dataItem;
+            const countryCode = dataItem?.get("id");
+            if (countryCode && onCountryDoubleClick) {
+                onCountryDoubleClick(countryCode);
             }
         });
 
@@ -206,7 +225,7 @@ const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) 
             root.dispose();
         };
 
-    }, [projects, onProjectClick, supplyLines]);
+    }, [projects, onProjectClick, onCountryDoubleClick, supplyLines]);
 
     const panelVariants = {
         initial: { opacity: 0, y: -20 },
@@ -220,37 +239,46 @@ const Globe: React.FC<GlobeProps> = ({ projects, onProjectClick, supplyLines }) 
             <AnimatePresence>
                 {zoomedCountry && (
                     <motion.div
-                        className="absolute top-24 left-4 md:left-1/2 md:-translate-x-1/2 glass-card p-4 rounded-lg pointer-events-auto"
+                        className="absolute top-28 left-4 md:left-1/2 md:-translate-x-1/2 glass-card p-4 rounded-lg pointer-events-auto"
                         variants={panelVariants}
                         initial="initial"
                         animate="animate"
                         exit="exit"
                     >
-                        <div className="flex items-center gap-3">
-                            <GlobeIcon className="w-6 h-6 text-emerald-400" />
+                        <div 
+                            className="flex items-center gap-3 cursor-pointer group"
+                            onClick={(e) => {
+                                const countryProjects = projects.filter(p => p.countryCode === zoomedCountry.id);
+                                if (countryProjects.length > 0) {
+                                  onProjectClick(countryProjects[0]);
+                                }
+                                e.stopPropagation();
+                            }}
+                        >
+                            <GlobeIcon className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
                             <div>
-                                <h3 className="font-bold text-lg">{zoomedCountry.name}</h3>
-                                <p className="text-sm text-gray-300 flex items-center gap-2">
-                                    <Building size={14} /> 
-                                    {projectsInZoomedCountry} Active Project{projectsInZoomedCountry !== 1 ? 's' : ''}
+                                <h3 className="font-bold text-lg group-hover:text-emerald-300 transition-colors uppercase tracking-tight">{zoomedCountry.name}</h3>
+                                <p className="text-xs text-gray-400 flex items-center gap-2 font-mono">
+                                    <Building size={12} className="group-hover:text-emerald-400" /> 
+                                    {projectsInZoomedCountry} {t('pages.global.modal.activeProjects')}
                                 </p>
                             </div>
-                             <button 
-                                onClick={() => {
-                                    const chart = am5.registry.rootElements[0].container.children.getIndex(0);
-                                    if (chart) {
-                                        chart.goHome();
-                                        autorotateRef.current?.resume();
-                                        setZoomedCountry(null);
-                                    }
-                                }} 
-                                className="ml-4 p-1 rounded-full hover:bg-white/10 transition-colors"
-                                aria-label="Back to World View"
-                                data-cursor-hover
-                             >
-                                <ArrowLeft size={20} />
-                            </button>
                         </div>
+                        <button 
+                            onClick={() => {
+                                const chart = am5.registry.rootElements[0].container.children.getIndex(0);
+                                if (chart) {
+                                    chart.goHome();
+                                    autorotateRef.current?.resume();
+                                    setZoomedCountry(null);
+                                }
+                            }} 
+                            className="ml-4 p-1 rounded-full hover:bg-white/10 transition-colors"
+                            aria-label="Back to World View"
+                            data-cursor-hover
+                        >
+                            <ArrowLeft size={20} />
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>

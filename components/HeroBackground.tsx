@@ -54,8 +54,8 @@ const ParticleSystem = ({ count = 5000 }) => {
   const positions = useMemo(() => new Float32Array(particleCount * 3), [particleCount]);
   const colors = useMemo(() => new Float32Array(particleCount * 3), [particleCount]);
   
-  const colorVapor = new THREE.Color('#22d3ee'); // Cyan
-  const colorLiquid = new THREE.Color('#312e81'); // Deep Indigo
+  const colorVapor = new THREE.Color('#10b981'); // Emerald
+  const colorLiquid = new THREE.Color('#064e3b'); // Deep Green
   const tempColor = new THREE.Color();
 
   useFrame((state) => {

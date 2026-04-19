@@ -1,43 +1,21 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Flag, Award, Rocket, Globe, BrainCircuit } from 'lucide-react';
-
-const timelineEvents = [
-  {
-    icon: Flag,
-    date: '2018',
-    title: 'Foundation',
-    description: 'MasarZero is founded by a team of veteran energy sector engineers with a mission to eliminate industrial emissions through intelligent technology.',
-  },
-  {
-    icon: Award,
-    date: '2020',
-    title: 'First Patent Granted',
-    description: 'We were granted our first patent for the revolutionary cryo-condensation vapor recovery process, establishing our unique position in the market.',
-  },
-  {
-    icon: Rocket,
-    date: '2021',
-    title: 'First Commercial Deployment',
-    description: 'Successful installation of the first MZ-9000 unit at a major Houston terminal, achieving a 99.8% recovery rate in a live environment.',
-  },
-  {
-    icon: Globe,
-    date: '2023',
-    title: 'Global Expansion',
-    description: 'Expanded operations into Europe and Asia, establishing key partnerships in Rotterdam and Singapore to serve our international clients.',
-  },
-  {
-    icon: BrainCircuit,
-    date: '2024',
-    title: 'AI Integration',
-    description: 'Launched the AI-powered SCADA platform, introducing predictive maintenance and real-time optimization to maximize efficiency and uptime for all clients.',
-  },
-];
+import { useTranslation } from '../context/TranslationContext';
 
 const TimelineSection: React.FC = () => {
-    // FIX: Add `as const` to correctly type the variant properties for framer-motion.
+    const { t } = useTranslation();
+    
+    const iconMap: Record<string, any> = {
+        'Foundation': Flag,
+        'First Patent Granted': Award,
+        'First Commercial Deployment': Rocket,
+        'Global Expansion': Globe,
+        'AI Integration': BrainCircuit,
+    };
+
+    const events = (t('pages.about.journey.events', { returnObjects: true }) as any[]) || [];
+
     const lineVariants = {
         initial: { scaleY: 0 },
         inView: { scaleY: 1, transition: { duration: 2, ease: 'easeOut' } },
@@ -47,9 +25,9 @@ const TimelineSection: React.FC = () => {
         <div className="py-20 sm:py-24 relative">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold">Our Journey of Innovation</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold">{t('pages.about.journey.title')}</h2>
                     <p className="mt-4 max-w-3xl mx-auto text-gray-400">
-                        From a bold idea to a global leader, our history is defined by relentless innovation and an unwavering commitment to our mission.
+                        {t('pages.about.journey.subtitle')}
                     </p>
                 </div>
                 
@@ -64,11 +42,10 @@ const TimelineSection: React.FC = () => {
                         viewport={{ once: true }}
                     />
 
-                    {timelineEvents.map((event, index) => {
-                        const Icon = event.icon;
+                    {events.map((event, index) => {
+                        const Icon = iconMap[event.title] || Globe;
                         const isOdd = index % 2 !== 0;
 
-                        // FIX: Add `as const` to correctly type the variant properties for framer-motion.
                         const itemVariants = {
                             initial: { opacity: 0, x: isOdd ? 50 : -50 },
                             inView: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },

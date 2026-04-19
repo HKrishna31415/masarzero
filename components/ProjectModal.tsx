@@ -1,8 +1,8 @@
-
-import React from 'react';
-import { motion, Variants } from 'framer-motion';
-import { X, MapPin, Building, Settings, TrendingUp, Leaf, ExternalLink, Activity, ScanLine, Cpu, Crosshair } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { X, MapPin, Building, Settings, TrendingUp, Leaf, ExternalLink, Activity, ScanLine, Cpu, Crosshair, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Project } from '../types/appTypes';
+import { useTranslation } from '../context/TranslationContext';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -10,7 +10,22 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+  const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   if (!project) return null;
+
+  const images = project.images && project.images.length > 0 ? project.images : [project.image];
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
   
   const backdropVariants: Variants = {
     initial: { opacity: 0 },
@@ -43,24 +58,61 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
       >
         {/* --- Left Panel: Visuals & Status --- */}
         <div className="w-full md:w-5/12 relative min-h-[300px] md:min-h-full bg-black group overflow-hidden">
-            <img 
-                src={project.image} 
-                alt={project.name} 
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700 scale-105 group-hover:scale-100 transform" 
-            />
+            <AnimatePresence mode="wait">
+              <motion.img 
+                  key={currentImageIndex}
+                  src={images[currentImageIndex]} 
+                  alt={`${project.name} - ${currentImageIndex + 1}`} 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.6 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-700 scale-105 group-hover:scale-100 transform" 
+              />
+            </AnimatePresence>
             
             {/* Overlay Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050714] via-transparent to-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050714]/80 md:to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050714] via-transparent to-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050714]/80 md:to-transparent pointer-events-none" />
             
             {/* Scanline Effect */}
             <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_4px,6px_100%] pointer-events-none" />
+
+            {/* Navigation Controls (If multiple images) */}
+            {images.length > 1 && (
+              <>
+                <button 
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/40 border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/50 transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 rounded-full bg-black/40 border border-white/10 text-white hover:bg-emerald-500/20 hover:border-emerald-500/50 transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <ChevronRight size={20} />
+                </button>
+                
+                {/* Pagination Indicator */}
+                <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+                  {images.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'bg-emerald-400 w-3' : 'bg-white/20'}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
 
             {/* Status Indicator Top Left */}
             <div className="absolute top-6 left-6 z-20">
                  <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-black/60 border border-emerald-500/30 backdrop-blur-md">
                      <div className={`w-2 h-2 rounded-full ${project.status === 'Online' ? 'bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]' : 'bg-yellow-500'}`} />
-                     <span className="text-[10px] font-bold text-white uppercase tracking-wider font-mono">{project.status}</span>
+                     <span className="text-[10px] font-bold text-white uppercase tracking-wider font-mono">
+                         {project.status === 'Online' ? t('pages.global.modal.online') : project.status}
+                     </span>
                  </div>
             </div>
 
@@ -68,22 +120,22 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
              <div className="absolute bottom-6 left-6 z-20 font-mono text-[10px] text-emerald-400/80 space-y-1">
                 <div className="flex items-center gap-2 text-white mb-2">
                     <ScanLine size={14} className="animate-pulse text-emerald-400" />
-                    <span className="tracking-widest uppercase font-bold">Site Located</span>
+                    <span className="tracking-widest uppercase font-bold">{t('pages.global.modal.siteLocated')}</span>
                 </div>
                 <div className="flex gap-4">
                     <div>
-                        <span className="text-gray-500 block">LATITUDE</span>
+                        <span className="text-gray-500 block">{t('pages.global.modal.latitude')}</span>
                         <span>{project.coordinates[0].toFixed(4)} N</span>
                     </div>
                      <div>
-                        <span className="text-gray-500 block">LONGITUDE</span>
+                        <span className="text-gray-500 block">{t('pages.global.modal.longitude')}</span>
                         <span>{project.coordinates[1].toFixed(4)} E</span>
                     </div>
                 </div>
              </div>
              
              {/* Center Crosshair Decorative */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 text-white">
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 text-white pointer-events-none">
                 <Crosshair size={64} strokeWidth={0.5} />
              </div>
         </div>
@@ -107,57 +159,90 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight leading-none">{project.name}</h2>
                 <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-gray-500">
                     <span className="px-2 py-1 rounded bg-white/5 border border-white/5 text-gray-300">ID: MZ-{Math.floor(Math.random() * 9000) + 1000}</span>
-                    <span className="flex items-center gap-1.5"><Cpu size={12} /> Unit Type: Enterprise</span>
+                    <span className="flex items-center gap-1.5"><Cpu size={12} /> {t('pages.global.modal.unitType')}: <span className="text-emerald-400 font-bold">{project.vru_model.includes('9000') ? '9000 SERIES' : 'MZ-1'}</span></span>
                 </div>
             </div>
 
             {/* Metrics Grid - Readout Style */}
             <div className="grid grid-cols-2 gap-4 mb-8">
                 <ReadoutBox 
-                    label="Annual Revenue" 
+                    label={t('pages.global.modal.annualRevenue')} 
                     value={project.annual_revenue} 
                     icon={TrendingUp} 
                     accentColor="border-emerald-500/50 text-emerald-400" 
                 />
                 <ReadoutBox 
-                    label="CO₂ Reduction" 
+                    label={t('pages.global.modal.co2Reduction')} 
                     value={project.co2_reduction} 
                     icon={Leaf} 
                     accentColor="border-emerald-500/50 text-emerald-400" 
                 />
                 <ReadoutBox 
-                    label="Hardware Model" 
+                    label={t('pages.global.modal.hardwareModel')} 
                     value={project.vru_model} 
                     icon={Settings} 
                     accentColor="border-teal-500/50 text-teal-400" 
                 />
                 <ReadoutBox 
-                    label="Operator" 
+                    label={t('pages.global.modal.operator')} 
                     value={project.operator} 
                     icon={Building} 
                     accentColor="border-teal-500/50 text-teal-400" 
                 />
             </div>
+
+            {/* Installations List (Conditional) */}
+            {project.installations && (
+                <div className="mb-8 overflow-hidden rounded-lg border border-white/5 bg-white/5">
+                    <div className="bg-white/5 px-4 py-2 border-b border-white/5 flex items-center justify-between">
+                         <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest font-mono">{t('pages.global.modal.deploymentNetwork')} // {project.installations.length} {t('pages.global.modal.sites')}</span>
+                         <Activity size={12} className="text-emerald-500 animate-pulse" />
+                    </div>
+                    <div className="max-h-48 overflow-y-auto custom-scrollbar">
+                        <table className="w-full text-[10px] text-left border-collapse">
+                            <thead className="sticky top-0 bg-[#050714] text-gray-500 uppercase font-bold">
+                                <tr>
+                                    <th className="p-3 border-b border-white/5">{t('pages.global.modal.siteKrEn')}</th>
+                                    <th className="p-3 border-b border-white/5">{t('pages.global.modal.locationAddress')}</th>
+                                    <th className="p-3 border-b border-white/5 text-right">{t('pages.global.modal.date')}</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-white/5">
+                                {project.installations.map((site) => (
+                                    <tr key={site.id} className="hover:bg-white/5 transition-colors group">
+                                        <td className="p-3 font-medium">
+                                            <div className="text-white group-hover:text-emerald-400 transition-colors">{site.kr_name}</div>
+                                            <div className="text-gray-500">{site.en_name}</div>
+                                        </td>
+                                        <td className="p-3 text-gray-400 font-mono">{site.address}</td>
+                                        <td className="p-3 text-right text-gray-500 font-mono whitespace-nowrap">{site.date}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
             
             {/* Footer / Additional Tech Data */}
             <div className="mt-auto bg-white/5 rounded-lg p-4 border border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
                  <div className="flex gap-6 text-xs font-mono">
                      <div>
-                        <span className="block text-gray-500 mb-0.5">UPTIME</span>
-                        <span className="text-white font-bold">99.98%</span>
+                        <span className="block text-gray-500 mb-0.5">{t('pages.global.modal.uptime')}</span>
+                        <span className="text-white font-bold">99%+</span>
                      </div>
                      <div>
-                        <span className="block text-gray-500 mb-0.5">EFFICIENCY</span>
+                        <span className="block text-gray-500 mb-0.5">{t('pages.global.modal.efficiency')}</span>
                         <span className="text-emerald-400 font-bold">OPTIMAL</span>
                      </div>
                      <div>
-                        <span className="block text-gray-500 mb-0.5">PRESSURE</span>
+                        <span className="block text-gray-500 mb-0.5">{t('pages.global.modal.pressure')}</span>
                         <span className="text-white font-bold">1.2 PSI</span>
                      </div>
                  </div>
                  
                  <button className="w-full sm:w-auto group flex items-center justify-center gap-2 text-xs font-bold text-black bg-emerald-500 hover:bg-emerald-400 uppercase tracking-wider transition-all px-5 py-2.5 rounded shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    Access Telemetry
+                    {t('pages.global.modal.accessTelemetry')}
                     <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                  </button>
             </div>

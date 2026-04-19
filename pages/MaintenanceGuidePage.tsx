@@ -2,12 +2,29 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MAINTENANCE_SECTIONS, Section } from '../data/maintenanceData';
-import { BookOpen, ChevronRight, Settings, Wrench } from 'lucide-react';
+import { AlertTriangle, BookOpen, ChevronRight, Download, Settings, Wrench } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
+import { useDict } from '../translations';
 
 const MaintenanceGuidePage: React.FC = () => {
   const [activeSectionId, setActiveSectionId] = useState<string>(MAINTENANCE_SECTIONS[0].id);
+  const { t } = useTranslation();
+  const d = useDict().maintenance;
+
+  const maintenanceSheets = [
+    { title: d.sheets.daily, interval: d.intervals.daily, severity: d.severity.critical },
+    { title: d.sheets.weekly, interval: d.intervals.weekly, severity: d.severity.high },
+    { title: d.sheets.quarterly, interval: d.intervals.quarterly, severity: d.severity.planned },
+  ];
 
   const activeSection = MAINTENANCE_SECTIONS.find(s => s.id === activeSectionId) || MAINTENANCE_SECTIONS[0];
+
+  // Build translated section list
+  const translatedSections = MAINTENANCE_SECTIONS.map(s => ({
+    ...s,
+    title: (d.sections as Record<string, string>)[s.id] ?? s.title,
+  }));
+  const activeTranslatedSection = translatedSections.find(s => s.id === activeSectionId) || translatedSections[0];
 
   return (
     <section className="min-h-screen bg-[#000212] pt-28 pb-12 overflow-hidden relative">
@@ -24,21 +41,39 @@ const MaintenanceGuidePage: React.FC = () => {
         <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-cyan-400 mb-4 uppercase tracking-widest">
                 <Settings size={12} />
-                <span>Technical Documentation v2.4</span>
+                <span>{d.badge}</span>
             </div>
             <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">
-                Maintenance <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Manual</span>
+                {d.title.split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">{d.title.split(' ').slice(1).join(' ')}</span>
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                Comprehensive repair guides, wiring diagrams, and troubleshooting protocols for certified MasarZero technicians.
+                {d.description}
             </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 max-w-7xl mx-auto mb-8">
+            {maintenanceSheets.map(sheet => (
+                <div key={sheet.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                    <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs uppercase tracking-[0.2em] text-cyan-400">{sheet.interval}</span>
+                        <span className={`text-[10px] uppercase px-2 py-1 rounded-full ${sheet.severity === d.severity.critical ? 'bg-red-500/20 text-red-300' : sheet.severity === d.severity.high ? 'bg-amber-500/20 text-amber-300' : 'bg-emerald-500/20 text-emerald-300'}`}>
+                            {sheet.severity}
+                        </span>
+                    </div>
+                    <h2 className="text-lg font-bold text-white mb-4">{sheet.title}</h2>
+                    <button className="inline-flex items-center gap-2 text-sm font-bold text-cyan-300 hover:text-white transition-colors">
+                        <Download size={14} />
+                        {d.downloadSheet}
+                    </button>
+                </div>
+            ))}
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto h-auto lg:h-[800px]">
             
             {/* Sidebar Navigation */}
             <div className="lg:w-1/4 flex flex-col gap-2 h-full overflow-y-auto custom-scrollbar pr-2">
-                {MAINTENANCE_SECTIONS.map((section) => {
+                {translatedSections.map((section) => {
                     const Icon = section.icon;
                     const isActive = activeSectionId === section.id;
                     return (
@@ -52,7 +87,7 @@ const MaintenanceGuidePage: React.FC = () => {
                             }`}
                         >
                             <div className="flex items-center gap-3">
-                                <Icon size={18} className={isActive ? 'text-cyan-400' : 'text-gray-500 group-hover:text-gray-400'} />
+                                <div className="hidden">No Icon</div>
                                 <span className="font-bold text-sm">{section.title}</span>
                             </div>
                             {isActive && <ChevronRight size={16} className="text-cyan-400" />}
@@ -71,9 +106,9 @@ const MaintenanceGuidePage: React.FC = () => {
                 <div className="p-6 md:p-8 border-b border-white/10 bg-[#0f172a] z-10">
                     <div className="flex items-center gap-3 mb-2">
                         <Wrench size={20} className="text-cyan-400" />
-                        <span className="text-xs font-mono text-cyan-500 uppercase tracking-widest">Module: {activeSection.id.toUpperCase()}</span>
+                        <span className="text-xs font-mono text-cyan-500 uppercase tracking-widest">{d.module} {activeSection.id.toUpperCase()}</span>
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white">{activeSection.title}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-white">{activeTranslatedSection.title}</h2>
                 </div>
 
                 {/* Scrollable Body */}

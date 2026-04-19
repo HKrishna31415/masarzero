@@ -2,16 +2,46 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Truck, Wind, Droplets, ArrowDown, DollarSign } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
-const stepText = [
-  { title: "Truck Dispenses", description: "A tanker truck arrives and connects to the primary underground storage tank (UST) to begin refueling.", icon: Truck, color: "bg-emerald-500" },
-  { title: "Vapor Displacement", description: "As liquid fuel fills the tank, it displaces gasoline vapor, which is fed into the MasarZero VRU.", icon: Wind, color: "bg-teal-500" },
-  { title: "Condensation", description: "The VRU's patented system compresses and condenses the vapor, converting it back into pure, liquid gasoline.", icon: Droplets, color: "bg-emerald-400" },
-  { title: "Efficient Recovery", description: "Our technology achieves a 99% recovery efficiency rate, minimizing waste and maximizing value.", icon: ArrowDown, color: "bg-teal-400" },
-  { title: "Value Returned", description: "The recovered, sellable fuel is returned to a separate tank, creating a new, immediate revenue stream.", icon: DollarSign, color: "bg-emerald-600" },
-];
+const useStepText = () => {
+  const { t } = useTranslation();
 
-const AnimatedText: React.FC<{ scrollYProgress: any, start: number, end: number, index: number }> = ({ scrollYProgress, start, end, index }) => {
+  return [
+    {
+      title: t('home.howItWorks.steps.truckDispenses.title'),
+      description: t('home.howItWorks.steps.truckDispenses.description'),
+      icon: Truck,
+      color: 'bg-emerald-500',
+    },
+    {
+      title: t('home.howItWorks.steps.vaporDisplacement.title'),
+      description: t('home.howItWorks.steps.vaporDisplacement.description'),
+      icon: Wind,
+      color: 'bg-teal-500',
+    },
+    {
+      title: t('home.howItWorks.steps.condensation.title'),
+      description: t('home.howItWorks.steps.condensation.description'),
+      icon: Droplets,
+      color: 'bg-emerald-400',
+    },
+    {
+      title: t('home.howItWorks.steps.efficientRecovery.title'),
+      description: t('home.howItWorks.steps.efficientRecovery.description'),
+      icon: ArrowDown,
+      color: 'bg-teal-400',
+    },
+    {
+      title: t('home.howItWorks.steps.valueReturned.title'),
+      description: t('home.howItWorks.steps.valueReturned.description'),
+      icon: DollarSign,
+      color: 'bg-emerald-600',
+    },
+  ];
+};
+
+const AnimatedText: React.FC<{ scrollYProgress: any, start: number, end: number, index: number; stepText: ReturnType<typeof useStepText> }> = ({ scrollYProgress, start, end, index, stepText }) => {
     const opacity = useTransform(scrollYProgress, [start, start + 0.05, end - 0.05, end], [0, 1, 1, 0]);
     const y = useTransform(scrollYProgress, [start, start + 0.05, end - 0.05, end], [20, 0, 0, -20]);
     
@@ -57,12 +87,15 @@ const AnimatedParticle: React.FC<{ path: string; duration: number; delay: number
 
 // --- Mobile View Component ---
 const MobileHowItWorks = () => {
+    const { t } = useTranslation();
+    const stepText = useStepText();
+
     return (
         <div className="py-20 px-4 md:hidden overflow-hidden relative min-h-screen bg-[#000212]">
              {/* Background Title */}
              <div className="text-center mb-16 relative z-10">
-                <h2 className="text-3xl font-bold text-white">From Vapor to Value</h2>
-                <p className="mt-2 text-gray-400">The Recovery Process</p>
+                <h2 className="text-3xl font-bold text-white">{t('home.howItWorks.title')}</h2>
+                <p className="mt-2 text-gray-400">{t('home.howItWorks.subtitle')}</p>
             </div>
             
             <div className="relative max-w-md mx-auto">
@@ -128,6 +161,8 @@ const MobileHowItWorks = () => {
 
 // --- Desktop View Component (Original SVG) ---
 const DesktopHowItWorks = () => {
+    const { t } = useTranslation();
+    const stepText = useStepText();
     const targetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -275,16 +310,16 @@ const DesktopHowItWorks = () => {
 
                 {/* Title Overlay */}
                 <div className="absolute top-24 left-0 right-0 text-center pointer-events-none z-20">
-                    <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">From Vapor to Value</h2>
-                    <p className="mt-2 text-lg text-gray-200 drop-shadow-md">Scroll to visualize the recovery process</p>
+                    <h2 className="text-4xl md:text-6xl font-bold drop-shadow-lg">{t('home.howItWorks.title')}</h2>
+                    <p className="mt-2 text-lg text-gray-200 drop-shadow-md">{t('home.howItWorks.desktopSubtitle')}</p>
                 </div>
 
                 {/* Text overlays */}
-                <AnimatedText scrollYProgress={scrollYProgress} start={0.0} end={0.2} index={0} />
-                <AnimatedText scrollYProgress={scrollYProgress} start={0.2} end={0.4} index={1} />
-                <AnimatedText scrollYProgress={scrollYProgress} start={0.4} end={0.6} index={2} />
-                <AnimatedText scrollYProgress={scrollYProgress} start={0.6} end={0.8} index={3} />
-                <AnimatedText scrollYProgress={scrollYProgress} start={0.8} end={1.0} index={4} />
+                <AnimatedText scrollYProgress={scrollYProgress} start={0.0} end={0.2} index={0} stepText={stepText} />
+                <AnimatedText scrollYProgress={scrollYProgress} start={0.2} end={0.4} index={1} stepText={stepText} />
+                <AnimatedText scrollYProgress={scrollYProgress} start={0.4} end={0.6} index={2} stepText={stepText} />
+                <AnimatedText scrollYProgress={scrollYProgress} start={0.6} end={0.8} index={3} stepText={stepText} />
+                <AnimatedText scrollYProgress={scrollYProgress} start={0.8} end={1.0} index={4} stepText={stepText} />
 
                 {/* Key/Legend (static) */}
                 <motion.div 
@@ -292,11 +327,11 @@ const DesktopHowItWorks = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { delay: 0.5 } }}
                 >
-                    <h4 className="font-bold text-sm mb-3 text-gray-300">System Key</h4>
+                    <h4 className="font-bold text-sm mb-3 text-gray-300">{t('home.howItWorks.systemKey')}</h4>
                     <div className="space-y-3">
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#14b8a6] shadow-[0_0_10px_#14b8a6]"></div><span className="text-xs text-gray-300">Vapor Flow</span></div>
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#10b981] shadow-[0_0_10px_#10b981]"></div><span className="text-xs text-gray-300">Recovered Fuel</span></div>
-                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#34d399] shadow-[0_0_10px_#34d399]"></div><span className="text-xs text-gray-300">Incoming Fuel</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#14b8a6] shadow-[0_0_10px_#14b8a6]"></div><span className="text-xs text-gray-300">{t('home.howItWorks.vaporFlow')}</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#10b981] shadow-[0_0_10px_#10b981]"></div><span className="text-xs text-gray-300">{t('home.howItWorks.recoveredFuel')}</span></div>
+                        <div className="flex items-center gap-3"><div className="w-3 h-3 rounded-full bg-[#34d399] shadow-[0_0_10px_#34d399]"></div><span className="text-xs text-gray-300">{t('home.howItWorks.incomingFuel')}</span></div>
                     </div>
                 </motion.div>
             </div>

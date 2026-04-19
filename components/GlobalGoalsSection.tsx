@@ -1,37 +1,37 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
-const goals = [
+const getGoals = (t: any) => [
     {
         number: 13,
-        title: 'Climate Action',
-        description: 'Directly mitigates climate change by capturing potent greenhouse gases like methane.',
+        title: t('pages.esg.globalGoals.goals.0.title'),
+        description: t('pages.esg.globalGoals.goals.0.desc'),
         borderColor: 'border-green-500',
         textColor: 'text-green-400',
         glowColor: 'shadow-green-500/20',
     },
     {
         number: 11,
-        title: 'Sustainable Cities',
-        description: 'Reduces air pollution (smog), leading to healthier and more sustainable communities.',
+        title: t('pages.esg.globalGoals.goals.1.title'),
+        description: t('pages.esg.globalGoals.goals.1.desc'),
         borderColor: 'border-orange-500',
         textColor: 'text-orange-400',
         glowColor: 'shadow-orange-500/20',
     },
     {
         number: 12,
-        title: 'Responsible Production',
-        description: 'Prevents product waste by converting vapor back to a usable state, promoting circular economy.',
+        title: t('pages.esg.globalGoals.goals.2.title'),
+        description: t('pages.esg.globalGoals.goals.2.desc'),
         borderColor: 'border-yellow-500',
         textColor: 'text-yellow-400',
         glowColor: 'shadow-yellow-500/20',
     },
     {
         number: 7,
-        title: 'Affordable & Clean Energy',
-        description: 'Recovered hydrocarbons are a ready-to-use energy source, reducing the need for new extraction.',
+        title: t('pages.esg.globalGoals.goals.3.title'),
+        description: t('pages.esg.globalGoals.goals.3.desc'),
         borderColor: 'border-teal-500',
         textColor: 'text-teal-400',
         glowColor: 'shadow-teal-500/20',
@@ -39,6 +39,8 @@ const goals = [
 ];
 
 const GlobalGoalsSection: React.FC = () => {
+    const { t } = useTranslation();
+    const goals = getGoals(t);
     const sectionVariants = {
         initial: { opacity: 0 },
         inView: { opacity: 1, transition: { staggerChildren: 0.15 } },
@@ -60,7 +62,7 @@ const GlobalGoalsSection: React.FC = () => {
             >
                 <div className="flex items-center gap-4 mb-12 justify-center">
                     <Target className="text-white w-8 h-8" />
-                    <h2 className="text-2xl md:text-4xl font-bold text-white">UN Sustainable Development Goals</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold text-white">{t('pages.esg.globalGoals.title')}</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

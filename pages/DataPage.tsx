@@ -8,6 +8,7 @@ import {
 import { Activity, Terminal, RefreshCw, ShieldCheck, ChevronRight, Globe, Info, X, CheckCircle2, XCircle, Zap } from 'lucide-react';
 import VectorBorderCard from '../components/VectorBorderCard';
 import AnimatedCounter from '../components/AnimatedCounter';
+import { useTranslation } from '../context/TranslationContext';
 
 // --- Custom Components ---
 
@@ -218,7 +219,9 @@ const LiveLog = () => {
     );
 };
 
-const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) => (
+const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) => {
+    const { t } = useTranslation();
+    return (
     <motion.div 
         className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
         initial={{ opacity: 0 }}
@@ -239,18 +242,18 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
                     <Activity size={24} className="animate-pulse" />
                 </div>
                 <div>
-                    <h3 className="text-xl font-bold text-white">{metric.name} Analysis</h3>
-                    <p className="text-xs text-emerald-400 font-mono uppercase tracking-wider">Chemical Verification</p>
+                    <h3 className="text-xl font-bold text-white">{metric.name} {t('pages.data.lab.standards.analysis')}</h3>
+                    <p className="text-xs text-emerald-400 font-mono uppercase tracking-wider">{t('pages.data.lab.standards.title')}</p>
                 </div>
             </div>
             
             <div className="space-y-4 mb-6">
                 <div className="bg-white/5 p-4 rounded-lg flex justify-between items-center border border-white/5">
-                    <span className="text-gray-400 text-sm">Industry Standard</span>
+                    <span className="text-gray-400 text-sm">{t('pages.data.lab.standards.industry')}</span>
                     <span className="text-white font-bold font-mono">{metric.standard}</span>
                 </div>
                 <div className="bg-gradient-to-r from-emerald-900/20 to-teal-900/20 border border-emerald-500/30 p-4 rounded-lg flex justify-between items-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                    <span className="text-emerald-200 text-sm">MasarZero Output</span>
+                    <span className="text-emerald-200 text-sm">{t('pages.data.lab.standards.output')}</span>
                     <span className="text-emerald-400 font-bold font-mono flex items-center gap-2">
                         {metric.ourResult} <CheckCircle2 size={14} />
                     </span>
@@ -277,74 +280,84 @@ const MetricModal = ({ metric, onClose }: { metric: any, onClose: () => void }) 
             )}
         </motion.div>
     </motion.div>
-);
+    );
+};
 
-const ComparisonSection = () => (
-    <div className="grid md:grid-cols-2 gap-8 mb-24">
-        {/* Advanced System Card */}
-        <VectorBorderCard glowing className="h-full">
-            <div className="flex flex-col h-full">
-                <div className="flex items-center gap-2 mb-4">
-                    <div className="h-px w-8 bg-emerald-500" />
-                    <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">MasarZero VRU</span>
-                </div>
-                <h2 className="text-3xl font-bold text-white mb-2">Advanced System</h2>
-                <p className="text-gray-400 mb-8 text-sm">The pinnacle of vapor recovery technology.</p>
-                <div className="space-y-6 flex-grow">
-                    {[
-                        { title: '250x Return on Energy', desc: 'Generating 250 times the energy it consumes.' },
-                        { title: '5x Better Than Competitors', desc: 'Outperforms the nearest competitor by a factor of five.' },
-                        { title: '99.9% Recovery Rate', desc: 'Capture virtually all valuable vapor, ensuring minimal waste.' }
-                    ].map(feat => (
-                        <div key={feat.title} className="flex items-start gap-4 group">
-                            <div className="mt-1 p-1 bg-emerald-500/10 rounded-full border border-emerald-500/20 group-hover:border-emerald-400/50 transition-colors">
-                                <CheckCircle2 className="text-emerald-400 w-4 h-4" />
-                            </div>
-                            <div>
-                                <h3 className="font-bold text-white text-sm group-hover:text-emerald-300 transition-colors">{feat.title}</h3>
-                                <p className="text-xs text-gray-400 mt-1">{feat.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </VectorBorderCard>
+const ComparisonSection = () => {
+    const { t } = useTranslation();
+    
+    // Fallback data if keys don't exist yet
+    const mzFeatures = (t('pages.data.comparison.advanced.features', { returnObjects: true }) as any[]) || [
+        { title: '250x Return on Energy', desc: 'Generating 250 times the energy it consumes.' },
+        { title: '5x Better Than Competitors', desc: 'Outperforms the nearest competitor by a factor of five.' },
+        { title: '99.9% Recovery Rate', desc: 'Capture virtually all valuable vapor, ensuring minimal waste.' }
+    ];
 
-        {/* Competitor Card */}
-        <div className="bg-slate-900/20 border border-white/5 p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
-            {/* Subtle noise/texture for 'old' feel could go here */}
-            <div className="absolute inset-0 bg-white/5 opacity-0 hover:opacity-10 transition-opacity" />
-            
-            <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                    <div className="h-px w-8 bg-slate-600" />
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Legacy Systems</span>
+    const legacyFeatures = (t('pages.data.comparison.conventional.features', { returnObjects: true }) as any[]) || [
+        { title: 'Up to 50x Return on Energy', desc: 'Significantly lower energy efficiency, impacting your bottom line.' },
+        { title: 'Standard Performance', desc: 'Limited by older technology, leaving valuable fuel vapors and potential revenue behind.' },
+        { title: '~85-95% Recovery Rate', desc: 'A noticeable percentage of vapor is lost, translating to lost income.' }
+    ];
+
+    return (
+        <div className="grid md:grid-cols-2 gap-8 mb-24">
+            {/* Advanced System Card */}
+            <VectorBorderCard glowing className="h-full">
+                <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-4">
+                        <div className="h-px w-8 bg-emerald-500" />
+                        <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">{t('pages.data.comparison.advanced.badge') || 'MasarZero VRU'}</span>
+                    </div>
+                    <h2 className="text-3xl font-bold text-white mb-2">{t('pages.data.comparison.advanced.title') || 'Advanced System'}</h2>
+                    <p className="text-gray-400 mb-8 text-sm">{t('pages.data.comparison.advanced.subtitle') || 'The pinnacle of vapor recovery technology.'}</p>
+                    <div className="space-y-6 flex-grow">
+                        {mzFeatures.map(feat => (
+                            <div key={feat.title} className="flex items-start gap-4 group">
+                                <div className="mt-1 p-1 bg-emerald-500/10 rounded-full border border-emerald-500/20 group-hover:border-emerald-400/50 transition-colors">
+                                    <CheckCircle2 className="text-emerald-400 w-4 h-4" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-white text-sm group-hover:text-emerald-300 transition-colors">{feat.title}</h3>
+                                    <p className="text-xs text-gray-400 mt-1">{feat.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-300 mb-2">Standard Competitors</h2>
-                <p className="text-gray-500 mb-8 text-sm">The conventional, outdated alternative.</p>
-                <div className="space-y-6 flex-grow">
-                    {[
-                        { title: 'Up to 50x Return on Energy', desc: 'Significantly lower energy efficiency, impacting your bottom line.' },
-                        { title: 'Standard Performance', desc: 'Limited by older technology, leaving valuable fuel vapors and potential revenue behind.' },
-                        { title: '~85-95% Recovery Rate', desc: 'A noticeable percentage of vapor is lost, translating to lost income.' }
-                    ].map(feat => (
-                        <div key={feat.title} className="flex items-start gap-4">
-                            <div className="mt-1 p-1 bg-red-500/10 rounded-full border border-red-500/20">
-                                <XCircle className="text-red-400 w-4 h-4" />
+            </VectorBorderCard>
+
+            {/* Competitor Card */}
+            <div className="bg-slate-900/20 border border-white/5 p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-white/5 opacity-0 hover:opacity-10 transition-opacity" />
+                
+                <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-4">
+                        <div className="h-px w-8 bg-slate-600" />
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">{t('pages.data.comparison.conventional.badge') || 'Legacy Systems'}</span>
+                    </div>
+                    <h2 className="text-3xl font-bold text-gray-300 mb-2">{t('pages.data.comparison.conventional.title') || 'Standard Competitors'}</h2>
+                    <p className="text-gray-500 mb-8 text-sm">{t('pages.data.comparison.conventional.subtitle') || 'The conventional, outdated alternative.'}</p>
+                    <div className="space-y-6 flex-grow">
+                        {legacyFeatures.map(feat => (
+                            <div key={feat.title} className="flex items-start gap-4">
+                                <div className="mt-1 p-1 bg-red-500/10 rounded-full border border-red-500/20">
+                                    <XCircle className="text-red-400 w-4 h-4" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-gray-400 text-sm">{feat.title}</h3>
+                                    <p className="text-xs text-gray-600 mt-1">{feat.desc}</p>
+                                </div>
                             </div>
-                            <div>
-                                <h3 className="font-bold text-gray-400 text-sm">{feat.title}</h3>
-                                <p className="text-xs text-gray-600 mt-1">{feat.desc}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 const AnalysisLab = () => {
+    const { t } = useTranslation();
     const [sampleIndex, setSampleIndex] = useState(0);
     const [status, setStatus] = useState<'idle' | 'analyzing' | 'complete'>('idle');
     const [selectedMetric, setSelectedMetric] = useState<any>(null);
@@ -368,9 +381,9 @@ const AnalysisLab = () => {
     return (
         <div className="mb-24">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-white">Interactive Analysis Lab</h2>
+                <h2 className="text-3xl font-bold text-white">{t('pages.data.lab.title')}</h2>
                 <p className="text-gray-400 mt-2 max-w-2xl mx-auto">
-                    Simulate the MasarZero verification process. Click "Analyze New Sample" to process different fuel grades from our global terminals and view detailed chemical breakdowns.
+                    {t('pages.data.lab.description')}
                 </p>
             </div>
 
@@ -380,7 +393,7 @@ const AnalysisLab = () => {
                 <div className="w-full lg:w-80 flex flex-col">
                     <div className="bg-slate-900/60 border border-slate-700 p-8 rounded-2xl text-center relative z-10 flex flex-col items-center justify-center h-full shadow-xl">
                         <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 flex items-center gap-2">
-                            <Globe size={12} /> INPUT SAMPLE ({currentSample.code})
+                            <Globe size={12} /> {t('pages.data.lab.input')} ({currentSample.code})
                         </div>
                         <div className="relative mb-6">
                             <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full" />
@@ -395,7 +408,7 @@ const AnalysisLab = () => {
                             <h3 className="text-2xl font-bold text-white mb-1">{currentSample.type}</h3>
                             <p className="text-sm text-slate-400 font-mono mb-4">{currentSample.inputOctane} Octane // {currentSample.inputRvp} PSI</p>
                             <div className="inline-block px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs text-slate-400">
-                                Source: {currentSample.country} Terminal
+                                {t('pages.data.lab.source')}: {currentSample.country} {t('pages.data.lab.terminal')}
                             </div>
                         </motion.div>
                     </div>
@@ -444,7 +457,7 @@ const AnalysisLab = () => {
                                 exit={{ opacity: 0, scale: 0.95 }}
                             >
                                 <div className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-6 flex items-center gap-2 justify-center">
-                                    <ShieldCheck size={14} /> VERIFIED OUTPUT
+                                    <ShieldCheck size={14} /> {t('pages.data.lab.verified')}
                                 </div>
                                 
                                 <div className="flex-grow space-y-3">
@@ -496,10 +509,10 @@ const AnalysisLab = () => {
                     className="relative aurora-border font-bold py-4 px-10 rounded-full text-white hover:bg-white/5 disabled:opacity-50 transition-all flex items-center gap-3 mx-auto text-lg shadow-lg shadow-emerald-500/10 group"
                 >
                     <RefreshCw className={`w-5 h-5 ${status === 'analyzing' ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
-                    {status === 'analyzing' ? 'Processing...' : 'Analyze New Sample'}
+                    {status === 'analyzing' ? t('common.processing') : t('pages.data.lab.analyze')}
                 </button>
                 <p className="text-xs text-gray-500 mt-4 font-mono">
-                    {status === 'complete' ? 'Analysis Complete. Click to load next sample.' : 'Click to rotate through diverse input scenarios.'}
+                    {status === 'complete' ? t('pages.data.lab.complete') : t('pages.data.lab.rotate')}
                 </p>
             </div>
 
@@ -513,6 +526,7 @@ const AnalysisLab = () => {
 };
 
 const DataPage: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <section className="min-h-screen pt-32 pb-20 bg-[#000212] relative overflow-hidden">
             
@@ -531,18 +545,54 @@ const DataPage: React.FC = () => {
                     transition={{ duration: 0.6 }}
                 >
                     <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
-                        Quality Assurance
+                        {t('pages.data.badge')}
                     </span>
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-6">
-                        Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Chemistry</span>
+                        {t('pages.data.title')}
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
-                        Our cryogenic condensation process yields fuel that is chemically purer than the source.
+                        {t('pages.data.description')}
                     </p>
                 </motion.div>
 
                 {/* 1. Comparison Section */}
                 <ComparisonSection />
+
+                {/* Independent Recovery Validation */}
+                <div className="grid md:grid-cols-2 gap-8 mb-24">
+                    <div className="bg-slate-900/60 border border-slate-700 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
+                        <div className="absolute inset-0 bg-emerald-500/5 group-hover:bg-emerald-500/10 transition-colors" />
+                        <div className="relative z-10">
+                            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2"><ShieldCheck className="text-emerald-400"/> {t('pages.data.validation.title')}</h3>
+                            <div className="space-y-4">
+                                <a href="/library" className="flex justify-between items-center bg-black/40 border border-white/5 p-4 rounded-xl hover:bg-white/10 hover:border-emerald-500/30 transition-all cursor-pointer group/link">
+                                    <span className="text-gray-400 font-bold uppercase text-sm tracking-wider group-hover/link:text-emerald-400 transition-colors">{t('pages.data.validation.cu')}</span>
+                                    <span className="text-emerald-400 font-bold font-mono text-xl flex items-center gap-2">0.76% <ChevronRight size={18}/></span>
+                                </a>
+                                <a href="/library" className="flex justify-between items-center bg-black/40 border border-white/5 p-4 rounded-xl hover:bg-white/10 hover:border-emerald-500/30 transition-all cursor-pointer group/link">
+                                    <span className="text-gray-400 font-bold uppercase text-sm tracking-wider group-hover/link:text-emerald-400 transition-colors">{t('pages.data.validation.sgs')}</span>
+                                    <span className="text-emerald-400 font-bold font-mono text-xl flex items-center gap-2">0.5% <ChevronRight size={18}/></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-slate-900/60 border border-slate-700 p-8 rounded-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
+                        <div className="absolute inset-0 bg-emerald-500/5 group-hover:bg-emerald-500/10 transition-colors" />
+                        <div className="relative z-10">
+                            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2"><Activity className="text-emerald-400"/> {t('pages.data.reports.title')}</h3>
+                            <div className="space-y-4">
+                                <a href="/library" className="flex justify-between items-center bg-black/40 border border-white/5 p-4 rounded-xl hover:bg-white/10 hover:border-emerald-500/30 transition-all group/link cursor-pointer">
+                                    <span className="text-white font-bold group-hover/link:text-emerald-400 transition-colors">{t('pages.data.reports.jordan')}</span>
+                                    <ChevronRight size={18} className="text-gray-500 group-hover/link:text-emerald-400 group-hover/link:translate-x-1 transition-all" />
+                                </a>
+                                <a href="/library" className="flex justify-between items-center bg-black/40 border border-white/5 p-4 rounded-xl hover:bg-white/10 hover:border-emerald-500/30 transition-all group/link cursor-pointer">
+                                    <span className="text-white font-bold group-hover/link:text-emerald-400 transition-colors">{t('pages.data.reports.korea')}</span>
+                                    <ChevronRight size={18} className="text-gray-500 group-hover/link:text-emerald-400 group-hover/link:translate-x-1 transition-all" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* 2. Interactive Lab */}
                 <AnalysisLab />
@@ -552,21 +602,21 @@ const DataPage: React.FC = () => {
                     <div className="w-full max-w-4xl">
                         <div className="flex items-center gap-2 mb-4 px-2 justify-center">
                             <Terminal size={16} className="text-emerald-400" />
-                            <h3 className="font-mono font-bold text-white text-sm">Live Telemetry</h3>
+                            <h3 className="font-mono font-bold text-white text-sm">{t('pages.data.reports.liveTelemetry')}</h3>
                             <div className="ml-auto flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_5px_#10b981]" />
-                                <span className="text-[10px] font-mono text-gray-500">ONLINE</span>
+                                <span className="text-[10px] font-mono text-gray-500">{t('common.live').toUpperCase()}</span>
                             </div>
                         </div>
                         <LiveLog />
                         
                         <div className="mt-6 space-y-3">
                             <div className="bg-slate-900/40 border border-white/10 p-4 rounded-xl flex justify-between items-center">
-                                <span className="text-sm text-gray-400">System Pressure</span>
+                                <span className="text-sm text-gray-400">{t('pages.sidebar.pressure')}</span>
                                 <span className="text-white font-mono font-bold">14.2 PSI</span>
                             </div>
                             <div className="bg-slate-900/40 border border-white/10 p-4 rounded-xl flex justify-between items-center">
-                                <span className="text-sm text-gray-400">Flow Rate</span>
+                                <span className="text-sm text-gray-400">{t('pages.sidebar.flowRate')}</span>
                                 <span className="text-emerald-400 font-mono font-bold">340 L/min</span>
                             </div>
                         </div>

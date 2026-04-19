@@ -14,4 +14,12 @@ export interface Project {
   annual_revenue: string;
   co2_reduction: string;
   image: string;
+  images?: string[];
+  installations?: {
+    id: number;
+    kr_name: string;
+    en_name: string;
+    address: string;
+    date: string;
+  }[];
 }

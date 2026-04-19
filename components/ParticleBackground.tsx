@@ -8,9 +8,9 @@ const Particle: React.FC = () => {
     left: `${Math.random() * 100}%`,
     width: `${Math.random() * 2 + 1}px`,
     height: `${Math.random() * 2 + 1}px`,
-    backgroundColor: `rgba(0, 255, 255, ${Math.random() * 0.5 + 0.2})`,
+    backgroundColor: `rgba(16, 185, 129, ${Math.random() * 0.5 + 0.2})`,
     borderRadius: '50%',
-    boxShadow: `0 0 ${Math.random() * 5 + 2}px rgba(0, 255, 255, 0.8)`,
+    boxShadow: `0 0 ${Math.random() * 5 + 2}px rgba(16, 185, 129, 0.8)`,
     animation: `swirl ${Math.random() * 20 + 10}s linear infinite`,
     animationDelay: `${Math.random() * -30}s`
   };

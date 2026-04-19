@@ -10,14 +10,12 @@ import GovernanceModule from '../components/GovernanceModule';
 import GlobalGoalsSection from '../components/GlobalGoalsSection';
 import EnergyTrilemmaSection from '../components/EnergyTrilemmaSection';
 import ThreeJSBackground from '../components/ThreeJSBackground';
+import { useTranslation } from '../context/TranslationContext';
 
-const tabs = [
-    { id: 'env', label: 'Environmental', icon: Leaf, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
-    { id: 'soc', label: 'Social', icon: Users, color: 'text-teal-400', bg: 'bg-teal-500/10', border: 'border-teal-500/50' },
-    { id: 'gov', label: 'Governance', icon: Scale, color: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
-];
+
 
 const TransparencyVisual = () => {
+    const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -62,7 +60,7 @@ const TransparencyVisual = () => {
                 <div className="absolute top-0 bottom-0 w-px bg-emerald-500/40" style={{ left: 'var(--mouse-x, 50%)' }} />
                 <div className="absolute left-0 right-0 h-px bg-emerald-500/40" style={{ top: 'var(--mouse-y, 50%)' }} />
                 <div className="absolute text-[10px] font-mono text-emerald-400 bg-black/60 px-1.5 py-0.5 rounded ml-2 mt-2 border border-emerald-500/30 backdrop-blur-sm" style={{ left: 'var(--mouse-x, 50%)', top: 'var(--mouse-y, 50%)' }}>
-                    AUDIT: VERIFIED
+                    {t('pages.esg.audit.verified')}
                 </div>
             </div>
 
@@ -98,8 +96,14 @@ const TransparencyVisual = () => {
 };
 
 const ESGPage: React.FC = () => {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState('env');
 
+    const tabs = [
+        { id: 'env', label: t('pages.esg.tabs.environmental'), icon: Leaf, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
+        { id: 'soc', label: t('pages.esg.tabs.social'), icon: Users, color: 'text-teal-400', bg: 'bg-teal-500/10', border: 'border-teal-500/50' },
+        { id: 'gov', label: t('pages.esg.tabs.governance'), icon: Scale, color: 'text-emerald-500', bg: 'bg-emerald-500/10', border: 'border-emerald-500/50' },
+    ];
     const headerVariants: Variants = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
@@ -149,12 +153,11 @@ const ESGPage: React.FC = () => {
                     </div>
 
                     <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 leading-[0.9]">
-                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-emerald-600">Sustainability</span> <br />
-                        <span className="text-gray-500">Engine.</span>
+                        {t('pages.esg.title')}
                     </h1>
                     
                     <p className="mt-8 max-w-2xl mx-auto text-lg text-gray-400 leading-relaxed font-light">
-                        We engineer outcomes, not just technology. Every MasarZero unit deployed acts as a regenerative lung for the industrial sector, transforming compliance into a competitive advantage.
+                        {t('pages.esg.subtitle')}
                     </p>
                 </motion.div>
 
@@ -205,12 +208,12 @@ const ESGPage: React.FC = () => {
                             <div className="space-y-8">
                                 <div className="flex flex-col md:flex-row items-end justify-between gap-4 border-b border-white/10 pb-4">
                                     <div>
-                                        <h2 className="text-2xl font-bold text-white">Planetary Impact</h2>
-                                        <p className="text-sm text-gray-400 font-mono">REAL-TIME CARBON REDUCTION METRICS</p>
+                                        <h2 className="text-2xl font-bold text-white">{t('pages.esg.env.title')}</h2>
+                                        <p className="text-sm text-gray-400 font-mono">{t('pages.esg.env.subtitle')}</p>
                                     </div>
                                     <div className="text-xs font-mono text-emerald-500 flex items-center gap-2">
                                         <Activity size={14} />
-                                        DATA STREAM: ONLINE
+                                        {t('pages.esg.env.dataStream')}
                                     </div>
                                 </div>
                                 <ImpactDashboard />
@@ -228,6 +231,31 @@ const ESGPage: React.FC = () => {
                             {/* Lifecycle */}
                             <LifecycleAnalysis />
 
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                                    <h3 className="text-2xl font-bold text-white mb-4">{t('pages.esg.env.carbonCredits.title')}</h3>
+                                    <p className="text-gray-400 leading-relaxed mb-4">
+                                        {t('pages.esg.env.carbonCredits.desc')}
+                                    </p>
+                                    <ul className="space-y-3 text-sm text-gray-300">
+                                        {(Array.isArray(t('pages.esg.env.carbonCredits.points', { returnObjects: true })) ? (t('pages.esg.env.carbonCredits.points', { returnObjects: true }) as unknown as string[]) : []).map((point, i) => (
+                                            <li key={i}>{point}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                                    <h3 className="text-2xl font-bold text-white mb-4">{t('pages.esg.env.lending.title')}</h3>
+                                    <p className="text-gray-400 leading-relaxed mb-4">
+                                        {t('pages.esg.env.lending.desc')}
+                                    </p>
+                                    <ul className="space-y-3 text-sm text-gray-300">
+                                        {(Array.isArray(t('pages.esg.env.lending.points', { returnObjects: true })) ? (t('pages.esg.env.lending.points', { returnObjects: true }) as unknown as string[]) : []).map((point, i) => (
+                                            <li key={i}>{point}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
                             {/* Next Section Button */}
                             <div className="flex justify-center pt-8 border-t border-white/10">
                                 <button 
@@ -235,7 +263,7 @@ const ESGPage: React.FC = () => {
                                     className="flex items-center gap-3 px-8 py-4 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-300 hover:bg-teal-500/20 transition-all group"
                                 >
                                     <Users size={20} />
-                                    <span>Next: Explore Social Responsibility</span>
+                                    <span>{t('pages.esg.env.nextTab')}</span>
                                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
@@ -256,9 +284,9 @@ const ESGPage: React.FC = () => {
                                 <div className="inline-flex items-center justify-center p-3 bg-teal-500/10 rounded-full mb-6">
                                     <ShieldCheck size={32} className="text-teal-400" />
                                 </div>
-                                <h2 className="text-4xl font-bold text-white mb-4">Zero Harm Culture</h2>
+                                <h2 className="text-4xl font-bold text-white mb-4">{t('pages.esg.social.title')}</h2>
                                 <p className="text-gray-400 text-lg">
-                                    Safety isn't just a metric; it's our moral imperative. We engineer systems that protect people first.
+                                    {t('pages.esg.social.subtitle')}
                                 </p>
                             </div>
 
@@ -275,7 +303,7 @@ const ESGPage: React.FC = () => {
                                     className="flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all group"
                                 >
                                     <Scale size={20} />
-                                    <span>Next: View Governance Framework</span>
+                                    <span>{t('pages.esg.social.nextTab')}</span>
                                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
@@ -294,14 +322,12 @@ const ESGPage: React.FC = () => {
                             {/* Governance Header */}
                             <div className="grid md:grid-cols-2 gap-12 items-center">
                                 <div>
-                                    <h2 className="text-4xl font-bold text-white mb-6">Radical Transparency</h2>
+                                    <h2 className="text-4xl font-bold text-white mb-6">{t('pages.esg.gov.title')}</h2>
                                     <p className="text-gray-400 text-lg mb-8">
-                                        Trust is built on accountability. Our governance framework provides clear, verifiable insights into our operations, ensuring we meet the highest standards of integrity.
+                                        {t('pages.esg.gov.subtitle')}
                                     </p>
                                     <div className="flex flex-wrap gap-4">
-                                        <div className="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm text-gray-300 flex items-center gap-2">
-                                            <div className="w-2 h-2 bg-emerald-400 rounded-full" /> SOC 2 Type II
-                                        </div>
+
                                         <div className="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm text-gray-300 flex items-center gap-2">
                                             <div className="w-2 h-2 bg-emerald-400 rounded-full" /> ISO 27001
                                         </div>
@@ -316,6 +342,13 @@ const ESGPage: React.FC = () => {
                             </div>
 
                             <GovernanceModule />
+
+                            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+                                <h3 className="text-2xl font-bold text-white mb-4">{t('pages.esg.gov.financeTitle')}</h3>
+                                <p className="text-gray-400 leading-relaxed">
+                                    {t('pages.esg.gov.financeDesc')}
+                                </p>
+                            </div>
                             
                             {/* Download CTA */}
                             <div className="glass-card bg-gradient-to-r from-slate-900 to-slate-800 p-8 md:p-12 rounded-3xl border border-white/10 relative overflow-hidden group">
@@ -323,14 +356,14 @@ const ESGPage: React.FC = () => {
                                 
                                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white mb-2">2024 ESG Impact Report</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2">{t('pages.esg.gov.reportTitle')}</h3>
                                         <p className="text-gray-400 max-w-lg">
-                                            Download our comprehensive annual report detailing our methodology, full audit trails, and future sustainability targets.
+                                            {t('pages.esg.gov.reportDesc')}
                                         </p>
                                     </div>
                                     <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-emerald-50 transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:scale-105 transform">
                                         <Download size={20} />
-                                        Download PDF
+                                        {t('pages.esg.gov.download')}
                                     </button>
                                 </div>
                             </div>
@@ -342,7 +375,7 @@ const ESGPage: React.FC = () => {
                                     className="flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all group"
                                 >
                                     <Leaf size={20} />
-                                    <span>Return to Environmental</span>
+                                    <span>{t('pages.esg.gov.nextTab')}</span>
                                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>

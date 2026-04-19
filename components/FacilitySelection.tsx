@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion, Variants } from 'framer-motion';
 import { Fuel, Warehouse, ArrowRight, Scan } from 'lucide-react';
 
@@ -8,6 +8,7 @@ interface FacilitySelectionProps {
 }
 
 const FacilitySelection: React.FC<FacilitySelectionProps> = ({ onSelect }) => {
+    const { t } = useTranslation();
     return (
         <div className="relative w-full max-w-6xl mx-auto z-10">
              {/* Decorative Background Elements */}
@@ -19,12 +20,12 @@ const FacilitySelection: React.FC<FacilitySelectionProps> = ({ onSelect }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">System Initialized</span>
+                    <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">{t('pages.digitalTwin.badge')}</span>
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-                        Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Twin</span>
+                        {t('pages.digitalTwin.title')}
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-gray-400 text-lg">
-                        Select a facility environment to initialize the MasarZero VRU simulation kernel.
+                        {t('pages.digitalTwin.description')}
                     </p>
                 </motion.div>
             </div>
@@ -33,18 +34,18 @@ const FacilitySelection: React.FC<FacilitySelectionProps> = ({ onSelect }) => {
                 <SelectionCard
                     id="gas"
                     icon={Fuel}
-                    title="Retail Station"
-                    subtitle="Urban Environment"
-                    description="Simulate high-frequency refueling cycles and vapor displacement in a standard underground tank configuration."
+                    title={t('pages.digitalTwin.retail.title')}
+                    subtitle={t('pages.digitalTwin.retail.subtitle')}
+                    description={t('pages.digitalTwin.retail.description')}
                     onSelect={() => onSelect('gas')}
                     delay={0.2}
                 />
                 <SelectionCard
                     id="storage"
                     icon={Warehouse}
-                    title="Storage Terminal"
-                    subtitle="Industrial Hub"
-                    description="Model large-scale vapor recovery efficiency for bulk liquid storage farms and distribution terminals."
+                    title={t('pages.digitalTwin.terminal.title')}
+                    subtitle={t('pages.digitalTwin.terminal.subtitle')}
+                    description={t('pages.digitalTwin.terminal.description')}
                     onSelect={() => onSelect('storage')}
                     delay={0.4}
                 />
@@ -103,7 +104,7 @@ const SelectionCard: React.FC<{
                     </div>
 
                     <div className="mt-auto pt-8 flex items-center text-sm font-bold text-gray-500 group-hover:text-emerald-400 transition-colors uppercase tracking-wide">
-                        Initialize Simulation
+                        {useTranslation().t('pages.digitalTwin.initialize')}
                         <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" />
                     </div>
                 </div>

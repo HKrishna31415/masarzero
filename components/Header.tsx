@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Lock, Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslation } from '../context/TranslationContext';
 
 interface HeaderProps {
 }
@@ -14,54 +16,57 @@ interface NavItem {
   locked?: boolean;
 }
 
-const navItems: NavItem[] = [
-  { title: 'Home', path: '/' },
-  {
-    title: 'Solutions',
-    children: [
-      { title: 'Products', path: '/products' },
-      { title: 'Technology', path: '/technology' },
-      { title: 'Cycle System', path: '/cycle-system' },
-      { title: 'Digital Twin', path: '/digital-twin' },
-      { title: 'SCADA Platform', path: '/scada' },
-    ],
-  },
-  {
-    title: 'Impact',
-    children: [
-      { title: 'Environmental', path: '/environmental' },
-      { title: 'Financial', path: '/financial' },
-      { title: 'ROI Calculator', path: '/roi-calculator' },
-      { title: 'Global', path: '/global' },
-      { title: 'Gasoline Quality', path: '/data' },
-    ],
-  },
+const useNavItems = (): NavItem[] => {
+  const { t } = useTranslation();
+
+  return [
+    { title: t('header.nav.home'), path: '/' },
     {
-    title: 'Resources',
-    children: [
-      { title: 'Gallery', path: '/gallery' },
-      { title: 'Knowledge Base', path: '/knowledge' },
-      { title: 'Technical Library', path: '/library' },
-      { title: 'Installation Guide', path: '/installation-guide' },
-      { title: 'Maintenance Manual', path: '/maintenance-guide' },
-      { title: 'Validation Protocol', path: '/vru-testing' },
-      { title: 'Equipment Acceptance Test', path: '/equipment-acceptance-test' },
-      { title: 'Support & Service', path: '/support' },
-    ],
-  },
-  {
-    title: 'Company',
-    children: [
-        { title: 'ESG Hub', path: '/esg' },
-        { title: 'About Us', path: '/about' },
-        { title: 'Newsroom', path: '/newsroom' },
-        { title: 'Legal & Compliance', path: '/legal' },
-        { title: 'Contact Us', path: '/contact' },
-        { title: 'Client Pipeline', path: '/pipeline', locked: true },
-        { title: 'Investor Relations', path: '/investor', locked: true },
-    ]
-  },
-];
+      title: t('header.nav.solutions'),
+      children: [
+        { title: t('header.nav.products'), path: '/products' },
+        { title: t('header.nav.technology'), path: '/technology' },
+        { title: t('header.nav.cycleSystem'), path: '/cycle-system' },
+        { title: t('header.nav.digitalTwin'), path: '/digital-twin' },
+        { title: t('header.nav.scadaPlatform'), path: '/scada' },
+      ],
+    },
+    {
+      title: t('header.nav.impact'),
+      children: [
+        { title: t('header.nav.environmental'), path: '/environmental' },
+        { title: t('header.nav.financial'), path: '/financial' },
+        { title: t('header.nav.global'), path: '/global' },
+        { title: t('header.nav.gasolineQuality'), path: '/data' },
+      ],
+    },
+    {
+      title: t('header.nav.resources'),
+      children: [
+        { title: t('header.nav.gallery'), path: '/gallery' },
+        { title: t('header.nav.knowledgeBase'), path: '/knowledge' },
+        { title: t('header.nav.technicalLibrary'), path: '/library' },
+        { title: t('header.nav.installationGuide'), path: '/installation-guide' },
+        { title: t('header.nav.maintenanceManual'), path: '/maintenance-guide' },
+        { title: t('header.nav.validationProtocol'), path: '/vru-testing' },
+        { title: t('header.nav.equipmentAcceptanceTest'), path: '/equipment-acceptance-test' },
+        { title: t('header.nav.supportService'), path: '/support' },
+      ],
+    },
+    {
+      title: t('header.nav.company'),
+      children: [
+        { title: t('header.nav.esgHub'), path: '/esg' },
+        { title: t('header.nav.aboutUs'), path: '/about' },
+        { title: t('header.nav.newsroom'), path: '/newsroom' },
+        { title: t('header.nav.legalCompliance'), path: '/legal' },
+        { title: t('header.nav.contactUs'), path: '/contact' },
+        { title: t('header.nav.clientPipeline'), path: '/pipeline', locked: true },
+        { title: t('header.nav.investorRelations'), path: '/investor', locked: true },
+      ],
+    },
+  ];
+};
 
 const DropdownMenu: React.FC<{ item: NavItem }> = ({ item }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -180,6 +185,8 @@ const Header: React.FC<HeaderProps> = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const navItems = useNavItems();
 
   const handleMobileNavigate = (path: string) => {
     navigate(path);
@@ -218,13 +225,14 @@ const Header: React.FC<HeaderProps> = () => {
         </nav>
         
         <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
             <a
                 href="https://calc.masarzero.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-sm px-5 py-2 rounded-full border border-white/10 text-gray-300 hover:text-white hover:border-emerald-500/40 transition-all duration-300"
             >
-              Calculator
+              {t('header.actions.calculator')}
             </a>
             <a
                 href="https://app.masarzero.com"
@@ -232,19 +240,24 @@ const Header: React.FC<HeaderProps> = () => {
                 rel="noopener noreferrer"
                 className="relative aurora-border font-semibold text-sm px-6 py-2 rounded-full hover:bg-emerald-500/20 transition-all duration-300 flex items-center gap-2"
             >
-              Client Platform
+              {t('header.actions.clientPlatform')}
               <Lock size={12} />
             </a>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
-            className="md:hidden p-2 text-white hover:text-emerald-300 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-        >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+            <div className="max-w-[150px]">
+              <LanguageSwitcher />
+            </div>
+            <button 
+                className="p-2 text-white hover:text-emerald-300 transition-colors"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={t('header.actions.toggleMenu')}
+            >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -258,6 +271,7 @@ const Header: React.FC<HeaderProps> = () => {
                 className="absolute top-20 left-4 right-4 glass-card rounded-2xl p-6 md:hidden max-h-[80vh] overflow-y-auto bg-[#000212]/95 border border-white/20 shadow-2xl"
             >
                 <div className="flex flex-col">
+                    <LanguageSwitcher mobile onChange={() => setIsMobileMenuOpen(false)} />
                     {navItems.map(item => (
                         <MobileMenuItem 
                             key={item.title} 
@@ -271,7 +285,7 @@ const Header: React.FC<HeaderProps> = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="mt-6 w-full font-semibold text-sm px-6 py-3 rounded-xl border border-white/10 text-gray-300 hover:text-white hover:border-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-2"
                     >
-                        Calculator
+                        {t('header.actions.calculator')}
                     </a>
                      <a
                         href="https://app.masarzero.com"
@@ -280,7 +294,7 @@ const Header: React.FC<HeaderProps> = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="mt-3 w-full relative aurora-border font-semibold text-sm px-6 py-3 rounded-xl hover:bg-emerald-500/20 transition-all duration-300 flex items-center justify-center gap-2"
                     >
-                        Client Platform
+                        {t('header.actions.clientPlatform')}
                         <Lock size={12} />
                     </a>
                 </div>

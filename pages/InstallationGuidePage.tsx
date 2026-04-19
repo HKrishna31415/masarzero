@@ -8,72 +8,23 @@ import InstallationScene from '../components/InstallationScene';
 import ElectricalWiringDiagram from '../components/ElectricalWiringDiagram';
 import ConnectivityDiagram from '../components/ConnectivityDiagram';
 import VectorBorderCard from '../components/VectorBorderCard';
+import { useTranslation } from '../context/TranslationContext';
+import { useDict } from '../translations';
 
-const installSteps = [
-    {
-        id: 'prep',
-        title: "Site Preparation",
-        type: 'physical',
-        desc: "Ensure the foundation is ready for deployment.",
-        checklist: [
-            "Verify concrete pad dimensions (2m x 2m min)",
-            "Confirm load bearing capacity > 2500kg",
-            "Ensure 1m clearance on all sides",
-            "Verify grounding rod installation"
-        ]
-    },
-    {
-        id: 'placement',
-        title: "Unit Placement",
-        type: 'physical',
-        desc: "Positioning the VRU onto the pad.",
-        checklist: [
-            "Inspect crane lifting points",
-            "Lift unit using spreader bar",
-            "Align base holes with anchor bolts",
-            "Torque anchor bolts to spec (150 Nm)"
-        ]
-    },
-    {
-        id: 'electrical',
-        title: "Electrical Termination",
-        type: 'technical',
-        desc: "High voltage power connection.",
-        checklist: [
-            "Isolate Main Power (LOTO Procedure)",
-            "Connect Phases L1, L2, L3 to XT1 Block",
-            "Connect Neutral (N) and PE Ground",
-            "Verify Cable Gland Tightness"
-        ]
-    },
-    {
-        id: 'connectivity',
-        title: "Telemetry Uplink",
-        type: 'technical',
-        desc: "Establishing cloud data connection.",
-        checklist: [
-            "Insert SIM Card into V-BOX or Connect Ethernet",
-            "Power on Control Circuit (220V)",
-            "Verify V-BOX 'NET' LED is blinking",
-            "Confirm 'Online' status in PinnacleOS App"
-        ]
-    },
-    {
-        id: 'commissioning',
-        title: "System Boot",
-        type: 'physical', // Reusing physical for 3D lights animation or custom
-        desc: "Final startup sequence.",
-        checklist: [
-            "Open isolation valves",
-            "Engage main breaker",
-            "Check motor rotation direction",
-            "Verify system pressure stabilizes"
-        ]
-    }
-];
+const stepTypes = ['physical', 'physical', 'technical', 'technical', 'physical'] as const;
 
 const InstallationGuidePage: React.FC = () => {
     const [currentStep, setCurrentStep] = useState(0);
+    const { t } = useTranslation();
+    const d = useDict().installationGuide;
+
+    const installSteps = d.steps.map((step, i) => ({
+        id: ['prep', 'placement', 'electrical', 'connectivity', 'commissioning'][i],
+        title: step.title,
+        type: stepTypes[i],
+        desc: step.desc,
+        checklist: step.checklist,
+    }));
 
     const nextStep = () => {
         if (currentStep < installSteps.length - 1) setCurrentStep(curr => curr + 1);
@@ -93,10 +44,10 @@ const InstallationGuidePage: React.FC = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
                     <div>
                         <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-2 block">
-                            Field Deployment
+                            {t('pages.installationGuide.badge')}
                         </span>
                         <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-                            Installation <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Guide</span>
+                            {t('pages.installationGuide.title').split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">{t('pages.installationGuide.title').split(' ').slice(1).join(' ')}</span>
                         </h1>
                     </div>
                     
@@ -119,7 +70,7 @@ const InstallationGuidePage: React.FC = () => {
                         <div className="absolute top-6 left-6 z-20 pointer-events-none">
                             <div className="bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-emerald-400 flex items-center gap-2">
                                 {activeStepData.type === 'physical' ? <Box size={14} /> : <Server size={14} />}
-                                {activeStepData.type === 'physical' ? 'SPATIAL VIEW' : 'SCHEMATIC VIEW'}
+                                {activeStepData.type === 'physical' ? t('pages.installationGuide.spatialView') : t('pages.installationGuide.schematicView')}
                             </div>
                         </div>
 
@@ -174,7 +125,7 @@ const InstallationGuidePage: React.FC = () => {
 
                                 <div className="bg-black/20 rounded-xl p-6 border border-white/5 flex-grow">
                                     <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                        <Play size={12} /> Action Items
+                                        <Play size={12} /> {t('pages.installationGuide.actionItems')}
                                     </h3>
                                     <div className="space-y-4">
                                         {activeStepData.checklist.map((item, i) => (
@@ -201,14 +152,14 @@ const InstallationGuidePage: React.FC = () => {
                                         disabled={currentStep === 0}
                                         className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-white disabled:opacity-30 disabled:hover:text-gray-500 transition-colors"
                                     >
-                                        <ChevronLeft size={16} /> Back
+                                        <ChevronLeft size={16} /> {t('pages.installationGuide.back')}
                                     </button>
                                     <button 
                                         onClick={nextStep}
                                         disabled={currentStep === installSteps.length - 1}
                                         className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-emerald-900/20"
                                     >
-                                        {currentStep === installSteps.length - 1 ? 'Finish' : 'Next Step'}
+                                        {currentStep === installSteps.length - 1 ? t('pages.installationGuide.finish') : t('pages.installationGuide.nextStep')}
                                         <ChevronRight size={16} />
                                     </button>
                                 </div>

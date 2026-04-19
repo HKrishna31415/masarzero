@@ -18,6 +18,7 @@ import {
     Lock,
     ChevronDown,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import VectorBorderCard from '../components/VectorBorderCard';
 
 // Section Data
@@ -218,13 +219,21 @@ const LegalPage: React.FC = () => {
                                     </AnimatePresence>
 
                                     <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                                        <button 
-                                            onClick={() => setExpandedSection(isExpanded ? null : section.id)}
-                                            className="text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 group"
-                                        >
-                                            {isExpanded ? 'Collapse Details' : section.buttonText}
-                                            <ChevronDown size={14} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-y-1'}`} />
-                                        </button>
+                                        <div className="flex items-center gap-4">
+                                            <button 
+                                                onClick={() => setExpandedSection(isExpanded ? null : section.id)}
+                                                className="text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-2 group"
+                                            >
+                                                {isExpanded ? 'Collapse Details' : 'Quick Summary'}
+                                                <ChevronDown size={14} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-y-1'}`} />
+                                            </button>
+                                            <Link
+                                                to={`/legal/${section.id}`}
+                                                className="text-sm font-bold text-white hover:text-emerald-300 transition-colors"
+                                            >
+                                                {section.buttonText}
+                                            </Link>
+                                        </div>
                                         <div className="text-[10px] font-mono text-gray-600 uppercase">
                                             DOC_ID: {section.id.toUpperCase()}_v2.4
                                         </div>

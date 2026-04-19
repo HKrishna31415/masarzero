@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Leaf, Zap } from 'lucide-react';
+import { useTranslation } from '../context/TranslationContext';
 
 interface PillarData {
     id: string;
-    // Fix: Using a more specific type for lucide-react icons to resolve type errors.
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
     title: string;
     color: string;
@@ -15,38 +15,40 @@ interface PillarData {
 
 type Pillar = 'security' | 'sustainability' | 'equity';
 
-const pillars: Record<Pillar, PillarData> = {
+const getPillars = (t: any): Record<Pillar, PillarData> => ({
   security: {
     id: 'security',
     icon: Lock,
-    title: 'Energy Security',
+    title: t('pages.esg.energyTrilemma.pillars.security.title'),
     color: 'text-orange-400',
     iconColor: '#f97316',
     pluses: '+',
-    description: 'By recovering valuable fuel that would otherwise be lost as vapor, our VRU technology enhances domestic energy supply, reduces dependence on new extraction, and strengthens the resilience of your energy infrastructure.'
+    description: t('pages.esg.energyTrilemma.pillars.security.desc')
   },
   sustainability: {
     id: 'sustainability',
     icon: Leaf,
-    title: 'Environmental Sustainability',
+    title: t('pages.esg.energyTrilemma.pillars.sustainability.title'),
     color: 'text-teal-400',
     iconColor: '#14b8a6',
     pluses: '+',
-    description: 'Capturing potent greenhouse gases and volatile organic compounds (VOCs) directly combats climate change, prevents ground-level ozone formation (smog), and significantly improves local air quality for healthier communities.'
+    description: t('pages.esg.energyTrilemma.pillars.sustainability.desc')
   },
   equity: {
     id: 'equity',
     icon: Zap,
-    title: 'Energy Equity',
+    title: t('pages.esg.energyTrilemma.pillars.equity.title'),
     color: 'text-emerald-400',
     iconColor: '#10b981',
     pluses: '+++',
-    description: 'The recovered hydrocarbons provide a ready-to-use, more affordable energy source. This helps to lower operational costs, which can translate to reduced energy prices and increased accessibility for communities.'
+    description: t('pages.esg.energyTrilemma.pillars.equity.desc')
   }
-};
+});
 
 
 const EnergyTrilemmaSection: React.FC = () => {
+    const { t } = useTranslation();
+    const pillars = getPillars(t);
     const [activePillar, setActivePillar] = useState<Pillar | null>('sustainability');
 
     const containerVariants = {
@@ -75,9 +77,9 @@ const EnergyTrilemmaSection: React.FC = () => {
                 viewport={{ once: true, amount: 0.3 }}
             >
                 <motion.div className="text-center mb-16" variants={itemVariants}>
-                    <h2 className="text-3xl md:text-5xl font-bold">Addressing the Energy Trilemma</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold">{t('pages.esg.energyTrilemma.title')}</h2>
                     <p className="mt-4 max-w-3xl mx-auto text-gray-400">
-                        VRU technology provides a balanced solution, making significant improvements across the three core pillars of the global energy challenge.
+                        {t('pages.esg.energyTrilemma.subtitle')}
                     </p>
                 </motion.div>
                 
@@ -115,7 +117,7 @@ const EnergyTrilemmaSection: React.FC = () => {
                 </motion.div>
 
                 <motion.div className="text-center mt-8 min-h-[5rem]" variants={itemVariants}>
-                     <p className="text-sm text-gray-500 mb-4">Click an icon to learn more</p>
+                     <p className="text-sm text-gray-500 mb-4">{t('pages.esg.energyTrilemma.clickLearn')}</p>
                     <AnimatePresence mode="wait">
                         {activePillar && (
                             <motion.div
@@ -153,7 +155,6 @@ const PillarComponent: React.FC<PillarProps> = ({ pillar, isActive, onSelect }) 
             data-cursor-hover
         >
             <div className={`p-3 rounded-full transition-colors ${isActive ? 'bg-white/10' : 'bg-transparent'}`}>
-                {/* Fix: Use the 'color' prop for lucide-react icons instead of the 'style' prop to fix type error. */}
                 <Icon className="w-8 h-8" color={iconColor} />
             </div>
             <h3 className={`text-xs font-bold uppercase tracking-wider ${color}`}>{title}</h3>

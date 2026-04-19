@@ -30,7 +30,8 @@ import VruTestingPage from './pages/VruTestingPage';
 import GalleryPage from './pages/GalleryPage';
 import CycleSystemPage from './pages/CycleSystemPage';
 import MaintenanceGuidePage from './pages/MaintenanceGuidePage';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import LegalDocumentPage from './pages/LegalDocumentPage';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import DynamicFavicon from './components/DynamicFavicon';
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
                 <Route path="/knowledge" element={<KnowledgeBasePage />} />
                 <Route path="/library" element={<LibraryPage />} />
                 <Route path="/legal" element={<LegalPage />} />
+                <Route path="/legal/:documentId" element={<LegalDocumentPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/investor" element={<InvestorPage />} />
                 <Route path="/newsroom" element={<NewsroomPage />} />
@@ -84,7 +86,7 @@ function App() {
                 <Route path="/equipment-acceptance-test" element={<EquipmentAcceptanceTestPage />} />
                 <Route path="/installation-guide" element={<InstallationGuidePage />} />
                 <Route path="/vru-testing" element={<VruTestingPage />} />
-                <Route path="/roi-calculator" element={<RoiCalculatorPage />} />
+                <Route path="/roi-calculator" element={<Navigate to="/financial" replace />} />
                 <Route path="/pipeline" element={<PipelinePage />} />
                 <Route path="/gallery" element={<GalleryPage />} />
                 <Route path="/cycle-system" element={<CycleSystemPage />} />

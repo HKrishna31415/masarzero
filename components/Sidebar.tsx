@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, FileText, ChevronRight } from 'lucide-react';
 import { PartData, LiveDataConfig } from '../partData';
@@ -67,7 +67,7 @@ const LiveTrendsView: React.FC<{ part: PartData }> = ({ part }) => {
 
     return (
         <div className="glass-card p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Live Trends</h3>
+            <h3 className="font-semibold mb-2">{useTranslation().t('pages.sidebar.liveTrends')}</h3>
             <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={data} margin={{ top: 5, right: 20, left: -10, bottom: 0 }}>
@@ -128,16 +128,17 @@ const RadialProgress: React.FC<{ value: number; max: number; unit: string; label
 
 
 const PumpStatusView: React.FC<{ part: PartData }> = ({ part }) => {
+    const { t } = useTranslation();
     const data = part.pumpData!;
     return (
         <div className="glass-card p-4 rounded-lg">
-            <h3 className="font-semibold mb-4 text-center">Live Pump Status</h3>
+            <h3 className="font-semibold mb-4 text-center">{t('pages.sidebar.pumpStatus')}</h3>
             <div className="flex justify-around items-center">
-                <RadialProgress value={data.rpm.value} max={data.rpm.max} unit="RPM" label="Speed" color="#10b981" />
+                <RadialProgress value={data.rpm.value} max={data.rpm.max} unit="RPM" label={t('pages.sidebar.speed')} color="#10b981" />
                 <div className="text-center">
                     <div className="text-3xl font-bold text-teal-400">{data.pressure.value}</div>
                     <div className="text-sm text-gray-400">{data.pressure.unit}</div>
-                    <div className="mt-2 text-sm font-semibold">Pressure</div>
+                    <div className="mt-2 text-sm font-semibold">{t('pages.sidebar.pressure')}</div>
                 </div>
             </div>
         </div>
@@ -145,6 +146,7 @@ const PumpStatusView: React.FC<{ part: PartData }> = ({ part }) => {
 };
 
 const SystemStatusView: React.FC<{ part: PartData }> = ({ part }) => {
+    const { t } = useTranslation();
     const getStatusColor = (state: 'ok' | 'warn' | 'idle') => {
         switch (state) {
             case 'ok': return 'bg-emerald-400';
@@ -154,7 +156,7 @@ const SystemStatusView: React.FC<{ part: PartData }> = ({ part }) => {
     };
     return (
         <div className="glass-card p-4 rounded-lg">
-            <h3 className="font-semibold mb-3">System Status</h3>
+            <h3 className="font-semibold mb-3">{t('pages.sidebar.systemStatus')}</h3>
             <div className="space-y-3 text-sm">
                 {part.status.map(item => (
                     item.metric.includes('Reservoir') && item.value.includes('%') ? (
@@ -194,6 +196,7 @@ const renderPartDetails = (part: PartData) => {
 
 // --- Main Sidebar Component ---
 const Sidebar: React.FC<{ part: PartData | null, onClose: () => void, onSelectNext: () => void }> = ({ part, onClose, onSelectNext }) => {
+  const { t } = useTranslation();
   // Fix: Using variants for animations to resolve potential TypeScript typing issues.
   const sidebarVariants = {
     initial: { x: '100%', opacity: 0 },
@@ -210,7 +213,7 @@ const Sidebar: React.FC<{ part: PartData | null, onClose: () => void, onSelectNe
           animate="animate"
           exit="exit"
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed top-24 right-4 bottom-4 w-full max-w-sm z-40 sidebar-glass flex flex-col rounded-2xl shadow-2xl shadow-emerald-500/10"
+          className="fixed top-24 right-4 bottom-4 w-full max-sm z-40 sidebar-glass flex flex-col rounded-2xl shadow-2xl shadow-emerald-500/10"
         >
           <div className="p-6 border-b border-white/10">
             <div className="flex justify-between items-center">
@@ -230,13 +233,13 @@ const Sidebar: React.FC<{ part: PartData | null, onClose: () => void, onSelectNe
           <div className="p-6 border-t border-white/10 mt-auto flex items-center gap-3">
             <button className="w-full flex items-center justify-center gap-2 bg-white/5 font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300">
               <FileText size={16} />
-              Spec Sheet
+              {t('pages.sidebar.specSheet')}
             </button>
             <button 
                 onClick={onSelectNext}
                 className="flex-shrink-0 flex items-center justify-center gap-2 relative aurora-border font-semibold text-sm pl-6 pr-4 py-3 rounded-full hover:bg-emerald-400/20 transition-all duration-300"
             >
-              Next Part
+              {t('pages.sidebar.nextPart')}
               <ChevronRight size={18} />
             </button>
           </div>

@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Globe, MapPin, Building2, Users, HelpCircle } from 'lucide-react';
 import VectorBorderCard from '../components/VectorBorderCard';
+import { useTranslation } from '../context/TranslationContext';
 
 // --- 3D Components ---
 
@@ -75,23 +76,19 @@ const Scene = () => {
 
 // --- Data ---
 
-const offices = [
-    { city: 'Houston', country: 'USA', type: 'Global HQ', address: 'Energy Corridor, TX 77077' },
-    { city: 'Rotterdam', country: 'Netherlands', type: 'EU Operations', address: 'Maasvlakte Rt, 3029' },
-    { city: 'Singapore', country: 'Singapore', type: 'APAC Hub', address: 'Jurong Island Hwy' },
-    { city: 'Dubai', country: 'UAE', type: 'MENA Region', address: 'Jebel Ali Free Zone' },
-];
-
-const departments = [
-    { name: 'General Inquiries', email: 'hello@masarzero.com', icon: HelpCircle, desc: 'General questions and information.' },
-    { name: 'Sales & Partnerships', email: 'sales@masarzero.com', icon: Building2, desc: 'Commercial inquiries and partnership opportunities.' },
-    { name: 'Technical Support', email: 'support@masarzero.com', icon: Users, desc: 'Existing client support and technical assistance.' },
-    { name: 'Media & Press', email: 'press@masarzero.com', icon: Globe, desc: 'Media kits and press releases.' },
-];
+const departmentIcons: Record<string, any> = {
+    'HelpCircle': HelpCircle,
+    'Building2': Building2,
+    'Users': Users,
+    'Globe': Globe
+};
 
 // --- Page Component ---
 
 const ContactPage: React.FC = () => {
+    const { t } = useTranslation();
+    const offices = (t('pages.contact.offices', { returnObjects: true }) as any[]) || [];
+    const departments = (t('pages.contact.departments', { returnObjects: true }) as any[]) || [];
     return (
         <section className="min-h-screen pt-24 pb-12 relative bg-[#000212] overflow-hidden flex flex-col items-center justify-center">
             
@@ -118,13 +115,13 @@ const ContactPage: React.FC = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">
-                            Get In Touch
+                            {t('pages.contact.badge')}
                         </span>
                         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">
-                            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Information</span>
+                            {t('pages.contact.title')}
                         </h1>
                         <p className="text-gray-400 max-w-xl mx-auto">
-                            Connect with our global team. Whether you're ready to deploy or just have a question, we're here to help.
+                            {t('pages.contact.subtitle')}
                         </p>
                     </motion.div>
 
@@ -135,7 +132,7 @@ const ContactPage: React.FC = () => {
                             <div className="p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
                                     <Globe className="text-emerald-400" size={24} />
-                                    <h3 className="text-xl font-bold text-white uppercase tracking-widest">Global Nexus</h3>
+                                    <h3 className="text-xl font-bold text-white uppercase tracking-widest">{t('pages.contact.nexus')}</h3>
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -171,12 +168,12 @@ const ContactPage: React.FC = () => {
                             <div className="p-8 h-full flex flex-col">
                                 <div className="flex items-center gap-3 mb-8">
                                     <Phone className="text-emerald-400" size={24} />
-                                    <h3 className="text-xl font-bold text-white uppercase tracking-widest">Direct Channels</h3>
+                                    <h3 className="text-xl font-bold text-white uppercase tracking-widest">{t('pages.contact.channels')}</h3>
                                 </div>
 
                                 <div className="space-y-4">
                                     {departments.map((dept, i) => {
-                                        const Icon = dept.icon;
+                                        const Icon = departmentIcons[dept.icon] || HelpCircle;
                                         return (
                                             <motion.a
                                                 key={dept.name}
@@ -206,7 +203,7 @@ const ContactPage: React.FC = () => {
                                         <div className="flex items-center gap-3">
                                             <Phone size={20} className="text-white" />
                                             <div>
-                                                <p className="text-[10px] text-gray-300 uppercase font-bold">24/7 Emergency Support</p>
+                                                <p className="text-[10px] text-gray-300 uppercase font-bold">{t('pages.contact.emergency')}</p>
                                                 <p className="text-lg font-mono font-bold text-white">+1 (888) 555-0199</p>
                                             </div>
                                         </div>

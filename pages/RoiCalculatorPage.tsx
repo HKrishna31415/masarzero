@@ -1,5 +1,5 @@
-
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, BarChart, Bar, Legend, ReferenceLine, AreaChart, Area, Cell } from 'recharts';
 import { TrendingUp, BarChart as BarChartIcon, Leaf, DollarSign, Percent, GanttChartSquare, Info, Sliders, Calculator, PieChart, Activity } from 'lucide-react';
@@ -400,6 +400,7 @@ const AdvancedCalculator = () => {
 
 
 const RoiCalculatorPage: React.FC = () => {
+    const { t } = useTranslation();
     const [mode, setMode] = useState<'simplified' | 'advanced'>('simplified');
 
     const pageVariants: Variants = {
@@ -419,12 +420,12 @@ const RoiCalculatorPage: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">Precision Modeling</span>
+                        <span className="text-emerald-400 font-mono text-sm tracking-[0.3em] uppercase mb-4 block">{t('roi.badge')}</span>
                         <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6">
-                            ROI <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600">Engine</span>
+                            {t('roi.title')}
                         </h1>
                         <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                            Configure operational parameters to model exact financial outcomes. Switch between a quick estimate and a comprehensive financial analysis.
+                            {t('roi.description')}
                         </p>
                     </motion.div>
                 </div>
@@ -438,7 +439,7 @@ const RoiCalculatorPage: React.FC = () => {
                         className="flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 font-semibold text-sm"
                     >
                         <Calculator size={16} />
-                        Open Dedicated Calculator
+                        {t('roi.openCalc')}
                     </a>
                 </div>
 
@@ -461,13 +462,13 @@ const RoiCalculatorPage: React.FC = () => {
                             onClick={() => setMode('simplified')}
                             className={`relative z-10 px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'simplified' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
                         >
-                            Quick Estimate
+                            {t('roi.switcher.quick')}
                         </button>
                         <button 
                             onClick={() => setMode('advanced')}
                             className={`relative z-10 px-8 py-3 rounded-full font-bold text-sm transition-colors duration-300 ${mode === 'advanced' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
                         >
-                            Deep Dive Model
+                            {t('roi.switcher.deep')}
                         </button>
                     </div>
                 </div>

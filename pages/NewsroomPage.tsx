@@ -1,66 +1,45 @@
-
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from '../context/TranslationContext';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Download, ExternalLink, Search, Tag, Clock, Rss, Radio, Signal, Globe } from 'lucide-react';
 import VectorBorderCard from '../components/VectorBorderCard';
 
-const allArticles = [
-  {
-    id: 1,
-    category: 'Technology',
-    title: 'MasarZero Unveils Patented Cryo-Condensation Process, Achieving 99.98% Recovery Rate',
-    date: 'July 28, 2024',
-    excerpt: 'Our engineering team has achieved a new milestone in vapor recovery, developing a revolutionary cryogenic condensation cycle that dramatically increases efficiency and reduces power consumption by 15%.',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=2670&auto=format&fit=crop',
-    featured: true,
-  },
-  {
-    id: 2,
-    category: 'Partnership',
-    title: 'EuroPort Logistics Hub Partnership Confirmed',
-    date: 'July 15, 2024',
-    excerpt: 'Deployment of 12 MZ-9000 Pro units to reduce emissions across Europe\'s largest port.',
-    image: 'https://images.unsplash.com/photo-1516937941348-c096a98cb6b7?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 3,
-    category: 'Financial',
-    title: 'Record Q2 Revenue Driven by Global Expansion',
-    date: 'July 05, 2024',
-    excerpt: 'Strong demand in Asia-Pacific and the Middle East leads to 320% YOY growth.',
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 4,
-    category: 'Award',
-    title: 'CleanTech Innovation of the Year',
-    date: 'June 21, 2024',
-    excerpt: 'Recognized for significant contributions to industrial sustainability at the Global Clean Energy Summit.',
-    image: 'https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=2670&auto=format&fit=crop'
-  },
-  {
-    id: 5,
-    category: 'Technology',
-    title: 'AI-Powered Predictive Maintenance Live',
-    date: 'June 10, 2024',
-    excerpt: 'SCADA platform update rolls out predictive analytics, reducing downtime by up to 40%.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop'
-  },
-   {
-    id: 6,
-    category: 'Financial',
-    title: 'Series B Funding Round Oversubscribed',
-    date: 'May 30, 2024',
-    excerpt: 'Accelerating R&D for carbon capture modules and fueling expansion into South America.',
-    image: 'https://images.unsplash.com/photo-1565514020175-0517fd485c72?q=80&w=2670&auto=format&fit=crop'
-  }
-];
-
-const categories = ['All', 'Technology', 'Partnership', 'Financial', 'Award'];
+interface Article {
+  id: number;
+  category: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  image: string;
+  featured?: boolean;
+}
 
 const NewsroomPage: React.FC = () => {
+    const { t } = useTranslation();
     const [activeFilter, setActiveFilter] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
+
+    const categories = ['All', 'Technology', 'Partnership', 'Deployment', 'Event'];
+
+    // Map images to IDs since images aren't in translation dict yet
+    const imageMap: Record<number, string> = {
+        1: '/otherinstalls/bahraininstall.jpeg',
+        2: '/otherinstalls/largeinstall.png',
+        3: '/appscreenshots/dashboardss.png',
+        4: '/saudiinstalls/abhainstall.jpeg',
+        5: '/chinainstalls/whiteunitchina.JPG',
+        6: '/koreainstalls/twomachineskorea.jpeg'
+    };
+
+    const allArticles: Article[] = useMemo(() => {
+        const localizedArticles = t('pages.newsroom.articles', { returnObjects: true }) as any[];
+        if (!Array.isArray(localizedArticles)) return [];
+        
+        return localizedArticles.map(article => ({
+            ...article,
+            image: imageMap[article.id] || '/otherinstalls/bahraininstall.jpeg'
+        }));
+    }, [t]);
 
     const featuredArticle = allArticles.find(a => a.featured);
     
@@ -78,7 +57,7 @@ const NewsroomPage: React.FC = () => {
             );
         }
         return filtered;
-    }, [activeFilter, searchQuery]);
+    }, [activeFilter, searchQuery, allArticles]);
 
     return (
         <section className="min-h-screen pt-32 pb-12 bg-[#000212]">
@@ -105,7 +84,7 @@ const NewsroomPage: React.FC = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#000212] via-[#000212]/50 to-transparent" />
                                 <div className="absolute bottom-0 left-0 p-8 md:p-10 max-w-3xl">
                                     <span className="inline-block bg-cyan-500/20 border border-cyan-500/50 text-cyan-300 text-[10px] font-bold px-3 py-1 rounded mb-4 uppercase tracking-wider backdrop-blur-sm">
-                                        Featured Story
+                                        {t('pages.newsroom.featured')}
                                     </span>
                                     <h2 className="text-3xl md:text-5xl font-black text-white leading-tight mb-4 group-hover:text-cyan-100 transition-colors">
                                         {featuredArticle.title}
@@ -114,7 +93,7 @@ const NewsroomPage: React.FC = () => {
                                         {featuredArticle.excerpt}
                                     </p>
                                     <div className="flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest group-hover:gap-4 transition-all">
-                                        Read Full Report <ArrowRight size={14} className="text-cyan-400" />
+                                        {t('pages.newsroom.readFull')} <ArrowRight size={14} className="text-cyan-400" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -136,7 +115,7 @@ const NewsroomPage: React.FC = () => {
                             <div className="relative w-full md:w-64">
                                 <input 
                                     type="text" 
-                                    placeholder="Search logs..." 
+                                    placeholder={t('pages.newsroom.searchPlaceholder')}
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className="w-full bg-transparent border-b border-white/20 py-2 pl-0 pr-8 text-sm text-white focus:outline-none focus:border-cyan-500/50 transition-all placeholder-gray-600 font-mono"
@@ -165,7 +144,7 @@ const NewsroomPage: React.FC = () => {
                                             {article.excerpt}
                                         </p>
                                         <div className="mt-auto pt-3 border-t border-white/5 flex justify-between items-center">
-                                            <span className="text-[9px] font-bold text-cyan-500 uppercase tracking-wider">Access Log</span>
+                                            <span className="text-[9px] font-bold text-cyan-500 uppercase tracking-wider">{t('pages.newsroom.accessLog')}</span>
                                             <ExternalLink size={12} className="text-gray-600 group-hover:text-white transition-colors" />
                                         </div>
                                     </div>
@@ -180,8 +159,8 @@ const NewsroomPage: React.FC = () => {
                         {/* Press Kit Terminal */}
                         <div className="bg-[#050714] border border-white/10 rounded-xl p-6 flex flex-col gap-4 h-full">
                              <div className="border-b border-white/10 pb-4 mb-2">
-                                 <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">Media Uplink</h3>
-                                 <p className="text-[10px] text-gray-500 font-mono">SECURE ACCESS // PRESS KIT</p>
+                                 <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-1">{t('pages.newsroom.mediaUplink')}</h3>
+                                 <p className="text-[10px] text-gray-500 font-mono">{t('pages.newsroom.pressKit')}</p>
                              </div>
 
                              <a href="#" className="flex items-center justify-between bg-white/5 hover:bg-white/10 border border-white/5 rounded p-3 transition-colors group">
@@ -210,7 +189,7 @@ const NewsroomPage: React.FC = () => {
 
                              <div className="mt-auto pt-6">
                                  <div className="bg-white/5 rounded p-4 border border-white/5">
-                                     <p className="text-[10px] text-gray-500 uppercase font-bold mb-2">Press Contact</p>
+                                     <p className="text-[10px] text-gray-500 uppercase font-bold mb-2">{t('pages.newsroom.pressContact')}</p>
                                      <a href="mailto:press@masarzero.com" className="flex items-center gap-2 text-xs text-cyan-400 hover:underline">
                                          <Mail size={12} /> press@masarzero.com
                                      </a>

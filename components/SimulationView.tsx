@@ -50,6 +50,8 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
     const [isRunning, setIsRunning] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const [showLegend, setShowLegend] = useState(false);
+    const [hasFault, setHasFault] = useState(false);
+    const [isPanelOpen, setIsPanelOpen] = useState(false);
     
     // Auto-show info on load for a brief moment or generally
     useEffect(() => {
@@ -57,7 +59,7 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
         return () => clearTimeout(timer);
     }, []);
 
-    const { litersRecovered, revenueGenerated, emissionsPrevented } = useSimulation(isRunning, facilityType);
+    const { litersRecovered, revenueGenerated, emissionsPrevented } = useSimulation(isRunning && !hasFault, facilityType);
 
     const Scene = facilityType === 'gas' ? GasStationScene : StorageFacilityScene;
 
@@ -133,6 +135,14 @@ const SimulationView: React.FC<SimulationViewProps> = ({ facilityType, onBack })
                         liters={litersRecovered}
                         revenue={revenueGenerated}
                         emissions={emissionsPrevented}
+                        hasFault={hasFault}
+                        onToggleFault={() => setHasFault(!hasFault)}
+                        isPanelOpen={isPanelOpen}
+                        onTogglePanel={() => setIsPanelOpen(!isPanelOpen)}
+                        onResetRelay={() => {
+                            setHasFault(false);
+                            setIsPanelOpen(false);
+                        }}
                     />
                 </div>
             </div>
