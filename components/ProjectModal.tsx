@@ -298,9 +298,25 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                      </div>
                  </div>
                  
-                 <button className="w-full sm:w-auto group flex items-center justify-center gap-2 text-xs font-bold text-black bg-emerald-500 hover:bg-emerald-400 uppercase tracking-wider transition-all px-5 py-2.5 rounded shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                    {t('pages.global.modal.accessTelemetry')}
-                    <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                 <button 
+                    onClick={() => {
+                        if (project.installations?.some(s => s.lat)) {
+                            setInstallView('map');
+                            // Scroll to the installations section
+                            document.querySelector('.custom-scrollbar')?.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
+                    className="w-full sm:w-auto group flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider transition-all px-5 py-2.5 rounded shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                    style={project.installations?.some(s => s.lat)
+                        ? { background: 'linear-gradient(135deg,#10b981,#0d9488)', color: '#000' }
+                        : { background: '#10b981', color: '#000' }
+                    }
+                 >
+                    {project.installations?.some(s => s.lat) ? (
+                        <><Map size={14} className="group-hover:scale-110 transition-transform" /> Map Locations</>
+                    ) : (
+                        <>{t('pages.global.modal.accessTelemetry')}<ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" /></>
+                    )}
                  </button>
             </div>
         </div>
