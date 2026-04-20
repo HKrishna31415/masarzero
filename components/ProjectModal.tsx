@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { X, MapPin, Building, Settings, TrendingUp, Leaf, ExternalLink, Activity, ScanLine, Cpu, Crosshair, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, MapPin, Building, Settings, TrendingUp, Leaf, ExternalLink, Activity, ScanLine, Cpu, Crosshair, ChevronLeft, ChevronRight, Map, List } from 'lucide-react';
 import { Project } from '../types/appTypes';
 import { useTranslation } from '../context/TranslationContext';
 
@@ -12,6 +12,7 @@ interface ProjectModalProps {
 const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const { t } = useTranslation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [installView, setInstallView] = useState<'list' | 'map'>('list');
 
   if (!project) return null;
 
@@ -196,31 +197,91 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                 <div className="mb-8 overflow-hidden rounded-lg border border-white/5 bg-white/5">
                     <div className="bg-white/5 px-4 py-2 border-b border-white/5 flex items-center justify-between">
                          <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest font-mono">{t('pages.global.modal.deploymentNetwork')} // {project.installations.length} {t('pages.global.modal.sites')}</span>
-                         <Activity size={12} className="text-emerald-500 animate-pulse" />
+                         <div className="flex items-center gap-2">
+                             <Activity size={12} className="text-emerald-500 animate-pulse" />
+                             {/* Toggle list / map — only show map toggle if any site has coords */}
+                             {project.installations.some(s => s.lat) && (
+                                 <div className="flex bg-black/40 rounded p-0.5 border border-white/10">
+                                     <button
+                                         onClick={() => setInstallView('list')}
+                                         className={`p-1 rounded transition-colors ${installView === 'list' ? 'bg-emerald-500/20 text-emerald-400' : 'text-gray-500 hover:text-white'}`}
+                                         title="List view"
+                                     >
+                                         <List size={12} />
+                                     </button>
+                                     <button
+                                         onClick={() => setInstallView('map')}
+                                         className={`p-1 rounded transition-colors ${installView === 'map' ? 'bg-emerald-500/20 text-emerald-400' : 'text-gray-500 hover:text-white'}`}
+                                         title="Map view"
+                                     >
+                                         <Map size={12} />
+                                     </button>
+                                 </div>
+                             )}
+                         </div>
                     </div>
-                    <div className="max-h-48 overflow-y-auto custom-scrollbar">
-                        <table className="w-full text-[10px] text-left border-collapse">
-                            <thead className="sticky top-0 bg-[#050714] text-gray-500 uppercase font-bold">
-                                <tr>
-                                    <th className="p-3 border-b border-white/5">{t('pages.global.modal.siteKrEn')}</th>
-                                    <th className="p-3 border-b border-white/5">{t('pages.global.modal.locationAddress')}</th>
-                                    <th className="p-3 border-b border-white/5 text-right">{t('pages.global.modal.date')}</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-white/5">
-                                {project.installations.map((site) => (
-                                    <tr key={site.id} className="hover:bg-white/5 transition-colors group">
-                                        <td className="p-3 font-medium">
-                                            <div className="text-white group-hover:text-emerald-400 transition-colors">{site.kr_name}</div>
-                                            <div className="text-gray-500">{site.en_name}</div>
-                                        </td>
-                                        <td className="p-3 text-gray-400 font-mono">{site.address}</td>
-                                        <td className="p-3 text-right text-gray-500 font-mono whitespace-nowrap">{site.date}</td>
+
+                    {installView === 'list' ? (
+                        <div className="max-h-48 overflow-y-auto custom-scrollbar">
+                            <table className="w-full text-[10px] text-left border-collapse">
+                                <thead className="sticky top-0 bg-[#050714] text-gray-500 uppercase font-bold">
+                                    <tr>
+                                        <th className="p-3 border-b border-white/5">{t('pages.global.modal.siteKrEn')}</th>
+                                        <th className="p-3 border-b border-white/5">{t('pages.global.modal.locationAddress')}</th>
+                                        <th className="p-3 border-b border-white/5 text-right">{t('pages.global.modal.date')}</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody className="divide-y divide-white/5">
+                                    {project.installations.map((site) => (
+                                        <tr key={site.id} className="hover:bg-white/5 transition-colors group">
+                                            <td className="p-3 font-medium">
+                                                <div className="text-white group-hover:text-emerald-400 transition-colors">{site.kr_name}</div>
+                                                <div className="text-gray-500">{site.en_name}</div>
+                                            </td>
+                                            <td className="p-3 text-gray-400 font-mono">{site.address}</td>
+                                            <td className="p-3 text-right text-gray-500 font-mono whitespace-nowrap">{site.date}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        /* Deep Dive Map View */
+                        <div className="h-64 relative bg-[#0a0f1e] overflow-hidden">
+                            {/* China bounding box: lat 18-53, lng 73-135 */}
+                            <div className="absolute inset-0 opacity-10 pointer-events-none"
+                                style={{ backgroundImage: 'radial-gradient(circle, #10b981 1px, transparent 1px)', backgroundSize: '20px 20px' }}
+                            />
+                            <div className="absolute top-2 left-3 text-[9px] font-mono text-emerald-500 uppercase tracking-widest">Deep Dive — Geographic Distribution</div>
+                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                {/* Rough China outline hint */}
+                                <rect x="5" y="5" width="90" height="90" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
+                            </svg>
+                            {project.installations.filter(s => s.lat && s.lng).map((site) => {
+                                // Map lat/lng to SVG % coords within China bounds
+                                // lat: 18-53 → y: 95-5 (inverted)
+                                // lng: 73-135 → x: 5-95
+                                const x = ((site.lng! - 73) / (135 - 73)) * 90 + 5;
+                                const y = 95 - ((site.lat! - 18) / (53 - 18)) * 90;
+                                return (
+                                    <div
+                                        key={site.id}
+                                        className="absolute group"
+                                        style={{ left: `${x}%`, top: `${y}%`, transform: 'translate(-50%, -50%)' }}
+                                    >
+                                        <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(16,185,129,0.8)] cursor-pointer hover:scale-150 transition-transform" />
+                                        {/* Tooltip */}
+                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block z-50 pointer-events-none">
+                                            <div className="bg-[#050714] border border-emerald-500/30 rounded px-2 py-1 text-[9px] font-mono text-white whitespace-nowrap shadow-xl">
+                                                <div className="text-emerald-400 font-bold">{site.en_name}</div>
+                                                <div className="text-gray-400">{site.address}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             )}
             
@@ -234,10 +295,6 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
                      <div>
                         <span className="block text-gray-500 mb-0.5">{t('pages.global.modal.efficiency')}</span>
                         <span className="text-emerald-400 font-bold">OPTIMAL</span>
-                     </div>
-                     <div>
-                        <span className="block text-gray-500 mb-0.5">{t('pages.global.modal.pressure')}</span>
-                        <span className="text-white font-bold">1.2 PSI</span>
                      </div>
                  </div>
                  

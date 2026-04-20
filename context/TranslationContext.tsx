@@ -483,7 +483,8 @@ const translations = {
           uptime: 'UPTIME',
           efficiency: 'EFFICIENCY',
           pressure: 'PRESSURE',
-          accessTelemetry: 'Access Telemetry'
+          accessTelemetry: 'Access Telemetry',
+          online: 'Online'
         }
       },
       products: {
@@ -1441,7 +1442,8 @@ const translations = {
           uptime: '正常运行时间',
           efficiency: '效率',
           pressure: '压力',
-          accessTelemetry: '访问遥测数据'
+          accessTelemetry: '访问遥测数据',
+          online: '在线'
         }
       },
       products: {
@@ -1556,7 +1558,8 @@ const translations = {
           uptime: '运行时间',
           efficiency: '效率',
           pressure: '压力',
-          accessTelemetry: '访问遥测'
+          accessTelemetry: '访问遥测',
+          online: '在线'
         }
       },
       products: {
@@ -2559,7 +2562,8 @@ const translations = {
           uptime: 'وقت التشغيل',
           efficiency: 'الكفاءة',
           pressure: 'الضغط',
-          accessTelemetry: 'الوصول إلى التحكم'
+          accessTelemetry: 'الوصول إلى التحكم',
+          online: 'متصل'
         }
       },
       products: {

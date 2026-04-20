@@ -21,5 +21,7 @@ export interface Project {
     en_name: string;
     address: string;
     date: string;
+    lat?: number;
+    lng?: number;
   }[];
 }
