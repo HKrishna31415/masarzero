@@ -12,34 +12,34 @@ export interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   {
-    url: 'https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?q=80&w=2574&auto=format&fit=crop',
-    title: 'Houston Terminal',
-    subtitle: 'MZ-9000 Pro Deployment'
+    url: '/saudiinstalls/abhainstall.jpeg',
+    title: 'Gas Station Machine',
+    subtitle: 'GEVLR-3 Retail Deployment'
   },
   {
-    url: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2670&auto=format&fit=crop',
-    title: 'Command Center',
-    subtitle: '24/7 Network Operations'
+    url: '/otherinstalls/largeinstall.png',
+    title: 'Storage Facility Machine',
+    subtitle: 'MZ-9000 Terminal Installation'
   },
   {
-    url: 'https://images.unsplash.com/photo-1535137033828-17648eb7c7cf?q=80&w=2670&auto=format&fit=crop',
+    url: '/chinainstalls/whiteunitchina.JPG',
+    title: 'Smaller Machine',
+    subtitle: 'Compact Recovery Unit'
+  },
+  {
+    url: '/factorypictures/machinesinfactory.pic.jpg',
     title: 'Fabrication',
     subtitle: 'Precision Engineering'
   },
   {
-    url: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2670&auto=format&fit=crop',
-    title: 'R&D Facility',
-    subtitle: 'Next-Gen Testing'
+    url: '/machinepictures/cryocore.jpg',
+    title: 'R&D',
+    subtitle: 'Cryo-Core Development'
   },
   {
-    url: 'https://images.unsplash.com/photo-1496247749665-49cf5bf87565?q=80&w=2642&auto=format&fit=crop',
-    title: 'On-Site Integration',
-    subtitle: 'Seamless Retrofit'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1516937941348-c096a98cb6b7?q=80&w=2670&auto=format&fit=crop',
-    title: 'Global Logistics',
-    subtitle: 'Supply Chain Excellence'
+    url: '/otherinstalls/omaninstall.png',
+    title: 'Factory',
+    subtitle: 'Industrial Manufacturing'
   },
 ];
 

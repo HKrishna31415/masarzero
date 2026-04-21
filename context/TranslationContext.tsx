@@ -798,12 +798,12 @@ const translations = {
         visitTitle: 'See it in person.',
         visitCTA: 'Schedule Visit',
         items: [
-          { title: 'Houston Terminal', subtitle: 'MZ-9000 Pro Deployment' },
-          { title: 'Command Center', subtitle: '24/7 Network Operations' },
+          { title: 'Gas Station Machine', subtitle: 'GEVLR-3 Retail Deployment' },
+          { title: 'Storage Facility Machine', subtitle: 'MZ-9000 Terminal Installation' },
+          { title: 'Smaller Machine', subtitle: 'Compact Recovery Unit' },
           { title: 'Fabrication', subtitle: 'Precision Engineering' },
-          { title: 'R&D Facility', subtitle: 'Next-Gen Testing' },
-          { title: 'On-Site Integration', subtitle: 'Seamless Retrofit' },
-          { title: 'Global Logistics', subtitle: 'Supply Chain Excellence' }
+          { title: 'R&D', subtitle: 'Cryo-Core Development' },
+          { title: 'Factory', subtitle: 'Industrial Manufacturing' }
         ]
       },
       roi: {
@@ -1672,12 +1672,12 @@ const translations = {
           title: '回收实录',
           description: '探索我们在全球各地的部署实景、研发中心和运营中心。',
           items: [
-            { title: '休斯顿终端', subtitle: 'MZ-9000 Pro 部署' },
-            { title: '控制中心', subtitle: '24/7 网络运营' },
-            { title: '精密制造', subtitle: '工程卓越' },
-            { title: '研发设施', subtitle: '下一代测试' },
-            { title: '现场集成', subtitle: '无缝改造' },
-            { title: '全球物流', subtitle: '供应链卓越' }
+            { title: '加油站机器', subtitle: 'GEVLR-3 零售部署' },
+            { title: '储罐设施机器', subtitle: 'MZ-9000 终端安装' },
+            { title: '小型机器', subtitle: '紧凑型回收装置' },
+            { title: '制造', subtitle: '精密工程' },
+            { title: '研发', subtitle: 'Cryo-Core 开发' },
+            { title: '工厂', subtitle: '工业制造' }
           ]
         },
         legal: {
@@ -2676,12 +2676,12 @@ const translations = {
           title: 'الاسترداد في العمل',
           description: 'استكشف عمليات النشر العالمية ومرافق البحث والتطوير ومراكز العمليات لدينا.',
           items: [
-            { title: 'محطة هيوستن', subtitle: 'نشر MZ-9000 Pro' },
-            { title: 'مركز القيادة', subtitle: 'عمليات الشبكة 24/7' },
-            { title: 'التصنيع الدقيق', subtitle: 'التميز الهندسي' },
-            { title: 'مرفق البحث والتطوير', subtitle: 'اختبار الجيل القادم' },
-            { title: 'التكامل في الموقع', subtitle: 'تحديث سلس' },
-            { title: 'اللوجستيات العالمية', subtitle: 'تميز سلسلة التوريد' }
+            { title: 'آلة محطة الوقود', subtitle: 'نشر GEVLR-3 للتجزئة' },
+            { title: 'آلة منشأة التخزين', subtitle: 'تركيب محطة MZ-9000' },
+            { title: 'آلة صغيرة', subtitle: 'وحدة استرداد مدمجة' },
+            { title: 'التصنيع', subtitle: 'هندسة دقيقة' },
+            { title: 'البحث والتطوير', subtitle: 'تطوير Cryo-Core' },
+            { title: 'المصنع', subtitle: 'التصنيع الصناعي' }
           ]
         },
         legal: {
