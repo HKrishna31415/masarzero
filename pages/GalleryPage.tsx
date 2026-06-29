@@ -37,7 +37,7 @@ const galleryImages: GalleryImage[] = [
     subtitle: 'Cryo-Core Development'
   },
   {
-    url: '/otherinstalls/omaninstall.png',
+    url: '/factorypictures/factoryindustrialpark.png',
     title: 'Factory',
     subtitle: 'Industrial Manufacturing'
   },
