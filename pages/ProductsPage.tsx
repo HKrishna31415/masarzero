@@ -29,14 +29,15 @@ const ProductsPage: React.FC = () => {
   const productImages: Record<string, string> = {
     'MZ-1': '/factorypictures/machinesinfactory.pic.jpg',
     'MZ-9000': '/otherinstalls/largeinstall.png',
-    'Power Filter': '/otherproducts/powerfilter.png',
-    'W2E': '/otherproducts/w2e.png',
   };
+  const hiddenProductNames = new Set(['Power Filter', 'W2E', '功率滤波器', 'فلتر الطاقة']);
 
-  const flagshipProducts = ((t('pages.products.flagship', { returnObjects: true }) as any) as ProductItem[] || []).map(p => ({
-    ...p,
-    image: productImages[p.name] || '/factorypictures/machinesinfactory.pic.jpg'
-  }));
+  const flagshipProducts = ((t('pages.products.flagship', { returnObjects: true }) as any) as ProductItem[] || [])
+    .filter(p => !hiddenProductNames.has(p.name))
+    .map(p => ({
+      ...p,
+      image: productImages[p.name] || '/factorypictures/machinesinfactory.pic.jpg'
+    }));
 
   const solutionFamilies = [
     { icon: Layers, title: t('pages.products.solutions.custom.title'), subtitle: t('pages.products.solutions.custom.subtitle'), description: t('pages.products.solutions.custom.description') },

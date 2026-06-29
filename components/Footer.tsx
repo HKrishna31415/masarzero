@@ -1,7 +1,5 @@
 
 import React from 'react';
-import Counter from './Counter';
-import { Lock } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../context/TranslationContext';
 
@@ -28,34 +26,16 @@ const Footer: React.FC<FooterProps> = () => {
       [t('footer.categories.resources')]: [
         { title: t('header.nav.gallery'), path: '/gallery' },
         { title: t('header.nav.knowledgeBase'), path: '/knowledge' },
-        { title: t('header.nav.technicalLibrary'), path: '/library' },
         { title: t('header.nav.installationGuide'), path: '/installation-guide' },
         { title: t('header.nav.maintenanceManual'), path: '/maintenance-guide' },
         { title: t('header.nav.validationProtocol'), path: '/vru-testing' },
         { title: t('header.nav.equipmentAcceptanceTest'), path: '/equipment-acceptance-test' },
         { title: t('header.nav.supportService'), path: '/support' },
       ],
-      [t('footer.categories.company')]: [
-        { title: t('header.nav.clientPipeline'), path: '/pipeline', locked: true },
-        { title: t('header.nav.esgHub'), path: '/esg' },
-        { title: t('header.nav.aboutUs'), path: '/about' },
-        { title: t('header.nav.investorRelations'), path: '/investor', locked: true },
-        { title: t('header.nav.newsroom'), path: '/newsroom' },
-        { title: t('header.nav.legalCompliance'), path: '/legal' },
-        { title: t('header.nav.contactUs'), path: '/contact' },
-      ],
     };
 
     return (
         <footer className="relative overflow-hidden">
-            {/* Counter Section */}
-            <div className="bg-[#0d1117] py-12 md:py-20 text-center">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-2xl md:text-3xl font-medium text-emerald-400 mb-4">{t('footer.counterTitle')}</h2>
-                    <Counter />
-                </div>
-            </div>
-
             <div className="bg-[#060a14] border-y border-white/5">
                 <div className="container mx-auto px-4 py-6">
                     <div className="flex flex-wrap items-center gap-3 justify-center">
@@ -74,7 +54,7 @@ const Footer: React.FC<FooterProps> = () => {
             {/* Links Section */}
             <div className="bg-[#000212] py-12 md:py-20">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {/* MasarZero Info */}
                         <div className="col-span-2 md:col-span-1">
                             <img 
@@ -98,7 +78,6 @@ const Footer: React.FC<FooterProps> = () => {
                                                 className="text-gray-400 hover:text-emerald-300 transition-colors cursor-pointer text-sm flex items-center gap-1.5"
                                             >
                                                 {link.title}
-                                                {link.locked && <Lock size={12} className="text-gray-500" />}
                                             </Link>
                                         </li>
                                     ))}

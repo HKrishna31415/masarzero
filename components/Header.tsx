@@ -45,24 +45,11 @@ const useNavItems = (): NavItem[] => {
       children: [
         { title: t('header.nav.gallery'), path: '/gallery' },
         { title: t('header.nav.knowledgeBase'), path: '/knowledge' },
-        { title: t('header.nav.technicalLibrary'), path: '/library' },
         { title: t('header.nav.installationGuide'), path: '/installation-guide' },
         { title: t('header.nav.maintenanceManual'), path: '/maintenance-guide' },
         { title: t('header.nav.validationProtocol'), path: '/vru-testing' },
         { title: t('header.nav.equipmentAcceptanceTest'), path: '/equipment-acceptance-test' },
         { title: t('header.nav.supportService'), path: '/support' },
-      ],
-    },
-    {
-      title: t('header.nav.company'),
-      children: [
-        { title: t('header.nav.esgHub'), path: '/esg' },
-        { title: t('header.nav.aboutUs'), path: '/about' },
-        { title: t('header.nav.newsroom'), path: '/newsroom' },
-        { title: t('header.nav.legalCompliance'), path: '/legal' },
-        { title: t('header.nav.contactUs'), path: '/contact' },
-        { title: t('header.nav.clientPipeline'), path: '/pipeline', locked: true },
-        { title: t('header.nav.investorRelations'), path: '/investor', locked: true },
       ],
     },
   ];
