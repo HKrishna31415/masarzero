@@ -31,6 +31,7 @@ import GalleryPage from './pages/GalleryPage';
 import CycleSystemPage from './pages/CycleSystemPage';
 import MaintenanceGuidePage from './pages/MaintenanceGuidePage';
 import LegalDocumentPage from './pages/LegalDocumentPage';
+import EpaCalculatorPage from './pages/EpaCalculatorPage';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import DynamicFavicon from './components/DynamicFavicon';
 
@@ -86,6 +87,7 @@ function App() {
                 <Route path="/equipment-acceptance-test" element={<EquipmentAcceptanceTestPage />} />
                 <Route path="/installation-guide" element={<InstallationGuidePage />} />
                 <Route path="/vru-testing" element={<VruTestingPage />} />
+                <Route path="/epa-calculator" element={<EpaCalculatorPage />} />
                 <Route path="/roi-calculator" element={<Navigate to="/financial" replace />} />
                 <Route path="/pipeline" element={<PipelinePage />} />
                 <Route path="/gallery" element={<GalleryPage />} />

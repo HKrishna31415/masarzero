@@ -48,6 +48,7 @@ const useNavItems = (): NavItem[] => {
         { title: t('header.nav.installationGuide'), path: '/installation-guide' },
         { title: t('header.nav.maintenanceManual'), path: '/maintenance-guide' },
         { title: t('header.nav.validationProtocol'), path: '/vru-testing' },
+        { title: t('header.nav.epaCalculator'), path: '/epa-calculator' },
         { title: t('header.nav.equipmentAcceptanceTest'), path: '/equipment-acceptance-test' },
         { title: t('header.nav.supportService'), path: '/support' },
       ],
