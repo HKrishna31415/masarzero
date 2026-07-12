@@ -32,6 +32,7 @@ import CycleSystemPage from './pages/CycleSystemPage';
 import MaintenanceGuidePage from './pages/MaintenanceGuidePage';
 import LegalDocumentPage from './pages/LegalDocumentPage';
 import EpaCalculatorPage from './pages/EpaCalculatorPage';
+import VaultPage from './pages/VaultPage';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import DynamicFavicon from './components/DynamicFavicon';
 
@@ -93,6 +94,7 @@ function App() {
                 <Route path="/gallery" element={<GalleryPage />} />
                 <Route path="/cycle-system" element={<CycleSystemPage />} />
                 <Route path="/maintenance-guide" element={<MaintenanceGuidePage />} />
+                <Route path="/vault" element={<VaultPage />} />
               </Routes>
             </motion.div>
           </AnimatePresence>
